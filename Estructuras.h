@@ -83,10 +83,10 @@ struct NodoArbol{
 };
 
 
-struct Arbol{
+struct ArbolDeLaVida{
     NodoArbol* raiz;
     
-    Arbol (){
+    ArbolDeLaVida (){
         raiz = NULL;      
     }
     

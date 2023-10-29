@@ -29,13 +29,6 @@ NodoArbol* ArbolDeLaVida::insertar(int valor, NodoArbol* nodo){
     return nodo;
 }
 
-void ArbolDeLaVida::inOrdenClientes(NodoArbol* nodo){
-    if (nodo != NULL){
-        inOrdenClientes(nodo->hijoizquierdo);
-        nodo->imprimir();
-        inOrdenClientes(nodo->hijoderecho);
-    }
-}
 
 void ArbolDeLaVida::inOrden(NodoArbol* nodo){
     if (nodo != NULL){
@@ -45,21 +38,6 @@ void ArbolDeLaVida::inOrden(NodoArbol* nodo){
     }
 }
 
-void ArbolDeLaVida::preOrden(NodoArbol* nodo){
-    if (nodo != NULL){
-        cout << nodo->dato << "  ";
-        preOrden(nodo->hijoizquierdo);
-        preOrden(nodo->hijoderecho);
-    }
-}
-
-void ArbolDeLaVida::posOrden(NodoArbol* nodo){
-    if (nodo != NULL){
-        posOrden(nodo->hijoizquierdo);
-        posOrden(nodo->hijoderecho);
-        cout << nodo->dato << "  ";
-    }
-}
 
 int ArbolDeLaVida::contadorNodos(NodoArbol* nodo){
     if (nodo == NULL)
@@ -84,67 +62,10 @@ NodoArbol* ArbolDeLaVida::buscar (int valor, NodoArbol* nodo){
         return buscar(valor, nodo->hijoizquierdo);
     }
  }
-// cantidad de elementos de un arbol binario
-int ArbolDeLaVida::obtenerNumeroElementos(NodoArbol* nodo){
-    int num_elems = 0;
-    if(nodo != NULL){
-        num_elems += obtenerNumeroElementos(nodo->hijoizquierdo);
-        num_elems++; // contabilizar el nodo visitado
-        num_elems += obtenerNumeroElementos(nodo->hijoderecho);
-    }
-    return num_elems;
-}
-// obtiene la altura
-//Altura. La altura de un �rbol se define como el
-//nivel del nodo de mayor nivel. Como cada nodo de un �rbol
-//puede considerarse a su vez como la ra�z de un �rbol, tambi�n
-//podemos hablar de altura de ramas; el m�ximo n�mero de nodos
-//que hay que recorrer para llegar de la ra�z a una de las hojas.
-int Arbol::obtenerAltura(NodoArbol* nodo) {
-    // resultado
-    int altura    = 0;
-    // referencias hi e hd
-    NodoArbol* ref_h_izq;
-    NodoArbol* ref_h_der;
-    // resultado de alturas de hi e hd
-    int altura_r_izq = 0;
-    int altura_r_der = 0;
-    //
-    if(nodo != NULL){
-        // incia en 1 para contar la raiz
-        altura = 1;
-        // inicialiaza las referencias
-        ref_h_izq = nodo->hijoizquierdo;
-        ref_h_der = nodo->hijoderecho;
-        // si ninguno de los hijos es nulo
-        if( (ref_h_izq != NULL) && (ref_h_der != NULL) ) {
-            // obtiene las alturas de cada arbol izq y der
-            altura_r_izq = obtenerAltura(ref_h_izq);
-            altura_r_der = obtenerAltura(ref_h_der);
 
-            // suma la altura mayor, para determinar el mayor nivel
-            if(altura_r_izq >= altura_r_der){
-                altura += altura_r_izq;
-            }else{
-                altura += altura_r_der;
-            }// hizq no es nulo, suma altura de hijo izquierdo
-        }else if( (ref_h_izq != NULL) && (ref_h_der == NULL) ){
-            altura += obtenerAltura(ref_h_izq);
-        }else if( (ref_h_izq == NULL) && (ref_h_der != NULL) ){// hder no es nulo, suma altura de hijo derecho
-            altura += obtenerAltura(ref_h_der);
-        }else if( (ref_h_izq == NULL) && (ref_h_der == NULL) ) {// cuando ambos son nulos, resta el uno con el que empez�
-            altura -= 1;
-        }
-    }
-    // retorna el resultado
-    return altura;
-}
 
-int maximo (int a, int b){
-    if (a>b)
-       return a;
-    else return b;    
-}
+
+
 
 int Arbol::altura (NodoArbol* nodo){
     if (nodo == NULL)
@@ -153,12 +74,6 @@ int Arbol::altura (NodoArbol* nodo){
         return 1 + maximo(altura(nodo->hijoizquierdo),altura(nodo->hijoderecho));
 }
 
-int Arbol::cantNodos2 (NodoArbol* nodo){
-    if (nodo == NULL)
-        return 0;
-    else 
-        return 1 + cantNodos2(nodo->hijoizquierdo)+cantNodos2(nodo->hijoderecho);
-}
 
 int Arbol::cantHojas(NodoArbol* raiz){
     if (raiz == NULL)
@@ -178,32 +93,34 @@ NodoArbol* Arbol::mayor (NodoArbol* arbol){
         return mayor (arbol->hijoderecho);
 }
 
-NodoArbol* Arbol::borrarElemento(int ele){
-    raiz = borrarElemento(ele, raiz);
-    return raiz;
-}
+//BORRAAAAR
+// NodoArbol* Arbol::borrarElemento(int ele){
+//     raiz = borrarElemento(ele, raiz);
+//     return raiz;
+// }
 
-NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol){
-    if (arbol == NULL){
-        return NULL;
-    }
-    else if (ele < arbol->dato)
-        arbol->hijoizquierdo = borrarElemento(ele, arbol->hijoizquierdo);
-    else if (ele > arbol->dato)
-        arbol->hijoderecho = borrarElemento(ele, arbol->hijoderecho);
-    else if (arbol->hijoizquierdo == NULL && arbol->hijoderecho == NULL)
-        arbol = NULL;
-    else if (arbol->hijoizquierdo == NULL)
-        arbol = arbol->hijoderecho;
-    else if (arbol->hijoderecho == NULL)
-        arbol = arbol->hijoizquierdo;
-    else{
-        NodoArbol* max = mayor(arbol->hijoizquierdo); // mayor de los menores
-        arbol->hijoizquierdo = borrarElemento(max->dato, arbol->hijoizquierdo);
-        arbol->dato = max->dato;
-    }
-    return arbol;   
-}
+// NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol){
+//     if (arbol == NULL){
+//         return NULL;
+//     }
+//     else if (ele < arbol->dato)
+//         arbol->hijoizquierdo = borrarElemento(ele, arbol->hijoizquierdo);
+//     else if (ele > arbol->dato)
+//         arbol->hijoderecho = borrarElemento(ele, arbol->hijoderecho);
+//     else if (arbol->hijoizquierdo == NULL && arbol->hijoderecho == NULL)
+//         arbol = NULL;
+//     else if (arbol->hijoizquierdo == NULL)
+//         arbol = arbol->hijoderecho;
+//     else if (arbol->hijoderecho == NULL)
+//         arbol = arbol->hijoizquierdo;
+//     else{
+//         NodoArbol* max = mayor(arbol->hijoizquierdo); // mayor de los menores
+//         arbol->hijoizquierdo = borrarElemento(max->dato, arbol->hijoizquierdo);
+//         arbol->dato = max->dato;
+//     }
+//     return arbol;   
+// }
+//</BORRAAAAA>
 
 
 
@@ -212,7 +129,7 @@ NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol){
 //LISTA DOBLE -----------------------------------------------------------------------------------------
 //LISTA HUMANOS -----------------------------------------------------------------------------------------
 
-void ListaHumanos::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
+void ListaHumanos::insertarInicio(int _ID, string _nombre, string _apellido, string _pais, string _creencia, string _profesion, string _nacimiento){
     if (primerHumano==0)
 	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
     else{
