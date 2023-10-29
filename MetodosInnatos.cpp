@@ -139,83 +139,71 @@ int Arbol::obtenerAltura(NodoArbol* nodo) {
     return altura;
 }
 
-int maximo (int a, int b)
-{
+int maximo (int a, int b){
     if (a>b)
        return a;
-       else return b;    
+    else return b;    
 }
 
-int Arbol::altura (NodoArbol* nodo)
-{
+int Arbol::altura (NodoArbol* nodo){
     if (nodo == NULL)
         return -1;
     else 
-         return 1 + maximo(altura(nodo->hijoizquierdo),altura(nodo->hijoderecho));
+        return 1 + maximo(altura(nodo->hijoizquierdo),altura(nodo->hijoderecho));
 }
 
-int Arbol::cantNodos2 (NodoArbol* nodo)
-{
+int Arbol::cantNodos2 (NodoArbol* nodo){
     if (nodo == NULL)
         return 0;
     else 
-         return 1 + cantNodos2(nodo->hijoizquierdo)+cantNodos2(nodo->hijoderecho);
+        return 1 + cantNodos2(nodo->hijoizquierdo)+cantNodos2(nodo->hijoderecho);
 }
 
-
-
-int Arbol::cantHojas(NodoArbol* raiz)
-{
+int Arbol::cantHojas(NodoArbol* raiz){
     if (raiz == NULL)
        return 0;
     else if (raiz->hijoderecho == NULL && raiz->hijoizquierdo==NULL)
-         return 1;
+        return 1;
     else
         return cantHojas(raiz->hijoderecho)+cantHojas(raiz->hijoizquierdo);
-    
 }
-
 // borrar
-NodoArbol* Arbol::mayor (NodoArbol* arbol)
-  {
+NodoArbol* Arbol::mayor (NodoArbol* arbol){
     if (arbol == NULL)
         return NULL;
     else if (arbol->hijoderecho == NULL)
         return arbol;
     else
         return mayor (arbol->hijoderecho);
-  }
-
-
-NodoArbol* Arbol::borrarElemento(int ele)
-{
-      raiz = borrarElemento(ele, raiz);
-      return raiz;
 }
 
-NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol)
+NodoArbol* Arbol::borrarElemento(int ele){
+    raiz = borrarElemento(ele, raiz);
+    return raiz;
+}
+
+NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol){
+    if (arbol == NULL)
     {
-        if (arbol == NULL)
-        {
-            return NULL;
-        }
-        else if (ele < arbol->dato)
-            arbol->hijoizquierdo = borrarElemento(ele, arbol->hijoizquierdo);
-        else if (ele > arbol->dato)
-            arbol->hijoderecho = borrarElemento(ele, arbol->hijoderecho);
-        else if (arbol->hijoizquierdo == NULL && arbol->hijoderecho == NULL)
-            arbol = NULL;
-        else if (arbol->hijoizquierdo == NULL)
-            arbol = arbol->hijoderecho;
-        else if (arbol->hijoderecho == NULL)
-            arbol = arbol->hijoizquierdo;
-        else{
-            NodoArbol* max = mayor(arbol->hijoizquierdo); // mayor de los menores
-            arbol->hijoizquierdo = borrarElemento(max->dato, arbol->hijoizquierdo);
-            arbol->dato = max->dato;
-        }
-        return arbol;   
+        return NULL;
     }
+    else if (ele < arbol->dato)
+        arbol->hijoizquierdo = borrarElemento(ele, arbol->hijoizquierdo);
+    else if (ele > arbol->dato)
+        arbol->hijoderecho = borrarElemento(ele, arbol->hijoderecho);
+    else if (arbol->hijoizquierdo == NULL && arbol->hijoderecho == NULL)
+        arbol = NULL;
+    else if (arbol->hijoizquierdo == NULL)
+        arbol = arbol->hijoderecho;
+    else if (arbol->hijoderecho == NULL)
+        arbol = arbol->hijoizquierdo;
+    else{
+        NodoArbol* max = mayor(arbol->hijoizquierdo); // mayor de los menores
+        arbol->hijoizquierdo = borrarElemento(max->dato, arbol->hijoizquierdo);
+        arbol->dato = max->dato;
+    }
+    return arbol;   
+}
 //LISTA DOBLE
 void ListaDoble::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
     if (primerArticulo==0)
