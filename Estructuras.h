@@ -12,29 +12,21 @@ struct Nodo{
     } 
 };
 //PECADITOS
-struct ListaPecados{
-    Nodo * primerPecado, * ultimoPecado;
-
-    ListaPecados(){
-        primerPecado=ultimoPecado=NULL;
-    }
-};
 //AMIGOS
-struct ListaAmigos {
-	Nodo * primerHumano, * ultimoHumano;
+struct ListaDoble {
+	Nodo * primerNodo, * ultimoNodo;
 	
-    ListaAmigos(){
-		primerHumano=ultimoHumano=NULL;
+    ListaDoble(){
+		primerNodo=ultimoNodo=NULL;
     }
 
-    void insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion);
+    void insertarInicio(int numero);
     void insertarFinal (int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion);
 	Nodo * borrarAlFinal();
     void imprimir();
     bool encontrarHumano(string _codigo);
     int largo();
 
-    string encontrarUbicacionArticulo(string _codigo);
 };
 
 //HUMANOS
@@ -43,7 +35,7 @@ struct Humano{
     int ID;
     string nombre, apellido, pais, creencia, profesion, nacimieto;
     int redesSociales[7]; 
-    ListaPecados * pecados;
+    ListaDoble * pecados;
     //0:Lujuria  
     //1:Gula
     //2:Avaricia
@@ -51,7 +43,7 @@ struct Humano{
     //4:Ira
     //5:Envidia
     //6:Soverbia 
-    ListaAmigos * amigos;
+    ListaDoble * amigos;
     bool vivo;
 
     Humano(int _ID, string _nombre, string _apellido, string _pais, string _creencia, string _profesion, string _nacimiento){
@@ -62,8 +54,8 @@ struct Humano{
         creencia=_creencia;
         profesion=_profesion;
         nacimieto=_nacimiento;
-        pecados= new ListaPecados();
-        amigos= new ListaAmigos();
+        pecados= new ListaDoble();
+        amigos= new ListaDoble();
     }
 } ;
 
