@@ -127,8 +127,10 @@ NodoArbol* ArbolDeLaVida::mayor (NodoArbol* arbol){
 
 
 //LISTA DOBLE -----------------------------------------------------------------------------------------
-//LISTA NodoS -----------------------------------------------------------------------------------------
-
+//NODO
+void Nodo::imprimir(){
+    cout<<numero<<endl;
+}
 void ListaDoble::insertarInicio(int numero){
     if (primerNodo==NULL)
 	    primerNodo=ultimoNodo=new Nodo(numero);

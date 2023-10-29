@@ -10,6 +10,7 @@ struct Nodo{
         numero= _numero;
         siguiente=anterior=NULL;
     } 
+    void imprimir();
 };
 //PECADITOS
 //AMIGOS
