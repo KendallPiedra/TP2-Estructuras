@@ -1,5 +1,8 @@
 #include "iostream"
 using namespace std;
+struct Humano;
+struct ListaDoble;
+struct BitacoraCondenacion;
 
 struct NodoArbol{
     int dato;
@@ -15,7 +18,7 @@ struct NodoArbol{
 };
 
 
-struct Arbol{
+struct ArbolDeLaVida{
     NodoArbol* raiz;
     
     Arbol (){

@@ -7,11 +7,11 @@ void NodoArbol::imprimir(){
 }
 
 // ARBOL BINARIO -------------------------------------------------------------------------------------
-void Arbol::insertar(int dato){
+void ArbolDeLaVida::insertar(int dato){
      raiz = insertar(dato, raiz);
 }
 //  INSERTA RECURSIVAMENTE
-NodoArbol* Arbol::insertar(int valor, NodoArbol* nodo){
+NodoArbol* ArbolDeLaVida::insertar(int valor, NodoArbol* nodo){
     if (nodo == NULL){
         return new NodoArbol(valor);
     }      
@@ -28,7 +28,7 @@ NodoArbol* Arbol::insertar(int valor, NodoArbol* nodo){
     return nodo;
 }
 
-void Arbol::inOrdenClientes(NodoArbol* nodo){
+void ArbolDeLaVida::inOrdenClientes(NodoArbol* nodo){
     if (nodo != NULL){
         inOrdenClientes(nodo->hijoizquierdo);
         nodo->imprimir();
@@ -36,7 +36,7 @@ void Arbol::inOrdenClientes(NodoArbol* nodo){
     }
 }
 
-void Arbol::inOrden(NodoArbol* nodo){
+void ArbolDeLaVida::inOrden(NodoArbol* nodo){
     if (nodo != NULL){
         inOrden(nodo->hijoizquierdo);
         cout << nodo->dato << "  ";
@@ -44,7 +44,7 @@ void Arbol::inOrden(NodoArbol* nodo){
     }
 }
 
-void Arbol::preOrden(NodoArbol* nodo){
+void ArbolDeLaVida::preOrden(NodoArbol* nodo){
     if (nodo != NULL){
         cout << nodo->dato << "  ";
         preOrden(nodo->hijoizquierdo);
@@ -52,7 +52,7 @@ void Arbol::preOrden(NodoArbol* nodo){
     }
 }
 
-void Arbol::posOrden(NodoArbol* nodo){
+void ArbolDeLaVida::posOrden(NodoArbol* nodo){
     if (nodo != NULL){
         posOrden(nodo->hijoizquierdo);
         posOrden(nodo->hijoderecho);
@@ -60,14 +60,14 @@ void Arbol::posOrden(NodoArbol* nodo){
     }
 }
 
-int Arbol::contadorNodos(NodoArbol* nodo){
+int ArbolDeLaVida::contadorNodos(NodoArbol* nodo){
     if (nodo == NULL)
         return 0;
     else
         return 1+ contadorNodos(nodo->hijoderecho)+contadorNodos(nodo->hijoizquierdo);
 }        
 // BUSCA UN VALOR EN EL ARBOL ORDENADO
-NodoArbol* Arbol::buscar (int valor, NodoArbol* nodo){
+NodoArbol* ArbolDeLaVida::buscar (int valor, NodoArbol* nodo){
     // cuando el nodo es nulo, quiere decir que all� debe
     // ubicar el valor, en un nuevo nodo
     if (nodo == NULL){
@@ -84,7 +84,7 @@ NodoArbol* Arbol::buscar (int valor, NodoArbol* nodo){
     }
  }
 // cantidad de elementos de un arbol binario
-int Arbol::obtenerNumeroElementos(NodoArbol* nodo){
+int ArbolDeLaVida::obtenerNumeroElementos(NodoArbol* nodo){
     int num_elems = 0;
     if(nodo != NULL){
         num_elems += obtenerNumeroElementos(nodo->hijoizquierdo);
