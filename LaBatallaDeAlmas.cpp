@@ -4,6 +4,6 @@ int main(int argc, char const *argv[])
 {
     srand(time(0));
     // cout<<generacionNumerosAleatorios<<endl;
-
+    // cout<<extraerNombreAleatorio()<<endl;
     return 0;
 }
