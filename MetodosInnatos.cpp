@@ -232,8 +232,8 @@ void ListaHumanos::insertarFinal(int _cantidad, string _codigo, string _categori
     }
 }
 
-Humano * ListaHumanos::borrarAlFinal(){
-	Humano * borrado=ultimoHumano;
+NodoHumano * ListaHumanos::borrarAlFinal(){
+	NodoHumano * borrado=ultimoHumano;
 	if (primerHumano!=NULL){
 		if (primerHumano==ultimoHumano){
 			primerHumano=ultimoHumano=NULL;
@@ -247,7 +247,7 @@ Humano * ListaHumanos::borrarAlFinal(){
 }
 
 int ListaHumanos::largo(){
-	Humano * tmp = primerHumano;
+	NodoHumano * tmp = primerHumano;
     int contador=0;
     while(tmp!=NULL){
 	    contador++;
@@ -257,7 +257,7 @@ int ListaHumanos::largo(){
 }
 
 string ListaHumanos::encontrarUbicacionHumaultimoHumano(string _codigo){
-	Humano * tmp = primerHumano;
+	NodoHumano * tmp = primerHumano;
 	while(tmp!=NULL){
 		if(tmp->codigo==_codigo){
 			return tmp->ubicacion;
@@ -268,7 +268,7 @@ string ListaHumanos::encontrarUbicacionHumaultimoHumano(string _codigo){
 }
 
 void ListaHumanos::imprimir(){
-	Humano * tmp = primerHumano;
+	NodoHumano * tmp = primerHumano;
 	while(tmp!=NULL){
 		tmp->imprimir();
 		tmp=tmp->siguiente;
@@ -276,7 +276,7 @@ void ListaHumanos::imprimir(){
 }
 
 bool ListaHumanos::encontrarHumano(string _codigo){
-	Humano * tmp = primerHumano;
+	NodoHumano * tmp = primerHumano;
 	while(tmp!=NULL){
 		if(tmp->codigo==_codigo){
 			return true;
