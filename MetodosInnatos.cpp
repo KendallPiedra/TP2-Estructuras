@@ -1,4 +1,5 @@
 #include "Estructuras.h"
+#inlcude "Funciones.cpp"
 
 // NODO ARBOL ----------------------------------------------------------------------------------------
 
@@ -204,44 +205,49 @@ NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol){
     return arbol;   
 }
 
+
+
+
+
 //LISTA DOBLE -----------------------------------------------------------------------------------------
-void ListaDoble::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
-    if (primerArticulo==0)
-	    primerArticulo=ultimoArticulo=new NodoArticulo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+//LISTA HUMANOS -----------------------------------------------------------------------------------------
+
+void ListaHumanos::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
+    if (primerHumano==0)
+	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
     else{
-	    primerArticulo->anterior= new NodoArticulo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
-	    primerArticulo->anterior->siguiente=primerArticulo;
-	    primerArticulo=primerArticulo->anterior;
+	    primerHumano->anterior= new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+	    primerHumano->anterior->siguiente=primerHumano;
+	    primerHumano=primerHumano->anterior;
     }
 }
 
-void ListaDoble::insertarFinal(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
-    if (primerArticulo==0)
-	    primerArticulo=ultimoArticulo=new NodoArticulo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+void ListaHumanos::insertarFinal(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
+    if (primerHumano==0)
+	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
     else{
-	    ultimoArticulo->siguiente= new NodoArticulo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
-	    ultimoArticulo->siguiente->anterior=ultimoArticulo;
-	    ultimoArticulo=ultimoArticulo->siguiente; 
+	    ultimoHumano->siguiente= new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+	    ultimoHumano->siguiente->anterior=ultimoHumano;
+	    ultimoHumano=ultimoHumano->siguiente; 
     }
 }
 
-NodoArticulo * ListaDoble::borrarAlFinal(){
-	NodoArticulo * borrado=ultimoArticulo;
-	if (primerArticulo!=NULL){
-		if (primerArticulo==ultimoArticulo){
-			primerArticulo=ultimoArticulo=NULL;
+Humano * ListaHumanos::borrarAlFinal(){
+	Humano * borrado=ultimoHumano;
+	if (primerHumano!=NULL){
+		if (primerHumano==ultimoHumano){
+			primerHumano=ultimoHumano=NULL;
     	}else{
-        	ultimoArticulo=ultimoArticulo->anterior;
+        	ultimoHumano=ultimoHumano->anterior;
 			borrado->anterior=NULL;
-			ultimoArticulo->siguiente=NULL;
+			ultimoHumano->siguiente=NULL;
     	}
 	}
     return borrado;
 }
 
-int ListaDoble::largo(){
-    // lock_guard<mutex> lock(mtx);
-	NodoArticulo * tmp = primerArticulo;
+int ListaHumanos::largo(){
+	Humano * tmp = primerHumano;
     int contador=0;
     while(tmp!=NULL){
 	    contador++;
@@ -250,8 +256,8 @@ int ListaDoble::largo(){
 	return contador;
 }
 
-string ListaDoble::encontrarUbicacionArticulo(string _codigo){
-	NodoArticulo * tmp = primerArticulo;
+string ListaHumanos::encontrarUbicacionHumaultimoHumano(string _codigo){
+	Humano * tmp = primerHumano;
 	while(tmp!=NULL){
 		if(tmp->codigo==_codigo){
 			return tmp->ubicacion;
@@ -261,16 +267,16 @@ string ListaDoble::encontrarUbicacionArticulo(string _codigo){
 	return NULL;
 }
 
-void ListaDoble::imprimir(){
-	NodoArticulo * tmp = primerArticulo;
+void ListaHumanos::imprimir(){
+	Humano * tmp = primerHumano;
 	while(tmp!=NULL){
 		tmp->imprimir();
 		tmp=tmp->siguiente;
     }
 }
 
-bool ListaDoble::encontrarArticulo(string _codigo){
-	NodoArticulo * tmp = primerArticulo;
+bool ListaHumanos::encontrarHumano(string _codigo){
+	Humano * tmp = primerHumano;
 	while(tmp!=NULL){
 		if(tmp->codigo==_codigo){
 			return true;
@@ -279,4 +285,79 @@ bool ListaDoble::encontrarArticulo(string _codigo){
     }
 	return false;
 }
+//LISTA PECADITOS -----------------------------------------------------------------------------------------
 
+// void ListaPecados::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
+//     if (primerHumano==0)
+// 	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+//     else{
+// 	    primerHumano->anterior= new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+// 	    primerHumano->anterior->siguiente=primerHumano;
+// 	    primerHumano=primerHumano->anterior;
+//     }
+// }
+
+// void ListaPecados::insertarFinal(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
+//     if (primerHumano==0)
+// 	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+//     else{
+// 	    ultimoHumano->siguiente= new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+// 	    ultimoHumano->siguiente->anterior=ultimoHumano;
+// 	    ultimoHumano=ultimoHumano->siguiente; 
+//     }
+// }
+
+// Humano * ListaPecados::borrarAlFinal(){
+// 	Humano * borrado=ultimoHumano;
+// 	if (primerHumano!=NULL){
+// 		if (primerHumano==ultimoHumano){
+// 			primerHumano=ultimoHumano=NULL;
+//     	}else{
+//         	ultimoHumano=ultimoHumano->anterior;
+// 			borrado->anterior=NULL;
+// 			ultimoHumano->siguiente=NULL;
+//     	}
+// 	}
+//     return borrado;
+// }
+
+// int ListaPecados::largo(){
+//     // lock_guard<mutex> lock(mtx);
+// 	Humano * tmp = primerHumano;
+//     int contador=0;
+//     while(tmp!=NULL){
+// 	    contador++;
+// 	    tmp=tmp->siguiente;
+//     }
+// 	return contador;
+// }
+
+// string ListaPecados::encontrarUbicacionHumaultimoHumano(string _codigo){
+// 	Humano * tmp = primerHumano;
+// 	while(tmp!=NULL){
+// 		if(tmp->codigo==_codigo){
+// 			return tmp->ubicacion;
+// 		}
+// 		tmp=tmp->siguiente;
+//     }
+// 	return NULL;
+// }
+
+// void ListaPecados::imprimir(){
+// 	Humano * tmp = primerHumano;
+// 	while(tmp!=NULL){
+// 		tmp->imprimir();
+// 		tmp=tmp->siguiente;
+//     }
+// }
+
+// bool ListaPecados::encontrarHumaultimoHumano(string _codigo){
+// 	Humano * tmp = primerHumano;
+// 	while(tmp!=NULL){
+// 		if(tmp->codigo==_codigo){
+// 			return true;
+// 		}
+// 		tmp=tmp->siguiente;
+//     }
+// 	return false;
+// }

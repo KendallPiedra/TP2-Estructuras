@@ -1,8 +1,5 @@
 #include "iostream"
 using namespace std;
-struct Humano;
-struct ListaDoble;
-struct BitacoraCondenacion;
 
 struct NodoArbol{
     int dato;
@@ -18,7 +15,7 @@ struct NodoArbol{
 };
 
 
-struct ArbolDeLaVida{
+struct Arbol{
     NodoArbol* raiz;
     
     Arbol (){
@@ -49,6 +46,7 @@ struct ArbolDeLaVida{
 };
 
 struct Humano{
+    Humano * siguiente;
 
 } ;
 
@@ -56,36 +54,23 @@ struct BitacoraCondenacion{
 
 };
 
-struct ListaDoble {
-	NodoArticulo * primerArticulo, * ultimoArticulo;
+
+
+
+
+struct ListaHumanos {
+	Humano * primerHumano, * ultimoHumano;
 	
-    ListaDoble(){
-		primerArticulo=ultimoArticulo=NULL;
+    ListaHumanos(){
+		primerHumano=ultimoHumano=NULL;
     }
 
     void insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion);
     void insertarFinal (int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion);
-	NodoArticulo * borrarAlFinal();
-    void leerArchivoArticulos();
+	Humano * borrarAlFinal();
     void imprimir();
-    bool encontrarArticulo(string _codigo);
-    void actualizarArchivoArticulos();
-    int revisarListaArticulos();
+    bool encontrarHumano(string _codigo);
     int largo();
-    bool encontrarArticuloRepetido(string _codigo);
-    int cantidadArticuloBodega(string _codigo);
-    int sacarTiempoFabricacion(string _codigo);
-    void apartarProductos(ListaProductos *listaProductos);
-    void annadirProductoAlmacen(int cantProducto, string codigoProducto);
 
-        //Destructor
-    ~ListaDoble() {
-        NodoArticulo* tmp = primerArticulo;
-        while (tmp) {
-            NodoArticulo* siguiente = tmp->siguiente;
-            delete tmp;
-            tmp = siguiente;
-        }
-    }
     string encontrarUbicacionArticulo(string _codigo);
 };
