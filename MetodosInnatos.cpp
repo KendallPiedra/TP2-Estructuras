@@ -241,7 +241,6 @@ NodoArticulo * ListaDoble::borrarAlFinal(){
 
 
 int ListaDoble::largo(){
-    // lock_guard<mutex> lock(mtx);
 	NodoArticulo * tmp = primerArticulo;
     int contador=0;
     while(tmp!=NULL){
