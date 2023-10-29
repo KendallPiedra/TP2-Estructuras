@@ -183,8 +183,7 @@ NodoArbol* Arbol::borrarElemento(int ele){
 }
 
 NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol){
-    if (arbol == NULL)
-    {
+    if (arbol == NULL){
         return NULL;
     }
     else if (ele < arbol->dato)
@@ -204,7 +203,8 @@ NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol){
     }
     return arbol;   
 }
-//LISTA DOBLE
+
+//LISTA DOBLE -----------------------------------------------------------------------------------------
 void ListaDoble::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
     if (primerArticulo==0)
 	    primerArticulo=ultimoArticulo=new NodoArticulo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
@@ -239,8 +239,8 @@ NodoArticulo * ListaDoble::borrarAlFinal(){
     return borrado;
 }
 
-
 int ListaDoble::largo(){
+    // lock_guard<mutex> lock(mtx);
 	NodoArticulo * tmp = primerArticulo;
     int contador=0;
     while(tmp!=NULL){
