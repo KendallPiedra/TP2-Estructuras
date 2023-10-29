@@ -127,44 +127,44 @@ NodoArbol* ArbolDeLaVida::mayor (NodoArbol* arbol){
 
 
 //LISTA DOBLE -----------------------------------------------------------------------------------------
-//LISTA HUMANOS -----------------------------------------------------------------------------------------
+//LISTA NodoS -----------------------------------------------------------------------------------------
 
 void ListaDoble::insertarInicio(int numero){
-    if (primerHumano==NULL)
-	    primerHumano=ultimoHumano=new Nodo(numero);
+    if (primerNodo==NULL)
+	    primerNodo=ultimoNodo=new Nodo(numero);
     else{
-	    primerHumano->anterior= new Nodo(numero);
-	    primerHumano->anterior->siguiente=primerHumano;
-	    primerHumano=primerHumano->anterior;
+	    primerNodo->anterior= new Nodo(numero);
+	    primerNodo->anterior->siguiente=primerNodo;
+	    primerNodo=primerNodo->anterior;
     }
 }
 
 void ListaDoble::insertarFinal(int numero){
-    if (primerHumano==0)
-	    primerHumano=ultimoHumano=new Nodo( numero);
+    if (primerNodo==0)
+	    primerNodo=ultimoNodo=new Nodo( numero);
     else{
-	    ultimoHumano->siguiente= new Humano( numero);
-	    ultimoHumano->siguiente->anterior=ultimoHumano;
-	    ultimoHumano=ultimoHumano->siguiente; 
+	    ultimoNodo->siguiente= new Nodo( numero);
+	    ultimoNodo->siguiente->anterior=ultimoNodo;
+	    ultimoNodo=ultimoNodo->siguiente; 
     }
 }
 
 Nodo * ListaDoble::borrarAlFinal(){
-	Nodo * borrado=ultimoHumano;
-	if (primerHumano!=NULL){
-		if (primerHumano==ultimoHumano){
-			primerHumano=ultimoHumano=NULL;
+	Nodo * borrado=ultimoNodo;
+	if (primerNodo!=NULL){
+		if (primerNodo==ultimoNodo){
+			primerNodo=ultimoNodo=NULL;
     	}else{
-        	ultimoHumano=ultimoHumano->anterior;
+        	ultimoNodo=ultimoNodo->anterior;
 			borrado->anterior=NULL;
-			ultimoHumano->siguiente=NULL;
+			ultimoNodo->siguiente=NULL;
     	}
 	}
     return borrado;
 }
 
 int ListaDoble::largo(){
-	Nodo * tmp = primerHumano;
+	Nodo * tmp = primerNodo;
     int contador=0;
     while(tmp!=NULL){
 	    contador++;
@@ -175,7 +175,7 @@ int ListaDoble::largo(){
 
 
 void ListaDoble::imprimir(){
-	Nodo * tmp = primerHumano;
+	Nodo * tmp = primerNodo;
 	while(tmp!=NULL){
 		tmp->imprimir();
 		tmp=tmp->siguiente;
@@ -186,34 +186,34 @@ void ListaDoble::imprimir(){
 //LISTA PECADITOS -----------------------------------------------------------------------------------------
 
 // void ListaPecados::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
-//     if (primerHumano==0)
-// 	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+//     if (primerNodo==0)
+// 	    primerNodo=ultimoNodo=new Nodo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
 //     else{
-// 	    primerHumano->anterior= new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
-// 	    primerHumano->anterior->siguiente=primerHumano;
-// 	    primerHumano=primerHumano->anterior;
+// 	    primerNodo->anterior= new Nodo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+// 	    primerNodo->anterior->siguiente=primerNodo;
+// 	    primerNodo=primerNodo->anterior;
 //     }
 // }
 
 // void ListaPecados::insertarFinal(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
-//     if (primerHumano==0)
-// 	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+//     if (primerNodo==0)
+// 	    primerNodo=ultimoNodo=new Nodo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
 //     else{
-// 	    ultimoHumano->siguiente= new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
-// 	    ultimoHumano->siguiente->anterior=ultimoHumano;
-// 	    ultimoHumano=ultimoHumano->siguiente; 
+// 	    ultimoNodo->siguiente= new Nodo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+// 	    ultimoNodo->siguiente->anterior=ultimoNodo;
+// 	    ultimoNodo=ultimoNodo->siguiente; 
 //     }
 // }
 
-// Humano * ListaPecados::borrarAlFinal(){
-// 	Humano * borrado=ultimoHumano;
-// 	if (primerHumano!=NULL){
-// 		if (primerHumano==ultimoHumano){
-// 			primerHumano=ultimoHumano=NULL;
+// Nodo * ListaPecados::borrarAlFinal(){
+// 	Nodo * borrado=ultimoNodo;
+// 	if (primerNodo!=NULL){
+// 		if (primerNodo==ultimoNodo){
+// 			primerNodo=ultimoNodo=NULL;
 //     	}else{
-//         	ultimoHumano=ultimoHumano->anterior;
+//         	ultimoNodo=ultimoNodo->anterior;
 // 			borrado->anterior=NULL;
-// 			ultimoHumano->siguiente=NULL;
+// 			ultimoNodo->siguiente=NULL;
 //     	}
 // 	}
 //     return borrado;
@@ -221,7 +221,7 @@ void ListaDoble::imprimir(){
 
 // int ListaPecados::largo(){
 //     // lock_guard<mutex> lock(mtx);
-// 	Humano * tmp = primerHumano;
+// 	Nodo * tmp = primerNodo;
 //     int contador=0;
 //     while(tmp!=NULL){
 // 	    contador++;
@@ -230,8 +230,8 @@ void ListaDoble::imprimir(){
 // 	return contador;
 // }
 
-// string ListaPecados::encontrarUbicacionHumaultimoHumano(string _codigo){
-// 	Humano * tmp = primerHumano;
+// string ListaPecados::encontrarUbicacionHumaultimoNodo(string _codigo){
+// 	Nodo * tmp = primerNodo;
 // 	while(tmp!=NULL){
 // 		if(tmp->codigo==_codigo){
 // 			return tmp->ubicacion;
@@ -242,15 +242,15 @@ void ListaDoble::imprimir(){
 // }
 
 // void ListaPecados::imprimir(){
-// 	Humano * tmp = primerHumano;
+// 	Nodo * tmp = primerNodo;
 // 	while(tmp!=NULL){
 // 		tmp->imprimir();
 // 		tmp=tmp->siguiente;
 //     }
 // }
 
-// bool ListaPecados::encontrarHumaultimoHumano(string _codigo){
-// 	Humano * tmp = primerHumano;
+// bool ListaPecados::encontrarHumaultimoNodo(string _codigo){
+// 	Nodo * tmp = primerNodo;
 // 	while(tmp!=NULL){
 // 		if(tmp->codigo==_codigo){
 // 			return true;

@@ -21,7 +21,7 @@ struct ListaDoble {
     }
 
     void insertarInicio(int numero);
-    void insertarFinal (int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion);
+    void insertarFinal (int numero);
 	Nodo * borrarAlFinal();
     void imprimir();
     int largo();
