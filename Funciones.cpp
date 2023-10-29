@@ -37,6 +37,9 @@ string extraerLineaAleatoria(string nombreArchivo, int cantLineasArchivo){
 }
 
 void generarRedesSocialesFavoritas(int redesSociales[]){
+    for (int i = 0; i < 7; i++){
+        
+    }
         
 }
 
