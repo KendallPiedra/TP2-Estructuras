@@ -131,9 +131,9 @@ NodoArbol* Arbol::mayor (NodoArbol* arbol){
 
 void ListaHumanos::insertarInicio(int _ID, string _nombre, string _apellido, string _pais, string _creencia, string _profesion, string _nacimiento){
     if (primerHumano==0)
-	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+	    primerHumano=ultimoHumano=new Humano( _ID,  _nombre,  _apellido,  _pais, _creencia, _profesion,  _nacimiento);
     else{
-	    primerHumano->anterior= new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+	    primerHumano->anterior= new Humano(_ID,  _nombre,  _apellido,  _pais, _creencia, _profesion,  _nacimiento);
 	    primerHumano->anterior->siguiente=primerHumano;
 	    primerHumano=primerHumano->anterior;
     }
@@ -141,9 +141,9 @@ void ListaHumanos::insertarInicio(int _ID, string _nombre, string _apellido, str
 
 void ListaHumanos::insertarFinal(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
     if (primerHumano==0)
-	    primerHumano=ultimoHumano=new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+	    primerHumano=ultimoHumano=new Humano(_ID,  _nombre,  _apellido,  _pais, _creencia, _profesion,  _nacimiento);
     else{
-	    ultimoHumano->siguiente= new Humano(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
+	    ultimoHumano->siguiente= new Humano(_ID,  _nombre,  _apellido,  _pais, _creencia, _profesion,  _nacimiento);
 	    ultimoHumano->siguiente->anterior=ultimoHumano;
 	    ultimoHumano=ultimoHumano->siguiente; 
     }
