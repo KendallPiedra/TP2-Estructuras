@@ -24,7 +24,6 @@ struct ListaDoble {
     void insertarFinal (int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion);
 	Nodo * borrarAlFinal();
     void imprimir();
-    bool encontrarHumano(string _codigo);
     int largo();
 
 };
