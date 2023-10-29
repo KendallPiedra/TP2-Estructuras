@@ -1,5 +1,5 @@
 #include "Estructuras.h"
-#inlcude "Funciones.cpp"
+#include "Funciones.cpp"
 
 // NODO ARBOL ----------------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ NodoArbol* ArbolDeLaVida::buscar (int valor, NodoArbol* nodo){
 
 
 
-int Arbol::altura (NodoArbol* nodo){
+int ArbolDeLaVida::altura (NodoArbol* nodo){
     if (nodo == NULL)
         return -1;
     else 
@@ -75,7 +75,7 @@ int Arbol::altura (NodoArbol* nodo){
 }
 
 
-int Arbol::cantHojas(NodoArbol* raiz){
+int ArbolDeLaVida::cantHojas(NodoArbol* raiz){
     if (raiz == NULL)
        return 0;
     else if (raiz->hijoderecho == NULL && raiz->hijoizquierdo==NULL)
@@ -84,7 +84,7 @@ int Arbol::cantHojas(NodoArbol* raiz){
         return cantHojas(raiz->hijoderecho)+cantHojas(raiz->hijoizquierdo);
 }
 // borrar
-NodoArbol* Arbol::mayor (NodoArbol* arbol){
+NodoArbol* ArbolDeLaVida::mayor (NodoArbol* arbol){
     if (arbol == NULL)
         return NULL;
     else if (arbol->hijoderecho == NULL)
