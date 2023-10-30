@@ -37,15 +37,17 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
             profesion=extraerLineaAleatoria("profesiones.txt",30);
             creencia=extraerLineaAleatoria("creencias.txt",30);
             pais=extraerLineaAleatoria("paises.txt",30);
-            //nacimiento=generarFechaYHoraActual();
+            nacimiento=obtenerFechaYHoraActual();
             do{
                 ID=generarNumerosAleatorios(99999);
             } while (validarID(ID));
-            
-            
             arrayDeLaVida[i]= new Humano(ID,nombre,apellido,pais,creencia,profesion,nacimiento,generarNumerosAleatorios(100));
         }
     }
+}
+
+void ArbolDeLaVida::construirArbol(){
+    
 }
 
 void Humano::agregarPecado(string pecado){
@@ -60,6 +62,6 @@ bool ArbolDeLaVida::validarID(int ID){
         }
     }
     return true;
-
+}
 
 

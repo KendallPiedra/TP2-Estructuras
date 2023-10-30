@@ -23,7 +23,6 @@ int generarNumerosAleatorios(int tope) {
     return rand() % tope + 1;
 }
 
-
 string extraerLineaAleatoria(string nombreArchivo, int cantLineasArchivo){
     //Extrae una linea random del archivo que se ocupe, en este caso, paises, nombres, apellidos, etc.
     //Importante ingresar el tope correcto o se puede caer
