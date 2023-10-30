@@ -108,6 +108,7 @@ struct ArbolDeLaVida{
 
     bool validarID(int ID);
     void generarAmigosYPecados();
+    void crearGeneracionHumanos(int cantidadAGenerar);
 };
 
 //BITACORA
