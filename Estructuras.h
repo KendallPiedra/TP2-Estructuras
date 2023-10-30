@@ -1,30 +1,37 @@
-#include "iostream"
+#include <iostream>
 using namespace std;
 
-//NODO MISTICO
-struct Nodo{
-    Nodo*siguiente;
-    Nodo*anterior;
-    int numero;
-    Nodo(int _numero){
-        numero= _numero;
+//ANTIGUO NODO MÍSTICO
+struct Pecado{
+    int cantidad;
+    string nombrePecado;
+    Pecado(){
+        cantidad=0;
+    } 
+};
+
+//NODO AMIGOS
+struct NodoAmigo{
+    NodoAmigo *siguiente, *anterior;
+    Humano *amigo;
+    NodoAmigo(Humano *_amigo){
+        amigo=_amigo;
         siguiente=anterior=NULL;
     } 
     void imprimir();
 };
-//PECADITOS
+
 //AMIGOS
-struct ListaDoble {
-	Nodo * primerNodo, * ultimoNodo;
+struct ListaAmiguis {
+	NodoAmigo * primerNodo, * ultimoNodo;
 	
-    ListaDoble(){
+    ListaAmiguis(){
 		primerNodo=ultimoNodo=NULL;
     }
 
-    void insertarInicio(int numero);
-    void insertarFinal (int numero);
-	Nodo * borrarAlFinal();
-    void imprimir();
+    void insertarInicio(Humano *amigo);
+    void insertarFinal (Humano *amigo);
+	NodoAmigo * borrarAlFinal();
     int largo();
 
 };
@@ -32,10 +39,10 @@ struct ListaDoble {
 //HUMANOS
 
 struct Humano{
-    int ID;
+    int ID, cantidadAmigos;
     string nombre, apellido, pais, creencia, profesion, nacimieto;
     int redesSociales[7]; 
-    ListaDoble * pecados;
+    Pecado pecados[7];
     //0:Lujuria  
     //1:Gula
     //2:Avaricia
@@ -43,10 +50,11 @@ struct Humano{
     //4:Ira
     //5:Envidia
     //6:Soverbia 
-    ListaDoble * amigos;
+    ListaAmiguis * amigos;
     bool vivo;
 
-    Humano(int _ID, string _nombre, string _apellido, string _pais, string _creencia, string _profesion, string _nacimiento){
+    Humano(int _ID, string _nombre, string _apellido, string _pais, string _creencia,
+    string _profesion, string _nacimiento, int _cantAmigos){
         ID=_ID;
         nombre=_nombre;
         apellido=_apellido;
@@ -54,9 +62,13 @@ struct Humano{
         creencia=_creencia;
         profesion=_profesion;
         nacimieto=_nacimiento;
-        pecados= new ListaDoble();
-        amigos= new ListaDoble();
+        cantidadAmigos=_cantAmigos;
+        amigos= new ListaAmiguis();
     }
+
+    void agregarAmigos(Humano arrayDeLaVida[], int cantHumanosActual);
+    void inicializarPecados();
+    void agregarPecado();
 };
 
 
@@ -87,21 +99,10 @@ struct ArbolDeLaVida{
     //void insertar (int);
     //Nodo* insertar(int, Nodo*);
     void inOrden(NodoArbol*);
-    void inOrdenClientes(NodoArbol*);
-    void preOrden(NodoArbol*);
-    void posOrden(NodoArbol*);
     NodoArbol* buscar (int, NodoArbol*);
-    int obtenerNumeroElementos(NodoArbol*);
-    int peso (NodoArbol*);
-    int obtenerAltura(NodoArbol*);
     NodoArbol* mayor (NodoArbol* arbol);
-    NodoArbol* borrarElemento(int);
-    NodoArbol* borrarElemento(int, NodoArbol*);
-    void anchura(NodoArbol*);
     int altura(NodoArbol*);
     int cantHojas(NodoArbol*);
-    int cantNodos2(NodoArbol*);
-    void nodos_nivel (NodoArbol*, int, int);
     int contadorNodos(NodoArbol*);
 };
 

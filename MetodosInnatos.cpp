@@ -122,37 +122,35 @@ NodoArbol* ArbolDeLaVida::mayor (NodoArbol* arbol){
 // }
 //</BORRAAAAA>
 
+//NODO PECADO -------------------------------------------------------------------------------------------
 
-
-
-
-//LISTA DOBLE -----------------------------------------------------------------------------------------
-//NODO
-void Nodo::imprimir(){
-    cout<<numero<<endl;
+//LISTA AMIGUIS -----------------------------------------------------------------------------------------
+void NodoAmigo::imprimir(){
+    cout<<"Holi"<<endl;
 }
-void ListaDoble::insertarInicio(int numero){
+
+void ListaAmiguis::insertarInicio(Humano *amigo){
     if (primerNodo==NULL)
-	    primerNodo=ultimoNodo=new Nodo(numero);
+	    primerNodo=ultimoNodo=new NodoAmigo(amigo);
     else{
-	    primerNodo->anterior= new Nodo(numero);
+	    primerNodo->anterior= new NodoAmigo(amigo);
 	    primerNodo->anterior->siguiente=primerNodo;
 	    primerNodo=primerNodo->anterior;
     }
 }
 
-void ListaDoble::insertarFinal(int numero){
+void ListaAmiguis::insertarFinal(Humano *amigo){
     if (primerNodo==0)
-	    primerNodo=ultimoNodo=new Nodo( numero);
+	    primerNodo=ultimoNodo=new NodoAmigo(amigo);
     else{
-	    ultimoNodo->siguiente= new Nodo( numero);
+	    ultimoNodo->siguiente= new NodoAmigo(amigo);
 	    ultimoNodo->siguiente->anterior=ultimoNodo;
 	    ultimoNodo=ultimoNodo->siguiente; 
     }
 }
 
-Nodo * ListaDoble::borrarAlFinal(){
-	Nodo * borrado=ultimoNodo;
+NodoAmigo * ListaAmiguis::borrarAlFinal(){
+	NodoAmigo * borrado=ultimoNodo;
 	if (primerNodo!=NULL){
 		if (primerNodo==ultimoNodo){
 			primerNodo=ultimoNodo=NULL;
@@ -165,8 +163,8 @@ Nodo * ListaDoble::borrarAlFinal(){
     return borrado;
 }
 
-int ListaDoble::largo(){
-	Nodo * tmp = primerNodo;
+int ListaAmiguis::largo(){
+	NodoAmigo * tmp = primerNodo;
     int contador=0;
     while(tmp!=NULL){
 	    contador++;
@@ -175,17 +173,6 @@ int ListaDoble::largo(){
 	return contador;
 }
 
-
-void ListaDoble::imprimir(){
-	Nodo * tmp = primerNodo;
-	while(tmp!=NULL){
-		tmp->imprimir();
-		tmp=tmp->siguiente;
-    }
-}
-
-
-//LISTA PECADITOS -----------------------------------------------------------------------------------------
 
 // void ListaPecados::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
 //     if (primerNodo==0)
