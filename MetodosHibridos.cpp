@@ -48,7 +48,7 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
     }
 }
 
-void Humano::agregarPecado(){
+void Humano::agregarPecado(string pecado){
 
 }
 
@@ -60,5 +60,6 @@ bool ArbolDeLaVida::validarID(int ID){
         }
     }
     return true;
-}
+
+
 

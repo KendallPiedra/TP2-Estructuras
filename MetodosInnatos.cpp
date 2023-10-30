@@ -19,7 +19,7 @@ void Humano::inicializarPecados(){
 }
 
 void Humano::agregarPecado(string pecado){ //sujeto a cambios
-    Pecado* tmp;
+    Pecado *tmp;
     for (int i=0; i < 7; i++){
         tmp=&pecados[i];
         if (tmp->nombrePecado==pecado){
