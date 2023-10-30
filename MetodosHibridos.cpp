@@ -41,8 +41,6 @@ int crearGeneracionHumanos(int cantidad, Humano arrayDeLaVida[], int cantHumanos
         do{
             ID=generarNumerosAleatorios(99999);
         } while (validarID(ID));
-        
-        
         arrayDeLaVida[i]=* new Humano(ID,nombre,apellido,pais,creencia,profesion,nacimiento,generarNumerosAleatorios(100));
     }
     return cantHumanosActual;
