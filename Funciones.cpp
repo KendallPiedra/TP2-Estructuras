@@ -9,6 +9,10 @@
 
 using namespace std;
 
+//<VALIDACIONES>
+
+//</Validaciones>
+
 int maximo (int a, int b){
     if (a>b)
        return a;
@@ -18,6 +22,7 @@ int maximo (int a, int b){
 int generarNumerosAleatorios(int tope) {
     return rand() % tope + 1;
 }
+
 
 string extraerLineaAleatoria(string nombreArchivo, int cantLineasArchivo){
     //Extrae una linea random del archivo que se ocupe, en este caso, paises, nombres, apellidos, etc.
@@ -71,5 +76,6 @@ string obtenerFechaYHoraActual() {
     string hora = obtenerHoraActual();
     return fecha + "_" + hora;
 }
+
 
 

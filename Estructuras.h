@@ -66,7 +66,7 @@ struct Humano{
         amigos= new ListaAmiguis();
     }
 
-    void agregarAmigos(Humano arrayDeLaVida[], int cantHumanosActual);
+    void agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual);
     void inicializarPecados();
     void agregarPecado();
 };
@@ -89,7 +89,8 @@ struct NodoArbol{
 
 struct ArbolDeLaVida{
     NodoArbol* raiz;
-    
+    Humano * arrayDeLaVida[100000];
+    int cantidadHumanos;
     ArbolDeLaVida (){
         raiz = NULL;      
     }
@@ -104,6 +105,9 @@ struct ArbolDeLaVida{
     int altura(NodoArbol*);
     int cantHojas(NodoArbol*);
     int contadorNodos(NodoArbol*);
+
+    bool validarID(int ID);
+    void generarAmigosYPecados();
 };
 
 //BITACORA
