@@ -43,3 +43,30 @@ void generarRedesSocialesFavoritas(int redesSociales[]){
         
 }
 
+//Hora
+string obtenerHoraActual() {
+    auto ahora = chrono::system_clock::now();
+    time_t tiempoActual = chrono::system_clock::to_time_t(ahora);
+    tm tiempoLocal = *localtime(&tiempoActual);
+    char buffer[9];
+    sprintf(buffer, "%02d-%02d-%02d", tiempoLocal.tm_hour,
+	 tiempoLocal.tm_min, tiempoLocal.tm_sec);
+    return string(buffer);
+}
+
+string obtenerFechaActual() {
+    auto ahora = chrono::system_clock::now();
+    time_t tiempoActual = chrono::system_clock::to_time_t(ahora);
+    tm tiempoLocal = *localtime(&tiempoActual);
+    char buffer[11];
+    sprintf(buffer, "%02d-%02d-%04d", tiempoLocal.tm_mday,
+	 tiempoLocal.tm_mon + 1, tiempoLocal.tm_year + 1900);
+    return string(buffer);
+}
+
+string obtenerFechaYHoraActual() {
+    string fecha = obtenerFechaActual();
+    string hora = obtenerHoraActual();
+    return fecha + "_" + hora;
+}
+

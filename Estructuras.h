@@ -57,7 +57,7 @@ struct Humano{
         pecados= new ListaDoble();
         amigos= new ListaDoble();
     }
-} ;
+};
 
 
 //ARBOL
