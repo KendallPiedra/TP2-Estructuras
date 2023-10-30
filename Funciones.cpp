@@ -1,8 +1,8 @@
-#include "iostream"
+#include <iostream>
 #include <cstdlib>
-#include <ctime>
+// #include <ctime>
 #include <fstream>
-#include <sstream>
+// #include <sstream>
 #include <string>
 using namespace std;
 
@@ -38,8 +38,9 @@ string extraerLineaAleatoria(string nombreArchivo, int cantLineasArchivo){
 
 void generarRedesSocialesFavoritas(int redesSociales[]){
     for (int i = 0; i < 7; i++){
-        
+        redesSociales[i]=generarNumerosAleatorios(100);
     }
-        
 }
+
+
 
