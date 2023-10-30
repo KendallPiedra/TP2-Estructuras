@@ -1,8 +1,34 @@
 #include "Estructuras.h"
 #include "Funciones.cpp"
 
-// NODO ARBOL ----------------------------------------------------------------------------------------
+//HUMANO -------------------------------------------------------------------------------------------------
+void Humano::inicializarPecados(){
+    //0:Lujuria  
+    //1:Gula
+    //2:Avaricia
+    //3:Pereza
+    //4:Ira
+    //5:Envidia
+    //6:Soverbia 
+    string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
+    Pecado* pecado;
+    for (int i=0; i < 7; i++){
+        pecado=&pecados[i];
+        pecado->nombrePecado=pecadosCapitales[i];
+    }
+}
 
+void Humano::agregarPecado(string pecado){ //sujeto a cambios
+    Pecado* tmp;
+    for (int i=0; i < 7; i++){
+        tmp=&pecados[i];
+        if (tmp->nombrePecado==pecado){
+            tmp->cantidad++;
+        }
+    }
+}
+
+// NODO ARBOL ----------------------------------------------------------------------------------------
 void NodoArbol::imprimir(){
     cout<<dato<<endl;
 }
@@ -61,11 +87,7 @@ NodoArbol* ArbolDeLaVida::buscar (int valor, NodoArbol* nodo){
      // en caso contrario, va al lado izquierdo
         return buscar(valor, nodo->hijoizquierdo);
     }
- }
-
-
-
-
+}
 
 int ArbolDeLaVida::altura (NodoArbol* nodo){
     if (nodo == NULL)
@@ -129,7 +151,7 @@ void NodoAmigo::imprimir(){
     cout<<"Holi"<<endl;
 }
 
-void ListaAmiguis::insertarInicio(Humano *amigo){
+void ListaBesties::insertarInicio(Humano *amigo){
     if (primerNodo==NULL)
 	    primerNodo=ultimoNodo=new NodoAmigo(amigo);
     else{
@@ -139,7 +161,7 @@ void ListaAmiguis::insertarInicio(Humano *amigo){
     }
 }
 
-void ListaAmiguis::insertarFinal(Humano *amigo){
+void ListaBesties::insertarFinal(Humano *amigo){
     if (primerNodo==0)
 	    primerNodo=ultimoNodo=new NodoAmigo(amigo);
     else{
@@ -149,7 +171,7 @@ void ListaAmiguis::insertarFinal(Humano *amigo){
     }
 }
 
-NodoAmigo * ListaAmiguis::borrarAlFinal(){
+NodoAmigo * ListaBesties::borrarAlFinal(){
 	NodoAmigo * borrado=ultimoNodo;
 	if (primerNodo!=NULL){
 		if (primerNodo==ultimoNodo){
@@ -163,7 +185,7 @@ NodoAmigo * ListaAmiguis::borrarAlFinal(){
     return borrado;
 }
 
-int ListaAmiguis::largo(){
+int ListaBesties::largo(){
 	NodoAmigo * tmp = primerNodo;
     int contador=0;
     while(tmp!=NULL){
@@ -173,78 +195,14 @@ int ListaAmiguis::largo(){
 	return contador;
 }
 
+bool ListaBesties::tieneAmigo(int IDAmigo){
+    NodoAmigo * tmp = primerNodo;
+    while(tmp!=NULL){
+	    if(IDAmigo==tmp->amigo->ID){
+            return true;
+        }
+	    tmp=tmp->siguiente;
+    }
+	return false;
+}
 
-// void ListaPecados::insertarInicio(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
-//     if (primerNodo==0)
-// 	    primerNodo=ultimoNodo=new Nodo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
-//     else{
-// 	    primerNodo->anterior= new Nodo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
-// 	    primerNodo->anterior->siguiente=primerNodo;
-// 	    primerNodo=primerNodo->anterior;
-//     }
-// }
-
-// void ListaPecados::insertarFinal(int _cantidad, string _codigo, string _categoria, string _ubicacion, int _tiempoFabricacion){
-//     if (primerNodo==0)
-// 	    primerNodo=ultimoNodo=new Nodo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
-//     else{
-// 	    ultimoNodo->siguiente= new Nodo(_cantidad, _codigo, _categoria, _ubicacion, _tiempoFabricacion);
-// 	    ultimoNodo->siguiente->anterior=ultimoNodo;
-// 	    ultimoNodo=ultimoNodo->siguiente; 
-//     }
-// }
-
-// Nodo * ListaPecados::borrarAlFinal(){
-// 	Nodo * borrado=ultimoNodo;
-// 	if (primerNodo!=NULL){
-// 		if (primerNodo==ultimoNodo){
-// 			primerNodo=ultimoNodo=NULL;
-//     	}else{
-//         	ultimoNodo=ultimoNodo->anterior;
-// 			borrado->anterior=NULL;
-// 			ultimoNodo->siguiente=NULL;
-//     	}
-// 	}
-//     return borrado;
-// }
-
-// int ListaPecados::largo(){
-//     // lock_guard<mutex> lock(mtx);
-// 	Nodo * tmp = primerNodo;
-//     int contador=0;
-//     while(tmp!=NULL){
-// 	    contador++;
-// 	    tmp=tmp->siguiente;
-//     }
-// 	return contador;
-// }
-
-// string ListaPecados::encontrarUbicacionHumaultimoNodo(string _codigo){
-// 	Nodo * tmp = primerNodo;
-// 	while(tmp!=NULL){
-// 		if(tmp->codigo==_codigo){
-// 			return tmp->ubicacion;
-// 		}
-// 		tmp=tmp->siguiente;
-//     }
-// 	return NULL;
-// }
-
-// void ListaPecados::imprimir(){
-// 	Nodo * tmp = primerNodo;
-// 	while(tmp!=NULL){
-// 		tmp->imprimir();
-// 		tmp=tmp->siguiente;
-//     }
-// }
-
-// bool ListaPecados::encontrarHumaultimoNodo(string _codigo){
-// 	Nodo * tmp = primerNodo;
-// 	while(tmp!=NULL){
-// 		if(tmp->codigo==_codigo){
-// 			return true;
-// 		}
-// 		tmp=tmp->siguiente;
-//     }
-// 	return false;
-// }

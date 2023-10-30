@@ -22,10 +22,10 @@ struct NodoAmigo{
 };
 
 //AMIGOS
-struct ListaAmiguis {
+struct ListaBesties {
 	NodoAmigo * primerNodo, * ultimoNodo;
 	
-    ListaAmiguis(){
+    ListaBesties(){
 		primerNodo=ultimoNodo=NULL;
     }
 
@@ -33,7 +33,7 @@ struct ListaAmiguis {
     void insertarFinal (Humano *amigo);
 	NodoAmigo * borrarAlFinal();
     int largo();
-
+    bool tieneAmigo(int ID);
 };
 
 //HUMANOS
@@ -50,7 +50,7 @@ struct Humano{
     //4:Ira
     //5:Envidia
     //6:Soverbia 
-    ListaAmiguis * amigos;
+    ListaBesties * amigos;
     bool vivo;
 
     Humano(int _ID, string _nombre, string _apellido, string _pais, string _creencia,
@@ -63,12 +63,12 @@ struct Humano{
         profesion=_profesion;
         nacimieto=_nacimiento;
         cantidadAmigos=_cantAmigos;
-        amigos= new ListaAmiguis();
+        amigos= new ListaBesties();
     }
 
     void agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual);
     void inicializarPecados();
-    void agregarPecado();
+    void agregarPecado(string pecado);
 };
 
 
