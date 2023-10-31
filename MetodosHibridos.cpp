@@ -27,37 +27,7 @@ void ArbolDeLaVida::generarAmigosYPecados(){
     }
 }
 
-void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
-    if (cantidadHumanos+cantidadAGenerar<=1000){
-        int ID;
-        string nombre, apellido, profesion, creencia, pais, nacimiento;
-        for (int i = cantidadHumanos+1; i < cantidadAGenerar+cantidadHumanos; i++){
-            nombre=extraerLineaAleatoria("nombres.txt",1000);
-            apellido=extraerLineaAleatoria("apellido.txt",30);
-            profesion=extraerLineaAleatoria("profesiones.txt",30);
-            creencia=extraerLineaAleatoria("creencias.txt",30);
-            pais=extraerLineaAleatoria("paises.txt",30);
-            nacimiento=obtenerFechaYHoraActual();
-            do{
-                ID=generarNumerosAleatorios(99999);
-            } while (validarID(ID));
-            arrayDeLaVida[i]= new Humano(ID,nombre,apellido,pais,creencia,profesion,nacimiento,generarNumerosAleatorios(100));
-        }
-        cantidadHumanos+=cantidadAGenerar;
-    }
-}
 
-void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cantidadDeseada, int contador){
-    //insertar funcion que ordene el array por ID
-    if (inicio <= fin || contador>=cantidadDeseada) {
-        int centro = (inicio + fin) / 2;
-        Humano * humanoCentral = arrayDeLaVida[centro];
-        insertar(humanoCentral,nodo);
-        contador++;
-        construirArbol(nodo, inicio, centro - 1, cantidadDeseada, contador);
-        construirArbol(nodo, centro + 1, fin, cantidadDeseada, contador);
-    }
-}
 
 //METODOS DE LA VIDA
 

@@ -102,7 +102,7 @@ struct ArbolDeLaVida{
     NodoArbol* buscar (int, NodoArbol*);
     NodoArbol* mayor (NodoArbol* arbol);
     int altura(NodoArbol*);
-    int cantHojas(NodoArbol*);
+    int definirPunteroHojas(NodoArbol*);
     int contadorNodos(NodoArbol*);
     bool validarID(int ID);
     void generarAmigosYPecados();

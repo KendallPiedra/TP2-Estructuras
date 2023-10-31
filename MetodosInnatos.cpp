@@ -60,7 +60,6 @@ NodoArbol* ArbolDeLaVida::insertar(Humano * humano, NodoArbol* nodo){
     return nodo;
 }
 
-
 void ArbolDeLaVida::inOrden(NodoArbol* nodo){
     if (nodo != NULL){
         inOrden(nodo->hijoizquierdo);
@@ -69,14 +68,13 @@ void ArbolDeLaVida::inOrden(NodoArbol* nodo){
     }
 }
 
-
 int ArbolDeLaVida::contadorNodos(NodoArbol* nodo){
     if (nodo == NULL)
         return 0;
     else
         return 1+contadorNodos(nodo->hijoderecho)+contadorNodos(nodo->hijoizquierdo);
 }        
-// BUSCA UN VALOR EN EL ARBOL ORDENADO
+// Hay que modificar un toque esta función
 NodoArbol* ArbolDeLaVida::buscar (int IDhumano, NodoArbol* nodo){
     // cuando el nodo es nulo, quiere decir que all� debe
     // ubicar el valor, en un nuevo nodo
@@ -101,14 +99,14 @@ int ArbolDeLaVida::altura (NodoArbol* nodo){
         return 1 + maximo(altura(nodo->hijoizquierdo),altura(nodo->hijoderecho));
 }
 
-
-int ArbolDeLaVida::cantHojas(NodoArbol* raiz){
+int ArbolDeLaVida::definirPunteroHojas(NodoArbol* raiz){
     if (raiz == NULL)
-       return 0;
+        return 0;
     else if (raiz->hijoderecho == NULL && raiz->hijoizquierdo==NULL)
-        return 1;
+        // raiz->hijoizquierdo=ESTOY MAQUINANDO ESTO
+        return 0;
     else
-        return cantHojas(raiz->hijoderecho)+cantHojas(raiz->hijoizquierdo);
+        return definirPunteroHojas(raiz->hijoderecho)+definirPunteroHojas(raiz->hijoizquierdo);
 }
 // borrar
 NodoArbol* ArbolDeLaVida::mayor (NodoArbol* arbol){
@@ -129,12 +127,43 @@ int ArbolDeLaVida::extraerCantidadNodos(){
     return cantidadNodos;
 }
 
+void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
+    if (cantidadHumanos+cantidadAGenerar<=1000){
+        int ID;
+        string nombre, apellido, profesion, creencia, pais, nacimiento;
+        for (int i = cantidadHumanos+1; i < cantidadAGenerar+cantidadHumanos; i++){
+            nombre=extraerLineaAleatoria("nombres.txt",1000);
+            apellido=extraerLineaAleatoria("apellido.txt",30);
+            profesion=extraerLineaAleatoria("profesiones.txt",30);
+            creencia=extraerLineaAleatoria("creencias.txt",30);
+            pais=extraerLineaAleatoria("paises.txt",30);
+            nacimiento=obtenerFechaYHoraActual();
+            do{
+                ID=generarNumerosAleatorios(99999);
+            } while (validarID(ID));
+            arrayDeLaVida[i]= new Humano(ID,nombre,apellido,pais,creencia,profesion,nacimiento,generarNumerosAleatorios(100));
+        }
+        cantidadHumanos+=cantidadAGenerar;
+    }
+}
+
+void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cantidadDeseada, int contador){
+    //insertar funcion que ordene el array por ID
+    if (inicio <= fin || contador>=cantidadDeseada) {
+        int centro = (inicio + fin) / 2;
+        Humano * humanoCentral = arrayDeLaVida[centro];
+        insertar(humanoCentral,nodo);
+        contador++;
+        construirArbol(nodo, inicio, centro - 1, cantidadDeseada, contador);
+        construirArbol(nodo, centro + 1, fin, cantidadDeseada, contador);
+    }
+}
+
 //BORRAAAAR
 // NodoArbol* Arbol::borrarElemento(int ele){
 //     raiz = borrarElemento(ele, raiz);
 //     return raiz;
 // }
-
 // NodoArbol* Arbol::borrarElemento(int ele, NodoArbol* arbol){
 //     if (arbol == NULL){
 //         return NULL;
