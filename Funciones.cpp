@@ -9,10 +9,12 @@
 
 using namespace std;
 
-//<VALIDACIONES>
+//VALIDACIONES ----------------------------------------------------------------------------------------
+bool esPotenciaDeDos(int numero) {
+    return (numero > 0) && ((numero & (numero - 1)) == 0);
+}
 
-//</Validaciones>
-
+//FUNCIONES REUTILIZABLES -----------------------------------------------------------------------------
 int maximo (int a, int b){
     if (a>b)
        return a;
@@ -21,6 +23,14 @@ int maximo (int a, int b){
 
 int generarNumerosAleatorios(int tope) {
     return rand() % tope + 1;
+}
+
+int calcularPorcentaje(int cantidad) {
+    return cantidad / 100;
+}
+
+int extraerElementoCentral(int longitud) {
+    return (longitud - 1) / 2;
 }
 
 string extraerLineaAleatoria(string nombreArchivo, int cantLineasArchivo){
@@ -43,13 +53,7 @@ string extraerLineaAleatoria(string nombreArchivo, int cantLineasArchivo){
     return texto;
 }
 
-void generarRedesSocialesFavoritas(int redesSociales[]){
-    for (int i = 0; i < 7; i++){
-        redesSociales[i]=generarNumerosAleatorios(100);
-    }
-}
-
-//Hora
+//Fecha y Hora -----------
 string obtenerHoraActual() {
     auto ahora = chrono::system_clock::now();
     time_t tiempoActual = chrono::system_clock::to_time_t(ahora);
@@ -75,6 +79,15 @@ string obtenerFechaYHoraActual() {
     string hora = obtenerHoraActual();
     return fecha + "_" + hora;
 }
+
+//FUNCIONES PROPIAS DE LA PROGRA ------------------------------------------------------------------------
+void generarRedesSocialesFavoritas(int redesSociales[]){
+    for (int i = 0; i < 7; i++){
+        redesSociales[i]=generarNumerosAleatorios(100);
+    }
+}
+
+
 
 
 

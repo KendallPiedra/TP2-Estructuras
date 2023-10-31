@@ -30,27 +30,23 @@ void Humano::agregarPecado(string pecado){ //sujeto a cambios
 
 // NODO ARBOL ----------------------------------------------------------------------------------------
 void NodoArbol::imprimir(){
-    cout<<dato<<endl;
+    cout<<humano->ID<<endl; //hacer función que imprima al humano**
 }
 
 // ARBOL BINARIO -------------------------------------------------------------------------------------
-void ArbolDeLaVida::insertar(int dato){
-     raiz = insertar(dato, raiz);
+void ArbolDeLaVida::insertar(Humano * humano){
+    raiz = insertar(humano, raiz);
 }
 //  INSERTA RECURSIVAMENTE
-NodoArbol* ArbolDeLaVida::insertar(int valor, NodoArbol* nodo){
+NodoArbol* ArbolDeLaVida::insertar(Humano * humano, NodoArbol* nodo){
     if (nodo == NULL){
-        return new NodoArbol(valor);
-    }      
-      // si el valor es mayor, 
-      //llama recursivamente a insertar en el hijo
-      // derecho
-    else if (nodo->dato < valor){
-        nodo->hijoderecho = insertar(valor, nodo->hijoderecho);
-    }
-      // en caso contrario, va al lado izquierdo
-    else if (nodo->dato >= valor){
-        nodo->hijoizquierdo = insertar(valor, nodo->hijoizquierdo);
+        return new NodoArbol(humano);
+    }else if(nodo->humano->ID < humano->ID){ 
+        // si el valor es mayor, llama recursivamente a insertar en el hijo derecho
+        nodo->hijoderecho = insertar(humano, nodo->hijoderecho);
+    }else if (nodo->humano->ID >= humano->ID){ 
+        // en caso contrario, va al lado izquierdo
+        nodo->hijoizquierdo = insertar(humano, nodo->hijoizquierdo);
     }
     return nodo;
 }
@@ -59,7 +55,7 @@ NodoArbol* ArbolDeLaVida::insertar(int valor, NodoArbol* nodo){
 void ArbolDeLaVida::inOrden(NodoArbol* nodo){
     if (nodo != NULL){
         inOrden(nodo->hijoizquierdo);
-        cout << nodo->dato << "  ";
+        cout << nodo->humano->ID << "  "<<flush;
         inOrden(nodo->hijoderecho);
     }
 }
@@ -69,23 +65,23 @@ int ArbolDeLaVida::contadorNodos(NodoArbol* nodo){
     if (nodo == NULL)
         return 0;
     else
-        return 1+ contadorNodos(nodo->hijoderecho)+contadorNodos(nodo->hijoizquierdo);
+        return 1+contadorNodos(nodo->hijoderecho)+contadorNodos(nodo->hijoizquierdo);
 }        
 // BUSCA UN VALOR EN EL ARBOL ORDENADO
-NodoArbol* ArbolDeLaVida::buscar (int valor, NodoArbol* nodo){
+NodoArbol* ArbolDeLaVida::buscar (int IDhumano, NodoArbol* nodo){
     // cuando el nodo es nulo, quiere decir que all� debe
     // ubicar el valor, en un nuevo nodo
     if (nodo == NULL){
         return NULL;
-    }else if (nodo->dato == valor){
+    }else if (nodo->humano->ID == IDhumano){
         return nodo;
-    }else if (nodo->dato < valor){
+    }else if (nodo->humano->ID<IDhumano){
         // si el valor es mayor, llama recursivamente a insertar en el hijo
         // derecho
-        return buscar(valor, nodo->hijoderecho);
+        return buscar(IDhumano, nodo->hijoderecho);
     }else{ //(nodo.dato >= valor)
      // en caso contrario, va al lado izquierdo
-        return buscar(valor, nodo->hijoizquierdo);
+        return buscar(IDhumano, nodo->hijoizquierdo);
     }
 }
 
@@ -113,6 +109,15 @@ NodoArbol* ArbolDeLaVida::mayor (NodoArbol* arbol){
         return arbol;
     else
         return mayor (arbol->hijoderecho);
+}
+
+int ArbolDeLaVida::extraerCantidadNodos(){
+    int cantidadNodos=calcularPorcentaje(cantidadHumanos);
+    while (!esPotenciaDeDos(cantidadNodos)){
+        cantidadNodos++;
+    }
+    cantidadNodos--;
+    return cantidadNodos;
 }
 
 //BORRAAAAR

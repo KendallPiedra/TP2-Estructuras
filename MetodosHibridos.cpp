@@ -43,11 +43,25 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
             } while (validarID(ID));
             arrayDeLaVida[i]= new Humano(ID,nombre,apellido,pais,creencia,profesion,nacimiento,generarNumerosAleatorios(100));
         }
+        cantidadHumanos+=cantidadAGenerar;
     }
 }
 
 void ArbolDeLaVida::construirArbol(){
-    
+    int cantidadNodos=extraerCantidadNodos();
+    int cantTemp=cantidadHumanos;
+    int centro=extraerElementoCentral(cantTemp-1);
+    Humano * humanoCentral = arrayDeLaVida[centro];
+    insertar(humanoCentral);
+    for (int i = 0; i < cantidadNodos; i++){
+        
+        if (nuevoCentro < cantTemp) {
+            arrayDeLaVida = arrayDeLaVida.subarray(0, nuevoCentro-1);
+        } else if (nuevoCentro > cantTemp) {
+            // El nuevo centro está a la derecha del centro actual
+            arrayDeLaVida = arrayDeLaVida.subarray(nuevoCentro+1, arrayDeLaVida.length-1);
+        }
+    }
 }
 
 void Humano::agregarPecado(string pecado){

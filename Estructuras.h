@@ -74,12 +74,11 @@ struct Humano{
 
 //ARBOL
 struct NodoArbol{
-    int dato;
-    NodoArbol* hijoizquierdo;
-    NodoArbol* hijoderecho;
+    Humano *humano;
+    NodoArbol *hijoizquierdo, *hijoderecho;
        
-    NodoArbol (int d){
-        dato = d;
+    NodoArbol (Humano * _humano){
+
         hijoizquierdo = hijoderecho = NULL;    
     }          
 
@@ -95,8 +94,8 @@ struct ArbolDeLaVida{
         raiz = NULL;      
     }
     
-    void insertar (int);
-    NodoArbol * insertar (int, NodoArbol*);
+    void insertar (Humano * humano);
+    NodoArbol * insertar (Humano * humano, NodoArbol*);
     //void insertar (int);
     //Nodo* insertar(int, Nodo*);
     void inOrden(NodoArbol*);
@@ -105,10 +104,11 @@ struct ArbolDeLaVida{
     int altura(NodoArbol*);
     int cantHojas(NodoArbol*);
     int contadorNodos(NodoArbol*);
-
     bool validarID(int ID);
     void generarAmigosYPecados();
     void crearGeneracionHumanos(int cantidadAGenerar);
+    int extraerCantidadNodos();
+    void construirArbol();
 };
 
 //BITACORA
