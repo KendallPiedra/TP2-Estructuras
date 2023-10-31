@@ -76,15 +76,16 @@ struct Humano{
 struct NodoArbol{
     Humano *humano;
     NodoArbol *hijoizquierdo, *hijoderecho;
+    Humano *punteroHoja;
        
     NodoArbol (Humano * _humano){
-
+        humano=_humano;
+        punteroHoja=NULL;
         hijoizquierdo = hijoderecho = NULL;    
     }          
 
     void imprimir();
 };
-
 
 struct ArbolDeLaVida{
     NodoArbol* raiz;
@@ -98,6 +99,7 @@ struct ArbolDeLaVida{
     NodoArbol * insertar (Humano * humano, NodoArbol*);
     //void insertar (int);
     //Nodo* insertar(int, Nodo*);
+    int extraerIndiceHumano(Humano * humano);
     void inOrden(NodoArbol*);
     NodoArbol* buscar (int, NodoArbol*);
     NodoArbol* mayor (NodoArbol* arbol);

@@ -34,12 +34,21 @@ void NodoArbol::imprimir(){
 }
 
 // METODOS DE LA VIDA ---------------------------------------------------------------------------------
+int ArbolDeLaVida::extraerIndiceHumano(Humano * humano){
+    for(int i=0; i<cantidadHumanos;i++){
+        if (arrayDeLaVida[i]->ID==humano->ID){
+            return i;
+        }
+    }
+    return NULL;
+}
+
 void ArbolDeLaVida::insertar(Humano * humano){
     raiz = insertar(humano, raiz);
 }
 
 bool ArbolDeLaVida::validarID(int ID){
-    for(int i; i<cantidadHumanos;i++){
+    for(int i=0; i<cantidadHumanos;i++){
         if (arrayDeLaVida[i]->ID==ID){
             return false;
         }
@@ -102,9 +111,9 @@ int ArbolDeLaVida::altura (NodoArbol* nodo){
 int ArbolDeLaVida::definirPunteroHojas(NodoArbol* raiz){
     if (raiz == NULL)
         return 0;
-    else if (raiz->hijoderecho == NULL && raiz->hijoizquierdo==NULL)
-        // raiz->hijoizquierdo=ESTOY MAQUINANDO ESTO
+    else if (raiz->hijoderecho == NULL && raiz->hijoizquierdo==NULL){
         return 0;
+    }
     else
         return definirPunteroHojas(raiz->hijoderecho)+definirPunteroHojas(raiz->hijoizquierdo);
 }
