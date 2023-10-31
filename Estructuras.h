@@ -108,7 +108,7 @@ struct ArbolDeLaVida{
     void generarAmigosYPecados();
     void crearGeneracionHumanos(int cantidadAGenerar);
     int extraerCantidadNodos();
-    void construirArbol();
+    void construirArbol(NodoArbol* raiz, int inicio, int fin, int cantidadDeseada, int contador);
 };
 
 //BITACORA

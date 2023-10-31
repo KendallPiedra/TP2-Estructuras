@@ -33,9 +33,18 @@ void NodoArbol::imprimir(){
     cout<<humano->ID<<endl; //hacer función que imprima al humano**
 }
 
-// ARBOL BINARIO -------------------------------------------------------------------------------------
+// METODOS DE LA VIDA ---------------------------------------------------------------------------------
 void ArbolDeLaVida::insertar(Humano * humano){
     raiz = insertar(humano, raiz);
+}
+
+bool ArbolDeLaVida::validarID(int ID){
+    for(int i; i<cantidadHumanos;i++){
+        if (arrayDeLaVida[i]->ID==ID){
+            return false;
+        }
+    }
+    return true;
 }
 //  INSERTA RECURSIVAMENTE
 NodoArbol* ArbolDeLaVida::insertar(Humano * humano, NodoArbol* nodo){

@@ -47,35 +47,19 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
     }
 }
 
-void ArbolDeLaVida::construirArbol(){
-    int cantidadNodos=extraerCantidadNodos();
-    int cantTemp=cantidadHumanos;
-    int centro=extraerElementoCentral(cantTemp-1);
-    Humano * humanoCentral = arrayDeLaVida[centro];
-    insertar(humanoCentral);
-    for (int i = 0; i < cantidadNodos; i++){
-        
-        if (nuevoCentro < cantTemp) {
-            arrayDeLaVida = arrayDeLaVida.subarray(0, nuevoCentro-1);
-        } else if (nuevoCentro > cantTemp) {
-            // El nuevo centro está a la derecha del centro actual
-            arrayDeLaVida = arrayDeLaVida.subarray(nuevoCentro+1, arrayDeLaVida.length-1);
-        }
+void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cantidadDeseada, int contador){
+    //insertar funcion que ordene el array por ID
+    if (inicio <= fin || contador>=cantidadDeseada) {
+        int centro = (inicio + fin) / 2;
+        Humano * humanoCentral = arrayDeLaVida[centro];
+        insertar(humanoCentral,nodo);
+        contador++;
+        construirArbol(nodo, inicio, centro - 1, cantidadDeseada, contador);
+        construirArbol(nodo, centro + 1, fin, cantidadDeseada, contador);
     }
-}
-
-void Humano::agregarPecado(string pecado){
-
 }
 
 //METODOS DE LA VIDA
-bool ArbolDeLaVida::validarID(int ID){
-    for(int i; i<cantidadHumanos;i++){
-        if (arrayDeLaVida[i]->ID==ID){
-            return false;
-        }
-    }
-    return true;
-}
+
 
 
