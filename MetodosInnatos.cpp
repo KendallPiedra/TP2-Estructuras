@@ -112,6 +112,7 @@ int ArbolDeLaVida::definirPunteroHojas(NodoArbol* raiz){
     if (raiz == NULL)
         return 0;
     else if (raiz->hijoderecho == NULL && raiz->hijoizquierdo==NULL){
+        raiz->punteroHoja=arrayDeLaVida[extraerIndiceHumano(raiz->humano)-1];
         return 0;
     }
     else
