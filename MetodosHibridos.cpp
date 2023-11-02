@@ -1,6 +1,6 @@
 #include "MetodosInnatos.cpp"
 
-//METODOS HUMANOS
+//METODOS HUMANOS -------------------------------------------------------------------------------------
 void Humano::agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual){
     Humano * candidatoAmigo=NULL;
     for (int i=0; i < cantHumanosActual; i++){
@@ -17,19 +17,17 @@ void Humano::agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual){
     }
 }
 
-
+//METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigosYPecados(){
     Humano * humano=NULL;
     for (int i=0; i < cantidadHumanos; i++){
         humano=arrayDeLaVida[i];
         humano->agregarAmigos(arrayDeLaVida, cantidadHumanos);
         humano->inicializarPecados();
+        humano->inicializarRedesSociales();
     }
 }
 
-
-
-//METODOS DE LA VIDA
 
 
 

@@ -11,23 +11,63 @@ void Humano::inicializarPecados(){
     //5:Envidia
     //6:Soverbia 
     string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
-    Pecado* pecado;
     for (int i=0; i < 7; i++){
-        pecado=&pecados[i];
-        pecado->nombrePecado=pecadosCapitales[i];
+        pecados[i]->nombrePecado=pecadosCapitales[i];
     }
 }
 
-void Humano::agregarPecado(string pecado){ //sujeto a cambios
-    Pecado *tmp;
+void Humano::ordenarRedesSociales(){
+    for (int i = 0; i < 6; i++) {
+        int minIdx = i;
+        for (int j = i+1; j < 7; j++) {
+            if (redesSociales[j]->gusto < redesSociales[minIdx]->gusto){
+                minIdx = j;
+            }
+        }
+        RedSocial * temp = redesSociales[minIdx];
+        redesSociales[minIdx] = redesSociales[i];
+        redesSociales[i] = temp;
+    }
+}
+
+void Humano::agregarPecado(string pecado, int cantidadAgregar){ //sujeto a cambios
     for (int i=0; i < 7; i++){
-        tmp=&pecados[i];
-        if (tmp->nombrePecado==pecado){
-            tmp->cantidad++;
+        if (pecados[i]->nombrePecado==pecado){
+            pecados[i]->cantidad+=cantidadAgregar;
         }
     }
 }
 
+void Humano::inicializarRedesSociales(){
+    string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
+    for (int i=0; i < 7; i++){
+        redesSociales[i]->nombreRedSocial=nombresRedes[i];
+        redesSociales[i]->gusto=generarNumerosAleatorios(100);
+    }
+    ordenarRedesSociales();
+}
+
+void Humano::imprimir(){
+    cout<<"ID: "<<ID<<endl;
+    cout<<"Nombre: "<<nombre<<endl;
+    cout<<"Apellido: "<<apellido<<endl;
+    cout<<"Pais: "<<pais<<endl;
+    cout<<"Creencia: "<<creencia<<endl;
+    cout<<"Profesión: "<<profesion<<endl;
+    cout<<"Nacimiento: "<<nacimieto<<endl;
+    cout<<"Cantidad Amigos: "<<cantidadAmigos<<endl;
+    amigos->imprimir();
+    //funcion de imprmir redes sociales
+    //funcion de imprimir pecados
+}
+
+void Humano::publicarEnRedSocial(string redSocial){
+    
+}
+
+void Humano::publicarEnVariasRedesSociales(int num){
+
+}
 // NODO ARBOL ----------------------------------------------------------------------------------------
 void NodoArbol::imprimir(){
     cout<<humano->ID<<endl; //hacer función que imprima al humano**
@@ -41,6 +81,20 @@ int ArbolDeLaVida::extraerIndiceHumano(Humano * humano){
         }
     }
     return NULL;
+}
+
+void ArbolDeLaVida::ordenarArrayDeLaVida(){
+    for (int i = 0; i < cantidadHumanos-1; i++) {
+        int minIdx = i;
+        for (int j = i+1; j < cantidadHumanos; j++) {
+            if (arrayDeLaVida[j]->ID < arrayDeLaVida[minIdx]->ID){
+                minIdx = j;
+            }
+        }
+        Humano * temp = arrayDeLaVida[minIdx];
+        arrayDeLaVida[minIdx] = arrayDeLaVida[i];
+        arrayDeLaVida[i] = temp;
+    }
 }
 
 void ArbolDeLaVida::insertar(Humano * humano){
@@ -107,17 +161,6 @@ int ArbolDeLaVida::altura (NodoArbol* nodo){
     else 
         return 1 + maximo(altura(nodo->hijoizquierdo),altura(nodo->hijoderecho));
 }
-
-int ArbolDeLaVida::definirPunteroHojas(NodoArbol* raiz){
-    if (raiz == NULL)
-        return 0;
-    else if (raiz->hijoderecho == NULL && raiz->hijoizquierdo==NULL){
-        raiz->punteroHoja=arrayDeLaVida[extraerIndiceHumano(raiz->humano)-1];
-        return 0;
-    }
-    else
-        return definirPunteroHojas(raiz->hijoderecho)+definirPunteroHojas(raiz->hijoizquierdo);
-}
 // borrar
 NodoArbol* ArbolDeLaVida::mayor (NodoArbol* arbol){
     if (arbol == NULL)
@@ -141,7 +184,7 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
     if (cantidadHumanos+cantidadAGenerar<=1000){
         int ID;
         string nombre, apellido, profesion, creencia, pais, nacimiento;
-        for (int i = cantidadHumanos+1; i < cantidadAGenerar+cantidadHumanos; i++){
+        for (int i = cantidadHumanos; i < cantidadAGenerar+cantidadHumanos; i++){
             nombre=extraerLineaAleatoria("nombres.txt",1000);
             apellido=extraerLineaAleatoria("apellido.txt",30);
             profesion=extraerLineaAleatoria("profesiones.txt",30);
@@ -158,7 +201,7 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
 }
 
 void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cantidadDeseada, int contador){
-    //insertar funcion que ordene el array por ID
+    ordenarArrayDeLaVida();
     if (inicio <= fin || contador>=cantidadDeseada) {
         int centro = (inicio + fin) / 2;
         Humano * humanoCentral = arrayDeLaVida[centro];
@@ -201,7 +244,7 @@ void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cant
 
 //LISTA AMIGUIS -----------------------------------------------------------------------------------------
 void NodoAmigo::imprimir(){
-    cout<<"Holi"<<endl;
+    amigo->imprimir();
 }
 
 void ListaBesties::insertarInicio(Humano *amigo){
@@ -259,3 +302,11 @@ bool ListaBesties::tieneAmigo(int IDAmigo){
 	return false;
 }
 
+void ListaBesties::imprimir(){
+    cout<<"--------------------Lista Besties--------------------"<<endl;
+    NodoAmigo * tmp = primerNodo;
+    while(tmp!=NULL){
+	    tmp->imprimir();
+    }
+    cout<<"-----------------------------------------------------"<<endl;
+}

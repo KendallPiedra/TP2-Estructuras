@@ -10,6 +10,16 @@ struct Pecado{
     } 
 };
 
+//NODO RED SOCIAL
+struct RedSocial{
+    int gusto;
+    string nombreRedSocial;
+    RedSocial(){
+        gusto=0;
+    } 
+};
+
+
 //NODO AMIGOS
 struct NodoAmigo{
     NodoAmigo *siguiente, *anterior;
@@ -34,6 +44,7 @@ struct ListaBesties {
 	NodoAmigo * borrarAlFinal();
     int largo();
     bool tieneAmigo(int ID);
+    void imprimir();
 };
 
 //HUMANOS
@@ -41,8 +52,8 @@ struct ListaBesties {
 struct Humano{
     int ID, cantidadAmigos;
     string nombre, apellido, pais, creencia, profesion, nacimieto;
-    int redesSociales[7]; 
-    Pecado pecados[7];
+    RedSocial * redesSociales[7]; 
+    Pecado * pecados[7];
     //0:Lujuria  
     //1:Gula
     //2:Avaricia
@@ -68,7 +79,12 @@ struct Humano{
 
     void agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual);
     void inicializarPecados();
-    void agregarPecado(string pecado);
+    void inicializarRedesSociales();
+    void agregarPecado(string pecado, int cantidadAgregar);
+    void imprimir();
+    void publicarEnRedSocial(string redSocial);
+    void publicarEnVariasRedesSociales(int num);
+    void ordenarRedesSociales();
 };
 
 
@@ -76,11 +92,9 @@ struct Humano{
 struct NodoArbol{
     Humano *humano;
     NodoArbol *hijoizquierdo, *hijoderecho;
-    Humano *punteroHoja;
        
     NodoArbol (Humano * _humano){
         humano=_humano;
-        punteroHoja=NULL;
         hijoizquierdo = hijoderecho = NULL;    
     }          
 
@@ -104,13 +118,13 @@ struct ArbolDeLaVida{
     NodoArbol* buscar (int, NodoArbol*);
     NodoArbol* mayor (NodoArbol* arbol);
     int altura(NodoArbol*);
-    int definirPunteroHojas(NodoArbol*);
     int contadorNodos(NodoArbol*);
     bool validarID(int ID);
     void generarAmigosYPecados();
     void crearGeneracionHumanos(int cantidadAGenerar);
     int extraerCantidadNodos();
     void construirArbol(NodoArbol* raiz, int inicio, int fin, int cantidadDeseada, int contador);
+    void ordenarArrayDeLaVida();
 };
 
 //BITACORA
