@@ -14,6 +14,14 @@ bool esPotenciaDeDos(int numero) {
     return (numero > 0) && ((numero & (numero - 1)) == 0);
 }
 
+bool esInt(string numero) {
+    for (char c : numero) {
+        if (!isdigit(c)) 
+            return false;
+	}
+	return true;
+}
+
 //FUNCIONES REUTILIZABLES -----------------------------------------------------------------------------
 int maximo (int a, int b){
     if (a>b)
@@ -89,7 +97,22 @@ void generarRedesSocialesFavoritas(int redesSociales[]){
 
 //MENUS -------------------------------------------------------------------------------------------------
 int menuPrincipal(){
-    
+    string opcion;
+    do{
+        cout<<"------------------------------- MENÚ -------------------------------"<<endl;
+	    cout<<"1: Agregar Pedido"<<endl;
+	    cout<<"2: Apagar/Encender Balanceador"<<endl;
+	    cout<<"3: Agregar Cliente"<<endl;
+	    cout<<"4: Modificar Alistadores"<<endl;
+	    cout<<"5: Modificar Robots Fabricadores"<<endl;
+	    cout<<"6: Apagar/Encender Empacador"<<endl;
+	    cout<<"7: Apagar/Encender Facturador"<<endl;
+	    cout<<"8: Apagar/Encender Picking"<<endl;	
+	    cout<<"9: Imprimir Colas"<<endl;
+	    cout<<"0: Terminar la simulación"<<endl;
+	    getline(cin,opcion);//validaciones varias
+    } while (!esInt(opcion));
+	return stoi(opcion);
 }
 
 
