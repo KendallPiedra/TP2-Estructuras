@@ -28,6 +28,53 @@ void ArbolDeLaVida::generarAmigosYPecados(){
     }
 }
 
+//MENUS -------------------------------------------------------------------------------------------------
+int menuPrincipal(){
+    string opcion;
+    do{
+        cout<<"------------------------------- MENÚ -------------------------------"<<endl;
+	    cout<<"1: Crear Generación de Humanos"<<endl;
+	    cout<<"2: Publicar en Redes Sociales"<<endl;
+	    cout<<"3: La Condenación"<<endl;
+	    cout<<"4: El Infierno"<<endl;
+	    cout<<"5: La Salvación"<<endl;
+	    cout<<"6: El Cielo"<<endl;
+	    cout<<"7: Consultas"<<endl;
+	    cout<<"0: SALIR"<<endl;
+	    getline(cin,opcion);
+    } while (!esInt(opcion));
+	return stoi(opcion);
+}
 
+void menuPublicarPorHumano(){
+
+}
+
+void menuPublicarRedesSociales(){
+    string opcion;
+    do{
+        cout<<"------------------------------- OPCIONES -------------------------------"<<endl;
+	    cout<<"1: Por Humano"<<endl;
+	    cout<<"2: Por Religión"<<endl;
+	    cout<<"3: Por Profesión"<<endl;
+	    cout<<"4: Por Familia"<<endl;
+	    getline(cin,opcion);
+    } while (!esInt(opcion)); //validaciones 
+    switch (stoi(opcion))
+    {
+    case 1:
+        menuPublicarPorHumano();
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        break;
+    default:
+	    cout<<"La opción seleccionada no existe"<<endl;
+        break;
+    }
+}
 
 

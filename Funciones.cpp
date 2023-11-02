@@ -4,9 +4,7 @@
 #include <fstream>
 // #include <sstream>
 #include <string>
-
 #include <chrono>
-
 using namespace std;
 
 //VALIDACIONES ----------------------------------------------------------------------------------------
@@ -93,26 +91,6 @@ void generarRedesSocialesFavoritas(int redesSociales[]){
     for (int i = 0; i < 7; i++){
         redesSociales[i]=generarNumerosAleatorios(100);
     }
-}
-
-//MENUS -------------------------------------------------------------------------------------------------
-int menuPrincipal(){
-    string opcion;
-    do{
-        cout<<"------------------------------- MENÚ -------------------------------"<<endl;
-	    cout<<"1: Agregar Pedido"<<endl;
-	    cout<<"2: Apagar/Encender Balanceador"<<endl;
-	    cout<<"3: Agregar Cliente"<<endl;
-	    cout<<"4: Modificar Alistadores"<<endl;
-	    cout<<"5: Modificar Robots Fabricadores"<<endl;
-	    cout<<"6: Apagar/Encender Empacador"<<endl;
-	    cout<<"7: Apagar/Encender Facturador"<<endl;
-	    cout<<"8: Apagar/Encender Picking"<<endl;	
-	    cout<<"9: Imprimir Colas"<<endl;
-	    cout<<"0: Terminar la simulación"<<endl;
-	    getline(cin,opcion);//validaciones varias
-    } while (!esInt(opcion));
-	return stoi(opcion);
 }
 
 
