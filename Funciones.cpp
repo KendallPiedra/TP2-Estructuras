@@ -88,7 +88,7 @@ void generarRedesSocialesFavoritas(int redesSociales[]){
 }
 
 //MENUS -------------------------------------------------------------------------------------------------
-void menuPrincipal(){
+int menuPrincipal(){
     
 }
 

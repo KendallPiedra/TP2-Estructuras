@@ -30,6 +30,14 @@ void Humano::ordenarRedesSociales(){
     }
 }
 
+int Humano::determinarCantidadASumar( string redSocial){
+    for (int i = 0; i < 7; i++){
+        if(redesSociales[i]->nombreRedSocial==redSocial){
+            return i+1;
+        }
+    }
+}
+
 void Humano::agregarPecado(string pecado, int cantidadAgregar){ //sujeto a cambios
     for (int i=0; i < 7; i++){
         if (pecados[i]->nombrePecado==pecado){
@@ -61,12 +69,16 @@ void Humano::imprimir(){
     //funcion de imprimir pecados
 }
 
-void Humano::publicarEnRedSocial(string redSocial){
-    
+void Humano::publicarEnRedSocial(string redSocial, string pecado){
+    NodoAmigo *tmp=amigos->primerNodo;
+    while (tmp!=NULL){
+        tmp->amigo->agregarPecado(pecado, tmp->amigo->determinarCantidadASumar(redSocial));
+        tmp=tmp->siguiente;
+    }
 }
 
 void Humano::publicarEnVariasRedesSociales(int num){
-
+    
 }
 // NODO ARBOL ----------------------------------------------------------------------------------------
 void NodoArbol::imprimir(){

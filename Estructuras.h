@@ -82,9 +82,10 @@ struct Humano{
     void inicializarRedesSociales();
     void agregarPecado(string pecado, int cantidadAgregar);
     void imprimir();
-    void publicarEnRedSocial(string redSocial);
+    void publicarEnRedSocial(string redSocial, string pecado);
     void publicarEnVariasRedesSociales(int num);
     void ordenarRedesSociales();
+    int determinarCantidadASumar(string redSocial);
 };
 
 
