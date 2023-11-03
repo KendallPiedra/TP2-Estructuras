@@ -77,6 +77,8 @@ void Humano::publicarEnRedSocial(string redSocial, string pecado){
     }
 }
 
+
+
 void Humano::publicarEnVariasRedesSociales(int num){
 
 }

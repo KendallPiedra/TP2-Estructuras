@@ -47,7 +47,9 @@ void menuPublicarPorHumano(ArbolDeLaVida * arbol){
 }
 
 void menuPublicarPorReligion(ArbolDeLaVida * arbol){
-
+    for (int i = 0; i < arbol->cantidadHumanos; i++){
+        
+    } 
 }
 
 void menuPublicarRedesSociales(ArbolDeLaVida *arbol){
