@@ -36,6 +36,7 @@ int Humano::determinarCantidadASumar(string redSocial){
             return i+1;
         }
     }
+    return 0;
 }
 
 void Humano::agregarPecado(string pecado, int cantidadAgregar){ //sujeto a cambios
@@ -94,7 +95,7 @@ int ArbolDeLaVida::extraerIndiceHumano(Humano * humano){
             return i;
         }
     }
-    return NULL;
+    return -1;
 }
 
 void ArbolDeLaVida::ordenarArrayDeLaVida(){
@@ -200,14 +201,14 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
         string nombre, apellido, profesion, creencia, pais, nacimiento;
         for (int i = cantidadHumanos; i < cantidadAGenerar+cantidadHumanos; i++){
             nombre=extraerLineaAleatoria("nombres.txt",1000);
-            apellido=extraerLineaAleatoria("apellido.txt",30);
+            apellido=extraerLineaAleatoria("apellidos.txt",30);
             profesion=extraerLineaAleatoria("profesiones.txt",30);
             creencia=extraerLineaAleatoria("creencias.txt",30);
             pais=extraerLineaAleatoria("paises.txt",30);
             nacimiento=obtenerFechaYHoraActual();
             do{
                 ID=generarNumerosAleatorios(99999);
-            } while (validarID(ID));
+            } while (!validarID(ID));
             arrayDeLaVida[i]= new Humano(ID,nombre,apellido,pais,creencia,profesion,nacimiento,generarNumerosAleatorios(100));
         }
         cantidadHumanos+=cantidadAGenerar;
@@ -226,6 +227,15 @@ void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cant
     }
 }
 
+void ArbolDeLaVida::imprimir(){
+    cout<<"---------------- ÁRBOL ----------------"<<endl;
+    inOrden(raiz);
+    cout<<"--------------- HUMANOS ------------------"<<endl;
+    for (int i = 0; i < cantidadHumanos; i++){
+        arrayDeLaVida[i]->imprimir();
+        cout<<"---------------------------------------"<<endl;
+    }
+}
 //BORRAAAAR
 // NodoArbol* Arbol::borrarElemento(int ele){
 //     raiz = borrarElemento(ele, raiz);

@@ -93,6 +93,27 @@ void generarRedesSocialesFavoritas(int redesSociales[]){
     }
 }
 
+string extraerPecadoConRedSocial(string redSocial){
+    // string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
+    // string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
+    if(redSocial=="Tinder")
+        return "Lujuria";
+    else if(redSocial=="iFood")
+        return "Gula";
+    else if(redSocial=="LinkedIn")
+        return "Avaricia";
+    else if(redSocial=="Netflix")
+        return "Pereza";
+    else if(redSocial=="Twitter")
+        return "Ira";
+    else if(redSocial=="Facebook")
+        return "Envidia";
+    else if(redSocial=="Instagram")
+        return "Soberbia";
+    return "AYYY";
+}
+
+//MENUS -------------------------------------------------------------------------------------------------
 int menuPrincipal(){
     string opcion;
     do{
@@ -130,4 +151,25 @@ string seleccionarReligion(){
 	cout<<"Ingrese la religión que desea: "<<endl;
     getline(cin,religion); //validaciones
     return religion;
+}
+
+string seleccionarProfesion(){
+    string profesion;
+	cout<<"Ingrese la profesión que desea: "<<endl;
+    getline(cin,profesion); //validaciones
+    return profesion;
+}
+
+string seleccionarPais(){
+    string pais;
+	cout<<"Ingrese el país que desea: "<<endl;
+    getline(cin,pais); //validaciones
+    return pais;
+}
+
+string seleccionarApellido(){
+    string apellido;
+	cout<<"Ingrese el apellido que desea: "<<endl;
+    getline(cin,apellido); //validaciones
+    return apellido;
 }

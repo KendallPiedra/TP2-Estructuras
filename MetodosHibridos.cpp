@@ -43,16 +43,52 @@ void menuPublicarPorHumano(ArbolDeLaVida * arbol){
     redSocial=seleccionarRedSocial();
     string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
     string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
-    arbol->enviarAPecar(stoi(ID),nombresRedes[redSocial-1],pecadosCapitales[redSocial-1]);
+    arbol->enviarAPecar(stoi(ID),nombresRedes[redSocial-1],pecadosCapitales[redSocial-1]); 
+    //falta validar que el bro esté vivo
 }
 
 void menuPublicarPorReligion(ArbolDeLaVida * arbol){
     string religion=seleccionarReligion();
     for (int i = 0; i < arbol->cantidadHumanos; i++){
-        if (arbol->arrayDeLaVida[i]->creencia==religion){
-            
+        if (arbol->arrayDeLaVida[i]->creencia==religion && arbol->arrayDeLaVida[i]->vivo){
+            arbol->enviarAPecar(arbol->arrayDeLaVida[i]->ID,
+            arbol->arrayDeLaVida[i]->redesSociales[6]->nombreRedSocial,
+            extraerPecadoConRedSocial(arbol->arrayDeLaVida[i]->redesSociales[6]->nombreRedSocial));
         }
     } 
+}
+
+void menuPublicarPorProfesion(ArbolDeLaVida * arbol){
+    string profesion=seleccionarProfesion();
+    string cantidad;
+    cout<<"Ingrese la cantidad de redes a publicar: "<<endl;
+    getline(cin, cantidad);
+    for (int i = 0; i < arbol->cantidadHumanos; i++){
+        if (arbol->arrayDeLaVida[i]->profesion==profesion && arbol->arrayDeLaVida[i]->vivo){
+            for (int j = 0; j < stoi(cantidad); j++){
+                arbol->enviarAPecar(arbol->arrayDeLaVida[i]->ID,
+                arbol->arrayDeLaVida[i]->redesSociales[6-j]->nombreRedSocial,
+                extraerPecadoConRedSocial(arbol->arrayDeLaVida[i]->redesSociales[6-j]->nombreRedSocial));
+            }
+        }
+    }
+}
+
+void menuPublicarPorFamilia(ArbolDeLaVida * arbol){
+    string pais=seleccionarPais();
+    string apellido=seleccionarApellido();
+    string cantidad;
+    cout<<"Ingrese la cantidad de redes a publicar: "<<endl;
+    getline(cin, cantidad); //entero entre 1 y 7 validar
+    for (int i = 0; i < arbol->cantidadHumanos; i++){
+        if (arbol->arrayDeLaVida[i]->apellido==apellido && arbol->arrayDeLaVida[i]->pais==pais && arbol->arrayDeLaVida[i]->vivo){
+            for (int j = 0; j < stoi(cantidad); j++){
+                arbol->enviarAPecar(arbol->arrayDeLaVida[i]->ID,
+                arbol->arrayDeLaVida[i]->redesSociales[6-j]->nombreRedSocial,
+                extraerPecadoConRedSocial(arbol->arrayDeLaVida[i]->redesSociales[6-j]->nombreRedSocial));
+            }
+        }
+    }
 }
 
 void menuPublicarRedesSociales(ArbolDeLaVida *arbol){
@@ -70,10 +106,13 @@ void menuPublicarRedesSociales(ArbolDeLaVida *arbol){
         menuPublicarPorHumano(arbol);
         break;
     case 2:
+        menuPublicarPorReligion(arbol);
         break;
     case 3:
+        menuPublicarPorProfesion(arbol);
         break;
     case 4:
+        menuPublicarPorFamilia(arbol);
         break;
     default:
 	    cout<<"La opción seleccionada no existe"<<endl;

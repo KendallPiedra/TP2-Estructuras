@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+struct Humano;
 //ANTIGUO NODO MÍSTICO
 struct Pecado{
     int cantidad;
@@ -107,7 +108,8 @@ struct ArbolDeLaVida{
     Humano * arrayDeLaVida[100000];
     int cantidadHumanos;
     ArbolDeLaVida (){
-        raiz = NULL;      
+        raiz = NULL;
+        cantidadHumanos=0;      
     }
     
     void insertar (Humano * humano);
@@ -127,6 +129,7 @@ struct ArbolDeLaVida{
     void construirArbol(NodoArbol* raiz, int inicio, int fin, int cantidadDeseada, int contador);
     void ordenarArrayDeLaVida();
     void enviarAPecar(int ID, string redSocial, string pecado);
+    void imprimir();
 };
 
 //BITACORA
