@@ -47,8 +47,11 @@ void menuPublicarPorHumano(ArbolDeLaVida * arbol){
 }
 
 void menuPublicarPorReligion(ArbolDeLaVida * arbol){
+    string religion=seleccionarReligion();
     for (int i = 0; i < arbol->cantidadHumanos; i++){
-        
+        if (arbol->arrayDeLaVida[i]->creencia==religion){
+            
+        }
     } 
 }
 

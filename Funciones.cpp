@@ -125,4 +125,9 @@ int seleccionarRedSocial(){
     return stoi(redSocial);
 }
 
-
+string seleccionarReligion(){
+    string religion;
+	cout<<"Ingrese la religión que desea: "<<endl;
+    getline(cin,religion); //validaciones
+    return religion;
+}
