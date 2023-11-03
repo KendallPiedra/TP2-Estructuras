@@ -35,47 +35,22 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     }
 }
 
-void menuPublicarPorHumano(){
+void menuPublicarPorHumano(ArbolDeLaVida * arbol){
     string ID;
     int redSocial;
 	cout<<"Ingrese el ID del Humano: "<<endl;
     getline(cin,ID);
     redSocial=seleccionarRedSocial();
-    // 1: Tinder
-	// 2: iFood
-	// 3: LinkedIn
-	// 4: Netflix
-	// 5: Twitter
-	// 6: Facebook
-	// 7: Instagram
-    switch (redSocial){
-    case 1:
-        
-        break;
-    case 2:
-        
-        break;
-    case 3:
-        
-        break;
-    case 4:
-        
-        break;
-    case 5:
-        
-        break;
-    case 6:
-        
-        break;
-    case 7:
-        
-        break;
-    default:
-        break;
-    }
+    string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
+    string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
+    arbol->enviarAPecar(stoi(ID),nombresRedes[redSocial-1],pecadosCapitales[redSocial-1]);
 }
 
-void menuPublicarRedesSociales(){
+void menuPublicarPorReligion(ArbolDeLaVida * arbol){
+
+}
+
+void menuPublicarRedesSociales(ArbolDeLaVida *arbol){
     string opcion;
     do{
         cout<<"------------------------------- OPCIONES -------------------------------"<<endl;
@@ -87,7 +62,7 @@ void menuPublicarRedesSociales(){
     } while (!esInt(opcion)); //validaciones 
     switch (stoi(opcion)){
     case 1:
-        menuPublicarPorHumano();
+        menuPublicarPorHumano(arbol);
         break;
     case 2:
         break;
