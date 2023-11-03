@@ -30,7 +30,7 @@ void Humano::ordenarRedesSociales(){
     }
 }
 
-int Humano::determinarCantidadASumar( string redSocial){
+int Humano::determinarCantidadASumar(string redSocial){
     for (int i = 0; i < 7; i++){
         if(redesSociales[i]->nombreRedSocial==redSocial){
             return i+1;

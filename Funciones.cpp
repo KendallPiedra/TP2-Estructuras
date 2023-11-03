@@ -93,6 +93,36 @@ void generarRedesSocialesFavoritas(int redesSociales[]){
     }
 }
 
+int menuPrincipal(){
+    string opcion;
+    do{
+        cout<<"------------------------------- MENÚ -------------------------------"<<endl;
+	    cout<<"1: Crear Generación de Humanos"<<endl;
+	    cout<<"2: Publicar en Redes Sociales"<<endl;
+	    cout<<"3: La Condenación"<<endl;
+	    cout<<"4: El Infierno"<<endl;
+	    cout<<"5: La Salvación"<<endl;
+	    cout<<"6: El Cielo"<<endl;
+	    cout<<"7: Consultas"<<endl;
+	    cout<<"0: SALIR"<<endl;
+	    getline(cin,opcion);
+    } while (!esInt(opcion));
+	return stoi(opcion);
+}
 
+int seleccionarRedSocial(){
+    string redSocial;
+    cout<<"------------------------------- REDES SOCIALES -------------------------------"<<endl;
+    cout<<"1: Tinder"<<endl;
+	cout<<"2: iFood"<<endl;
+	cout<<"3: LinkedIn"<<endl;
+	cout<<"4: Netflix"<<endl;
+	cout<<"5: Twitter"<<endl;
+	cout<<"6: Facebook"<<endl;
+	cout<<"7: Instagram"<<endl;
+	cout<<"Selecione la red Social: "<<endl;
+    getline(cin,redSocial); //validaciones
+    return stoi(redSocial);
+}
 
 

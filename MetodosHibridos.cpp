@@ -19,35 +19,60 @@ void Humano::agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual){
 
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigosYPecados(){
-    Humano * humano=NULL;
     for (int i=0; i < cantidadHumanos; i++){
-        humano=arrayDeLaVida[i];
-        humano->agregarAmigos(arrayDeLaVida, cantidadHumanos);
-        humano->inicializarPecados();
-        humano->inicializarRedesSociales();
+        arrayDeLaVida[i]->agregarAmigos(arrayDeLaVida, cantidadHumanos);
+        arrayDeLaVida[i]->inicializarPecados();
+        arrayDeLaVida[i]->inicializarRedesSociales();
     }
 }
 
 //MENUS -------------------------------------------------------------------------------------------------
-int menuPrincipal(){
-    string opcion;
-    do{
-        cout<<"------------------------------- MENÚ -------------------------------"<<endl;
-	    cout<<"1: Crear Generación de Humanos"<<endl;
-	    cout<<"2: Publicar en Redes Sociales"<<endl;
-	    cout<<"3: La Condenación"<<endl;
-	    cout<<"4: El Infierno"<<endl;
-	    cout<<"5: La Salvación"<<endl;
-	    cout<<"6: El Cielo"<<endl;
-	    cout<<"7: Consultas"<<endl;
-	    cout<<"0: SALIR"<<endl;
-	    getline(cin,opcion);
-    } while (!esInt(opcion));
-	return stoi(opcion);
+void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
+    for (int i=0; i < cantidadHumanos; i++){
+        if(arrayDeLaVida[i]->ID==ID){
+            arrayDeLaVida[i]->publicarEnRedSocial(redSocial, pecado);
+        }
+    }
 }
 
 void menuPublicarPorHumano(){
-
+    string ID;
+    int redSocial;
+	cout<<"Ingrese el ID del Humano: "<<endl;
+    getline(cin,ID);
+    redSocial=seleccionarRedSocial();
+    // 1: Tinder
+	// 2: iFood
+	// 3: LinkedIn
+	// 4: Netflix
+	// 5: Twitter
+	// 6: Facebook
+	// 7: Instagram
+    switch (redSocial){
+    case 1:
+        
+        break;
+    case 2:
+        
+        break;
+    case 3:
+        
+        break;
+    case 4:
+        
+        break;
+    case 5:
+        
+        break;
+    case 6:
+        
+        break;
+    case 7:
+        
+        break;
+    default:
+        break;
+    }
 }
 
 void menuPublicarRedesSociales(){
@@ -60,8 +85,7 @@ void menuPublicarRedesSociales(){
 	    cout<<"4: Por Familia"<<endl;
 	    getline(cin,opcion);
     } while (!esInt(opcion)); //validaciones 
-    switch (stoi(opcion))
-    {
+    switch (stoi(opcion)){
     case 1:
         menuPublicarPorHumano();
         break;

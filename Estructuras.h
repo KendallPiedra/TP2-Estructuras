@@ -126,14 +126,11 @@ struct ArbolDeLaVida{
     int extraerCantidadNodos();
     void construirArbol(NodoArbol* raiz, int inicio, int fin, int cantidadDeseada, int contador);
     void ordenarArrayDeLaVida();
+    void enviarAPecar(int ID, string redSocial, string pecado);
 };
 
 //BITACORA
 struct BitacoraCondenacion{
 
 };
-
-
-
-
 
