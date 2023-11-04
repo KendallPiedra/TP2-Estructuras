@@ -26,7 +26,33 @@ void ArbolDeLaVida::generarAmigosYPecados(){
     }
 }
 
+//FAMILIAS
+int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
+    int miembros;
+    for(int i=0; i<arbolDeLaVida->cantidadHumanos;i++){
+        if (arbolDeLaVida->arrayDeLaVida[i]->apellido==apellido &&
+        arbolDeLaVida->arrayDeLaVida[i]->pais==pais){
+            miembros++;
+        }
+        
+    }
+    return miembros;
+}
+void Familia::annadirFamiliar(Humano * familiar){
+        familiares[cantMiembrosActual]=familiar;
+    }
+//Demonios
+    void Demonio::matarHumano(Humano *humano){
+        humano->vivo=false;
+        for (int i=0; i<cantFamilias;i++){
+            Familia *fam= familias[i];
+            if (humano->pais==fam->pais  &&humano->apellido==fam->pais){
+                fam->annadirFamiliar(humano);
+            }
+        }
+    }
 //MENUS -------------------------------------------------------------------------------------------------
+
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     for (int i=0; i < cantidadHumanos; i++){
         if(arrayDeLaVida[i]->ID==ID){

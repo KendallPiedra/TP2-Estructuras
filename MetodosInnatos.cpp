@@ -215,7 +215,7 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
     }
 }
 
-void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cantidadDeseada, int contador){
+void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cantidadDeseada, int contador){//*
     ordenarArrayDeLaVida();
     if (inicio <= fin || contador>=cantidadDeseada) {
         int centro = (inicio + fin) / 2;

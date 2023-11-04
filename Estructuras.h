@@ -76,6 +76,10 @@ struct Humano{
         nacimieto=_nacimiento;
         cantidadAmigos=_cantAmigos;
         amigos= new ListaBesties();
+        vivo= true;
+    }
+    Humano(){
+
     }
 
     void agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual);
@@ -137,3 +141,42 @@ struct BitacoraCondenacion{
 
 };
 
+
+
+//INFIERNO
+struct Familia{
+    string apellido, pais; 
+    int cantMiembrosMax, cantMiembrosActual;
+    Humano** familiares;
+    Familia(string _apellido, string _pais, ArbolDeLaVida * ADLV){
+        apellido= _apellido;
+        pais=_pais;
+        cantMiembrosMax=determinarCantMiembros(ADLV);
+        familiares= new Humano*[cantMiembrosMax];
+        cantMiembrosActual=0;
+    } 
+    int determinarCantMiembros(ArbolDeLaVida * arbolDeLaVida);
+    void annadirFamiliar(Humano * familiar);
+};
+struct Demonio{
+    Familia* familias[30*20];
+    int cantFamilias;
+    string nombre, pecado;
+    Demonio(string _nombre,string _pecado){
+        cantFamilias=0;
+        nombre=_nombre;
+        pecado=_pecado;
+    }
+    void matarHumano(Humano *humano);
+};
+
+struct Infierno{
+    Demonio* demonios[7];//[cant demonios][cant familias][heap]
+    Infierno() {
+        string nombres[]={"Lucifer","Belcebú","Satán","Abadón","Mammón","Belfegor","Asmodeo"};
+        string pecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"}; //usemos "Gula" por que glotoneria esta muy feo
+        for (int i =0; i<7;i++){
+            demonios[i]=new Demonio(nombres[i],pecados[i]);
+        }
+    }
+};
