@@ -114,16 +114,11 @@ string extraerPecadoConRedSocial(string redSocial){
 
     auto redeSocial = mapaRedesYPecados.find(redSocial);
     if (redeSocial != mapaRedesYPecados.end()) {
-        return redeSocial->second; // Devolver el pecado correspondiente
+        return redeSocial->second; 
     } else {
-        return "AYYY"; // Si no se encuentra la red social
+        return "AYYY"; // No se encuentra la red social
     }
 }
-
-
-
-
-
 //MENUS -------------------------------------------------------------------------------------------------
 int menuPrincipal(){
     string opcion;
