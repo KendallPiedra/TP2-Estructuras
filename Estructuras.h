@@ -1,8 +1,10 @@
 #include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 
 struct Humano;
-//ANTIGUO NODO MÍSTICO
+
 struct Pecado{
     int cantidad;
     string nombrePecado;
@@ -17,6 +19,10 @@ struct RedSocial{
     string nombreRedSocial;
     RedSocial(){
         gusto=0;
+    } 
+    RedSocial(string _nombreRedSocial){
+        gusto=0;
+        nombreRedSocial=_nombreRedSocial;
     } 
 };
 
@@ -55,13 +61,13 @@ struct Humano{
     string nombre, apellido, pais, creencia, profesion, nacimieto;
     RedSocial * redesSociales[7]; 
     Pecado * pecados[7];
-    //0:Lujuria  
-    //1:Gula
-    //2:Avaricia
+    //0:Orgullo  
+    //1:Envidia
+    //2:Ira
     //3:Pereza
-    //4:Ira
-    //5:Envidia
-    //6:Soverbia 
+    //4:Codicia
+    //5:Gula
+    //6:Lujuria 
     ListaBesties * amigos;
     bool vivo;
 
@@ -77,6 +83,13 @@ struct Humano{
         cantidadAmigos=_cantAmigos;
         amigos= new ListaBesties();
         vivo= true;
+        
+        // string sPecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"}; //usemos "Gula" por que glotoneria esta muy feo
+        // string sPecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"};
+        // for (int i=0; i<7){
+        //     pecados[i]= new Pecado(sPecados[i]);
+            //Falta añadir REDES SOCIALES
+        // }
     }
     Humano(){
 
@@ -91,6 +104,9 @@ struct Humano{
     void publicarEnVariasRedesSociales(int num);
     void ordenarRedesSociales();
     int determinarCantidadASumar(string redSocial);
+    int sacarIndicePecado(string pecado);
+
+    
 };
 
 
@@ -134,6 +150,10 @@ struct ArbolDeLaVida{
     void ordenarArrayDeLaVida();
     void enviarAPecar(int ID, string redSocial, string pecado);
     void imprimir();
+    int sacarIndicePecado(string pecado);
+    Humano** sacarPorcentajeMasPecador(string pecado);
+    vector<int> sacarIndicesOrdenadosSegunPecado(string pecado);
+
 };
 
 //BITACORA
@@ -167,7 +187,8 @@ struct Demonio{
         nombre=_nombre;
         pecado=_pecado;
     }
-    void matarHumano(Humano *humano);
+    void insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV);
+    void matarHumano(Humano *humano, ArbolDeLaVida * ADLV);
 };
 
 struct Infierno{
@@ -179,4 +200,8 @@ struct Infierno{
             demonios[i]=new Demonio(nombres[i],pecados[i]);
         }
     }
+    void enviarDemonio(int posicionD, ArbolDeLaVida *ALVD);
+
+    void condenacion();
+    
 };

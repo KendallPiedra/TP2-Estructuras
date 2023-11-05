@@ -17,6 +17,15 @@ void Humano::agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual){
     }
 }
 
+int Humano::sacarIndicePecado(string pecado){//UrgenterevisarStandartNombre
+    for (int i=0; i<7;i++){
+        if (pecados[i]->nombrePecado==pecado){
+            return i;
+        }
+    }
+    
+}
+
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigosYPecados(){
     for (int i=0; i < cantidadHumanos; i++){
@@ -24,6 +33,37 @@ void ArbolDeLaVida::generarAmigosYPecados(){
         arrayDeLaVida[i]->inicializarPecados();
         arrayDeLaVida[i]->inicializarRedesSociales();
     }
+}
+//
+
+int ArbolDeLaVida::sacarIndicePecado(string pecado){
+    return arrayDeLaVida[0]->sacarIndicePecado(pecado);
+}
+
+vector<int> ArbolDeLaVida::sacarIndicesOrdenadosSegunPecado(string pecado){
+    vector<int> indices(cantidadHumanos);
+    for (int i=0;i<cantidadHumanos;i++){
+        indices[i]=i;
+    }
+    int indicePecado=sacarIndicePecado(pecado);
+    sort(indices.begin(), indices.end(), [this,indicePecado](int a, int b) {
+    return arrayDeLaVida[a]->pecados[indicePecado] > arrayDeLaVida[b]->pecados[indicePecado];
+    });
+    return indices;
+
+}
+
+Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
+    vector<int> indices = sacarIndicesOrdenadosSegunPecado(pecado);
+
+    int cantidadPecadores = PorcentajeACantidad(5, cantidadHumanos);
+    Humano** HumanosPecadores = new Humano*[cantidadPecadores];
+
+    for (int i = 0; i < cantidadPecadores; i++) {
+        HumanosPecadores[i] = arrayDeLaVida[indices[i]];
+    }
+    
+    return HumanosPecadores;
 }
 
 //FAMILIAS
@@ -42,15 +82,29 @@ void Familia::annadirFamiliar(Humano * familiar){
         familiares[cantMiembrosActual]=familiar;
     }
 //Demonios
-    void Demonio::matarHumano(Humano *humano){
+
+    void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
+        familias[cantFamilias]=new Familia(humano->apellido,humano->pais, ADLV);
+        familias[cantFamilias]->annadirFamiliar(humano);
+        cantFamilias++;
+    }
+
+    void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
         humano->vivo=false;
+        Familia *fam;
         for (int i=0; i<cantFamilias;i++){
-            Familia *fam= familias[i];
+            fam= familias[i];
             if (humano->pais==fam->pais  &&humano->apellido==fam->pais){
                 fam->annadirFamiliar(humano);
             }
         }
+        insertarEnFamiliaNueva(humano, ADLV);
     }
+//INFIERNO
+   void Infierno::enviarDemonio(int posicionD, ArbolDeLaVida * ADLV){
+        string pecado= demonios[posicionD]->pecado;
+        
+   } 
 //MENUS -------------------------------------------------------------------------------------------------
 
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){

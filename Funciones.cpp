@@ -85,6 +85,11 @@ string obtenerFechaYHoraActual() {
     string hora = obtenerHoraActual();
     return fecha + "_" + hora;
 }
+//porcentajes
+int PorcentajeACantidad(int porcentaje, int total){
+    int cantidad = (porcentaje*total)/100;
+    return cantidad;
+}
 
 //FUNCIONES PROPIAS DE LA PROGRA ------------------------------------------------------------------------
 void generarRedesSocialesFavoritas(int redesSociales[]){
@@ -112,6 +117,10 @@ string extraerPecadoConRedSocial(string redSocial){
         return "Soberbia";
     return "AYYY";
 }
+
+
+
+
 
 //MENUS -------------------------------------------------------------------------------------------------
 int menuPrincipal(){
