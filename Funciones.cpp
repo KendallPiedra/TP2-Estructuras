@@ -3,6 +3,7 @@
 // #include <ctime>
 #include <fstream>
 // #include <sstream>
+#include <unordered_map>
 #include <string>
 #include <chrono>
 using namespace std;
@@ -101,21 +102,22 @@ void generarRedesSocialesFavoritas(int redesSociales[]){
 string extraerPecadoConRedSocial(string redSocial){
     // string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
     // string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
-    if(redSocial=="Tinder")
-        return "Lujuria";
-    else if(redSocial=="iFood")
-        return "Gula";
-    else if(redSocial=="LinkedIn")
-        return "Avaricia";
-    else if(redSocial=="Netflix")
-        return "Pereza";
-    else if(redSocial=="Twitter")
-        return "Ira";
-    else if(redSocial=="Facebook")
-        return "Envidia";
-    else if(redSocial=="Instagram")
-        return "Soberbia";
-    return "AYYY";
+    unordered_map<string, string> mapaRedesYPecados = {
+        {"Tinder", "Lujuria"},
+        {"iFood", "Gula"},
+        {"LinkedIn", "Avaricia"},
+        {"Netflix", "Pereza"},
+        {"Twitter", "Ira"},
+        {"Facebook", "Envidia"},
+        {"Instagram", "Soberbia"}
+    };
+
+    auto redeSocial = mapaRedesYPecados.find(redSocial);
+    if (redeSocial != mapaRedesYPecados.end()) {
+        return redeSocial->second; // Devolver el pecado correspondiente
+    } else {
+        return "AYYY"; // Si no se encuentra la red social
+    }
 }
 
 
