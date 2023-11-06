@@ -106,10 +106,16 @@ void Familia::annadirFamiliar(Humano * familiar){
         insertarEnFamiliaNueva(humano, ADLV);
     }
 //INFIERNO
+
    void Infierno::enviarDemonio(int posicionD, ArbolDeLaVida * ADLV){
         string pecado= demonios[posicionD]->pecado;
         
    } 
+
+   void infierno::realizarCondenacion(ArbolDeLaVida * ADLV){
+    cout<<"hola";
+   }
+   
 //MENUS -------------------------------------------------------------------------------------------------
 
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
