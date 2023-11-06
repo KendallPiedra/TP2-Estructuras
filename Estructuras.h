@@ -198,16 +198,14 @@ struct Infierno{
     Demonio* demonios[7];//[cant demonios][cant familias][heap]
     ArbolDeLaVida * ADLV;
     Infierno() {
-        string nombres[]={"Lucifer","Belcebú","Satán","Abadón","Mammón","Belfegor","Asmodeo"};
-        string pecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"}; //usemos "Gula" por que glotoneria esta muy feo
+        string nombres[]={"Asmodeo","Belfegor","Mammón","Abadón","Satán","Belcebú","Lucifer"};
+        string pecados[] = {"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"}; 
         for (int i =0; i<7;i++){
             demonios[i]=new Demonio(nombres[i],pecados[i]);
         }
     }
     void enviarDemonio(int posicionD);
-
     void realizarCondenacionGeneral();
-
     void consultaDeLosMiembrosDelInfierno();
-    
+    void generarBitacoraCondenacion(Humano * humano, string pecado);
 };

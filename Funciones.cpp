@@ -119,6 +119,27 @@ string extraerPecadoConRedSocial(string redSocial){
         return "AYYY"; // No se encuentra la red social
     }
 }
+
+string extraerDemonioConPecado(string pecado){
+    // string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
+    // string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
+    unordered_map<string, string> mapaPecadosYDemonios = {
+        {"Lujuria", "Asmodeo"},
+        {"Gula", "Belfegor"},
+        {"Avaricia", "Mammón"},
+        {"Pereza", "Abadón"},
+        {"Ira", "Satán"},
+        {"Envidia", "Belcebú"},
+        {"Soberbia", "Lucifer"}
+    };
+
+    auto demonio = mapaPecadosYDemonios.find(pecado);
+    if (demonio != mapaPecadosYDemonios.end()) {
+        return demonio->second; 
+    } else {
+        return "AYYY"; // No se encuentra la red social
+    }
+}
 //MENUS -------------------------------------------------------------------------------------------------
 int menuPrincipal(){
     string opcion;

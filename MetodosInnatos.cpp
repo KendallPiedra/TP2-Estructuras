@@ -56,20 +56,18 @@ void Humano::inicializarRedesSociales(){
 }
 
 void Humano::imprimir(){
-    // cout<<"ID: "<<ID<<endl;
+    cout<<"ID: "<<ID<<endl;
     cout<<"Nombre: "<<nombre<<endl;
     cout<<"Apellido: "<<apellido<<endl;
-    // cout<<"Pais: "<<pais<<endl;
-    // cout<<"Creencia: "<<creencia<<endl;
-    // cout<<"Profesión: "<<profesion<<endl;
-    // cout<<"Nacimiento: "<<nacimieto<<endl;
+    cout<<"Pais: "<<pais<<endl;
+    cout<<"Creencia: "<<creencia<<endl;
+    cout<<"Profesión: "<<profesion<<endl;
+    cout<<"Nacimiento: "<<nacimieto<<endl;
     cout<<"Cantidad Amigos: "<<cantidadAmigos<<endl;
     cout<<"Pecados: "<<endl;
     imprimirPecados();
     imprimirRedesSociales();
     amigos->imprimir();
-    //funcion de imprmir redes sociales
-    //funcion de imprimir pecados
 }
 
 void Humano::publicarEnRedSocial(string redSocial, string pecado){

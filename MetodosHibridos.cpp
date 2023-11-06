@@ -65,7 +65,6 @@ Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
     Humano** HumanosPecadores = new Humano*[cantidadPecadores];
     int j=0;
     for (int i = 0; i < cantidadPecadores; i++) {
-        
         bool annadio=false;
         while(annadio==false){
             if(arrayDeLaVida[indices[i]]->vivo){
@@ -73,16 +72,13 @@ Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
                 HumanosPecadores[i] = arrayDeLaVida[indices[j]];
                 annadio=true;
                 j++;
-            } else{  j++;}//no esta vivo. Debe intentarlo con el siguiente
-              
-        }
-        
+            } else {j++;}//no esta vivo. Debe intentarlo con el siguiente  
+        } 
     }
-    
     return HumanosPecadores;
 }
 
-//FAMILIAS
+//FAMILIAS ------------------------------------------------------------------------------------------------------------------
 int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
     int miembros;
     for(int i=0; i<arbolDeLaVida->cantidadHumanos;i++){
@@ -97,7 +93,8 @@ int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
 void Familia::annadirFamiliar(Humano * familiar){
         familiares[cantMiembrosActual]=familiar;
     }
-//Demonios
+
+//DEMONIOS ------------------------------------------------------------------------------------------------------------
 
 void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
     familias[cantFamilias]=new Familia(humano->apellido,humano->pais, ADLV);
@@ -127,7 +124,6 @@ int Demonio::calcularCantidadHumanos(){
 
 int Demonio::calcularMaximoPecados() {
     int maxPecado = -1; // Inicializa el valor máximo como negativo, asumiendo que los pecados son números no negativos
-
     for (int i = 0; i < cantFamilias; i++) {
         Familia* familia = familias[i];
         for (int j = 0; j < familia->cantMiembrosActual; j++) {
@@ -142,7 +138,6 @@ int Demonio::calcularMaximoPecados() {
 
 int Demonio::calcularMinimoPecados() {
     int minPecado = INT_MAX; // Inicializa el valor mínimo como el máximo valor posible
-
     for (int i = 0; i < cantFamilias; i++) {
         Familia* familia = familias[i];
         for (int j = 0; j < familia->cantMiembrosActual; j++) {
@@ -174,7 +169,10 @@ int Demonio::calcularPromedioPecados() {
     int promedio = sumaPecados / cantidadPecados;
     return promedio;
 }
-//INFIERNO
+//INFIERNO ---------------------------------------------------------------------------------------------------------------------
+void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){
+
+}
 
 void Infierno::enviarDemonio(int posicionD){
     string pecado= demonios[posicionD]->pecado;
@@ -186,8 +184,8 @@ void Infierno::enviarDemonio(int posicionD){
             break;
         }
         demonios[posicionD]->matarHumano(condenados[i],ADLV);
+        generarBitacoraCondenacion(condenados[i], pecado);
     }
-    
 } 
 
 void Infierno::realizarCondenacionGeneral(){
