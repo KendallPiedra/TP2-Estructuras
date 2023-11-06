@@ -28,15 +28,10 @@ int Humano::sacarIndicePecado(string pecado){//UrgenterevisarStandartNombre
 }
 
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
-void ArbolDeLaVida::generarAmigosYPecados(){
+void ArbolDeLaVida::generarAmigos(){
     for (int i=0; i < cantidadHumanos; i++){
-        // cout<<"Aqui llego"<<endl;
         arrayDeLaVida[i]->agregarAmigos(arrayDeLaVida, cantidadHumanos);
-        // cout<<"Aqui llego, lo hago"<<endl;
-        arrayDeLaVida[i]->inicializarPecados();
-        // cout<<"Aqui sigo vivo"<<endl;
-        arrayDeLaVida[i]->inicializarRedesSociales();
-        // cout<<"Creo que estoy"<<endl;
+        
     }
 }
 //
@@ -107,16 +102,15 @@ void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
 }
 //INFIERNO
 
-   void Infierno::enviarDemonio(int posicionD, ArbolDeLaVida * ADLV){
-        string pecado= demonios[posicionD]->pecado;
-        cout<<"sale algo"<<endl;
-        
-   } 
+void Infierno::enviarDemonio(int posicionD, ArbolDeLaVida * ADLV){
+    string pecado= demonios[posicionD]->pecado;
+    cout<<"sale algo"<<endl;    
+} 
 
-   void Infierno::realizarCondenacion(ArbolDeLaVida * ADLV){
+void Infierno::realizarCondenacion(ArbolDeLaVida * ADLV){
     cout<<"hola"<<endl;
     cout<<"hola";
-   }
+}
    
 //MENUS -------------------------------------------------------------------------------------------------
 
@@ -137,7 +131,7 @@ void menuPublicarPorHumano(ArbolDeLaVida * arbol){
     string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
     string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
     arbol->enviarAPecar(stoi(ID),nombresRedes[redSocial-1],pecadosCapitales[redSocial-1]); 
-    //falta validar que el bro esté vivo
+    //falta validar que el bro esté vivop9k8
 }
 
 void menuPublicarPorReligion(ArbolDeLaVida * arbol){
