@@ -144,7 +144,7 @@ struct ArbolDeLaVida{
     void generarAmigosYPecados();
     void crearGeneracionHumanos(int cantidadAGenerar);
     int extraerCantidadNodos();
-    void construirArbol(NodoArbol* raiz, int inicio, int fin, int cantidadDeseada, int contador);
+    int construirArbol(int inicio, int fin, int cantidadDeseada, int contador);
     void ordenarArrayDeLaVida();
     void enviarAPecar(int ID, string redSocial, string pecado);
     void imprimir();
