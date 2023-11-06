@@ -115,6 +115,7 @@ void Familia::annadirFamiliar(Humano * familiar){
 
    void Infierno::realizarCondenacion(ArbolDeLaVida * ADLV){
     cout<<"hola"<<endl;
+    cout<<"hola";
    }
    
 //MENUS -------------------------------------------------------------------------------------------------
