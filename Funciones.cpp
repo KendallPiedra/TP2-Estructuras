@@ -33,7 +33,7 @@ int generarNumerosAleatorios(int tope) {
 }
 
 int calcularPorcentaje(int cantidad) {
-    return cantidad / 100;
+    return cantidad/100;
 }
 
 int extraerElementoCentral(int longitud) {
@@ -179,3 +179,17 @@ string seleccionarApellido(){
     getline(cin,apellido); //validaciones
     return apellido;
 }
+
+int extraerCantidadNodos(){
+        int cantidadNodos=calcularPorcentaje(20);
+        cout<<cantidadNodos<<endl;
+        while (!esPotenciaDeDos(cantidadNodos)){
+            cantidadNodos++;
+        }
+        cout<<cantidadNodos<<endl;
+        if(cantidadNodos!=1){
+            cantidadNodos--;
+        }
+        cout<<cantidadNodos<<endl;
+        return cantidadNodos;
+    }

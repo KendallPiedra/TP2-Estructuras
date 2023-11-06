@@ -9,12 +9,20 @@ int main(int argc, char const *argv[])
     // cout<<"-------------- BIENVENIDO ----------------"<<endl;
     // cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
     // getline(cin, cantidadInicial);
+    // extraerCantidadNodos();
+    
+    
+    // -------------------------------------------------------------------------------------------------------------------------
     ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
-    arbolDeLaVida->crearGeneracionHumanos(20);
+    arbolDeLaVida->crearGeneracionHumanos(100);
     cout<<arbolDeLaVida->cantidadHumanos<<endl;
     arbolDeLaVida->generarAmigosYPecados();
-    // arbolDeLaVida->construirArbol(arbolDeLaVida->raiz,0,arbolDeLaVida->cantidadHumanos,arbolDeLaVida->extraerCantidadNodos(), 0);
+    cout<<arbolDeLaVida->extraerCantidadNodos()<<endl;
+    arbolDeLaVida->ordenarArrayDeLaVida();
+    arbolDeLaVida->construirArbol(arbolDeLaVida->raiz,0,arbolDeLaVida->cantidadHumanos,arbolDeLaVida->extraerCantidadNodos(), 0);
     arbolDeLaVida->imprimir();
+
+    // -------------------------------------------------------------------------------------------------------------------------
     // int opcion=1;
     // do{
     //     // "1: Crear Generación de Humanos"

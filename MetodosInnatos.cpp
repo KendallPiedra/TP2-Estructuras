@@ -12,7 +12,8 @@ void Humano::inicializarPecados(){
     //6:Soverbia 
     string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
     for (int i=0; i < 7; i++){
-        pecados[i]->nombrePecado=pecadosCapitales[i];
+        // cout<<i<<endl;
+        pecados[i]= new Pecado(pecadosCapitales[i]);
     }
 }
 
@@ -50,8 +51,7 @@ void Humano::agregarPecado(string pecado, int cantidadAgregar){ //sujeto a cambi
 void Humano::inicializarRedesSociales(){
     string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
     for (int i=0; i < 7; i++){
-        redesSociales[i]->nombreRedSocial=nombresRedes[i];
-        redesSociales[i]->gusto=generarNumerosAleatorios(100);
+        redesSociales[i]=new RedSocial(nombresRedes[i],generarNumerosAleatorios(100));
     }
     ordenarRedesSociales();
 }
@@ -188,10 +188,14 @@ NodoArbol* ArbolDeLaVida::mayor (NodoArbol* arbol){
 
 int ArbolDeLaVida::extraerCantidadNodos(){
     int cantidadNodos=calcularPorcentaje(cantidadHumanos);
+    cout<<cantidadNodos<<endl;
     while (!esPotenciaDeDos(cantidadNodos)){
         cantidadNodos++;
     }
-    cantidadNodos--;
+    cout<<cantidadNodos<<endl;
+    if (cantidadNodos!=1){
+        cantidadNodos--;
+    }
     return cantidadNodos;
 }
 
@@ -216,12 +220,16 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
 }
 
 void ArbolDeLaVida::construirArbol(NodoArbol *nodo, int inicio, int fin,int cantidadDeseada, int contador){//*
-    ordenarArrayDeLaVida();
-    if (inicio <= fin || contador>=cantidadDeseada) {
+    // ordenarArrayDeLaVida();
+    cout<<"Ordené el array"<<endl;
+    if (inicio <= fin || contador<=cantidadDeseada) {
+        cout<<"Entré al if"<<endl;
         int centro = (inicio + fin) / 2;
         Humano * humanoCentral = arrayDeLaVida[centro];
         insertar(humanoCentral,nodo);
+        cout<<"Inserté"<<endl;
         contador++;
+        cout<<contador<<endl;
         construirArbol(nodo, inicio, centro - 1, cantidadDeseada, contador);
         construirArbol(nodo, centro + 1, fin, cantidadDeseada, contador);
     }
@@ -282,7 +290,7 @@ void ListaBesties::insertarInicio(Humano *amigo){
 }
 
 void ListaBesties::insertarFinal(Humano *amigo){
-    if (primerNodo==0)
+    if (primerNodo==NULL)
 	    primerNodo=ultimoNodo=new NodoAmigo(amigo);
     else{
 	    ultimoNodo->siguiente= new NodoAmigo(amigo);
@@ -330,7 +338,8 @@ void ListaBesties::imprimir(){
     cout<<"--------------------Lista Besties--------------------"<<endl;
     NodoAmigo * tmp = primerNodo;
     while(tmp!=NULL){
-	    tmp->imprimir();
+	    cout<<"-->"<<tmp->amigo->nombre<<" "<<tmp->amigo->apellido<<endl;
+        tmp=tmp->siguiente;
     }
     cout<<"-----------------------------------------------------"<<endl;
 }
