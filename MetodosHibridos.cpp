@@ -3,15 +3,16 @@
 //METODOS HUMANOS -------------------------------------------------------------------------------------
 void Humano::agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual){
     Humano * candidatoAmigo=NULL;
+    int cantProvisional=cantidadAmigos-amigos->largo();
     for (int i=0; i < cantHumanosActual; i++){
         candidatoAmigo=arrayDeLaVida[i];
-        if (cantidadAmigos==0){
+        if (cantProvisional==0){
             break;
         }else if (candidatoAmigo->ID!=ID && candidatoAmigo->pais==pais && 
         (candidatoAmigo->creencia==creencia || candidatoAmigo->apellido==apellido || candidatoAmigo->profesion==profesion)){
             if(!amigos->tieneAmigo(candidatoAmigo->ID)){
                 amigos->insertarFinal(candidatoAmigo);
-                cantidadAmigos--;
+                cantProvisional--;
             }
         }
     }
@@ -23,15 +24,19 @@ int Humano::sacarIndicePecado(string pecado){//UrgenterevisarStandartNombre
             return i;
         }
     }
-    
+    return -1;
 }
 
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigosYPecados(){
     for (int i=0; i < cantidadHumanos; i++){
+        // cout<<"Aqui llego"<<endl;
         arrayDeLaVida[i]->agregarAmigos(arrayDeLaVida, cantidadHumanos);
+        // cout<<"Aqui llego, lo hago"<<endl;
         arrayDeLaVida[i]->inicializarPecados();
+        // cout<<"Aqui sigo vivo"<<endl;
         arrayDeLaVida[i]->inicializarRedesSociales();
+        // cout<<"Creo que estoy"<<endl;
     }
 }
 //

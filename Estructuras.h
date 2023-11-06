@@ -8,7 +8,8 @@ struct Humano;
 struct Pecado{
     int cantidad;
     string nombrePecado;
-    Pecado(){
+    Pecado(string _nombrePecado){
+        nombrePecado=_nombrePecado;
         cantidad=0;
     } 
 };
@@ -17,11 +18,8 @@ struct Pecado{
 struct RedSocial{
     int gusto;
     string nombreRedSocial;
-    RedSocial(){
-        gusto=0;
-    } 
-    RedSocial(string _nombreRedSocial){
-        gusto=0;
+    RedSocial(string _nombreRedSocial, int _gusto){
+        gusto=_gusto;
         nombreRedSocial=_nombreRedSocial;
     } 
 };

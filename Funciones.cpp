@@ -33,7 +33,7 @@ int generarNumerosAleatorios(int tope) {
 }
 
 int calcularPorcentaje(int cantidad) {
-    return cantidad / 100;
+    return cantidad/100;
 }
 
 int extraerElementoCentral(int longitud) {
