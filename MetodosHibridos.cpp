@@ -18,7 +18,7 @@ void Humano::agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual){
     }
 }
 
-int Humano::sacarIndicePecado(string pecado){//UrgenterevisarStandartNombre
+int Humano::sacarIndicePecado(string pecado){
     for (int i=0; i<7;i++){
         if (pecados[i]->nombrePecado==pecado){
             return i;
@@ -171,7 +171,7 @@ int Demonio::calcularPromedioPecados() {
 }
 //INFIERNO ---------------------------------------------------------------------------------------------------------------------
 void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){
-
+    
 }
 
 void Infierno::enviarDemonio(int posicionD){

@@ -5,6 +5,7 @@ using namespace std;
 
 struct Humano;
 
+//PECADO --------------------------------------------------------------------------------------------------------
 struct Pecado{
     int cantidad;
     string nombrePecado;
@@ -12,9 +13,13 @@ struct Pecado{
         nombrePecado=_nombrePecado;
         cantidad=0;
     } 
+    Pecado(string _nombreRedSocial, int _gusto){ //redSocial
+        nombrePecado=_nombreRedSocial;
+        cantidad=_gusto;
+    }
 };
 
-//NODO RED SOCIAL
+//NODO RED SOCIAL --------------------------------------------------------------------------------------------------------
 struct RedSocial{
     int gusto;
     string nombreRedSocial;
@@ -24,8 +29,7 @@ struct RedSocial{
     } 
 };
 
-
-//NODO AMIGOS
+//AMIGOS ---------------------------------------------------------------------------------------------------------------
 struct NodoAmigo{
     NodoAmigo *siguiente, *anterior;
     Humano *amigo;
@@ -36,7 +40,6 @@ struct NodoAmigo{
     void imprimir();
 };
 
-//AMIGOS
 struct ListaBesties {
 	NodoAmigo * primerNodo, * ultimoNodo;
 	
@@ -53,20 +56,20 @@ struct ListaBesties {
     void imprimirConPecados();
 };
 
-//HUMANOS
+//HUMANOS --------------------------------------------------------------------------------------------------------------
 
 struct Humano{
     int ID, cantidadAmigos;
     string nombre, apellido, pais, creencia, profesion, nacimieto;
     RedSocial * redesSociales[7]; 
     Pecado * pecados[7];
-    //0:Orgullo  
-    //1:Envidia
-    //2:Ira
+    //0:Lujuria  
+    //1:Gula
+    //2:Avaricia
     //3:Pereza
-    //4:Codicia
-    //5:Gula
-    //6:Lujuria 
+    //4:Ira
+    //5:Envidia
+    //6:Soverbia  
     ListaBesties * amigos;
     bool vivo;
 
@@ -109,7 +112,7 @@ struct Humano{
 };
 
 
-//ARBOL
+//ARBOL ----------------------------------------------------------------------------------------------------------------
 struct NodoArbol{
     Humano *humano;
     NodoArbol *hijoizquierdo, *hijoderecho;
@@ -155,14 +158,35 @@ struct ArbolDeLaVida{
 
 };
 
-//BITACORA
-struct BitacoraCondenacion{
+//BITACORA -----------------------------------------------------------------------------------------------------------------
+struct NodoBitacora{
+    int indice;
+    string fechayHora, nombreYApellido, pais, demonio;
+    Pecado * pecado;
+    NodoBitacora *siguiente, *anterior;
 
+    NodoBitacora(int _indice, Humano *humano, string _pecado){
+        indice=_indice;
+        fechayHora=obtenerFechaYHoraActual();
+        nombreYApellido=humano->nombre+" "+humano->apellido;
+        pais=humano->pais;
+        demonio=extraerDemonioConPecado(_pecado);
+        pecado= new Pecado(_pecado,humano->sacarCantidadPecado(_pecado));
+        siguiente=anterior=NULL;
+    } 
 };
 
+struct BitacoraCondenacion{
+    NodoBitacora * primerNodo, * ultimoNodo;
+	
+    BitacoraCondenacion(){
+		primerNodo=ultimoNodo=NULL;
+    }
 
+    void insertarFinal (int indice, Humano * humano, string pecado);
+};
 
-//INFIERNO
+//INFIERNO -----------------------------------------------------------------------------------------------------------------
 struct Familia{
     string apellido, pais; 
     int cantMiembrosMax, cantMiembrosActual;
@@ -177,6 +201,7 @@ struct Familia{
     int determinarCantMiembros(ArbolDeLaVida * arbolDeLaVida);
     void annadirFamiliar(Humano * familiar);
 };
+
 struct Demonio{
     Familia* familias[30*20];
     int cantFamilias;
@@ -197,15 +222,18 @@ struct Demonio{
 struct Infierno{
     Demonio* demonios[7];//[cant demonios][cant familias][heap]
     ArbolDeLaVida * ADLV;
+    BitacoraCondenacion * bitacora;
     Infierno() {
         string nombres[]={"Asmodeo","Belfegor","Mammón","Abadón","Satán","Belcebú","Lucifer"};
         string pecados[] = {"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"}; 
         for (int i =0; i<7;i++){
             demonios[i]=new Demonio(nombres[i],pecados[i]);
         }
+        bitacora=new BitacoraCondenacion();
     }
     void enviarDemonio(int posicionD);
     void realizarCondenacionGeneral();
     void consultaDeLosMiembrosDelInfierno();
     void generarBitacoraCondenacion(Humano * humano, string pecado);
+    void crearArchivoBitacora();
 };

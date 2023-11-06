@@ -367,3 +367,14 @@ void ListaBesties::imprimirConPecados(){
     }
     cout<<"-----------------------------------------------------"<<endl;
 }
+
+// BITACORA DE CONDENACIÓN -----------------------------------------------------------------------------------------
+void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string pecado){
+    if (primerNodo==NULL)
+	    primerNodo=ultimoNodo=new NodoBitacora(indice, humano, pecado);
+    else{
+	    ultimoNodo->siguiente= new NodoBitacora(indice, humano, pecado);
+	    ultimoNodo->siguiente->anterior=ultimoNodo;
+	    ultimoNodo=ultimoNodo->siguiente; 
+    }
+}
