@@ -170,8 +170,8 @@ int Demonio::calcularPromedioPecados() {
     return promedio;
 }
 //INFIERNO ---------------------------------------------------------------------------------------------------------------------
-void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){
-    
+void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){ //esta ordenado por demonio, pero del mas a menos pecador no
+    bitacora->insertarFinal(ADLV->extraerIndiceHumano(humano), humano, pecado);
 }
 
 void Infierno::enviarDemonio(int posicionD){
@@ -192,6 +192,20 @@ void Infierno::realizarCondenacionGeneral(){
     for (int i; i<7;i++){
         enviarDemonio(i);
     }
+}
+
+void Infierno::crearArchivoBitacora(){
+    ofstream archivo;
+	short contador=0;
+	archivo.open(obtenerFechaYHoraActual(),ios::out); //Al ya existir lo va a sobreescribir
+	if (archivo.fail()){
+		cout<<"No escribí el archivo"<<endl;
+		exit(1);
+	}
+	archivo<<"Pedido: \t"<< " "<<endl;
+	archivo<<"Cliente: \t"<<" "<<endl;
+	
+	archivo.close();
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
