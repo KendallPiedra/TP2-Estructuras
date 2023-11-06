@@ -221,19 +221,14 @@ int ArbolDeLaVida::construirArbol(int inicio, int fin,int cantidadDeseada, int c
     // ordenarArrayDeLaVida();
     // cout<<"Ordené el array"<<endl;
     if (inicio <= fin && contador<=cantidadDeseada) {
-        cout<<"Entré al if"<<endl;
         int centro = (inicio + fin) / 2;
-        Humano * humanoCentral = arrayDeLaVida[centro];
+        Humano *humanoCentral = arrayDeLaVida[centro];
         insertar(humanoCentral);
         contador++;
-        cout<<contador<<endl;
-        contador=construirArbol(inicio, centro - 1, cantidadDeseada, contador);
-        construirArbol(centro + 1, fin, cantidadDeseada, contador);
-        return contador;
-    }else{
-        cout<<"No entré al if"<<endl;
-        return contador;
+        contador = construirArbol(inicio, centro - 1, cantidadDeseada, contador);
+        contador = construirArbol(centro + 1, fin, cantidadDeseada, contador);
     }
+    return contador;
 }
 
 void ArbolDeLaVida::imprimir(){

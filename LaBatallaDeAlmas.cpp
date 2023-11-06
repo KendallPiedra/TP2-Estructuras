@@ -14,12 +14,12 @@ int main(int argc, char const *argv[])
     
     // -------------------------------------------------------------------------------------------------------------------------
     ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
-    arbolDeLaVida->crearGeneracionHumanos(1000);
+    arbolDeLaVida->crearGeneracionHumanos(100);
     // cout<<arbolDeLaVida->cantidadHumanos<<endl;
     arbolDeLaVida->generarAmigosYPecados();
     // cout<<arbolDeLaVida->extraerCantidadNodos()<<endl;
     arbolDeLaVida->ordenarArrayDeLaVida();
-    arbolDeLaVida->construirArbol(0,arbolDeLaVida->cantidadHumanos,arbolDeLaVida->extraerCantidadNodos(), 0);
+    arbolDeLaVida->construirArbol(0,arbolDeLaVida->cantidadHumanos,arbolDeLaVida->extraerCantidadNodos()-1, 0);
     arbolDeLaVida->imprimir();
 
     // -------------------------------------------------------------------------------------------------------------------------
