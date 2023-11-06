@@ -109,11 +109,12 @@ void Familia::annadirFamiliar(Humano * familiar){
 
    void Infierno::enviarDemonio(int posicionD, ArbolDeLaVida * ADLV){
         string pecado= demonios[posicionD]->pecado;
+        cout<<"sale algo"<<endl;
         
    } 
 
-   void infierno::realizarCondenacion(ArbolDeLaVida * ADLV){
-    cout<<"hola";
+   void Infierno::realizarCondenacion(ArbolDeLaVida * ADLV){
+    cout<<"hola"<<endl;
    }
    
 //MENUS -------------------------------------------------------------------------------------------------
