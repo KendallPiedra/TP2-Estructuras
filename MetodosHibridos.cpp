@@ -88,23 +88,23 @@ void Familia::annadirFamiliar(Humano * familiar){
     }
 //Demonios
 
-    void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
-        familias[cantFamilias]=new Familia(humano->apellido,humano->pais, ADLV);
-        familias[cantFamilias]->annadirFamiliar(humano);
-        cantFamilias++;
-    }
+void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
+    familias[cantFamilias]=new Familia(humano->apellido,humano->pais, ADLV);
+    familias[cantFamilias]->annadirFamiliar(humano);
+    cantFamilias++;
+}
 
-    void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
-        humano->vivo=false;
-        Familia *fam;
-        for (int i=0; i<cantFamilias;i++){
-            fam= familias[i];
-            if (humano->pais==fam->pais  &&humano->apellido==fam->pais){
-                fam->annadirFamiliar(humano);
-            }
+void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
+    humano->vivo=false;
+    Familia *fam;
+    for (int i=0; i<cantFamilias;i++){
+        fam= familias[i];
+        if (humano->pais==fam->pais  &&humano->apellido==fam->pais){
+            fam->annadirFamiliar(humano);
         }
-        insertarEnFamiliaNueva(humano, ADLV);
     }
+    insertarEnFamiliaNueva(humano, ADLV);
+}
 //INFIERNO
 
    void Infierno::enviarDemonio(int posicionD, ArbolDeLaVida * ADLV){
