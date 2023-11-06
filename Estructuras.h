@@ -198,8 +198,8 @@ struct Infierno{
             demonios[i]=new Demonio(nombres[i],pecados[i]);
         }
     }
-    void enviarDemonio(int posicionD, ArbolDeLaVida *ALVD);
+    void enviarDemonio(int posicionD, ArbolDeLaVida *ADLV);
 
-    void condenacion();
+    void realizarCondenacion(ArbolDeLaVida *ADLV);
     
 };
