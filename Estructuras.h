@@ -103,6 +103,7 @@ struct Humano{
     void ordenarRedesSociales();
     int determinarCantidadASumar(string redSocial);
     int sacarIndicePecado(string pecado);
+    int sacarCantidadPecado(string pecado);
 
     
 };
@@ -187,10 +188,15 @@ struct Demonio{
     }
     void insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV);
     void matarHumano(Humano *humano, ArbolDeLaVida * ADLV);
+    int calcularCantidadHumanos();
+    int calcularMaximoPecados();
+    int calcularMinimoPecados();
+    int calcularPromedioPecados();
 };
 
 struct Infierno{
     Demonio* demonios[7];//[cant demonios][cant familias][heap]
+    ArbolDeLaVida * ADLV;
     Infierno() {
         string nombres[]={"Lucifer","Belcebú","Satán","Abadón","Mammón","Belfegor","Asmodeo"};
         string pecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"}; //usemos "Gula" por que glotoneria esta muy feo
@@ -198,8 +204,10 @@ struct Infierno{
             demonios[i]=new Demonio(nombres[i],pecados[i]);
         }
     }
-    void enviarDemonio(int posicionD, ArbolDeLaVida *ADLV);
+    void enviarDemonio(int posicionD);
 
-    void realizarCondenacion(ArbolDeLaVida *ADLV);
+    void realizarCondenacionGeneral();
+
+    void consultaDeLosMiembrosDelInfierno();
     
 };

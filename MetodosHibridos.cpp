@@ -27,6 +27,11 @@ int Humano::sacarIndicePecado(string pecado){//UrgenterevisarStandartNombre
     return -1;
 }
 
+int Humano::sacarCantidadPecado(string pecado){
+    int iPecado=sacarIndicePecado(pecado);
+    return pecados[iPecado]->cantidad;
+
+}
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigosYPecados(){
     for (int i=0; i < cantidadHumanos; i++){
@@ -63,9 +68,20 @@ Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
 
     int cantidadPecadores = PorcentajeACantidad(5, cantidadHumanos);
     Humano** HumanosPecadores = new Humano*[cantidadPecadores];
-
+    int j=0;
     for (int i = 0; i < cantidadPecadores; i++) {
-        HumanosPecadores[i] = arrayDeLaVida[indices[i]];
+        
+        bool annadio=false;
+        while(annadio==false){
+            if(arrayDeLaVida[indices[i]]->vivo){
+                //esta vivo
+                HumanosPecadores[i] = arrayDeLaVida[indices[j]];
+                annadio=true;
+                j++;
+            } else{  j++;}//no esta vivo. Debe intentarlo con el siguiente
+              
+        }
+        
     }
     
     return HumanosPecadores;
@@ -105,19 +121,98 @@ void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
     }
     insertarEnFamiliaNueva(humano, ADLV);
 }
+
+int Demonio::calcularCantidadHumanos(){
+    int cantidad;
+    for (int i=0; i<cantFamilias;i++){
+        cantidad+=familias[i]->cantMiembrosActual;
+    }
+    return cantidad;
+}
+
+int Demonio::calcularMaximoPecados() {
+    int maxPecado = -1; // Inicializa el valor máximo como negativo, asumiendo que los pecados son números no negativos
+
+    for (int i = 0; i < cantFamilias; i++) {
+        Familia* familia = familias[i];
+        for (int j = 0; j < familia->cantMiembrosActual; j++) {
+            Humano* familiar = familia->familiares[j];
+            if (familiar->sacarCantidadPecado(pecado) > maxPecado) {
+                maxPecado = familiar->sacarCantidadPecado(pecado);
+            }
+        }
+    }
+    return maxPecado;
+}
+
+int Demonio::calcularMinimoPecados() {
+    int minPecado = INT_MAX; // Inicializa el valor mínimo como el máximo valor posible
+
+    for (int i = 0; i < cantFamilias; i++) {
+        Familia* familia = familias[i];
+        for (int j = 0; j < familia->cantMiembrosActual; j++) {
+            Humano* familiar = familia->familiares[j];
+            if (familiar->sacarCantidadPecado(pecado) < minPecado) {
+                minPecado = familiar->sacarCantidadPecado(pecado);
+            }
+        }
+    }
+    return minPecado;
+}
+
+int Demonio::calcularPromedioPecados() {
+    int sumaPecados = 0;
+    int cantidadPecados = 0;
+
+    for (int i = 0; i < cantFamilias; i++) {
+        Familia* familia = familias[i];
+        for (int j = 0; j < familia->cantMiembrosActual; j++) {
+            Humano* familiar = familia->familiares[j];
+                sumaPecados += familiar->sacarCantidadPecado(pecado); // Suponiendo que el pecado que deseas calcular es el primer pecado
+                cantidadPecados++;
+        }
+    }
+    // Evitar la división por cero
+    if (cantidadPecados == 0) {
+        return 0; // No hay pecados para calcular el promedio
+    }
+    int promedio = sumaPecados / cantidadPecados;
+    return promedio;
+}
 //INFIERNO
 
-   void Infierno::enviarDemonio(int posicionD, ArbolDeLaVida * ADLV){
-        string pecado= demonios[posicionD]->pecado;
-        cout<<"sale algo"<<endl;
-        
-   } 
+void Infierno::enviarDemonio(int posicionD){
+    string pecado= demonios[posicionD]->pecado;
+    Humano** condenados =ADLV->sacarPorcentajeMasPecador(pecado);
+    int cantidadCondenados = PorcentajeACantidad(5, ADLV->cantidadHumanos);
+    for (int i=0; i<cantidadCondenados;i++){
+        if (condenados[i] == nullptr) {
+            // No quedan condenados
+            break;
+        }
+        demonios[posicionD]->matarHumano(condenados[i],ADLV);
+    }
+    
+} 
 
-   void Infierno::realizarCondenacion(ArbolDeLaVida * ADLV){
-    cout<<"hola"<<endl;
-    cout<<"hola";
-   }
-   
+void Infierno::realizarCondenacionGeneral(){
+    for (int i; i<7;i++){
+        enviarDemonio(i);
+    }
+}
+
+void Infierno::consultaDeLosMiembrosDelInfierno(){
+    for (int i=0; i<7; i++){
+        cout<<demonios[i]->nombre<<"\nPecado: "<<demonios[i]->pecado<<endl;
+        cout<<"Cantidad de humanos condenados: "<<demonios[i]->calcularCantidadHumanos()<<endl;
+        cout<<"Promedio de pecados: "<<demonios[i]->calcularPromedioPecados()<<endl;
+        cout<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
+        cout<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
+
+        //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
+    }
+}
+
 //MENUS -------------------------------------------------------------------------------------------------
 
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
