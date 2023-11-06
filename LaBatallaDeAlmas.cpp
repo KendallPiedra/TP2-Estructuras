@@ -3,24 +3,21 @@
 int main(int argc, char const *argv[])
 {
     srand(time(0));
-    // cout<<generacionNumerosAleatorios<<endl;
-    // cout<<extraerNombreAleatorio()<<endl;
     // string cantidadInicial;
     // cout<<"-------------- BIENVENIDO ----------------"<<endl;
     // cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
     // getline(cin, cantidadInicial);
-    // extraerCantidadNodos();
-    
-    
     // -------------------------------------------------------------------------------------------------------------------------
     ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
     arbolDeLaVida->crearGeneracionHumanos(1000);
-    // cout<<arbolDeLaVida->cantidadHumanos<<endl;
-    arbolDeLaVida->generarAmigosYPecados();
-    // cout<<arbolDeLaVida->extraerCantidadNodos()<<endl;
-    arbolDeLaVida->ordenarArrayDeLaVida();
-    arbolDeLaVida->construirArbol(0,arbolDeLaVida->cantidadHumanos,arbolDeLaVida->extraerCantidadNodos(), 0);
     arbolDeLaVida->imprimir();
+    arbolDeLaVida->arrayDeLaVida[663]->publicarEnRedSocial(
+        arbolDeLaVida->arrayDeLaVida[663]->redesSociales[6]->nombreRedSocial,
+        extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[663]->redesSociales[6]->nombreRedSocial));
+    cout<<"----------------------*************************************************************---------------------------------"<<endl;
+    arbolDeLaVida->arrayDeLaVida[663]->imprimir();
+    cout<<"----------------------*************************************************************---------------------------------"<<endl;
+    arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();
 
     // -------------------------------------------------------------------------------------------------------------------------
     // int opcion=1;

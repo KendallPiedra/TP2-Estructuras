@@ -50,6 +50,7 @@ struct ListaBesties {
     int largo();
     bool tieneAmigo(int ID);
     void imprimir();
+    void imprimirConPecados();
 };
 
 //HUMANOS
@@ -89,9 +90,6 @@ struct Humano{
             //Falta añadir REDES SOCIALES
         // }
     }
-    Humano(){
-
-    }
 
     void agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual);
     void inicializarPecados();
@@ -105,6 +103,8 @@ struct Humano{
     int sacarIndicePecado(string pecado);
     int sacarCantidadPecado(string pecado);
 
+    void imprimirPecados();
+    void imprimirRedesSociales();
     
 };
 
@@ -142,7 +142,7 @@ struct ArbolDeLaVida{
     int altura(NodoArbol*);
     int contadorNodos(NodoArbol*);
     bool validarID(int ID);
-    void generarAmigosYPecados();
+    void generarAmigos();
     void crearGeneracionHumanos(int cantidadAGenerar);
     int extraerCantidadNodos();
     int construirArbol(int inicio, int fin, int cantidadDeseada, int contador);

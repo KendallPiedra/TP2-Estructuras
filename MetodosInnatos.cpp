@@ -56,14 +56,17 @@ void Humano::inicializarRedesSociales(){
 }
 
 void Humano::imprimir(){
-    cout<<"ID: "<<ID<<endl;
+    // cout<<"ID: "<<ID<<endl;
     cout<<"Nombre: "<<nombre<<endl;
     cout<<"Apellido: "<<apellido<<endl;
-    cout<<"Pais: "<<pais<<endl;
-    cout<<"Creencia: "<<creencia<<endl;
-    cout<<"Profesión: "<<profesion<<endl;
-    cout<<"Nacimiento: "<<nacimieto<<endl;
+    // cout<<"Pais: "<<pais<<endl;
+    // cout<<"Creencia: "<<creencia<<endl;
+    // cout<<"Profesión: "<<profesion<<endl;
+    // cout<<"Nacimiento: "<<nacimieto<<endl;
     cout<<"Cantidad Amigos: "<<cantidadAmigos<<endl;
+    cout<<"Pecados: "<<endl;
+    imprimirPecados();
+    imprimirRedesSociales();
     amigos->imprimir();
     //funcion de imprmir redes sociales
     //funcion de imprimir pecados
@@ -79,6 +82,18 @@ void Humano::publicarEnRedSocial(string redSocial, string pecado){
 
 void Humano::publicarEnVariasRedesSociales(int num){
 
+}
+
+void Humano::imprimirPecados(){
+    for (int i = 0; i < 7; i++){
+        cout<<pecados[i]->nombrePecado<<": "<<pecados[i]->cantidad<<endl;
+    }
+}
+
+void Humano::imprimirRedesSociales(){
+    for (int i = 0; i < 7; i++){
+        cout<<redesSociales[i]->nombreRedSocial<<": "<<redesSociales[i]->gusto<<endl;
+    }
 }
 // NODO ARBOL ----------------------------------------------------------------------------------------
 void NodoArbol::imprimir(){
@@ -211,8 +226,13 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
                 ID=generarNumerosAleatorios(99999);
             } while (!validarID(ID));
             arrayDeLaVida[i]= new Humano(ID,nombre,apellido,pais,creencia,profesion,nacimiento,generarNumerosAleatorios(100));
+            arrayDeLaVida[i]->inicializarPecados();
+            arrayDeLaVida[i]->inicializarRedesSociales();
         }
         cantidadHumanos+=cantidadAGenerar;
+        generarAmigos();
+        ordenarArrayDeLaVida();
+        construirArbol(0,cantidadHumanos,extraerCantidadNodos()-1, 0);
     }
 
 }
@@ -221,29 +241,24 @@ int ArbolDeLaVida::construirArbol(int inicio, int fin,int cantidadDeseada, int c
     // ordenarArrayDeLaVida();
     // cout<<"Ordené el array"<<endl;
     if (inicio <= fin && contador<=cantidadDeseada) {
-        cout<<"Entré al if"<<endl;
         int centro = (inicio + fin) / 2;
-        Humano * humanoCentral = arrayDeLaVida[centro];
+        Humano *humanoCentral = arrayDeLaVida[centro];
         insertar(humanoCentral);
         contador++;
-        cout<<contador<<endl;
-        contador=construirArbol(inicio, centro - 1, cantidadDeseada, contador);
-        construirArbol(centro + 1, fin, cantidadDeseada, contador);
-        return contador;
-    }else{
-        cout<<"No entré al if"<<endl;
-        return contador;
+        contador = construirArbol(inicio, centro - 1, cantidadDeseada, contador);
+        contador = construirArbol(centro + 1, fin, cantidadDeseada, contador);
     }
+    return contador;
 }
 
 void ArbolDeLaVida::imprimir(){
     cout<<"---------------- ÁRBOL ----------------"<<endl;
     inOrden(raiz);
     cout<<"\n--------------- HUMANOS ------------------"<<endl;
-    // for (int i = 0; i < cantidadHumanos; i++){
-    //     arrayDeLaVida[i]->imprimir();
-    //     cout<<"---------------------------------------"<<endl;
-    // }
+    for (int i = 0; i < cantidadHumanos; i++){
+        arrayDeLaVida[i]->imprimir();
+        cout<<"---------------------------------------"<<endl;
+    }
 }
 //BORRAAAAR
 // NodoArbol* Arbol::borrarElemento(int ele){
@@ -340,6 +355,16 @@ void ListaBesties::imprimir(){
     NodoAmigo * tmp = primerNodo;
     while(tmp!=NULL){
 	    cout<<"-->"<<tmp->amigo->nombre<<" "<<tmp->amigo->apellido<<endl;
+        tmp=tmp->siguiente;
+    }
+    cout<<"-----------------------------------------------------"<<endl;
+}
+
+void ListaBesties::imprimirConPecados(){
+    cout<<"--------------------*Lista Besties*--------------------"<<endl;
+    NodoAmigo * tmp = primerNodo;
+    while(tmp!=NULL){
+	    tmp->amigo->imprimir();
         tmp=tmp->siguiente;
     }
     cout<<"-----------------------------------------------------"<<endl;
