@@ -8,16 +8,16 @@ int main(int argc, char const *argv[])
     // cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
     // getline(cin, cantidadInicial);
     // -------------------------------------------------------------------------------------------------------------------------
-    ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
-    arbolDeLaVida->crearGeneracionHumanos(1000);
-    arbolDeLaVida->imprimir();
-    arbolDeLaVida->arrayDeLaVida[663]->publicarEnRedSocial(
-        arbolDeLaVida->arrayDeLaVida[663]->redesSociales[6]->nombreRedSocial,
-        extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[663]->redesSociales[6]->nombreRedSocial));
-    cout<<"----------------------*************************************************************---------------------------------"<<endl;
-    arbolDeLaVida->arrayDeLaVida[663]->imprimir();
-    cout<<"----------------------*************************************************************---------------------------------"<<endl;
-    arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();
+    // ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
+    // arbolDeLaVida->crearGeneracionHumanos(1000);
+    // arbolDeLaVida->imprimir();
+    // arbolDeLaVida->arrayDeLaVida[663]->publicarEnRedSocial(
+    //     arbolDeLaVida->arrayDeLaVida[663]->redesSociales[6]->nombreRedSocial,
+    //     extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[663]->redesSociales[6]->nombreRedSocial));
+    // cout<<"----------------------*************************************************************---------------------------------"<<endl;
+    // arbolDeLaVida->arrayDeLaVida[663]->imprimir();
+    // cout<<"----------------------*************************************************************---------------------------------"<<endl;
+    // arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();
 
     // -------------------------------------------------------------------------------------------------------------------------
     // int opcion=1;
@@ -60,5 +60,8 @@ int main(int argc, char const *argv[])
     //         break;
     //     }
     // } while (opcion!=0);
+    string log="apellidos.txt";
+    string email="krisncl1701@gmail.com";
+    
     return 0;
 }
