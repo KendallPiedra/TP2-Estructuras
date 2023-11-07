@@ -4,6 +4,7 @@
 using namespace std;
 
 struct Humano;
+string extraerDemonioConPecado(string pecado);
 
 //PECADO --------------------------------------------------------------------------------------------------------
 struct Pecado{
@@ -165,9 +166,9 @@ struct NodoBitacora{
     Pecado * pecado;
     NodoBitacora *siguiente, *anterior;
 
-    NodoBitacora(int _indice, Humano *humano, string _pecado){
+    NodoBitacora(int _indice, Humano *humano, string _pecado, string _fechayHora){
         indice=_indice;
-        fechayHora=obtenerFechaYHoraActual();
+        fechayHora=_fechayHora;
         nombreYApellido=humano->nombre+" "+humano->apellido;
         pais=humano->pais;
         demonio=extraerDemonioConPecado(_pecado);
