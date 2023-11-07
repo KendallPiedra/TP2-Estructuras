@@ -35,9 +35,11 @@ int Humano::sacarCantidadPecado(string pecado){
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigos(){
     for (int i=0; i < cantidadHumanos; i++){
-        arrayDeLaVida[i]->agregarAmigos(arrayDeLaVida, cantidadHumanos);  
+        arrayDeLaVida[i]->agregarAmigos(arrayDeLaVida, cantidadHumanos);
+        
     }
 }
+//
 
 int ArbolDeLaVida::sacarIndicePecado(string pecado){
     return arrayDeLaVida[0]->sacarIndicePecado(pecado);
@@ -53,6 +55,7 @@ vector<int> ArbolDeLaVida::sacarIndicesOrdenadosSegunPecado(string pecado){
     return arrayDeLaVida[a]->pecados[indicePecado] > arrayDeLaVida[b]->pecados[indicePecado];
     });
     return indices;
+
 }
 
 Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
@@ -88,10 +91,11 @@ int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
     return miembros;
 }
 void Familia::annadirFamiliar(Humano * familiar){
-    familiares[cantMiembrosActual]=familiar;
-}
+        familiares[cantMiembrosActual]=familiar;
+    }
 
 //DEMONIOS ------------------------------------------------------------------------------------------------------------
+
 void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
     familias[cantFamilias]=new Familia(humano->apellido,humano->pais, ADLV);
     familias[cantFamilias]->annadirFamiliar(humano);
@@ -165,6 +169,36 @@ int Demonio::calcularPromedioPecados() {
     int promedio = sumaPecados / cantidadPecados;
     return promedio;
 }
+
+
+Humano ** Demonio::sacarListaDeHumanos(){
+    Humano** listaHumanos=new Humano*[calcularCantidadHumanos()];
+    int k=0;
+    for (int i=0;i<cantFamilias;i++){
+        for(int j=0;j<familias[i]->cantMiembrosActual;j++){
+            listaHumanos[k]=familias[i]->familiares[j];
+        }
+    }
+    return listaHumanos;
+}
+
+Humano ** Demonio::sacarListaDeLosMasPecadores(){
+    Humano** listaHumanos=sacarListaDeHumanos();
+    int cantidad = calcularCantidadHumanos();
+    for (int i = 0; i < cantidad-1; i++) {
+        int minIdx = i;
+        for (int j = i+1; j < cantidad; j++) {
+            
+            if (listaHumanos[j]->sacarCantidadPecado(pecado) < listaHumanos[minIdx]->sacarCantidadPecado(pecado)){
+                minIdx = j;
+            }
+        }
+        Humano * temp = listaHumanos[minIdx];
+        listaHumanos[minIdx] = listaHumanos[i];
+        listaHumanos[i] = temp;
+    }
+    return listaHumanos;
+}
 //INFIERNO ---------------------------------------------------------------------------------------------------------------------
 void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){ //esta ordenado por demonio, pero del mas a menos pecador no
     bitacora->insertarFinal(ADLV->extraerIndiceHumano(humano), humano, pecado);
@@ -202,13 +236,13 @@ void Infierno::crearArchivoBitacora(){
     }
 	archivo.close();
     bitacora->primerNodo=bitacora->ultimoNodo=NULL; 
-}
+} 
 
 void Infierno::realizarCondenacionGeneral(){
     for (int i; i<7;i++){
         enviarDemonio(i);
     }
-    crearArchivoBitacora();
+crearArchivoBitacora();
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
@@ -219,11 +253,20 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
         cout<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
         cout<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
 
-        //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
+        int cantidadHumanos = demonios[i]->calcularCantidadHumanos();
+        Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
+        cout<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
+        for (int i=0; i< cantidadHumanos;i++){
+            listaOrdenadaHumanos[i]->imprimir();
+        }
     }
+        //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
+
+
    
 //MENUS -------------------------------------------------------------------------------------------------
+
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     for (int i=0; i < cantidadHumanos; i++){
         if(arrayDeLaVida[i]->ID==ID && arrayDeLaVida[i]->vivo){

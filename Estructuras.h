@@ -221,6 +221,8 @@ struct Demonio{
     int calcularMaximoPecados();
     int calcularMinimoPecados();
     int calcularPromedioPecados();
+    Humano** sacarListaDeHumanos();
+    Humano** sacarListaDeLosMasPecadores();
 };
 
 struct Infierno{
