@@ -174,6 +174,10 @@ struct NodoBitacora{
         pecado= new Pecado(_pecado,humano->sacarCantidadPecado(_pecado));
         siguiente=anterior=NULL;
     } 
+
+    ~NodoBitacora() {
+        delete pecado, siguiente, anterior; 
+    }
 };
 
 struct BitacoraCondenacion{

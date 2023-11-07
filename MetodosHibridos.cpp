@@ -35,11 +35,9 @@ int Humano::sacarCantidadPecado(string pecado){
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigos(){
     for (int i=0; i < cantidadHumanos; i++){
-        arrayDeLaVida[i]->agregarAmigos(arrayDeLaVida, cantidadHumanos);
-        
+        arrayDeLaVida[i]->agregarAmigos(arrayDeLaVida, cantidadHumanos);  
     }
 }
-//
 
 int ArbolDeLaVida::sacarIndicePecado(string pecado){
     return arrayDeLaVida[0]->sacarIndicePecado(pecado);
@@ -55,7 +53,6 @@ vector<int> ArbolDeLaVida::sacarIndicesOrdenadosSegunPecado(string pecado){
     return arrayDeLaVida[a]->pecados[indicePecado] > arrayDeLaVida[b]->pecados[indicePecado];
     });
     return indices;
-
 }
 
 Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
@@ -91,11 +88,10 @@ int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
     return miembros;
 }
 void Familia::annadirFamiliar(Humano * familiar){
-        familiares[cantMiembrosActual]=familiar;
-    }
+    familiares[cantMiembrosActual]=familiar;
+}
 
 //DEMONIOS ------------------------------------------------------------------------------------------------------------
-
 void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
     familias[cantFamilias]=new Familia(humano->apellido,humano->pais, ADLV);
     familias[cantFamilias]->annadirFamiliar(humano);
@@ -188,15 +184,9 @@ void Infierno::enviarDemonio(int posicionD){
     }
 } 
 
-void Infierno::realizarCondenacionGeneral(){
-    for (int i; i<7;i++){
-        enviarDemonio(i);
-    }
-}
-
 void Infierno::crearArchivoBitacora(){
     ofstream archivo;
-	archivo.open(obtenerFechaYHoraActual(),ios::out); //Al ya existir lo va a sobreescribir
+	archivo.open(obtenerFechaYHoraActual(),ios::out); 
 	if (archivo.fail()){
 		cout<<"No escribí el archivo"<<endl;
 		exit(1);
@@ -211,6 +201,14 @@ void Infierno::crearArchivoBitacora(){
         tmp=tmp->siguiente;
     }
 	archivo.close();
+    bitacora->primerNodo=bitacora->ultimoNodo=NULL; 
+}
+
+void Infierno::realizarCondenacionGeneral(){
+    for (int i; i<7;i++){
+        enviarDemonio(i);
+    }
+    crearArchivoBitacora();
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
@@ -224,13 +222,11 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
     }
 }
-
    
 //MENUS -------------------------------------------------------------------------------------------------
-
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     for (int i=0; i < cantidadHumanos; i++){
-        if(arrayDeLaVida[i]->ID==ID){
+        if(arrayDeLaVida[i]->ID==ID && arrayDeLaVida[i]->vivo){
             arrayDeLaVida[i]->publicarEnRedSocial(redSocial, pecado);
         }
     }
@@ -245,7 +241,7 @@ void menuPublicarPorHumano(ArbolDeLaVida * arbol){
     string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
     string nombresRedes[]={"Tinder", "iFood", "LinkedIn", "Netflix", "Twitter", "Facebook", "Instagram"};
     arbol->enviarAPecar(stoi(ID),nombresRedes[redSocial-1],pecadosCapitales[redSocial-1]); 
-    //falta validar que el bro esté vivop9k8
+    //falta validar que el bro esté vivo
 }
 
 void menuPublicarPorReligion(ArbolDeLaVida * arbol){
