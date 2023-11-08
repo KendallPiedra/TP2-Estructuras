@@ -62,6 +62,8 @@ int main(int argc, char const *argv[])
     // } while (opcion!=0);
     string log="apellidos.txt";
     string email="krisncl1701@gmail.com";
-    
+    string ruta=""; 
+
+
     return 0;
 }
