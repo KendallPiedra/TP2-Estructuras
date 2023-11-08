@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\krisc\OneDrive\Escritorio\Homeworks\2k23 II SEMESTRE\Estructuras de Datos\JavaApplication3\dist\enviarcorreos.jar</jar>
+  <outfile>C:\Users\krisc\OneDrive\Escritorio\Homeworks\2k23 II SEMESTRE\Estructuras de Datos\TP2-Estructuras\enviarCorreos.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <classPath>
+    <mainClass>enviarCorreos</mainClass>
+    <cp>javax-inject.jar</cp>
+    <cp>javax.activation-1.1.0.v201105071233.jar</cp>
+    <cp>javax.ejb.jar</cp>
+    <cp>javax.faces-api-2.0.jar</cp>
+    <cp>mail.jar</cp>
+  </classPath>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>
