@@ -56,6 +56,7 @@ struct ListaBesties {
     bool tieneAmigo(int ID);
     void imprimir();
     void imprimirConPecados();
+    string convertirAmigosAString();
 };
 
 //HUMANOS --------------------------------------------------------------------------------------------------------------
@@ -107,11 +108,14 @@ struct Humano{
     int determinarCantidadASumar(string redSocial);
     int sacarIndicePecado(string pecado);
     int sacarCantidadPecado(string pecado);
-    string convertirAString();
+
 
     void imprimirPecados();
     void imprimirRedesSociales();
-    
+
+    string convertirPecadosAString();
+    string convertirRedesSocialesAString();
+    string convertirAString();    
 };
 
 

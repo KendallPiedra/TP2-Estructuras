@@ -70,23 +70,6 @@ void Humano::imprimir(){
     amigos->imprimir();
 }
 
-string Humano::convertirAString(){
-    string datos;
-    datos += "ID: " + to_string(ID) + "\n";
-    datos += "Nombre: " + nombre + "\n";
-    datos += "Apellido: " + apellido + "\n";
-    datos += "Pais: " + pais + "\n";
-    datos += "Creencia: " + creencia + "\n";
-    datos += "Profesión: " + profesion + "\n";
-    datos += "Nacimiento: " + nacimiento + "\n";
-    datos += "Cantidad Amigos: " + to_string(cantidadAmigos) + "\n";
-    datos += "Pecados:\n";
-    datos += convertirPecadosAString();
-    imprimirPecados();
-    imprimirRedesSociales();
-    amigos->imprimir();
-}
-
 void Humano::publicarEnRedSocial(string redSocial, string pecado){
     NodoAmigo *tmp=amigos->primerNodo;
     while (tmp!=NULL){

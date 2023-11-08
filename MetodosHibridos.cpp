@@ -32,6 +32,51 @@ int Humano::sacarCantidadPecado(string pecado){
     return pecados[iPecado]->cantidad;
 
 }
+
+//pasar a innatos!!!!
+string Humano::convertirPecadosAString() {
+    string sPecados = "";
+    for (int i = 0; i < 7; i++) {
+        sPecados += pecados[i]->nombrePecado + ": " + to_string(pecados[i]->cantidad) + "\n";
+    }
+    return sPecados;
+}
+string Humano::convertirRedesSocialesAString(){
+    string sRedesSociales = "";
+    for (int i = 0; i < 7; i++) {
+        sRedesSociales += redesSociales[i]->nombreRedSocial + ": " + to_string(redesSociales[i]->gusto) + "\n";
+    }
+    return sRedesSociales;
+}
+
+string Humano::convertirAString(){
+    string datos="";
+    datos += "ID: " + to_string(ID) + "\n";
+    datos += "Nombre: " + nombre + "\n";
+    datos += "Apellido: " + apellido + "\n";
+    datos += "Pais: " + pais + "\n";
+    datos += "Creencia: " + creencia + "\n";
+    datos += "Profesión: " + profesion + "\n";
+    datos += "Nacimiento: " + nacimieto + "\n";
+    datos += "Cantidad Amigos: " + to_string(cantidadAmigos) + "\n";
+    datos += "Pecados:\n";
+    datos += convertirPecadosAString();//
+    datos += convertirRedesSocialesAString();//
+    datos += amigos->convertirAmigosAString();//
+    return datos;
+}
+//Metodos amigos
+//pasar a innatos!!
+string ListaBesties::convertirAmigosAString(){
+    string sAmigos = "--------------------Lista Amigos--------------------\n";
+    NodoAmigo *tmp = primerNodo;
+    while (tmp != NULL) {
+        sAmigos += "-->" + tmp->amigo->nombre + " " + tmp->amigo->apellido + "\n";
+        tmp = tmp->siguiente;
+    }
+    sAmigos += "-----------------------------------------------------\n";
+    return sAmigos;
+}
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigos(){
     for (int i=0; i < cantidadHumanos; i++){
@@ -259,7 +304,8 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
         Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
         archivo<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
         for (int i=0; i< cantidadHumanos;i++){
-            listaOrdenadaHumanos[i]->imprimir();
+            archivo<<listaOrdenadaHumanos[i]->convertirAString()<<endl;
+            archivo<<"------------------------------------------------------------------------------------------"<<endl;
         }
     }
     archivo.close();
