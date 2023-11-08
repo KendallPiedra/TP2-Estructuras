@@ -246,24 +246,71 @@ crearArchivoBitacora();
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
+    ofstream archivo;
+    archivo.open("ConsultaInfernal.txt",ios::out);
     for (int i=0; i<7; i++){
-        cout<<demonios[i]->nombre<<"\nPecado: "<<demonios[i]->pecado<<endl;
-        cout<<"Cantidad de humanos condenados: "<<demonios[i]->calcularCantidadHumanos()<<endl;
-        cout<<"Promedio de pecados: "<<demonios[i]->calcularPromedioPecados()<<endl;
-        cout<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
-        cout<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
+        archivo<<demonios[i]->nombre<<"\nPecado: "<<demonios[i]->pecado<<endl;
+        archivo<<"Cantidad de humanos condenados: "<<demonios[i]->calcularCantidadHumanos()<<endl;
+        archivo<<"Promedio de pecados: "<<demonios[i]->calcularPromedioPecados()<<endl;
+        archivo<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
+        archivo<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
 
         int cantidadHumanos = demonios[i]->calcularCantidadHumanos();
         Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
-        cout<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
+        archivo<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
         for (int i=0; i< cantidadHumanos;i++){
             listaOrdenadaHumanos[i]->imprimir();
         }
     }
+    archivo.close();
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
 
+//---------------------------------------------------------------------saflkdjsdlofjdegl
+// string facturarPedido(NodoPedido *pedido, string _nombreArchivo){
+// 	ofstream archivo;
+// 	short contador=0;
+// 	archivo.open(_nombreArchivo,ios::out); //Al ya existir lo va a sobreescribir
+// 	if (archivo.fail()){
+// 		cout<<"No escribí el archivo"<<endl;
+// 		exit(1);
+// 	}
+// 	archivo<<"Pedido: \t"<<pedido->numeroPedido<<endl;
+// 	archivo<<"Cliente: \t"<<pedido->codigoCliente<<endl;
+// 	cout<<"Llegué aqui"<<endl;
+// 	Movimiento * tmpMov=pedido->movimientos->primerMov;
+// 	while (tmpMov!=NULL){
+// 		if (!tmpMov->robot && !tmpMov->alistador){
+// 			archivo<<tmpMov->ubicacion<<"\t"<<tmpMov->info<<endl;
+// 		}
+// 		tmpMov=tmpMov->siguiente;
+// 	}
+// 	cout<<"Otra vez"<<endl;
+// 	tmpMov=pedido->movimientos->primerMov;
+// 	while (tmpMov!=NULL){
+// 		if(tmpMov->robot){ //robot
+// 			archivo<<endl;
+// 			archivo<<"Robots Fábrica"<<endl;
+// 			archivo<<"ARTICULO " << tmpMov->articulo<< "\t Fabricado en "<< 
+// 			tmpMov->fabricadoEn << "/n"<< tmpMov->cantidad<< "unidades"<<
+// 			"\nincio: "<<tmpMov->fechaInicio <<"\nfinal: "<<tmpMov->fechaFinal<<endl;
+// 		}else if (tmpMov->alistador){ //alistador
+// 			if(contador==0){
+// 				archivo<<endl;
+// 				archivo<<"Alisto "<< "\t Alistador "<< tmpMov->numAlistador <<endl;
+// 				contador++;
+// 			}
+// 			archivo<< tmpMov->articulo<< "\t Ubicación: "<<tmpMov->ubicacion <<
+// 			"\tfinal: "<<tmpMov->tiempo<< "s" << endl;
+// 		}
+// 		tmpMov=tmpMov->siguiente;
+// 	}
+// 	cout<<"Aqui también llegué"<<endl;
+// 	archivo.close();
+// 	return "Listo";
+// }
 
+//---------------------------------------------------------------------saflkdjsdlofjdegl
    
 //MENUS -------------------------------------------------------------------------------------------------
 

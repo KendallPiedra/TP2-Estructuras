@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <fstream> 
 using namespace std;
 
 struct Humano;
@@ -106,6 +107,7 @@ struct Humano{
     int determinarCantidadASumar(string redSocial);
     int sacarIndicePecado(string pecado);
     int sacarCantidadPecado(string pecado);
+    string convertirAString();
 
     void imprimirPecados();
     void imprimirRedesSociales();
