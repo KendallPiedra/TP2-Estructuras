@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <fstream> 
 using namespace std;
 
 struct Humano;
@@ -55,6 +56,7 @@ struct ListaBesties {
     bool tieneAmigo(int ID);
     void imprimir();
     void imprimirConPecados();
+    string convertirAmigosAString();
 };
 
 //HUMANOS --------------------------------------------------------------------------------------------------------------
@@ -107,9 +109,13 @@ struct Humano{
     int sacarIndicePecado(string pecado);
     int sacarCantidadPecado(string pecado);
 
+
     void imprimirPecados();
     void imprimirRedesSociales();
-    
+
+    string convertirPecadosAString();
+    string convertirRedesSocialesAString();
+    string convertirAString();    
 };
 
 

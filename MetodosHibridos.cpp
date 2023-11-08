@@ -32,6 +32,51 @@ int Humano::sacarCantidadPecado(string pecado){
     return pecados[iPecado]->cantidad;
 
 }
+
+//pasar a innatos!!!!
+string Humano::convertirPecadosAString() {
+    string sPecados = "";
+    for (int i = 0; i < 7; i++) {
+        sPecados += pecados[i]->nombrePecado + ": " + to_string(pecados[i]->cantidad) + "\n";
+    }
+    return sPecados;
+}
+string Humano::convertirRedesSocialesAString(){
+    string sRedesSociales = "";
+    for (int i = 0; i < 7; i++) {
+        sRedesSociales += redesSociales[i]->nombreRedSocial + ": " + to_string(redesSociales[i]->gusto) + "\n";
+    }
+    return sRedesSociales;
+}
+
+string Humano::convertirAString(){
+    string datos="";
+    datos += "ID: " + to_string(ID) + "\n";
+    datos += "Nombre: " + nombre + "\n";
+    datos += "Apellido: " + apellido + "\n";
+    datos += "Pais: " + pais + "\n";
+    datos += "Creencia: " + creencia + "\n";
+    datos += "Profesión: " + profesion + "\n";
+    datos += "Nacimiento: " + nacimieto + "\n";
+    datos += "Cantidad Amigos: " + to_string(cantidadAmigos) + "\n";
+    datos += "Pecados:\n";
+    datos += convertirPecadosAString();//
+    datos += convertirRedesSocialesAString();//
+    datos += amigos->convertirAmigosAString();//
+    return datos;
+}
+//Metodos amigos
+//pasar a innatos!!
+string ListaBesties::convertirAmigosAString(){
+    string sAmigos = "--------------------Lista Amigos--------------------\n";
+    NodoAmigo *tmp = primerNodo;
+    while (tmp != NULL) {
+        sAmigos += "-->" + tmp->amigo->nombre + " " + tmp->amigo->apellido + "\n";
+        tmp = tmp->siguiente;
+    }
+    sAmigos += "-----------------------------------------------------\n";
+    return sAmigos;
+}
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigos(){
     for (int i=0; i < cantidadHumanos; i++){
@@ -246,24 +291,72 @@ crearArchivoBitacora();
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
+    ofstream archivo;
+    archivo.open("ConsultaInfernal.txt",ios::out);
     for (int i=0; i<7; i++){
-        cout<<demonios[i]->nombre<<"\nPecado: "<<demonios[i]->pecado<<endl;
-        cout<<"Cantidad de humanos condenados: "<<demonios[i]->calcularCantidadHumanos()<<endl;
-        cout<<"Promedio de pecados: "<<demonios[i]->calcularPromedioPecados()<<endl;
-        cout<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
-        cout<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
+        archivo<<demonios[i]->nombre<<"\nPecado: "<<demonios[i]->pecado<<endl;
+        archivo<<"Cantidad de humanos condenados: "<<demonios[i]->calcularCantidadHumanos()<<endl;
+        archivo<<"Promedio de pecados: "<<demonios[i]->calcularPromedioPecados()<<endl;
+        archivo<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
+        archivo<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
 
         int cantidadHumanos = demonios[i]->calcularCantidadHumanos();
         Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
-        cout<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
+        archivo<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
         for (int i=0; i< cantidadHumanos;i++){
-            listaOrdenadaHumanos[i]->imprimir();
+            archivo<<listaOrdenadaHumanos[i]->convertirAString()<<endl;
+            archivo<<"------------------------------------------------------------------------------------------"<<endl;
         }
     }
+    archivo.close();
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
 
+//---------------------------------------------------------------------saflkdjsdlofjdegl
+// string facturarPedido(NodoPedido *pedido, string _nombreArchivo){
+// 	ofstream archivo;
+// 	short contador=0;
+// 	archivo.open(_nombreArchivo,ios::out); //Al ya existir lo va a sobreescribir
+// 	if (archivo.fail()){
+// 		cout<<"No escribí el archivo"<<endl;
+// 		exit(1);
+// 	}
+// 	archivo<<"Pedido: \t"<<pedido->numeroPedido<<endl;
+// 	archivo<<"Cliente: \t"<<pedido->codigoCliente<<endl;
+// 	cout<<"Llegué aqui"<<endl;
+// 	Movimiento * tmpMov=pedido->movimientos->primerMov;
+// 	while (tmpMov!=NULL){
+// 		if (!tmpMov->robot && !tmpMov->alistador){
+// 			archivo<<tmpMov->ubicacion<<"\t"<<tmpMov->info<<endl;
+// 		}
+// 		tmpMov=tmpMov->siguiente;
+// 	}
+// 	cout<<"Otra vez"<<endl;
+// 	tmpMov=pedido->movimientos->primerMov;
+// 	while (tmpMov!=NULL){
+// 		if(tmpMov->robot){ //robot
+// 			archivo<<endl;
+// 			archivo<<"Robots Fábrica"<<endl;
+// 			archivo<<"ARTICULO " << tmpMov->articulo<< "\t Fabricado en "<< 
+// 			tmpMov->fabricadoEn << "/n"<< tmpMov->cantidad<< "unidades"<<
+// 			"\nincio: "<<tmpMov->fechaInicio <<"\nfinal: "<<tmpMov->fechaFinal<<endl;
+// 		}else if (tmpMov->alistador){ //alistador
+// 			if(contador==0){
+// 				archivo<<endl;
+// 				archivo<<"Alisto "<< "\t Alistador "<< tmpMov->numAlistador <<endl;
+// 				contador++;
+// 			}
+// 			archivo<< tmpMov->articulo<< "\t Ubicación: "<<tmpMov->ubicacion <<
+// 			"\tfinal: "<<tmpMov->tiempo<< "s" << endl;
+// 		}
+// 		tmpMov=tmpMov->siguiente;
+// 	}
+// 	cout<<"Aqui también llegué"<<endl;
+// 	archivo.close();
+// 	return "Listo";
+// }
 
+//---------------------------------------------------------------------saflkdjsdlofjdegl
    
 //MENUS -------------------------------------------------------------------------------------------------
 
