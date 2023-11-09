@@ -60,7 +60,6 @@ struct ListaBesties {
 };
 
 //HUMANOS --------------------------------------------------------------------------------------------------------------
-
 struct Humano{
     int ID, cantidadAmigos;
     string nombre, apellido, pais, creencia, profesion, nacimieto;
@@ -251,3 +250,25 @@ struct Infierno{
     void crearArchivoBitacora(); //Al final hay que vaciar la bitácora para volver a llenarla en otra condenación
     void enviarCorreo(); //AHHHHHHHHHHHH
 };
+
+// EL CIELO ---------------------------------------------------------------------------------------------------
+struct NodoCelestial {
+    string nombreAngel;
+    int version, generacion;
+    Humano *humanoSalvado;
+    NodoCelestial *angelIzquierdo, *angelCentral, *angelDerecho;
+
+    NodoCelestial(string _nombre, int _generacion){
+        nombreAngel=_nombre;
+        generacion=_generacion;
+        angelIzquierdo=angelCentral=angelDerecho=NULL;
+    }
+
+};
+
+
+
+
+
+
+
