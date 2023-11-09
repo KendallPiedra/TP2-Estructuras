@@ -263,6 +263,8 @@ struct NodoCelestial {
         generacion=_generacion;
         angelIzquierdo=angelCentral=angelDerecho=NULL;
     }
+
+    void imprimirCelestialmente();
 };
 
 struct ArbolAngelical{
@@ -274,7 +276,9 @@ struct ArbolAngelical{
 
     void generarPrimerNivel();
     void generarNuevoNivel(NodoCelestial *nodo);
-    void generarNombresYVersiones();
+    void generarVersiones(NodoCelestial *nodo,string nombre, int versionActual);
+    void invocarAngeles();
+    void imprimirInOrden(NodoCelestial *nodo);
 };
 
 
