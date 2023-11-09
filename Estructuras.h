@@ -263,10 +263,15 @@ struct NodoCelestial {
         generacion=_generacion;
         angelIzquierdo=angelCentral=angelDerecho=NULL;
     }
-
 };
 
+struct ArbolAngelical{
+    NodoCelestial *raiz;
 
+    ArbolAngelical(){
+        raiz=new NodoCelestial("DIOS",0);
+    }
+};
 
 
 
