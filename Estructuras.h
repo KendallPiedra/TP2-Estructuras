@@ -273,7 +273,8 @@ struct ArbolAngelical{
     }
 
     void generarPrimerNivel();
-    void generarNuevoNivel();
+    void generarNuevoNivel(NodoCelestial *nodo);
+    void generarNombresYVersiones();
 };
 
 

@@ -386,8 +386,24 @@ void ArbolAngelical::generarPrimerNivel(){
     raiz->angelDerecho=new NodoCelestial("Tronos",0);
 }
 
-void ArbolAngelical::generarNuevoNivel(){
+void ArbolAngelical::generarNombresYVersiones(){
     
+}
+
+void ArbolAngelical::generarNuevoNivel(NodoCelestial *nodo){
+    string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
+    if (nodo == nullptr) return;
+
+    if (nodo->angelIzquierdo == nullptr && nodo->angelCentral == nullptr && nodo->angelDerecho == nullptr) {
+        nodo->angelIzquierdo = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
+        nodo->angelCentral = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
+        nodo->angelDerecho = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
+        return;
+    }
+
+    generarNuevoNivel(nodo->angelIzquierdo);
+    generarNuevoNivel(nodo->angelCentral);
+    generarNuevoNivel(nodo->angelDerecho);
 }
 
 
