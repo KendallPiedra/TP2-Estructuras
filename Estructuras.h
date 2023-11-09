@@ -271,6 +271,9 @@ struct ArbolAngelical{
     ArbolAngelical(){
         raiz=new NodoCelestial("DIOS",0);
     }
+
+    void generarPrimerNivel();
+    void generarNuevoNivel();
 };
 
 
