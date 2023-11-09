@@ -105,11 +105,14 @@ vector<int> ArbolDeLaVida::sacarIndicesOrdenadosSegunPecado(string pecado){
 
 Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
     vector<int> indices = sacarIndicesOrdenadosSegunPecado(pecado);
-
+    cout<<"se saca la cantidad de humanos a matar"<<endl; 
     int cantidadPecadores = PorcentajeACantidad(5, cantidadHumanos);
+    cout<<"se sacó"<<endl;
     Humano** HumanosPecadores = new Humano*[cantidadPecadores];
     int j=0;
     for (int i = 0; i < cantidadPecadores; i++) {
+        cout<<"i: "<<i<<endl;
+        cout<<"j: "<<j<<endl;
         bool annadio=false;
         while(annadio==false){
             if(arrayDeLaVida[indices[i]]->vivo){
@@ -250,12 +253,18 @@ void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){ //est
 }
 
 void Infierno::enviarDemonio(int posicionD){
+    cout<<"enviardemonio"<<endl;
+    cout<<demonios[posicionD]->nombre<<endl;
     string pecado= demonios[posicionD]->pecado;
+    cout<<pecado<<endl;
     Humano** condenados =ADLV->sacarPorcentajeMasPecador(pecado);
+    cout<<"Se saca el porcentaje mas pecador"<<endl;
     int cantidadCondenados = PorcentajeACantidad(5, ADLV->cantidadHumanos);
+    cout<<"cantidad condenados: "<< cantidadCondenados<<endl;
     for (int i=0; i<cantidadCondenados;i++){
         if (condenados[i] == nullptr) {
             // No quedan condenados
+            cout<<"No quedan condenados"<<endl;
             break;
         }
         demonios[posicionD]->matarHumano(condenados[i],ADLV);
@@ -267,7 +276,7 @@ void Infierno::crearArchivoBitacora(){
     ofstream archivo;
 	archivo.open(obtenerFechaYHoraActual(),ios::out); 
 	if (archivo.fail()){
-		cout<<"No escribí el archivo"<<endl;
+		cout<<"No escribí el archivo"<<endl;//que sad
 		exit(1);
 	}
     NodoBitacora * tmp= bitacora->primerNodo;
@@ -286,8 +295,10 @@ void Infierno::crearArchivoBitacora(){
 void Infierno::realizarCondenacionGeneral(){
     for (int i; i<7;i++){
         enviarDemonio(i);
+        cout<<"no"<<endl;
     }
-crearArchivoBitacora();
+//crearArchivoBitacora();
+cout<<"realizar"<<endl;
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){

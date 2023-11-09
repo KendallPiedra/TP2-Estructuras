@@ -236,7 +236,8 @@ struct Infierno{
     Demonio* demonios[7];//[cant demonios][cant familias][heap]
     ArbolDeLaVida * ADLV;
     BitacoraCondenacion * bitacora;
-    Infierno() {
+    Infierno(ArbolDeLaVida*_ADLV) {
+        ADLV=_ADLV;
         string nombres[]={"Asmodeo","Belfegor","Mammón","Abadón","Satán","Belcebú","Lucifer"};
         string pecados[] = {"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"}; 
         for (int i =0; i<7;i++){
