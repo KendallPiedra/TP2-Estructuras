@@ -117,6 +117,7 @@ Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
         while(annadio==false){
             if(arrayDeLaVida[indices[i]]->vivo){
                 //esta vivo
+                cout<<"humano:"<<HumanosPecadores[i]->ID<<endl;
                 HumanosPecadores[i] = arrayDeLaVida[indices[j]];
                 annadio=true;
                 j++;
