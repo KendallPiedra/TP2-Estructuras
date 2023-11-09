@@ -369,7 +369,16 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
 // }
 
 //---------------------------------------------------------------------saflkdjsdlofjdegl
-   
+
+//ARBOL CELESTIAL --------------------------------------------------------------------------------------
+void ArbolAngelical::invocarAngeles(){
+    string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
+    generarNuevoNivel(raiz);
+    for (int i = 0; i < 10; i++){
+        generarVersiones(raiz,nombresAngelicales[i],0);
+    }
+}
+
 //MENUS -------------------------------------------------------------------------------------------------
 
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){

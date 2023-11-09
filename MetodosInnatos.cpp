@@ -371,7 +371,7 @@ void ListaBesties::imprimirConPecados(){
     cout<<"-----------------------------------------------------"<<endl;
 }
 
-// BITACORA DE CONDENACIÓN -----------------------------------------------------------------------------------------
+// BITACORA DE CONDENACIÓN ---------------------------------------------------------------------------------------------
 void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string pecado){
     if (primerNodo==NULL)
 	    primerNodo=ultimoNodo=new NodoBitacora(indice, humano, pecado, obtenerFechaYHoraActual());
@@ -382,15 +382,59 @@ void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string peca
     }
 }
 
-// ARBOL ANGELICAL -------------------------------------------------------------------------------------------------
+// NODO CELESTIAL ------------------------------------------------------------------------------------------------------
+void NodoCelestial::imprimirCelestialmente(){
+    cout<<"------------------------- NODO CELESTIAL ---------------------------"<<endl;
+    cout<<"Humano: "<<humanoSalvado->nombre<<" "<<humanoSalvado->apellido<<endl;
+    cout<<"ID Humano: "<<humanoSalvado->ID<<endl;
+    cout<<"Nombre Angelical: "<<nombreAngel<<endl;
+    cout<<"Versión: "<<version<<endl;
+    cout<<"Generación: "<<generacion<<endl;
+}
+
+// ARBOL ANGELICAL -----------------------------------------------------------------------------------------------------
 void ArbolAngelical::generarPrimerNivel(){
     raiz->angelIzquierdo=new NodoCelestial("Serafines",0);
     raiz->angelCentral=new NodoCelestial("Querubines",0);
     raiz->angelDerecho=new NodoCelestial("Tronos",0);
 }
 
-void ArbolAngelical::generarNuevoNivel(){
-    
+void ArbolAngelical::generarVersiones(NodoCelestial *nodo, string nombre, int versionActual){
+    if (nodo == NULL) 
+        return;
+
+    if (nodo->angelIzquierdo == NULL && nodo->angelCentral == NULL && nodo->angelDerecho == NULL && nodo->nombreAngel==nombre) {
+        nodo->version=versionActual+1;
+        versionActual++;
+    }
+
+    generarVersiones(nodo->angelIzquierdo, nombre, versionActual);
+    generarVersiones(nodo->angelCentral, nombre, versionActual);
+    generarVersiones(nodo->angelDerecho, nombre, versionActual);
 }
 
+void ArbolAngelical::generarNuevoNivel(NodoCelestial *nodo){
+    string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
+    if (nodo == nullptr) 
+        return;
 
+    if (nodo->angelIzquierdo == nullptr && nodo->angelCentral == nullptr && nodo->angelDerecho == nullptr) {
+        nodo->angelIzquierdo = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
+        nodo->angelCentral = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
+        nodo->angelDerecho = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
+        return;
+    }
+
+    generarNuevoNivel(nodo->angelIzquierdo);
+    generarNuevoNivel(nodo->angelCentral);
+    generarNuevoNivel(nodo->angelDerecho);
+}
+
+void ArbolAngelical::imprimirInOrden(NodoCelestial *nodo){
+    if (nodo != NULL){
+        imprimirInOrden(nodo->angelIzquierdo);
+        imprimirInOrden(nodo->angelCentral);
+        nodo->imprimirCelestialmente();
+        imprimirInOrden(nodo->angelDerecho);
+    }
+}
