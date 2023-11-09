@@ -76,9 +76,9 @@ int main(int argc, char const *argv[])
     //         break;
     //     }
     // } while (opcion!=0);
-    string log="apellidos.txt";
-    string email="krisncl1701@gmail.com";
-    string ruta=""; 
+    // string log="apellidos.txt";
+    // string email="krisncl1701@gmail.com";
+    // string ruta=""; 
 
 
     return 0;

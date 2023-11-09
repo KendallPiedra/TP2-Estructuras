@@ -381,3 +381,16 @@ void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string peca
 	    ultimoNodo=ultimoNodo->siguiente; 
     }
 }
+
+// ARBOL ANGELICAL -------------------------------------------------------------------------------------------------
+void ArbolAngelical::generarPrimerNivel(){
+    raiz->angelIzquierdo=new NodoCelestial("Serafines",0);
+    raiz->angelCentral=new NodoCelestial("Querubines",0);
+    raiz->angelDerecho=new NodoCelestial("Tronos",0);
+}
+
+void ArbolAngelical::generarNuevoNivel(){
+    
+}
+
+
