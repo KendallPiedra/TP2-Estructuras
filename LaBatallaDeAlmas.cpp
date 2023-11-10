@@ -25,9 +25,13 @@ int main(int argc, char const *argv[])
 
     Infierno * infierno = new Infierno(arbolDeLaVida);//
     cout<<"cosa2"<<endl;
-    infierno-> realizarCondenacionGeneral();
+    string cosa;
+    cosa=infierno-> realizarCondenacionGeneral();
+    string invocar="C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\enviarCorreos.exe kpiedra262@gmail.com C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\"+cosa+" "+cosa+" AHHHHHHHHH";
+    system(invocar.c_str());
     cout<<"cosa3"<<endl;
     std::cin.get(); // Espera que el usuario presione Enter
+    
 
     infierno->consultaDeLosMiembrosDelInfierno();
     // arbolDeLaVida->imprimir();

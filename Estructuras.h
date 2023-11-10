@@ -245,7 +245,7 @@ struct Infierno{
         bitacora=new BitacoraCondenacion();
     }
     void enviarDemonio(int posicionD);
-    void realizarCondenacionGeneral();
+    string realizarCondenacionGeneral();
     void consultaDeLosMiembrosDelInfierno();
     void generarBitacoraCondenacion(Humano * humano, string pecado); 
     string crearArchivoBitacora(); //Al final hay que vaciar la bitácora para volver a llenarla en otra condenación

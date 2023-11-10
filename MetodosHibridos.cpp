@@ -28,10 +28,10 @@ int Humano::sacarIndicePecado(string pecado){
 }
 
 int Humano::sacarCantidadPecado(string pecado){
-    cout<<"Se llama a sacar cantidad de pecado"<<endl;
+cout<<"Se llama a sacar cantidad de pecado"<<endl;
     cout<<pecado<<endl;
     int iPecado=sacarIndicePecado(pecado);
-    cout<<"iPecado:"<<iPecado<<endl;
+cout<<"iPecado:"<<iPecado<<endl;
     cout<<"cantidad:"<<pecados[iPecado]->cantidad<<endl;
 
     return pecados[iPecado]->cantidad;
@@ -340,14 +340,12 @@ string Infierno::crearArchivoBitacora(){
     return nombre;
 } 
 
-void Infierno::realizarCondenacionGeneral(){
+string Infierno::realizarCondenacionGeneral(){
     for (int i; i<7;i++){
         enviarDemonio(i);
         // cout<<"no"<<endl;
     }
-    string nombre=crearArchivoBitacora();
-    // system("enviarCorreo.exe krisncl1701@gmail.com OneDrive\\Escritorio\\Homeworks\\2k23 II SEMESTRE\\Estructuras de Datos\\TP2-Estructuras\\nombres.txt");
-    // cout<<"realizar"<<endl;
+    return crearArchivoBitacora();
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
