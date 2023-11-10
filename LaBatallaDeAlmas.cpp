@@ -27,8 +27,8 @@ int main(int argc, char const *argv[])
     cout<<"cosa3"<<endl;
     std::cin.get(); // Espera que el usuario presione Enter
 
-    infierno->consultaDeLosMiembrosDelInfierno();
-    arbolDeLaVida->imprimir();
+    // infierno->consultaDeLosMiembrosDelInfierno();
+    // arbolDeLaVida->imprimir();
 
     // // cout<<"----------------------*************************************************************---------------------------------"<<endl;
     // arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();

@@ -295,9 +295,8 @@ void Infierno::crearArchivoBitacora(){
     while (tmp!=NULL){
         archivo<<tmp->fechayHora<<"\tHumano: "<<tmp->indice<<"\t"<<tmp->nombreYApellido<<"\t"<<tmp->pais<<endl;
 	    archivo<<"Murió el "<<tmp->fechayHora<<endl;
-        archivo<<"\tCondenado por "<<tmp->pecado->cantidad<<" pecados de "<<tmp->pecado->nombrePecado<<
+        archivo<<"Condenado por "<<tmp->pecado->cantidad<<" pecados de "<<tmp->pecado->nombrePecado<<
         " por el demonio "<<tmp->demonio<<endl;
-        archivo<<"\n"<<endl;
         tmp=tmp->siguiente;
     }
 	archivo.close();
