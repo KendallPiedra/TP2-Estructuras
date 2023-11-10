@@ -385,8 +385,8 @@ void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string peca
 // NODO CELESTIAL ------------------------------------------------------------------------------------------------------
 void NodoCelestial::imprimirCelestialmente(){
     cout<<"------------------------- NODO CELESTIAL ---------------------------"<<endl;
-    cout<<"Humano: "<<humanoSalvado->nombre<<" "<<humanoSalvado->apellido<<endl;
-    cout<<"ID Humano: "<<humanoSalvado->ID<<endl;
+    // cout<<"Humano: "<<humanoSalvado->nombre<<" "<<humanoSalvado->apellido<<endl;
+    // cout<<"ID Humano: "<<humanoSalvado->ID<<endl;
     cout<<"Nombre Angelical: "<<nombreAngel<<endl;
     cout<<"Versión: "<<version<<endl;
     cout<<"Generación: "<<generacion<<endl;
@@ -432,9 +432,9 @@ void ArbolAngelical::generarNuevoNivel(NodoCelestial *nodo){
 
 void ArbolAngelical::imprimirInOrden(NodoCelestial *nodo){
     if (nodo != NULL){
+        nodo->imprimirCelestialmente();
         imprimirInOrden(nodo->angelIzquierdo);
         imprimirInOrden(nodo->angelCentral);
-        nodo->imprimirCelestialmente();
         imprimirInOrden(nodo->angelDerecho);
     }
 }

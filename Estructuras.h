@@ -263,6 +263,8 @@ struct NodoCelestial {
         nombreAngel=_nombre;
         generacion=_generacion;
         angelIzquierdo=angelCentral=angelDerecho=NULL;
+        version=0;
+        humanoSalvado=NULL;
     }
 
     void imprimirCelestialmente();
