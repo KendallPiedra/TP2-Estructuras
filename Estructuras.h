@@ -270,6 +270,7 @@ struct NodoCelestial {
     void imprimirCelestialmente();
 };
 
+// ARBOL ANGELICAL ---------------------------------------------------------------------------------------------
 struct ArbolAngelical{
     NodoCelestial *raiz;
     int numeroVersion;
