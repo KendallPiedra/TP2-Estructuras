@@ -89,6 +89,12 @@ int main(int argc, char const *argv[])
     // string log="apellidos.txt";
     // string email="krisncl1701@gmail.com";
     // string ruta=""; 
+    // ArbolAngelical *arbolAngelical=new ArbolAngelical();
+    // arbolAngelical->generarPrimerNivel();
+    // arbolAngelical->invocarAngeles();
+    // arbolAngelical->invocarAngeles();
+    // arbolAngelical->invocarAngeles();
+    // arbolAngelical->imprimirInOrden(arbolAngelical->raiz);
 
 
     return 0;

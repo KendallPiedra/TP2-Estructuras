@@ -351,14 +351,14 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
 
-//---------------------------------------------------------------------saflkdjsdlofjdegl
 
 //ARBOL CELESTIAL --------------------------------------------------------------------------------------
 void ArbolAngelical::invocarAngeles(){
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
     generarNuevoNivel(raiz);
     for (int i = 0; i < 10; i++){
-        generarVersiones(raiz,nombresAngelicales[i],0);
+        generarVersiones(raiz,nombresAngelicales[i]);
+        numeroVersion=0;
     }
 }
 
