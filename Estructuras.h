@@ -213,7 +213,7 @@ struct Familia{
 };
 
 struct Demonio{
-    Familia* familias[30*20];
+    Familia* familias[600];
     int cantFamilias;
     string nombre, pecado;
     Demonio(string _nombre,string _pecado){

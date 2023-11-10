@@ -1,6 +1,6 @@
 Asmodeo
 Pecado: Lujuria
-Cantidad de humanos condenados: 412
+Cantidad de humanos condenados: 55
 Promedio de pecados: 0
-Maximo de pecados:-1
-Minimo de pecados:2147483647
+Maximo de pecados:7
+Minimo de pecados:0

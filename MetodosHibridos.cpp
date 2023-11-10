@@ -28,7 +28,12 @@ int Humano::sacarIndicePecado(string pecado){
 }
 
 int Humano::sacarCantidadPecado(string pecado){
+    cout<<"Se llama a sacar cantidad de pecado"<<endl;
+    cout<<pecado<<endl;
     int iPecado=sacarIndicePecado(pecado);
+    cout<<"iPecado:"<<iPecado<<endl;
+    cout<<"cantidad:"<<pecados[iPecado]->cantidad<<endl;
+
     return pecados[iPecado]->cantidad;
 
 }
@@ -139,6 +144,7 @@ int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
 }
 void Familia::annadirFamiliar(Humano * familiar){
         familiares[cantMiembrosActual]=familiar;
+        cantMiembrosActual++;
     }
 
 //DEMONIOS ------------------------------------------------------------------------------------------------------------
@@ -154,7 +160,8 @@ void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
     Familia *fam;
     for (int i=0; i<cantFamilias;i++){
         fam= familias[i];
-        if (humano->pais==fam->pais  &&humano->apellido==fam->pais){
+        if (humano->pais==fam->pais  &&humano->apellido==fam->apellido
+        ){
             fam->annadirFamiliar(humano);
         }
     }
@@ -162,10 +169,16 @@ void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
 }
 
 int Demonio::calcularCantidadHumanos(){
-    int cantidad;
+    int cantidad=0;
+    cout<<"cantidad fam: "<<cantFamilias<<endl;
     for (int i=0; i<cantFamilias;i++){
+        cout<<cantidad<<endl;
+
         cantidad+=familias[i]->cantMiembrosActual;
+        cout<<"cantidad miembros: "<<familias[i]->cantMiembrosActual<<endl;
     }
+    cout<<cantidad<<endl;
+    cin.get();
     return cantidad;
 }
 
@@ -244,14 +257,33 @@ Humano ** Demonio::sacarListaDeLosMasPecadores(){
     for (int i = 0; i < cantidad-1; i++) {
         int minIdx = i;
         for (int j = i+1; j < cantidad; j++) {
-            
+            cout<<"I:"<<i<<endl;
+            cout<<"J:"<<j<<endl;
+            cout<<pecado<<endl;
+            cin.get();
+            cout<<"minIdx: "<< minIdx<<endl;
+            cin.get();
+            cout<<listaHumanos[j]->sacarCantidadPecado(pecado)<<endl; 
+            cout<<listaHumanos[minIdx]->sacarCantidadPecado(pecado)<<endl;
+            cin.get();
+
             if (listaHumanos[j]->sacarCantidadPecado(pecado) < listaHumanos[minIdx]->sacarCantidadPecado(pecado)){
                 minIdx = j;
             }
+            cout<<minIdx<<endl;
+            cin.get();
         }
+        cout<<"sale del segundo for"<<endl;//ESTABA PROBANDO ESTA FUNCION
+        cin.get();
         Humano * temp = listaHumanos[minIdx];
+        cout<<"tempo = humano de la lista"<<endl;//ESTABA PROBANDO ESTA FUNCION
+        cin.get();
         listaHumanos[minIdx] = listaHumanos[i];
+        cout<<"se cambia humano de lista por humano i"<<endl;//ESTABA PROBANDO ESTA FUNCION
+        cin.get();
         listaHumanos[i] = temp;
+        cout<<"el humano i se cambia por tempo"<<endl;//ESTABA PROBANDO ESTA FUNCION
+        cin.get();
     }
 
     cout << "Lista de los más pecadores ordenada correctamente" << endl;
