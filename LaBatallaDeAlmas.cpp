@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
     // -------------------------------------------------------------------------------------------------------------------------
     ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
     arbolDeLaVida->crearGeneracionHumanos(1000);
-    // arbolDeLaVida->imprimir();
+    arbolDeLaVida->imprimir();
     arbolDeLaVida->arrayDeLaVida[3]->publicarEnRedSocial(
         arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial,
         extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial));

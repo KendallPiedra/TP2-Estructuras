@@ -343,10 +343,11 @@ void Infierno::realizarCondenacionGeneral(){
         // cout<<"no"<<endl;
     }
     string nombre=crearArchivoBitacora();
+    // this_thread::sleep_for(std::chrono::seconds(5));
+    cin.get();
     string invocar="C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\enviarCorreos.exe krisncl1701@gmail.com C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\"+nombre+" "+nombre+" AHHHHHHHHH";
     system(invocar.c_str());
-
-    // cout<<"realizar"<<endl;
+    
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
