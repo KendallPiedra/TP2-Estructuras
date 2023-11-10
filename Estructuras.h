@@ -210,6 +210,7 @@ struct Familia{
     } 
     int determinarCantMiembros(ArbolDeLaVida * arbolDeLaVida);
     void annadirFamiliar(Humano * familiar);
+    void borrarRaiz();
 };
 
 struct Demonio{
