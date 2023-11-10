@@ -399,18 +399,18 @@ void ArbolAngelical::generarPrimerNivel(){
     raiz->angelDerecho=new NodoCelestial("Tronos",0);
 }
 
-void ArbolAngelical::generarVersiones(NodoCelestial *nodo, string nombre, int versionActual){
+void ArbolAngelical::generarVersiones(NodoCelestial *nodo, string nombre){
     if (nodo == NULL) 
         return;
 
     if (nodo->angelIzquierdo == NULL && nodo->angelCentral == NULL && nodo->angelDerecho == NULL && nodo->nombreAngel==nombre) {
-        nodo->version=versionActual+1;
-        versionActual++;
+        nodo->version=numeroVersion+1;
+        numeroVersion++;
     }
 
-    generarVersiones(nodo->angelIzquierdo, nombre, versionActual);
-    generarVersiones(nodo->angelCentral, nombre, versionActual);
-    generarVersiones(nodo->angelDerecho, nombre, versionActual);
+    generarVersiones(nodo->angelIzquierdo, nombre);
+    generarVersiones(nodo->angelCentral, nombre);
+    generarVersiones(nodo->angelDerecho, nombre);
 }
 
 void ArbolAngelical::generarNuevoNivel(NodoCelestial *nodo){
