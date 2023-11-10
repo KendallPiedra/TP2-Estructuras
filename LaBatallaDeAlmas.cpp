@@ -28,22 +28,12 @@ int main(int argc, char const *argv[])
     std::cin.get(); // Espera que el usuario presione Enter
 
     infierno->consultaDeLosMiembrosDelInfierno();
-    
-
-    
     arbolDeLaVida->imprimir();
 
     // // cout<<"----------------------*************************************************************---------------------------------"<<endl;
     // arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();
     std::cout << "Presiona Enter para salir...";
     std::cin.get(); // Espera que el usuario presione Enter
-
-
-    
-
-
-
-
 
     // -------------------------------------------------------------------------------------------------------------------------
     // int opcion=1;

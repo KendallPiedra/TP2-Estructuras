@@ -286,7 +286,7 @@ void Infierno::enviarDemonio(int posicionD){
 
 void Infierno::crearArchivoBitacora(){
     ofstream archivo;
-	archivo.open(obtenerFechaYHoraActual(),ios::out); 
+	archivo.open(obtenerFechaYHoraActual()+".txt",ios::out); 
 	if (archivo.fail()){
 		cout<<"No escribí el archivo"<<endl;//que sad
 		exit(1);
@@ -309,8 +309,8 @@ void Infierno::realizarCondenacionGeneral(){
         enviarDemonio(i);
         cout<<"no"<<endl;
     }
-//crearArchivoBitacora();
-cout<<"realizar"<<endl;
+    crearArchivoBitacora();
+    cout<<"realizar"<<endl;
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
