@@ -58,7 +58,7 @@ string Humano::convertirAString(){
     datos += "Creencia: " + creencia + "\n";
     datos += "Profesión: " + profesion + "\n";
     datos += "Nacimiento: " + nacimieto + "\n";
-    datos += "Cantidad Amigos: " + to_string(cantidadAmigos) + "\n";
+    datos += "Cantidad amigos maxima: " + to_string(cantidadAmigos) + "\n";
     datos += "Pecados:\n";
     datos += convertirPecadosAString();//
     datos += convertirRedesSocialesAString();//
@@ -105,19 +105,17 @@ vector<int> ArbolDeLaVida::sacarIndicesOrdenadosSegunPecado(string pecado){
 
 Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
     vector<int> indices = sacarIndicesOrdenadosSegunPecado(pecado);
-    cout<<"se saca la cantidad de humanos a matar"<<endl; 
     int cantidadPecadores = PorcentajeACantidad(5, cantidadHumanos);
-    cout<<"se sacó"<<endl;
     Humano** HumanosPecadores = new Humano*[cantidadPecadores];
     int j=0;
     for (int i = 0; i < cantidadPecadores; i++) {
         cout<<"i: "<<i<<endl;
         cout<<"j: "<<j<<endl;
         bool annadio=false;
+        
         while(annadio==false){
-            if(arrayDeLaVida[indices[i]]->vivo){
+            if(arrayDeLaVida[indices[j]]->vivo){
                 //esta vivo
-                cout<<"humano:"<<HumanosPecadores[i]->ID<<endl;
                 HumanosPecadores[i] = arrayDeLaVida[indices[j]];
                 annadio=true;
                 j++;
@@ -232,8 +230,17 @@ Humano ** Demonio::sacarListaDeHumanos(){
 }
 
 Humano ** Demonio::sacarListaDeLosMasPecadores(){
-    Humano** listaHumanos=sacarListaDeHumanos();
+    cout << "Entra a la funcion sacarListaDeLosMasPecadores" << endl;
+    cin.get();
+
+    Humano** listaHumanos = sacarListaDeHumanos();
+    cout << "Se logra sacar la lista de humanos" << endl;
+    cin.get();
+
     int cantidad = calcularCantidadHumanos();
+    cout << "Cantidad de humanos: " << cantidad << endl;
+    cin.get();
+
     for (int i = 0; i < cantidad-1; i++) {
         int minIdx = i;
         for (int j = i+1; j < cantidad; j++) {
@@ -246,6 +253,10 @@ Humano ** Demonio::sacarListaDeLosMasPecadores(){
         listaHumanos[minIdx] = listaHumanos[i];
         listaHumanos[i] = temp;
     }
+
+    cout << "Lista de los más pecadores ordenada correctamente" << endl;
+    cin.get();
+
     return listaHumanos;
 }
 //INFIERNO ---------------------------------------------------------------------------------------------------------------------
@@ -303,19 +314,35 @@ cout<<"realizar"<<endl;
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
+    cout<<"se abre el archivo"<<endl;
     ofstream archivo;
     archivo.open("ConsultaInfernal.txt",ios::out);
+    cout<<"se abrió el archivo"<<endl;
     for (int i=0; i<7; i++){
         archivo<<demonios[i]->nombre<<"\nPecado: "<<demonios[i]->pecado<<endl;
         archivo<<"Cantidad de humanos condenados: "<<demonios[i]->calcularCantidadHumanos()<<endl;
         archivo<<"Promedio de pecados: "<<demonios[i]->calcularPromedioPecados()<<endl;
         archivo<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
         archivo<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
+        cout<<"se pusieron los datos del demonio"<<endl;
+        std::cin.get(); // Espera que el usuario presione Enter
 
+        cout<<"se calculan los humanos"<<endl;
+        
         int cantidadHumanos = demonios[i]->calcularCantidadHumanos();
+        cout<<"sacar lista de los mas pecadores"<<endl;
+        std::cin.get(); // Espera que el usuario presione Enter
+
         Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
+        cout<<"se saco la lista de los mas pecadores"<<endl;
+        cin.get();
         archivo<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
-        for (int i=0; i< cantidadHumanos;i++){
+        cout<<"alooooooooo"<<endl;
+        cin.get();
+        for (int j=0; j< cantidadHumanos;j++){
+            cout<<"se intenta pasar un humano a string"<<endl;
+            std::cin.get(); // Espera que el usuario presione Enter
+
             archivo<<listaOrdenadaHumanos[i]->convertirAString()<<endl;
             archivo<<"------------------------------------------------------------------------------------------"<<endl;
         }
@@ -323,50 +350,6 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
     archivo.close();
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
-
-//---------------------------------------------------------------------saflkdjsdlofjdegl
-// string facturarPedido(NodoPedido *pedido, string _nombreArchivo){
-// 	ofstream archivo;
-// 	short contador=0;
-// 	archivo.open(_nombreArchivo,ios::out); //Al ya existir lo va a sobreescribir
-// 	if (archivo.fail()){
-// 		cout<<"No escribí el archivo"<<endl;
-// 		exit(1);
-// 	}
-// 	archivo<<"Pedido: \t"<<pedido->numeroPedido<<endl;
-// 	archivo<<"Cliente: \t"<<pedido->codigoCliente<<endl;
-// 	cout<<"Llegué aqui"<<endl;
-// 	Movimiento * tmpMov=pedido->movimientos->primerMov;
-// 	while (tmpMov!=NULL){
-// 		if (!tmpMov->robot && !tmpMov->alistador){
-// 			archivo<<tmpMov->ubicacion<<"\t"<<tmpMov->info<<endl;
-// 		}
-// 		tmpMov=tmpMov->siguiente;
-// 	}
-// 	cout<<"Otra vez"<<endl;
-// 	tmpMov=pedido->movimientos->primerMov;
-// 	while (tmpMov!=NULL){
-// 		if(tmpMov->robot){ //robot
-// 			archivo<<endl;
-// 			archivo<<"Robots Fábrica"<<endl;
-// 			archivo<<"ARTICULO " << tmpMov->articulo<< "\t Fabricado en "<< 
-// 			tmpMov->fabricadoEn << "/n"<< tmpMov->cantidad<< "unidades"<<
-// 			"\nincio: "<<tmpMov->fechaInicio <<"\nfinal: "<<tmpMov->fechaFinal<<endl;
-// 		}else if (tmpMov->alistador){ //alistador
-// 			if(contador==0){
-// 				archivo<<endl;
-// 				archivo<<"Alisto "<< "\t Alistador "<< tmpMov->numAlistador <<endl;
-// 				contador++;
-// 			}
-// 			archivo<< tmpMov->articulo<< "\t Ubicación: "<<tmpMov->ubicacion <<
-// 			"\tfinal: "<<tmpMov->tiempo<< "s" << endl;
-// 		}
-// 		tmpMov=tmpMov->siguiente;
-// 	}
-// 	cout<<"Aqui también llegué"<<endl;
-// 	archivo.close();
-// 	return "Listo";
-// }
 
 //---------------------------------------------------------------------saflkdjsdlofjdegl
 
