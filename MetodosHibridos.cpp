@@ -293,7 +293,7 @@ void Infierno::crearArchivoBitacora(){
 	}
     NodoBitacora * tmp= bitacora->primerNodo;
     while (tmp!=NULL){
-        archivo<<tmp->fechayHora<<"\tHumano: "<<tmp->indice<<"\t"<<tmp->nombreYApellido<<"\t"<<tmp->pais<<endl;
+        archivo<<"\n"<<tmp->fechayHora<<"\tHumano: "<<tmp->indice<<"\t"<<tmp->nombreYApellido<<"\t"<<tmp->pais<<endl;
 	    archivo<<"Murió el "<<tmp->fechayHora<<endl;
         archivo<<"Condenado por "<<tmp->pecado->cantidad<<" pecados de "<<tmp->pecado->nombrePecado<<
         " por el demonio "<<tmp->demonio<<endl;
