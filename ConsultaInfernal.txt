@@ -1,349 +1,353 @@
 Asmodeo
 Pecado: Lujuria
 Cantidad de humanos condenados: 5
-Promedio de pecados: 1
-Maximo de pecados:6
+Promedio de pecados: 2
+Maximo de pecados:5
 Minimo de pecados:0
 Humanos Condenados:
 ------------------------------------------------------------------------
-ID: 20810
-Nombre: Gabriel
-Apellido: Scott
-Pais: Egipto
+ID: 30772
+Nombre: Corbin
+Apellido: Smith
+Pais: Rusia
 Creencia: Taoísmo
-Profesión: Futbolista
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 28
+Profesión: Farmacéutico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 33
 Pecados:
-Lujuria: 6
+Lujuria: 5
 Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 18
-Facebook: 18
-Twitter: 28
-LinkedIn: 36
-Netflix: 90
-Tinder: 91
-Instagram: 93
+Facebook: 4
+LinkedIn: 9
+Netflix: 42
+iFood: 55
+Tinder: 69
+Instagram: 72
+Twitter: 94
 --------------------Lista Amigos--------------------
--->Ronald Rodriguez
--->Asa Scott
+-->Dominick Walker
+-->Carson Hall
+-->Blake Garcia
+-->Odin Johnson
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 20810
-Nombre: Gabriel
-Apellido: Scott
-Pais: Egipto
+ID: 24366
+Nombre: Dominick
+Apellido: Walker
+Pais: Rusia
 Creencia: Taoísmo
-Profesión: Futbolista
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 28
+Profesión: Ingeniero
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 42
 Pecados:
-Lujuria: 6
+Lujuria: 4
 Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 18
-Facebook: 18
-Twitter: 28
-LinkedIn: 36
-Netflix: 90
-Tinder: 91
-Instagram: 93
+Netflix: 8
+Facebook: 49
+Instagram: 51
+Tinder: 57
+LinkedIn: 69
+Twitter: 70
+iFood: 78
 --------------------Lista Amigos--------------------
--->Ronald Rodriguez
--->Asa Scott
+-->Carson Hall
+-->Blake Garcia
+-->Corbin Smith
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 20810
-Nombre: Gabriel
-Apellido: Scott
-Pais: Egipto
+ID: 24770
+Nombre: Carson
+Apellido: Hall
+Pais: Rusia
 Creencia: Taoísmo
-Profesión: Futbolista
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 28
+Profesión: Médico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 100
 Pecados:
-Lujuria: 6
+Lujuria: 1
 Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 18
-Facebook: 18
-Twitter: 28
-LinkedIn: 36
-Netflix: 90
-Tinder: 91
-Instagram: 93
+Tinder: 10
+Netflix: 15
+Instagram: 21
+Twitter: 40
+LinkedIn: 66
+iFood: 71
+Facebook: 74
 --------------------Lista Amigos--------------------
--->Ronald Rodriguez
--->Asa Scott
+-->Dominick Walker
+-->Blake Garcia
+-->Corbin Smith
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 20810
-Nombre: Gabriel
-Apellido: Scott
-Pais: Egipto
-Creencia: Taoísmo
-Profesión: Futbolista
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 28
+ID: 975
+Nombre: Anthony
+Apellido: Davis
+Pais: Brasil
+Creencia: Cristianismo
+Profesión: Ingeniero
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 12
 Pecados:
-Lujuria: 6
+Lujuria: 0
 Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 18
-Facebook: 18
-Twitter: 28
-LinkedIn: 36
-Netflix: 90
-Tinder: 91
-Instagram: 93
+Netflix: 25
+iFood: 28
+Instagram: 46
+Facebook: 56
+Twitter: 62
+Tinder: 77
+LinkedIn: 81
 --------------------Lista Amigos--------------------
--->Ronald Rodriguez
--->Asa Scott
+-->Izaiah Messi
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 20810
-Nombre: Gabriel
-Apellido: Scott
-Pais: Egipto
-Creencia: Taoísmo
-Profesión: Futbolista
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 28
+ID: 1079
+Nombre: Johan
+Apellido: Thompson
+Pais: México
+Creencia: Budismo
+Profesión: Diseñador gráfico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 89
 Pecados:
-Lujuria: 6
+Lujuria: 0
 Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 18
-Facebook: 18
-Twitter: 28
-LinkedIn: 36
-Netflix: 90
-Tinder: 91
-Instagram: 93
+LinkedIn: 4
+Tinder: 29
+iFood: 40
+Netflix: 45
+Facebook: 80
+Instagram: 89
+Twitter: 92
 --------------------Lista Amigos--------------------
--->Ronald Rodriguez
--->Asa Scott
+-->Ledger Messi
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
 Belfegor
 Pecado: Gula
 Cantidad de humanos condenados: 5
-Promedio de pecados: 4
-Maximo de pecados:12
+Promedio de pecados: 0
+Maximo de pecados:3
 Minimo de pecados:0
 Humanos Condenados:
 ------------------------------------------------------------------------
-ID: 22439
-Nombre: Albert
-Apellido: Wilson
-Pais: Brasil
-Creencia: Shintoísmo
-Profesión: Ingeniero
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 6
+ID: 10857
+Nombre: Kenji
+Apellido: Jones
+Pais: China
+Creencia: Cristianismo
+Profesión: Diseñador gráfico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 100
 Pecados:
 Lujuria: 0
-Gula: 12
+Gula: 3
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-LinkedIn: 15
-Instagram: 29
-Tinder: 42
-iFood: 48
-Twitter: 68
-Facebook: 78
-Netflix: 87
+iFood: 21
+LinkedIn: 33
+Facebook: 37
+Instagram: 61
+Twitter: 90
+Tinder: 91
+Netflix: 100
 --------------------Lista Amigos--------------------
--->Kolton Jones
+-->Roland Jones
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 22439
-Nombre: Albert
-Apellido: Wilson
-Pais: Brasil
+ID: 60
+Nombre: Dash
+Apellido: Thomas
+Pais: Italia
 Creencia: Shintoísmo
-Profesión: Ingeniero
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 6
+Profesión: Médico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 4
 Pecados:
 Lujuria: 0
-Gula: 12
+Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-LinkedIn: 15
-Instagram: 29
-Tinder: 42
-iFood: 48
-Twitter: 68
-Facebook: 78
-Netflix: 87
+Facebook: 29
+LinkedIn: 39
+iFood: 66
+Tinder: 66
+Twitter: 88
+Netflix: 96
+Instagram: 100
 --------------------Lista Amigos--------------------
--->Kolton Jones
+-->Raylan Thomas
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 22439
-Nombre: Albert
-Apellido: Wilson
-Pais: Brasil
+ID: 615
+Nombre: Idris
+Apellido: Messi
+Pais: Francia
 Creencia: Shintoísmo
-Profesión: Ingeniero
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 6
+Profesión: Futbolista
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 1
 Pecados:
 Lujuria: 0
-Gula: 12
+Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-LinkedIn: 15
-Instagram: 29
-Tinder: 42
-iFood: 48
-Twitter: 68
-Facebook: 78
-Netflix: 87
+Netflix: 8
+LinkedIn: 24
+Tinder: 37
+Twitter: 59
+Instagram: 59
+Facebook: 60
+iFood: 64
 --------------------Lista Amigos--------------------
--->Kolton Jones
+-->Damien Martinez
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 22439
-Nombre: Albert
-Apellido: Wilson
-Pais: Brasil
-Creencia: Shintoísmo
-Profesión: Ingeniero
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 6
+ID: 1857
+Nombre: Kristian
+Apellido: Clark
+Pais: Italia
+Creencia: Jainismo
+Profesión: Psicólogo
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 50
 Pecados:
 Lujuria: 0
-Gula: 12
+Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-LinkedIn: 15
-Instagram: 29
-Tinder: 42
-iFood: 48
-Twitter: 68
-Facebook: 78
-Netflix: 87
+Netflix: 18
+Instagram: 30
+Tinder: 55
+Facebook: 57
+iFood: 72
+Twitter: 89
+LinkedIn: 93
 --------------------Lista Amigos--------------------
--->Kolton Jones
+-->Kobe Wright
+-->Dorian Hitler
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 22439
-Nombre: Albert
-Apellido: Wilson
-Pais: Brasil
-Creencia: Shintoísmo
-Profesión: Ingeniero
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 6
+ID: 2351
+Nombre: Mordechai
+Apellido: Walker
+Pais: Canadá
+Creencia: Cristianismo
+Profesión: Chef
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 72
 Pecados:
 Lujuria: 0
-Gula: 12
+Gula: 0
 Avaricia: 0
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-LinkedIn: 15
-Instagram: 29
-Tinder: 42
-iFood: 48
-Twitter: 68
-Facebook: 78
-Netflix: 87
+Netflix: 17
+Tinder: 19
+Facebook: 23
+Twitter: 42
+Instagram: 47
+iFood: 75
+LinkedIn: 81
 --------------------Lista Amigos--------------------
--->Kolton Jones
+-->Aydin Rodriguez
+-->Mathias Turner
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
 Mammón
 Pecado: Avaricia
 Cantidad de humanos condenados: 5
-Promedio de pecados: 1
-Maximo de pecados:6
+Promedio de pecados: 0
+Maximo de pecados:3
 Minimo de pecados:0
 Humanos Condenados:
 ------------------------------------------------------------------------
-ID: 4281
-Nombre: Coen
-Apellido: Harris
-Pais: Corea del Sur
+ID: 9803
+Nombre: Izaiah
+Apellido: Messi
+Pais: Brasil
 Creencia: Budismo
-Profesión: Farmacéutico
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 10
+Profesión: Ingeniero
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 34
 Pecados:
 Lujuria: 0
 Gula: 0
-Avaricia: 0
+Avaricia: 3
 Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 62
-Netflix: 77
-Twitter: 83
-Tinder: 90
-Facebook: 90
-LinkedIn: 93
-Instagram: 97
+iFood: 44
+Tinder: 49
+LinkedIn: 54
+Netflix: 54
+Twitter: 69
+Facebook: 70
+Instagram: 70
 --------------------Lista Amigos--------------------
--->Avi Harris
--->Kristian Walker
+-->Anthony Davis
+-->Boone Hitler
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 4281
-Nombre: Coen
-Apellido: Harris
-Pais: Corea del Sur
-Creencia: Budismo
-Profesión: Farmacéutico
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 10
+ID: 3311
+Nombre: Gage
+Apellido: White
+Pais: Estados Unidos
+Creencia: Islam
+Profesión: Chef
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 31
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -352,27 +356,25 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 62
-Netflix: 77
-Twitter: 83
-Tinder: 90
-Facebook: 90
-LinkedIn: 93
-Instagram: 97
+Netflix: 1
+Tinder: 5
+iFood: 9
+LinkedIn: 34
+Instagram: 70
+Twitter: 93
+Facebook: 99
 --------------------Lista Amigos--------------------
--->Avi Harris
--->Kristian Walker
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 4281
-Nombre: Coen
-Apellido: Harris
-Pais: Corea del Sur
-Creencia: Budismo
-Profesión: Farmacéutico
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 10
+ID: 4322
+Nombre: Lionel
+Apellido: Rodriguez
+Pais: Argentina
+Creencia: Shintoísmo
+Profesión: Programador informático
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 58
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -381,27 +383,26 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 62
-Netflix: 77
-Twitter: 83
-Tinder: 90
-Facebook: 90
-LinkedIn: 93
-Instagram: 97
+Twitter: 3
+iFood: 7
+LinkedIn: 14
+Tinder: 74
+Instagram: 92
+Facebook: 95
+Netflix: 95
 --------------------Lista Amigos--------------------
--->Avi Harris
--->Kristian Walker
+-->Leon Rodriguez
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 4281
-Nombre: Coen
-Apellido: Harris
-Pais: Corea del Sur
-Creencia: Budismo
-Profesión: Farmacéutico
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 10
+ID: 4342
+Nombre: Leonidas
+Apellido: Jones
+Pais: México
+Creencia: Bahaísmo
+Profesión: Abogado
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 41
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -410,27 +411,27 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 62
-Netflix: 77
-Twitter: 83
-Tinder: 90
-Facebook: 90
-LinkedIn: 93
-Instagram: 97
+iFood: 2
+Netflix: 17
+Instagram: 33
+Twitter: 51
+LinkedIn: 66
+Tinder: 68
+Facebook: 74
 --------------------Lista Amigos--------------------
--->Avi Harris
--->Kristian Walker
+-->Caden Garcia
+-->Baylor Wright
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 4281
-Nombre: Coen
-Apellido: Harris
-Pais: Corea del Sur
-Creencia: Budismo
-Profesión: Farmacéutico
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 10
+ID: 4723
+Nombre: Steven
+Apellido: Messi
+Pais: Reino Unido
+Creencia: Hinduismo
+Profesión: Periodista
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 12
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -439,64 +440,64 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 62
-Netflix: 77
-Twitter: 83
-Tinder: 90
-Facebook: 90
-LinkedIn: 93
-Instagram: 97
+Netflix: 11
+LinkedIn: 32
+Facebook: 62
+Instagram: 67
+Twitter: 80
+Tinder: 83
+iFood: 88
 --------------------Lista Amigos--------------------
--->Avi Harris
--->Kristian Walker
+-->Jovanni Garcia
+-->Fabian Martinez
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
 Abadón
 Pecado: Pereza
 Cantidad de humanos condenados: 5
-Promedio de pecados: 9
-Maximo de pecados:21
+Promedio de pecados: 3
+Maximo de pecados:18
 Minimo de pecados:0
 Humanos Condenados:
 ------------------------------------------------------------------------
-ID: 4571
-Nombre: Noah
-Apellido: Rodriguez
-Pais: Rusia
-Creencia: Taoísmo
-Profesión: Enfermero/enfermera
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 70
+ID: 12038
+Nombre: Triste
+Apellido: Wilson
+Pais: India
+Creencia: Islam
+Profesión: Programador informático
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 36
 Pecados:
 Lujuria: 0
 Gula: 0
 Avaricia: 0
-Pereza: 0
+Pereza: 18
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 14
-Facebook: 20
-Instagram: 40
-LinkedIn: 50
-Tinder: 87
-Twitter: 91
-Netflix: 99
+iFood: 5
+Tinder: 10
+LinkedIn: 30
+Facebook: 30
+Instagram: 47
+Netflix: 53
+Twitter: 81
 --------------------Lista Amigos--------------------
--->Stanley White
--->Lance King
+-->Kristian Wilson
+-->Trace Scott
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 4571
-Nombre: Noah
-Apellido: Rodriguez
-Pais: Rusia
-Creencia: Taoísmo
-Profesión: Enfermero/enfermera
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 70
+ID: 4782
+Nombre: Roland
+Apellido: Jones
+Pais: China
+Creencia: Islam
+Profesión: Programador informático
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 85
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -505,27 +506,26 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 14
-Facebook: 20
-Instagram: 40
-LinkedIn: 50
-Tinder: 87
-Twitter: 91
-Netflix: 99
+Facebook: 8
+Tinder: 39
+LinkedIn: 48
+Instagram: 53
+Netflix: 58
+Twitter: 62
+iFood: 72
 --------------------Lista Amigos--------------------
--->Stanley White
--->Lance King
+-->Kenji Jones
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 4571
-Nombre: Noah
-Apellido: Rodriguez
-Pais: Rusia
-Creencia: Taoísmo
+ID: 5342
+Nombre: Kameron
+Apellido: Harris
+Pais: Brasil
+Creencia: Islam
 Profesión: Enfermero/enfermera
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 70
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 13
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -534,27 +534,25 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 14
-Facebook: 20
-Instagram: 40
-LinkedIn: 50
-Tinder: 87
-Twitter: 91
-Netflix: 99
+Netflix: 7
+Instagram: 13
+LinkedIn: 36
+Tinder: 53
+iFood: 60
+Facebook: 83
+Twitter: 88
 --------------------Lista Amigos--------------------
--->Stanley White
--->Lance King
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 4571
-Nombre: Noah
-Apellido: Rodriguez
-Pais: Rusia
-Creencia: Taoísmo
-Profesión: Enfermero/enfermera
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 70
+ID: 5528
+Nombre: Aidan
+Apellido: Jones
+Pais: Australia
+Creencia: Hinduismo
+Profesión: Médico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 67
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -563,27 +561,26 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 14
-Facebook: 20
-Instagram: 40
-LinkedIn: 50
-Tinder: 87
-Twitter: 91
+iFood: 21
+Instagram: 25
+Facebook: 80
+Twitter: 81
+LinkedIn: 83
+Tinder: 98
 Netflix: 99
 --------------------Lista Amigos--------------------
--->Stanley White
--->Lance King
+-->Kobe Turner
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 4571
-Nombre: Noah
-Apellido: Rodriguez
-Pais: Rusia
-Creencia: Taoísmo
-Profesión: Enfermero/enfermera
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 70
+ID: 6206
+Nombre: Alberto
+Apellido: Messi
+Pais: Corea del Sur
+Creencia: Sijismo
+Profesión: Bombero
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 89
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -592,89 +589,92 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-iFood: 14
-Facebook: 20
-Instagram: 40
-LinkedIn: 50
-Tinder: 87
-Twitter: 91
-Netflix: 99
+Netflix: 1
+LinkedIn: 17
+Instagram: 17
+iFood: 23
+Facebook: 45
+Twitter: 67
+Tinder: 76
 --------------------Lista Amigos--------------------
--->Stanley White
--->Lance King
+-->Kameron Harris
+-->Arthur Jones
+-->Eric Thomas
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
 Satán
 Pecado: Ira
 Cantidad de humanos condenados: 5
-Promedio de pecados: 0
-Maximo de pecados:0
+Promedio de pecados: 1
+Maximo de pecados:6
 Minimo de pecados:0
 Humanos Condenados:
 ------------------------------------------------------------------------
-ID: 6003
-Nombre: Griffin
-Apellido: Clark
-Pais: Corea del Sur
-Creencia: Islam
-Profesión: Biólogo
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 48
+ID: 31537
+Nombre: Kristian
+Apellido: Wilson
+Pais: India
+Creencia: Judaísmo
+Profesión: Enfermero/enfermera
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 79
 Pecados:
 Lujuria: 0
 Gula: 0
 Avaricia: 0
 Pereza: 0
-Ira: 0
+Ira: 6
 Envidia: 0
 Soberbia: 0
-Facebook: 1
-Tinder: 18
-LinkedIn: 36
-iFood: 79
-Instagram: 79
-Twitter: 94
-Netflix: 98
+Netflix: 7
+Twitter: 14
+iFood: 28
+LinkedIn: 29
+Instagram: 29
+Tinder: 38
+Facebook: 93
 --------------------Lista Amigos--------------------
+-->Triste Wilson
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 6003
-Nombre: Griffin
-Apellido: Clark
-Pais: Corea del Sur
+ID: 28627
+Nombre: Trace
+Apellido: Scott
+Pais: India
 Creencia: Islam
-Profesión: Biólogo
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 48
+Profesión: Electricista
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 17
 Pecados:
 Lujuria: 0
 Gula: 0
 Avaricia: 0
 Pereza: 0
-Ira: 0
+Ira: 3
 Envidia: 0
 Soberbia: 0
-Facebook: 1
-Tinder: 18
-LinkedIn: 36
-iFood: 79
-Instagram: 79
-Twitter: 94
-Netflix: 98
+Twitter: 16
+Instagram: 19
+Tinder: 23
+LinkedIn: 24
+iFood: 89
+Facebook: 90
+Netflix: 97
 --------------------Lista Amigos--------------------
+-->Triste Wilson
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 6003
-Nombre: Griffin
-Apellido: Clark
-Pais: Corea del Sur
-Creencia: Islam
-Profesión: Biólogo
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 48
+ID: 7360
+Nombre: Sean
+Apellido: Wright
+Pais: Estados Unidos
+Creencia: Judaísmo
+Profesión: Astrónomo
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 73
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -684,24 +684,25 @@ Ira: 0
 Envidia: 0
 Soberbia: 0
 Facebook: 1
-Tinder: 18
-LinkedIn: 36
-iFood: 79
-Instagram: 79
-Twitter: 94
-Netflix: 98
+Tinder: 4
+Instagram: 39
+LinkedIn: 46
+iFood: 71
+Twitter: 87
+Netflix: 90
 --------------------Lista Amigos--------------------
+-->Marcellus Wright
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 6003
-Nombre: Griffin
-Apellido: Clark
-Pais: Corea del Sur
-Creencia: Islam
-Profesión: Biólogo
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 48
+ID: 7825
+Nombre: Demetrius
+Apellido: Brown
+Pais: Arabia Saudita
+Creencia: Jainismo
+Profesión: Diseñador gráfico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 6
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -710,25 +711,26 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-Facebook: 1
-Tinder: 18
-LinkedIn: 36
-iFood: 79
-Instagram: 79
-Twitter: 94
-Netflix: 98
+Tinder: 7
+Facebook: 11
+LinkedIn: 21
+iFood: 30
+Twitter: 46
+Netflix: 65
+Instagram: 87
 --------------------Lista Amigos--------------------
+-->Grant Lee
 -----------------------------------------------------
 
 ------------------------------------------------------------------------------------------
-ID: 6003
-Nombre: Griffin
-Apellido: Clark
-Pais: Corea del Sur
-Creencia: Islam
-Profesión: Biólogo
-Nacimiento: 10-11-2023_12-16-14
-Cantidad amigos maxima: 48
+ID: 8012
+Nombre: Kyree
+Apellido: Johnson
+Pais: Brasil
+Creencia: Shintoísmo
+Profesión: Policía
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 74
 Pecados:
 Lujuria: 0
 Gula: 0
@@ -737,13 +739,13 @@ Pereza: 0
 Ira: 0
 Envidia: 0
 Soberbia: 0
-Facebook: 1
-Tinder: 18
-LinkedIn: 36
-iFood: 79
-Instagram: 79
-Twitter: 94
-Netflix: 98
+LinkedIn: 5
+Tinder: 17
+iFood: 24
+Netflix: 28
+Instagram: 41
+Facebook: 43
+Twitter: 72
 --------------------Lista Amigos--------------------
 -----------------------------------------------------
 
@@ -756,3 +758,289 @@ Maximo de pecados:0
 Minimo de pecados:0
 Humanos Condenados:
 ------------------------------------------------------------------------
+ID: 15
+Nombre: Baylor
+Apellido: Wright
+Pais: México
+Creencia: Taoísmo
+Profesión: Abogado
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 80
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+LinkedIn: 24
+Tinder: 33
+iFood: 43
+Netflix: 54
+Facebook: 60
+Twitter: 74
+Instagram: 74
+--------------------Lista Amigos--------------------
+-->Leonidas Jones
+-->Truett Clark
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ID: 8164
+Nombre: Marley
+Apellido: Taylor
+Pais: Egipto
+Creencia: Jainismo
+Profesión: Contador
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 55
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+Instagram: 4
+Facebook: 5
+Tinder: 16
+iFood: 47
+Netflix: 48
+LinkedIn: 92
+Twitter: 100
+--------------------Lista Amigos--------------------
+-->Bennett Taylor
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ID: 8299
+Nombre: Jose
+Apellido: Rodriguez
+Pais: Corea del Sur
+Creencia: Cristianismo
+Profesión: Médico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 93
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+Twitter: 5
+Facebook: 8
+LinkedIn: 22
+iFood: 22
+Netflix: 31
+Instagram: 52
+Tinder: 95
+--------------------Lista Amigos--------------------
+-->Ricardo Harris
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ID: 8478
+Nombre: Ermias
+Apellido: Hitler
+Pais: Rusia
+Creencia: Shintoísmo
+Profesión: Traductor/intérprete
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 48
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+Tinder: 16
+iFood: 52
+Netflix: 53
+LinkedIn: 73
+Facebook: 75
+Instagram: 77
+Twitter: 88
+--------------------Lista Amigos--------------------
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ID: 8824
+Nombre: Ledger
+Apellido: Messi
+Pais: México
+Creencia: Hinduismo
+Profesión: Diseñador gráfico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 27
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+iFood: 2
+Twitter: 21
+Tinder: 40
+LinkedIn: 55
+Netflix: 71
+Facebook: 72
+Instagram: 79
+--------------------Lista Amigos--------------------
+-->Johan Thompson
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+Lucifer
+Pecado: Soberbia
+Cantidad de humanos condenados: 5
+Promedio de pecados: 0
+Maximo de pecados:0
+Minimo de pecados:0
+Humanos Condenados:
+------------------------------------------------------------------------
+ID: 9045
+Nombre: Kobe
+Apellido: Turner
+Pais: Australia
+Creencia: Jainismo
+Profesión: Médico
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 66
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+Facebook: 23
+Netflix: 27
+Instagram: 40
+Tinder: 50
+iFood: 68
+LinkedIn: 73
+Twitter: 93
+--------------------Lista Amigos--------------------
+-->Aidan Jones
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ID: 9072
+Nombre: Robert
+Apellido: Jones
+Pais: Arabia Saudita
+Creencia: Judaísmo
+Profesión: Biólogo
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 83
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+iFood: 6
+LinkedIn: 10
+Netflix: 17
+Tinder: 58
+Instagram: 79
+Twitter: 82
+Facebook: 90
+--------------------Lista Amigos--------------------
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ID: 9417
+Nombre: Pedro
+Apellido: Messi
+Pais: Japón
+Creencia: Shintoísmo
+Profesión: Electricista
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 73
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+Facebook: 7
+Instagram: 11
+LinkedIn: 13
+iFood: 27
+Tinder: 44
+Netflix: 66
+Twitter: 86
+--------------------Lista Amigos--------------------
+-->Braylen Martin
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ID: 9456
+Nombre: Kelvin
+Apellido: Harris
+Pais: Japón
+Creencia: Bahaísmo
+Profesión: Arquitecto
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 71
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+Netflix: 23
+Facebook: 30
+iFood: 53
+LinkedIn: 55
+Tinder: 59
+Instagram: 66
+Twitter: 87
+--------------------Lista Amigos--------------------
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ID: 10158
+Nombre: Marcellus
+Apellido: Wright
+Pais: Estados Unidos
+Creencia: Judaísmo
+Profesión: Abogado
+Nacimiento: 10-11-2023_12-30-44
+Cantidad amigos maxima: 82
+Pecados:
+Lujuria: 0
+Gula: 0
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 0
+Soberbia: 0
+Tinder: 3
+iFood: 18
+Twitter: 21
+LinkedIn: 25
+Facebook: 42
+Netflix: 63
+Instagram: 98
+--------------------Lista Amigos--------------------
+-->Sean Wright
+-----------------------------------------------------
+
+------------------------------------------------------------------------------------------
