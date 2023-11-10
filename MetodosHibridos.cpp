@@ -343,7 +343,9 @@ void Infierno::realizarCondenacionGeneral(){
         // cout<<"no"<<endl;
     }
     string nombre=crearArchivoBitacora();
-    system("enviarCorreo.exe krisncl1701@gmail.com OneDrive\\Escritorio\\Homeworks\\2k23 II SEMESTRE\\Estructuras de Datos\\TP2-Estructuras nombres.txt");
+    string invocar="C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\enviarCorreos.exe krisncl1701@gmail.com C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\"+nombre+" "+nombre+" AHHHHHHHHH";
+    system(invocar.c_str());
+
     // cout<<"realizar"<<endl;
 }
 
