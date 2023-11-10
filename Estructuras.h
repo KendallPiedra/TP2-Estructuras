@@ -171,13 +171,13 @@ struct NodoBitacora{
     Pecado * pecado;
     NodoBitacora *siguiente, *anterior;
 
-    NodoBitacora(int _indice, Humano *humano, string _pecado, string _fechayHora){
+    NodoBitacora(int _indice, Humano *humano, string _pecado, string _fechayHora, string _demonio){
         indice=_indice;
         fechayHora=_fechayHora;
         nombreYApellido=humano->nombre+" "+humano->apellido;
         pais=humano->pais;
-        demonio=extraerDemonioConPecado(_pecado);
-        pecado= new Pecado(_pecado,humano->sacarCantidadPecado(_pecado));
+        demonio=_demonio;
+        pecado= new Pecado(_pecado,humano->sacarCantidadPecado(_pecado)); //por si acaso
         siguiente=anterior=NULL;
     } 
 

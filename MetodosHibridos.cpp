@@ -318,18 +318,17 @@ void Infierno::enviarDemonio(int posicionD){
 
 void Infierno::crearArchivoBitacora(){
     ofstream archivo;
-	archivo.open(obtenerFechaYHoraActual(),ios::out); 
+	archivo.open(obtenerFechaYHoraActual()+".txt",ios::out); 
 	if (archivo.fail()){
 		cout<<"No escribí el archivo"<<endl;//que sad
 		exit(1);
 	}
     NodoBitacora * tmp= bitacora->primerNodo;
     while (tmp!=NULL){
-        archivo<<tmp->fechayHora<<"\tHumano: "<<tmp->indice<<"\t"<<tmp->nombreYApellido<<"\t"<<tmp->pais<<endl;
+        archivo<<"\n"<<tmp->fechayHora<<"\tHumano: "<<tmp->indice<<"\t"<<tmp->nombreYApellido<<"\t"<<tmp->pais<<endl;
 	    archivo<<"Murió el "<<tmp->fechayHora<<endl;
-        archivo<<"\tCondenado por "<<tmp->pecado->cantidad<<" pecados de "<<tmp->pecado->nombrePecado<<
+        archivo<<"Condenado por "<<tmp->pecado->cantidad<<" pecados de "<<tmp->pecado->nombrePecado<<
         " por el demonio "<<tmp->demonio<<endl;
-        archivo<<"\n"<<endl;
         tmp=tmp->siguiente;
     }
 	archivo.close();
@@ -341,8 +340,8 @@ void Infierno::realizarCondenacionGeneral(){
         enviarDemonio(i);
         cout<<"no"<<endl;
     }
-//crearArchivoBitacora();
-cout<<"realizar"<<endl;
+    crearArchivoBitacora();
+    cout<<"realizar"<<endl;
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
