@@ -124,10 +124,8 @@ Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
     Humano** humanosPecadores = new Humano*[cantidadPecadores];
     int j=0;
     for (int i = 0; i < cantidadPecadores; i++) {
-        cin.get();
-        cout<<"i: "<<i<<endl;
-        cout<<"j: "<<j<<endl;
-        cin.get();
+        // cout<<"i: "<<i<<endl;
+        // cout<<"j: "<<j<<endl;
         bool annadio=false;
         
         while(annadio==false){
@@ -258,39 +256,31 @@ Humano ** Demonio::sacarListaDeHumanos(){
 }
 
 Humano ** Demonio::sacarListaDeLosMasPecadores(){
-    cout << "Entra a la funcion sacarListaDeLosMasPecadores" << endl;
-    cin.get();
-
+    // cout << "Entra a la funcion sacarListaDeLosMasPecadores" << endl;
     Humano** listaHumanos = sacarListaDeHumanos();
-    cout << "Se logra sacar la lista de humanos" << endl;
-    cin.get();
-
+    // cout << "Se logra sacar la lista de humanos" << endl;
     int cantidad = calcularCantidadHumanos();
-    cout << "Cantidad de humanos: " << cantidad << endl;
-    cin.get();
-
+    // cout << "Cantidad de humanos: " << cantidad << endl;
     for (int i = 0; i < cantidad-1; i++) {
         int maxIdx = i;
         for (int j = i+1; j < cantidad; j++) {
-            cout<<"I:"<<i<<endl;
-            cout<<"J:"<<j<<endl;
-            cin.get();
-            cout<<pecado<<endl;
-            cout<<listaHumanos[j]->sacarCantidadPecado(pecado)<<endl; 
-            cout<<listaHumanos[maxIdx]->sacarCantidadPecado(pecado)<<endl;
+            // cout<<"I:"<<i<<endl;
+            // cout<<"J:"<<j<<endl;
+            // cout<<pecado<<endl;
+            // cout<<listaHumanos[j]->sacarCantidadPecado(pecado)<<endl; 
+            // cout<<listaHumanos[maxIdx]->sacarCantidadPecado(pecado)<<endl;
 
             if (listaHumanos[j]->sacarCantidadPecado(pecado) > listaHumanos[maxIdx]->sacarCantidadPecado(pecado)){
                 maxIdx = j;
             }
-            cout<<maxIdx<<endl;
+            // cout<<maxIdx<<endl;
         }
         Humano * temp = listaHumanos[maxIdx];
         listaHumanos[maxIdx] = listaHumanos[i];
         listaHumanos[i] = temp;
     }
 
-    cout << "Lista de los más pecadores ordenada correctamente" << endl;
-    cin.get();
+    // cout << "Lista de los más pecadores ordenada correctamente" << endl;
 
     return listaHumanos;
 }
@@ -359,23 +349,19 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
         archivo<<"Promedio de pecados: "<<demonios[i]->calcularPromedioPecados()<<endl;
         archivo<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
         archivo<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
-        cout<<"se pusieron los datos del demonio"<<endl;
-        std::cin.get(); // Espera que el usuario presione Enter
+        // cout<<"se pusieron los datos del demonio"<<endl;
 
-        cout<<"se calculan los humanos"<<endl;
+        // cout<<"se calculan los humanos"<<endl;
         
         int cantidadHumanos = demonios[i]->calcularCantidadHumanos();
         cout<<"sacar lista de los mas pecadores"<<endl;
-        std::cin.get(); // Espera que el usuario presione Enter
 
         Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
         cout<<"se saco la lista de los mas pecadores"<<endl;
-        cin.get();
         archivo<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
         cout<<"alooooooooo"<<endl;
-        cin.get();
         for (int j=0; j< cantidadHumanos;j++){
-            cout<<"se intenta pasar un humano a string"<<endl;
+            // cout<<"se intenta pasar un humano a string"<<endl;
 
             archivo<<listaOrdenadaHumanos[j]->convertirAString()<<endl;
             archivo<<"------------------------------------------------------------------------------------------"<<endl;
