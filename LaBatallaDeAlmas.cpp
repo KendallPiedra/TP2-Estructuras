@@ -11,21 +11,39 @@ int main(int argc, char const *argv[])
     ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
     arbolDeLaVida->crearGeneracionHumanos(1000);
     arbolDeLaVida->imprimir();
-    arbolDeLaVida->arrayDeLaVida[663]->publicarEnRedSocial(
-        arbolDeLaVida->arrayDeLaVida[663]->redesSociales[6]->nombreRedSocial,
-        extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[663]->redesSociales[6]->nombreRedSocial));
+    arbolDeLaVida->arrayDeLaVida[3]->publicarEnRedSocial(
+        arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial,
+        extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial));
     // cout<<"----------------------*************************************************************---------------------------------"<<endl;
     
-    menuPublicarPorReligion(arbolDeLaVida);
-    cout<<"cosa"<<endl;
-    Infierno * infierno = new Infierno(arbolDeLaVida);
+    menuPublicarPorReligion(arbolDeLaVida);//
+
+    cout<<"lista generada..."<<endl;
+    std::cin.get(); // Espera que el usuario presione Enter
+
+    Infierno * infierno = new Infierno(arbolDeLaVida);//
     cout<<"cosa2"<<endl;
     infierno-> realizarCondenacionGeneral();
     cout<<"cosa3"<<endl;
+    std::cin.get(); // Espera que el usuario presione Enter
+
+    infierno->consultaDeLosMiembrosDelInfierno();
     
-    arbolDeLaVida->arrayDeLaVida[663]->imprimir();
-    // cout<<"----------------------*************************************************************---------------------------------"<<endl;
-    arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();
+
+    
+    arbolDeLaVida->imprimir();
+
+    // // cout<<"----------------------*************************************************************---------------------------------"<<endl;
+    // arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();
+    std::cout << "Presiona Enter para salir...";
+    std::cin.get(); // Espera que el usuario presione Enter
+
+
+    
+
+
+
+
 
     // -------------------------------------------------------------------------------------------------------------------------
     // int opcion=1;
