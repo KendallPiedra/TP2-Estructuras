@@ -28,11 +28,11 @@ int Humano::sacarIndicePecado(string pecado){
 }
 
 int Humano::sacarCantidadPecado(string pecado){
-cout<<"Se llama a sacar cantidad de pecado"<<endl;
-    cout<<pecado<<endl;
+    // cout<<"Se llama a sacar cantidad de pecado"<<endl;
+    // cout<<pecado<<endl;
     int iPecado=sacarIndicePecado(pecado);
-cout<<"iPecado:"<<iPecado<<endl;
-    cout<<"cantidad:"<<pecados[iPecado]->cantidad<<endl;
+    // cout<<"iPecado:"<<iPecado<<endl;
+    // cout<<"cantidad:"<<pecados[iPecado]->cantidad<<endl;
 
     return pecados[iPecado]->cantidad;
 
