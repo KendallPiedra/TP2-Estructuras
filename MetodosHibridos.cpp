@@ -284,9 +284,10 @@ void Infierno::enviarDemonio(int posicionD){
     }
 } 
 
-void Infierno::crearArchivoBitacora(){
+string Infierno::crearArchivoBitacora(){
     ofstream archivo;
-	archivo.open(obtenerFechaYHoraActual()+".txt",ios::out); 
+    string nombre=obtenerFechaYHoraActual()+".txt";
+	archivo.open(nombre,ios::out); 
 	if (archivo.fail()){
 		cout<<"No escribí el archivo"<<endl;//que sad
 		exit(1);
@@ -301,15 +302,17 @@ void Infierno::crearArchivoBitacora(){
     }
 	archivo.close();
     bitacora->primerNodo=bitacora->ultimoNodo=NULL; 
+    return nombre;
 } 
 
 void Infierno::realizarCondenacionGeneral(){
     for (int i; i<7;i++){
         enviarDemonio(i);
-        cout<<"no"<<endl;
+        // cout<<"no"<<endl;
     }
-    crearArchivoBitacora();
-    cout<<"realizar"<<endl;
+    string nombre=crearArchivoBitacora();
+    system("enviarCorreo.exe krisncl1701@gmail.com OneDrive\\Escritorio\\Homeworks\\2k23 II SEMESTRE\\Estructuras de Datos\\TP2-Estructuras\\nombres.txt");
+    // cout<<"realizar"<<endl;
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){

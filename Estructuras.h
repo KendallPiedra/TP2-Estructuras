@@ -248,7 +248,7 @@ struct Infierno{
     void realizarCondenacionGeneral();
     void consultaDeLosMiembrosDelInfierno();
     void generarBitacoraCondenacion(Humano * humano, string pecado); 
-    void crearArchivoBitacora(); //Al final hay que vaciar la bitácora para volver a llenarla en otra condenación
+    string crearArchivoBitacora(); //Al final hay que vaciar la bitácora para volver a llenarla en otra condenación
     void enviarCorreo(); //AHHHHHHHHHHHH
 };
 
