@@ -64,9 +64,9 @@ void Humano::imprimir(){
     cout<<"Profesión: "<<profesion<<endl;
     cout<<"Nacimiento: "<<nacimieto<<endl;
     cout<<"Cantidad amigos maxima: "<<cantidadAmigos<<endl;
+    cout<<"vivo: "<<vivo<<endl;
     cout<<"Pecados: "<<endl;
     //
-    cout<<"vivo: "<<vivo<<endl;
     //
     imprimirPecados();
     imprimirRedesSociales();

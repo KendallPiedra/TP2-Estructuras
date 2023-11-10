@@ -160,7 +160,7 @@ struct ArbolDeLaVida{
     void imprimir();
     int sacarIndicePecado(string pecado);
     Humano** sacarPorcentajeMasPecador(string pecado);
-    vector<int> sacarIndicesOrdenadosSegunPecado(string pecado);
+    int * sacarIndicesOrdenadosSegunPecado(string pecado);
 
 };
 
