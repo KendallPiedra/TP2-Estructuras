@@ -213,6 +213,7 @@ struct Familia{
     void annadirFamiliar(Humano * familiar);
     void ordenarHeap(int k);
     void borrarRaiz();
+    Humano* sacarRaiz();
 };
 
 struct Demonio{
@@ -232,6 +233,8 @@ struct Demonio{
     int calcularPromedioPecados();
     Humano** sacarListaDeHumanos();
     Humano** sacarListaDeLosMasPecadores();
+    Humano* sacarHumano(int idxFamilia);
+    Humano* mostrarHumanoRaiz(int idxFamilia);
 };
 
 struct Infierno{
@@ -254,7 +257,7 @@ struct Infierno{
     void generarBitacoraCondenacion(Humano * humano, string pecado); 
     string crearArchivoBitacora(); //Al final hay que vaciar la bitácora para volver a llenarla en otra condenación
     void enviarCorreo(); //AHHHHHHHHHHHH
-    Humano* sacarHumano(string IDHumano);
+    Humano* sacarHumano(int IDHumano);
 };
 
 // EL CIELO ---------------------------------------------------------------------------------------------------

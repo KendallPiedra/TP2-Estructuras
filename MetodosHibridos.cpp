@@ -194,6 +194,10 @@ void Familia::borrarRaiz(){
     ordenarHeap(1);
 }
 
+Humano * Familia::sacarRaiz(){
+    Humano* humano=familiares[0];
+    return humano;
+}
 //DEMONIOS ------------------------------------------------------------------------------------------------------------
 
 void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
@@ -325,6 +329,16 @@ Humano ** Demonio::sacarListaDeLosMasPecadores(){
 
     return listaHumanos;
 }
+
+Humano * Demonio::mostrarHumanoRaiz(int idxFamilia){
+    return familias[idxFamilia]->sacarRaiz();
+}
+
+Humano * Demonio::sacarHumano(int idxFamilia){
+    Humano*humano=mostrarHumanoRaiz(idxFamilia);
+    familias[idxFamilia]->borrarRaiz();
+    return humano;
+}
 //INFIERNO ---------------------------------------------------------------------------------------------------------------------
 void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){ //esta ordenado por demonio, pero del mas a menos pecador no
     bitacora->insertarFinal(ADLV->extraerIndiceHumano(humano), humano, pecado);
@@ -412,9 +426,14 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
 
-Humano* Infierno::sacarHumano(string IDHumano){
+Humano* Infierno::sacarHumano(int IDHumano){
     for(int i=0; i<7;i++){
-
+        for(int j=0;j<demonios[i]->cantFamilias;j++){
+            Humano*humano=demonios[i]->mostrarHumanoRaiz(j);
+            if(humano->ID==IDHumano){
+                return demonios[i]->sacarHumano(j);
+            }
+        }
     }
 }
     
