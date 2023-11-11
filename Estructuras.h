@@ -307,7 +307,7 @@ struct ArbolAngelical{
 };
 
 //-----------------------------------------------------------------------------------------------------------ESTRUCTURA DE DATOS LOQUISIMA
-
+//revisar como se llaman las cosas en EstructuraAVL Main
 #define pow2(n) (1 << (n))
 struct avl {
    Humano * humano;
@@ -449,7 +449,14 @@ void avl_tree::postorder(avl *t) {//de momento no deberian funcionar por como im
 struct Cielo{
     ArbolAngelical arbolAngelical;
     Infierno * infierno;
+    avl_tree * tablaSacra[1000];//no se si esto funcionara así sin el new
     
+    Cielo(Infierno* _infierno){
+        infierno=_infierno;
+    }
+    void insertarEnTablaHash(Humano*);
+    int calcularPosicionEnTabla(int ID);
+
 };
 
 

@@ -16,28 +16,33 @@ int main(int argc, char const *argv[])
         extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial));
     // cout<<"----------------------*************************************************************---------------------------------"<<endl;
     
-    menuPublicarPorReligion(arbolDeLaVida);
-    menuPublicarPorReligion(arbolDeLaVida);
-    menuPublicarPorReligion(arbolDeLaVida);
+    // menuPublicarPorReligion(arbolDeLaVida);
+    // menuPublicarPorReligion(arbolDeLaVida);
+    // menuPublicarPorReligion(arbolDeLaVida);
     cout<<"lista generada..."<<endl;
     std::cin.get(); // Espera que el usuario presione Enter
 
     Infierno * infierno = new Infierno(arbolDeLaVida);//
+
     cout<<"cosa2"<<endl;
-    string cosa;
-    cosa=infierno-> realizarCondenacionGeneral();
+    // cosa=infierno-> realizarCondenacionGeneral();
     // string invocar="C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\enviarCorreos.exe kpiedra262@gmail.com C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\"+cosa+" "+cosa+" AHHHHHHHHH";
     // system(invocar.c_str());
-    cout<<"enter para realizar consulta..."<<endl;
+    // cout<<"enter para realizar consulta..."<<endl;
+
+    Cielo * cielo= new Cielo(infierno);
+    cout<<"enterParaIncertarUnHumano..."<<endl;
     std::cin.get(); // Espera que el usuario presione Enter
+
+    cielo->insertarEnTablaHash(arbolDeLaVida->arrayDeLaVida[4]);
     
 
-    infierno->consultaDeLosMiembrosDelInfierno();
-    cout<<"se genero la primera consulta"<<endl;
+    // infierno->consultaDeLosMiembrosDelInfierno();
+    // cout<<"se genero la primera consulta"<<endl;
     cin.get();
 
-    infierno->demonios[0]->familias[0]->borrarRaiz();
-    infierno->consultaDeLosMiembrosDelInfierno();
+    // infierno->demonios[0]->familias[0]->borrarRaiz();
+    // infierno->consultaDeLosMiembrosDelInfierno();
     // arbolDeLaVida->imprimir();
 
     // // cout<<"----------------------*************************************************************---------------------------------"<<endl;

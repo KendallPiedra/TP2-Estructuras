@@ -490,6 +490,22 @@ void ArbolAngelical::invocarAngeles(){
     }
 }
 
+//CIELO----------------------------------------------------------------
+
+int Cielo::calcularPosicionEnTabla(int ID){
+    return ID%1000;
+}
+
+void Cielo::insertarEnTablaHash(Humano *humano){
+    int posicion= calcularPosicionEnTabla(humano->ID);
+    r=tablaSacra[posicion]->insert(r,humano);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
+    //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
+}
+
+
+
+
+
 //MENUS -------------------------------------------------------------------------------------------------
 
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
@@ -584,5 +600,6 @@ void menuPublicarRedesSociales(ArbolDeLaVida *arbol){
         break;
     }
 }
+
 
 
