@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
     // getline(cin, cantidadInicial);
     // -------------------------------------------------------------------------------------------------------------------------
     ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
-    arbolDeLaVida->crearGeneracionHumanos(100);
+    arbolDeLaVida->crearGeneracionHumanos(1000);
     arbolDeLaVida->imprimir();
     arbolDeLaVida->arrayDeLaVida[3]->publicarEnRedSocial(
         arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial,
@@ -19,7 +19,6 @@ int main(int argc, char const *argv[])
     menuPublicarPorReligion(arbolDeLaVida);
     menuPublicarPorReligion(arbolDeLaVida);
     menuPublicarPorReligion(arbolDeLaVida);
-    menuPublicarPorHumano(arbolDeLaVida);
     cout<<"lista generada..."<<endl;
     std::cin.get(); // Espera que el usuario presione Enter
 
@@ -29,7 +28,7 @@ int main(int argc, char const *argv[])
     cosa=infierno-> realizarCondenacionGeneral();
     // string invocar="C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\enviarCorreos.exe kpiedra262@gmail.com C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\"+cosa+" "+cosa+" AHHHHHHHHH";
     // system(invocar.c_str());
-    cout<<"cosa3"<<endl;
+    cout<<"enter para realizar consulta..."<<endl;
     std::cin.get(); // Espera que el usuario presione Enter
     
 

@@ -153,15 +153,45 @@ int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
     }
     return miembros;
 }
+
+void Familia::ordenarHeap(int k){//La primera vez k es 1
+    cout<<"entra a ordenar heap"<<endl;
+    int hijoIz=2*k;
+    int hijoDer=2*k+1;
+    if (hijoIz<=cantMiembrosActual){
+        if(familiares[hijoIz-1]->sacarCantidadPecado(pecado)>
+        familiares[k]->sacarCantidadPecado(pecado)){
+            Humano* temp=familiares[k-1];
+            familiares[k-1]= familiares[hijoIz-1];
+            familiares[hijoIz-1]=temp;
+        }
+        ordenarHeap(2*k);
+        
+    }
+    if(hijoDer<=cantMiembrosActual){
+        if(familiares[hijoDer-1]->sacarCantidadPecado(pecado)>
+        familiares[k-1]->sacarCantidadPecado(pecado)){
+            Humano* temp=familiares[k-1];
+            familiares[k-1]= familiares[hijoDer-1];
+            familiares[hijoDer-1]=temp;
+        }
+        ordenarHeap(2*k+1);
+    }
+    
+}
 void Familia::annadirFamiliar(Humano * familiar){
         familiares[cantMiembrosActual]=familiar;
         cantMiembrosActual++;
+        cout<<"se intenta añadir familiar"<<endl;
+        cin.get();
+        ordenarHeap(1);
     }
 
 //DEMONIOS ------------------------------------------------------------------------------------------------------------
 
 void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
-    familias[cantFamilias]=new Familia(humano->apellido,humano->pais, ADLV);
+    familias[cantFamilias]=new Familia(humano->apellido,humano->pais,pecado, ADLV);
+
     familias[cantFamilias]->annadirFamiliar(humano);
     cantFamilias++;
 }
@@ -169,14 +199,22 @@ void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
 void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
     humano->vivo=false;
     Familia *fam;
+    bool insertado=false;
     for (int i=0; i<cantFamilias;i++){
         fam= familias[i];
         if (humano->pais==fam->pais  &&humano->apellido==fam->apellido
         ){
+            cout<<"se añade a familia vieja"<<endl;
+            cin.get();
             fam->annadirFamiliar(humano);
+            insertado=true;
         }
     }
+    if(insertado==false){
+    cout<<"crea familia nueva"<<endl;
+    cin.get();
     insertarEnFamiliaNueva(humano, ADLV);
+    }
 }
 
 int Demonio::calcularCantidadHumanos(){

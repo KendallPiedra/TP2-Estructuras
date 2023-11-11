@@ -198,18 +198,20 @@ struct BitacoraCondenacion{
 
 //INFIERNO -----------------------------------------------------------------------------------------------------------------
 struct Familia{
-    string apellido, pais; 
+    string apellido, pais, pecado; 
     int cantMiembrosMax, cantMiembrosActual;
     Humano** familiares;
-    Familia(string _apellido, string _pais, ArbolDeLaVida * ADLV){
+    Familia(string _apellido, string _pais,string _pecado,ArbolDeLaVida * ADLV){
         apellido= _apellido;
         pais=_pais;
+        pecado=_pecado;
         cantMiembrosMax=determinarCantMiembros(ADLV);
         familiares= new Humano*[cantMiembrosMax];
         cantMiembrosActual=0;
     } 
     int determinarCantMiembros(ArbolDeLaVida * arbolDeLaVida);
     void annadirFamiliar(Humano * familiar);
+    void ordenarHeap(int k);
     void borrarRaiz();
 };
 
