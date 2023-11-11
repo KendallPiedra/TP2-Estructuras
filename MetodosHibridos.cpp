@@ -425,7 +425,44 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
     archivo.close();
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
+int Infierno::sacarCantidadDeFamilias(){
+    int cantFamilias=0;
+    for (int i=0;i<7;i++){
+        cantFamilias += demonios[i]->cantFamilias;
+    }
+    return cantFamilias;
+}
 
+Humano** Infierno::sacarListaDeRaicesDemoniacas(){
+    Humano** humanosRaiz= new Humano*[sacarCantidadDeFamilias()];
+    int k=0;
+    for (int i=0;i<7;i++){
+        for(int j=0; j<demonios[i]->cantFamilias;j++){
+            humanosRaiz[k]=demonios[i]->mostrarHumanoRaiz(j);
+            k++;
+        }
+    }
+    return humanosRaiz;
+}
+
+//retorna el ID Del humano
+int Infierno::buscarHumanoMasPecador(){
+    int cantRaices= sacarCantidadDeFamilias();
+    Humano** humanosRaiz= sacarListaDeRaicesDemoniacas();
+    
+    Humano* humanoMasPecador = humanosRaiz[0];
+    for (int i = 1; i < cantRaices; ++i) {
+        if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
+            humanoMasPecador = humanosRaiz[i];
+        }
+    }
+
+    return humanoMasPecador->ID;
+}
+
+//saca el humano (lo borra de su heap) y lo retorna
+//su parametro es el ID del humano
+//solo funciona con las raices de los heaps
 Humano* Infierno::sacarHumano(int IDHumano){
     for(int i=0; i<7;i++){
         for(int j=0;j<demonios[i]->cantFamilias;j++){
@@ -436,7 +473,11 @@ Humano* Infierno::sacarHumano(int IDHumano){
         }
     }
 }
-    
+
+
+Humano* Infierno::sacarHumanoMasPecador(){
+    return sacarHumano(buscarHumanoMasPecador());
+}
 
 //ARBOL CELESTIAL --------------------------------------------------------------------------------------
 void ArbolAngelical::invocarAngeles(){
