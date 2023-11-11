@@ -43,6 +43,7 @@ void Humano::agregarPecado(string pecado, int cantidadAgregar){ //sujeto a cambi
     for (int i=0; i < 7; i++){
         if (pecados[i]->nombrePecado==pecado){
             pecados[i]->cantidad+=cantidadAgregar;
+            totalPecados+=cantidadAgregar;
         }
     }
 }

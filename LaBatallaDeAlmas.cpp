@@ -33,6 +33,11 @@ int main(int argc, char const *argv[])
     
 
     infierno->consultaDeLosMiembrosDelInfierno();
+    cout<<"se genero la primera consulta"<<endl;
+    cin.get();
+
+    infierno->demonios[0]->familias[0]->borrarRaiz();
+    infierno->consultaDeLosMiembrosDelInfierno();
     // arbolDeLaVida->imprimir();
 
     // // cout<<"----------------------*************************************************************---------------------------------"<<endl;

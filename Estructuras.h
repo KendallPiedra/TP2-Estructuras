@@ -61,7 +61,7 @@ struct ListaBesties {
 
 //HUMANOS --------------------------------------------------------------------------------------------------------------
 struct Humano{
-    int ID, cantidadAmigos;
+    int ID, cantidadAmigos, totalPecados;
     string nombre, apellido, pais, creencia, profesion, nacimieto;
     RedSocial * redesSociales[7]; 
     Pecado * pecados[7];
@@ -87,6 +87,7 @@ struct Humano{
         cantidadAmigos=_cantAmigos;
         amigos= new ListaBesties();
         vivo= true;
+        totalPecados=0;
         
         // string sPecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"}; //usemos "Gula" por que glotoneria esta muy feo
         // string sPecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"};
@@ -107,7 +108,6 @@ struct Humano{
     int determinarCantidadASumar(string redSocial);
     int sacarIndicePecado(string pecado);
     int sacarCantidadPecado(string pecado);
-
 
     void imprimirPecados();
     void imprimirRedesSociales();
@@ -237,6 +237,7 @@ struct Demonio{
 struct Infierno{
     Demonio* demonios[7];//[cant demonios][cant familias][heap]
     ArbolDeLaVida * ADLV;
+    
     BitacoraCondenacion * bitacora;
     Infierno(ArbolDeLaVida*_ADLV) {
         ADLV=_ADLV;
@@ -253,6 +254,7 @@ struct Infierno{
     void generarBitacoraCondenacion(Humano * humano, string pecado); 
     string crearArchivoBitacora(); //Al final hay que vaciar la bitácora para volver a llenarla en otra condenación
     void enviarCorreo(); //AHHHHHHHHHHHH
+    Humano* sacarHumano(string IDHumano);
 };
 
 // EL CIELO ---------------------------------------------------------------------------------------------------

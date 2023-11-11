@@ -70,6 +70,10 @@ string Humano::convertirAString(){
     datos += amigos->convertirAmigosAString();//
     return datos;
 }
+
+
+
+
 //Metodos amigos
 //pasar a innatos!!
 string ListaBesties::convertirAmigosAString(){
@@ -155,7 +159,6 @@ int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
 }
 
 void Familia::ordenarHeap(int k){//La primera vez k es 1
-    cout<<"entra a ordenar heap"<<endl;
     int hijoIz=2*k;
     int hijoDer=2*k+1;
     if (hijoIz<=cantMiembrosActual){
@@ -182,10 +185,14 @@ void Familia::ordenarHeap(int k){//La primera vez k es 1
 void Familia::annadirFamiliar(Humano * familiar){
         familiares[cantMiembrosActual]=familiar;
         cantMiembrosActual++;
-        cout<<"se intenta añadir familiar"<<endl;
-        cin.get();
         ordenarHeap(1);
     }
+void Familia::borrarRaiz(){
+    familiares[0]=familiares[cantMiembrosActual-1];
+    familiares[cantMiembrosActual-1]=NULL;
+    cantMiembrosActual--;
+    ordenarHeap(1);
+}
 
 //DEMONIOS ------------------------------------------------------------------------------------------------------------
 
@@ -204,15 +211,11 @@ void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
         fam= familias[i];
         if (humano->pais==fam->pais  &&humano->apellido==fam->apellido
         ){
-            cout<<"se añade a familia vieja"<<endl;
-            cin.get();
             fam->annadirFamiliar(humano);
             insertado=true;
         }
     }
     if(insertado==false){
-    cout<<"crea familia nueva"<<endl;
-    cin.get();
     insertarEnFamiliaNueva(humano, ADLV);
     }
 }
@@ -409,6 +412,12 @@ void Infierno::consultaDeLosMiembrosDelInfierno(){
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
 
+Humano* Infierno::sacarHumano(string IDHumano){
+    for(int i=0; i<7;i++){
+
+    }
+}
+    
 
 //ARBOL CELESTIAL --------------------------------------------------------------------------------------
 void ArbolAngelical::invocarAngeles(){
