@@ -457,6 +457,8 @@ struct Cielo{
     void insertarEnTablaHash(Humano*);
     int calcularPosicionEnTabla(int ID);
 
+    //para sacar del infierno ljdsflksdjl ---->>>>>    infierno->sacarHumanoMasPecador();  <<<<-------jdalsdjsalkdjasd (retorna un *humano)
+
 };
 
 
