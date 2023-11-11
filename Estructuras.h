@@ -299,6 +299,12 @@ struct ArbolAngelical{
     void generarVersiones(NodoCelestial *nodo,string nombre);
     void invocarAngeles();
     void imprimirInOrden(NodoCelestial *nodo);
+    //para salvar llamar a sacar humano mas pecador
+};
+
+struct Cielo{
+    ArbolAngelical arbolAngelical;
+    Infierno * infierno;
 };
 
 
