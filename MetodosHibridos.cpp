@@ -472,6 +472,7 @@ Humano* Infierno::sacarHumano(int IDHumano){
             }
         }
     }
+    return NULL;
 }
 
 

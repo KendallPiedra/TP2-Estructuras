@@ -449,6 +449,7 @@ void avl_tree::postorder(avl *t) {//de momento no deberian funcionar por como im
 struct Cielo{
     ArbolAngelical arbolAngelical;
     Infierno * infierno;
+    
 };
 
 
