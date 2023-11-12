@@ -254,12 +254,30 @@ int Familia::contarVivos(){
     }
     return cantidadVivos;
 }
+int Familia::contarCondenados(){
+    int cantidad;
+    for (int i=0; i<cantMiembrosActual;i++){
+        if (familiares[i]->vivo==false&&familiares[i]->salvado==false){
+            cantidad++;
+        }
+    }
+    return cantidad;
+}
+int Familia::contarSalvados(){
+    int cantidad;
+    for (int i=0; i<cantMiembrosActual;i++){
+        if (familiares[i]->salvado){
+            cantidad++;
+        }
+    }
+    return cantidad;
+}
 
 double Familia::sacarPorcentajeInfierno(){
-
+    return(contarCondenados()*100)/cantMiembrosActual;
 }
 double Familia::sacarPorcentajeCielo(){
-
+    return(contarSalvados()*100)/cantMiembrosActual;
 }
 double Familia::sacarPorcentajeViVos(){
     return(contarVivos()*100)/cantMiembrosActual;

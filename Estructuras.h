@@ -228,6 +228,8 @@ struct Familia{
 
     int buscarFamiliarPorID(int ID);
     int contarVivos();
+    int contarCondenados();
+    int contarSalvados();
     double sacarPorcentajeViVos();
     double sacarPorcentajeCielo();
     double sacarPorcentajeInfierno();
