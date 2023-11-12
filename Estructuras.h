@@ -447,7 +447,7 @@ void avl_tree::postorder(avl *t) {//de momento no deberian funcionar por como im
 //-------------------------------------------------------------------------------------------------------------------------------------------
 
 struct Cielo{
-    ArbolAngelical arbolAngelical;
+    ArbolAngelical * arbolAngelical;
     Infierno * infierno;
     avl_tree * tablaSacra[1000];//no se si esto funcionara así sin el new
     
