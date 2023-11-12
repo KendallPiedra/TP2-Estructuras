@@ -273,7 +273,7 @@ struct Infierno{
     int buscarHumanoMasPecador();
     Humano* sacarHumanoMasPecador();
     int buscarDemonioConAlmaCaptiva(int ID);//cambiar
-
+    
 };
 
 // EL CIELO ---------------------------------------------------------------------------------------------------
