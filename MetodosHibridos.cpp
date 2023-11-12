@@ -84,9 +84,9 @@ string Humano::convertirAStringCelestial(){
     datos += "Generación del ángel: "+ to_string(angelQueLoSalvo->generacion) + "\n";
     datos += "Cantidad amigos maxima: " + to_string(cantidadAmigos) + "\n";
     datos += "Pecados:\n";
-    datos += convertirPecadosAString();//
-    datos += convertirRedesSocialesAString();//
-    datos += amigos->convertirAmigosAString();//
+    datos += convertirPecadosAString();
+    datos += convertirRedesSocialesAString();
+    datos += amigos->convertirAmigosAString();
     return datos;
 }
 
@@ -579,8 +579,17 @@ NodoCelestial * ArbolAngelical::salvarHumano(NodoCelestial *nodo, Humano * human
     return resultDerecho;
 }
 
-//CIELO----------------------------------------------------------------
+string ArbolAngelical::convertirAngelAString(NodoCelestial *angel){
+    string datos="";
+    datos += "Nombre Ángel: San " + angel->nombreAngel + "\n";
+    datos += "Versión: " + to_string(angel->version) + "\n";
+    datos += "Generación: G" + to_string(angel->generacion) + "\n";
+    datos += "Humano: \n";
+    datos +=  angel->humanoSalvado->convertirAString();
+    return datos;
+}
 
+//CIELO----------------------------------------------------------------
 int Cielo::calcularPosicionEnTabla(int ID){
     return ID%1000;
 }
@@ -778,7 +787,7 @@ void menuGanadorBatalla(Infierno * infierno, Cielo *cielo){
         cout<<"spinach creamed optima est, et quisquis aliter dicit, meretur damnationem aeternam"<<endl;
     }else{
         cout<<"GANADOR: Cielo"<<endl;
-        cout<<"Cum vicimus, tata martia celebremus edendo glacies cremor, vivat coelum"<<endl;
+        cout<<"Cum vicimus, tata Marcial celebremus edendo glacies cremor, coeleste festum."<<endl;
     }
 }
 
