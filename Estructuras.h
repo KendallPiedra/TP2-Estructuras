@@ -532,6 +532,7 @@ struct Cielo{
         infierno=_infierno;
         arbolAngelical= new ArbolAngelical();
         arbolAngelical->generarPrimerNivel();
+        bitacora=new BitacoraCondenacion();
     }
     void insertarEnTablaHash(Humano*);
     int calcularPosicionEnTabla(int ID);
