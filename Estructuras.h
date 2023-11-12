@@ -167,6 +167,8 @@ struct ArbolDeLaVida{
     Humano** sacarPorcentajeMasPecador(string pecado);
     int * sacarIndicesOrdenadosSegunPecado(string pecado);
 
+    Familia * sacarFamiliacompleta(string apellido, string pais);
+
 };
 
 //BITACORA -----------------------------------------------------------------------------------------------------------------

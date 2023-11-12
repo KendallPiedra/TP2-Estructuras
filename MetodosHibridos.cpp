@@ -33,14 +33,14 @@ int Humano::sacarCantidadPecado(string pecado){
     int iPecado=sacarIndicePecado(pecado);
     // cout<<"iPecado:"<<iPecado<<endl;
     // cout<<"cantidad:"<<pecados[iPecado]->cantidad<<endl;
-
+    if (iPecado=-1){return -1;}
     return pecados[iPecado]->cantidad;
 
 }
 
 //pasar a innatos!!!!
 string Humano::convertirPecadosAString() {
-    string sPecados = "";
+    string sPecados = "Pecados Totales: "+to_string(totalPecados);
     for (int i = 0; i < 7; i++) {
         sPecados += pecados[i]->nombrePecado + ": " + to_string(pecados[i]->cantidad) + "\n";
     }
@@ -166,6 +166,10 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     }
 }
 
+Familia * ArbolDeLaVida::sacarFamiliacompleta(string apellido,string pais){
+    Familia * familia= new Familia(apellido,pais,NULL,this);
+}
+
 //FAMILIAS ------------------------------------------------------------------------------------------------------------------
 int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
     int miembros;
@@ -182,7 +186,15 @@ int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
 void Familia::ordenarHeap(int k){//La primera vez k es 1
     int hijoIz=2*k;
     int hijoDer=2*k+1;
+    int totalPecadoHijo;
+    int totalPecadoPadre=familiares[k-1]->sacarCantidadPecado(pecado);
+    if(totalPecadoHijo==-1){totalPecadoPadre=familiares[hijoIz-1]->totalPecados;}//pecados generales
+
     if (hijoIz<=cantMiembrosActual){
+        totalPecadoHijo=familiares[hijoIz-1]->sacarCantidadPecado(pecado);
+        if(totalPecadoHijo==-1){totalPecadoHijo=familiares[hijoIz-1]->totalPecados;}//pecados generales
+
+
         if(familiares[hijoIz-1]->sacarCantidadPecado(pecado)>
         familiares[k]->sacarCantidadPecado(pecado)){
             Humano* temp=familiares[k-1];
@@ -193,6 +205,9 @@ void Familia::ordenarHeap(int k){//La primera vez k es 1
         
     }
     if(hijoDer<=cantMiembrosActual){
+        totalPecadoHijo=familiares[hijoDer-1]->sacarCantidadPecado(pecado);
+        if(totalPecadoHijo==-1){totalPecadoHijo=familiares[hijoDer-1]->totalPecados;}//pecados generales
+        
         if(familiares[hijoDer-1]->sacarCantidadPecado(pecado)>
         familiares[k-1]->sacarCantidadPecado(pecado)){
             Humano* temp=familiares[k-1];
