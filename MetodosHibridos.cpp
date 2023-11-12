@@ -174,6 +174,7 @@ Familia * ArbolDeLaVida::sacarFamiliacompleta(string apellido,string pais){
             familia->annadirFamiliar(arrayDeLaVida[i]);
         }
     }
+    return familia;
 }
 
 //FAMILIAS ------------------------------------------------------------------------------------------------------------------
