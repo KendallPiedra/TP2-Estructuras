@@ -530,6 +530,7 @@ struct Cielo{
 
     Cielo(Infierno* _infierno){
         infierno=_infierno;
+        arbolAngelical= new ArbolAngelical();
         arbolAngelical->generarPrimerNivel();
     }
     void insertarEnTablaHash(Humano*);
