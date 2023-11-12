@@ -1,3 +1,5 @@
+
+
 #define pow2(n) (1 << (n))
 struct avl {
    Humano * humano;
