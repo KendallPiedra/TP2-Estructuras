@@ -734,7 +734,7 @@ void menuConsultarCielo(Cielo *cielo){
 }
 
 void menuConsultarCielo(Cielo *cielo){
-    
+
 }
 
 void menuConsultas(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
