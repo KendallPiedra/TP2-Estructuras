@@ -138,6 +138,15 @@ Humano** ArbolDeLaVida::sacarPorcentajeMasPecador(string pecado) {//PROBAR
     return humanosPecadores;
 }
 
+// No se que hace este método aqui pero me da mieo moverlo :)
+void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
+    for (int i=0; i < cantidadHumanos; i++){
+        if(arrayDeLaVida[i]->ID==ID && arrayDeLaVida[i]->vivo){
+            arrayDeLaVida[i]->publicarEnRedSocial(redSocial, pecado);
+        }
+    }
+}
+
 //FAMILIAS ------------------------------------------------------------------------------------------------------------------
 int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
     int miembros;
@@ -560,14 +569,7 @@ void Cielo::insertarEnTablaHash(Humano *humano){
     //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
 }
 
-// No se que hace este método aqui pero me da mieo moverlo :)
-void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
-    for (int i=0; i < cantidadHumanos; i++){
-        if(arrayDeLaVida[i]->ID==ID && arrayDeLaVida[i]->vivo){
-            arrayDeLaVida[i]->publicarEnRedSocial(redSocial, pecado);
-        }
-    }
-}
+
 
 void Cielo::generarBitacoraSalvacion(Humano * humano, string angel, NodoCelestial *angelEnviado){ //esta ordenado por demonio, pero del mas a menos pecador no
     bitacora->insertarFinalCielo(infierno->ADLV->extraerIndiceHumano(humano), humano, angel, angelEnviado);
