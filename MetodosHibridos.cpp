@@ -433,8 +433,8 @@ void Infierno::enviarDemonio(int posicionD){
     // cout<<"enviardemonio"<<endl;
     // cout<<demonios[posicionD]->nombre<<endl;
     string pecado= demonios[posicionD]->pecado;
-    // cout<<pecado<<endl;
-    Humano** condenados =ADLV->sacarPorcentajeMasPecador(pecado);
+    cout<<pecado<<endl;
+    Humano** condenados = ADLV->sacarPorcentajeMasPecador(pecado);
     // cout<<"Se saca el porcentaje mas pecador"<<endl;
     int cantidadCondenados = PorcentajeACantidad(5, ADLV->cantidadHumanos);
     // cout<<"cantidad condenados: "<< cantidadCondenados<<endl;
