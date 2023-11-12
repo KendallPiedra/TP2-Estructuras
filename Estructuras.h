@@ -219,6 +219,8 @@ struct Familia{
     void ordenarHeap(int k);
     void borrarRaiz();
     Humano* sacarRaiz();
+
+    bool buscarHumanoPorID(int ID)
 };
 
 struct Demonio{
@@ -240,6 +242,8 @@ struct Demonio{
     Humano** sacarListaDeLosMasPecadores();
     Humano* sacarHumano(int idxFamilia);
     Humano* mostrarHumanoRaiz(int idxFamilia);
+
+    bool buscarHumanoPorID(int ID);
 };
 
 struct Infierno{
@@ -268,6 +272,8 @@ struct Infierno{
     Humano ** sacarListaDeRaicesDemoniacas();
     int buscarHumanoMasPecador();
     Humano* sacarHumanoMasPecador();
+
+    int buscarHumanoPorID(int ID);//cambiar
 
 };
 

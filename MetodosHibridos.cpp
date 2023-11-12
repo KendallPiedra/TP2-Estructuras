@@ -473,6 +473,33 @@ Humano* Infierno::sacarHumanoMasPecador(){
     return sacarHumano(buscarHumanoMasPecador());
 }
 
+bool Familia::buscarHumanoPorID(int ID){
+    for (int i=0; i<cantMiembrosActual;i++){
+        if(familiares[i]->ID==ID){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Demonio::buscarHumanoPorID(int ID){
+    for (int i=0; i<cantFamilias;i++){
+        if(familias[i]->buscarHumanoPorID(ID)){
+            return true;
+        }
+    }
+    return false;
+}
+
+int Infierno::buscarHumanoPorID(int ID){
+    for (int i;i<7;i++){
+        if (demonios[i]->buscarHumanoPorID(ID)){
+            return i;
+        }
+    }
+    return -1;
+}
+
 //ARBOL CELESTIAL --------------------------------------------------------------------------------------
 void ArbolAngelical::invocarAngeles(){
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel",
