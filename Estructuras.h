@@ -9,6 +9,7 @@ using namespace std;
 
 
 struct Humano;
+struct NodoCelestial;
 string extraerDemonioConPecado(string pecado);
 
 //PECADO --------------------------------------------------------------------------------------------------------
@@ -78,6 +79,7 @@ struct Humano{
     //6:Soverbia  
     ListaBesties * amigos;
     bool vivo;
+    NodoCelestial * angelQueLoSalvo;
 
     Humano(int _ID, string _nombre, string _apellido, string _pais, string _creencia,
     string _profesion, string _nacimiento, int _cantAmigos){
@@ -92,13 +94,7 @@ struct Humano{
         amigos= new ListaBesties();
         vivo= true;
         totalPecados=0;
-        
-        // string sPecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"}; //usemos "Gula" por que glotoneria esta muy feo
-        // string sPecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"};
-        // for (int i=0; i<7){
-        //     pecados[i]= new Pecado(sPecados[i]);
-        //Falta añadir REDES SOCIALES
-        // }
+        angelQueLoSalvo=NULL;
     }
 
     void agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual);
@@ -112,7 +108,7 @@ struct Humano{
     int determinarCantidadASumar(string redSocial);
     int sacarIndicePecado(string pecado);
     int sacarCantidadPecado(string pecado);
-
+    int extraerPecadosTotales();
     void imprimirPecados();
     void imprimirRedesSociales();
 
@@ -175,13 +171,13 @@ struct NodoBitacora{
     Pecado * pecado;
     NodoBitacora *siguiente, *anterior;
 
-    NodoBitacora(int _indice, Humano *humano, string _pecado, string _fechayHora, string _demonio){
+    NodoBitacora(int _indice, Humano *humano, string _pecado, string _fechayHora, string _demonio, int cantidadPecado){
         indice=_indice;
         fechayHora=_fechayHora;
         nombreYApellido=humano->nombre+" "+humano->apellido;
         pais=humano->pais;
         demonio=_demonio;
-        pecado= new Pecado(_pecado,humano->sacarCantidadPecado(_pecado)); //por si acaso
+        pecado= new Pecado(_pecado,cantidadPecado); //por si acaso
         siguiente=anterior=NULL;
     } 
 
@@ -198,6 +194,7 @@ struct BitacoraCondenacion{
     }
 
     void insertarFinal (int indice, Humano * humano, string pecado);
+    void insertarFinalCielo(int indice, Humano * humano, string angel);
 };
 
 //INFIERNO -----------------------------------------------------------------------------------------------------------------
@@ -302,8 +299,10 @@ struct ArbolAngelical{
     void generarNuevoNivel(NodoCelestial *nodo);
     void generarVersiones(NodoCelestial *nodo,string nombre);
     void invocarAngeles();
+    int contarHojas(NodoCelestial* nodo);
     void imprimirInOrden(NodoCelestial *nodo);
     //para salvar llamar a sacar humano mas pecador
+    NodoCelestial * salvarHumano(NodoCelestial *nodo, Humano * humanoASalvar);
 };
 
 //-----------------------------------------------------------------------------------------------------------ESTRUCTURA DE DATOS LOQUISIMA
@@ -314,6 +313,7 @@ struct avl {
    struct avl *l;
    struct avl *r;
 }*r;
+
 class avl_tree {
    public:
       int height(avl *);
@@ -332,6 +332,7 @@ class avl_tree {
          r = NULL;
       }
 };
+
 int avl_tree::height(avl *t) {
    int h = 0;
    if (t != NULL) {
@@ -342,12 +343,14 @@ int avl_tree::height(avl *t) {
    }
    return h;
 }
+
 int avl_tree::difference(avl *t) {
    int l_height = height(t->l);
    int r_height = height(t->r);
    int b_factor = l_height - r_height;
    return b_factor;
 }
+
 avl *avl_tree::rr_rotat(avl *parent) {
    avl *t;
    t = parent->r;
@@ -356,6 +359,7 @@ avl *avl_tree::rr_rotat(avl *parent) {
    cout<<"Right-Right Rotation";
    return t;
 }
+
 avl *avl_tree::ll_rotat(avl *parent) {
    avl *t;
    t = parent->l;
@@ -364,6 +368,7 @@ avl *avl_tree::ll_rotat(avl *parent) {
    cout<<"Left-Left Rotation";
    return t;
 }
+
 avl *avl_tree::lr_rotat(avl *parent) {
    avl *t;
    t = parent->l;
@@ -371,6 +376,7 @@ avl *avl_tree::lr_rotat(avl *parent) {
    cout<<"Left-Right Rotation";
    return ll_rotat(parent);
 }
+
 avl *avl_tree::rl_rotat(avl *parent) {
    avl *t;
    t = parent->r;
@@ -378,6 +384,7 @@ avl *avl_tree::rl_rotat(avl *parent) {
    cout<<"Right-Left Rotation";
    return rr_rotat(parent);
 }
+
 avl *avl_tree::balance(avl *t) {
    int bal_factor = difference(t);
    if (bal_factor > 1) {
@@ -393,6 +400,7 @@ avl *avl_tree::balance(avl *t) {
    }
    return t;
 }
+
 avl *avl_tree::insert(avl *r, Humano * v) {
    if (r == NULL) {
       r = new avl;
@@ -408,6 +416,7 @@ avl *avl_tree::insert(avl *r, Humano * v) {
       r = balance(r);
    } return r;
 }
+
 void avl_tree::show(avl *p, int l) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
    int i;
    if (p != NULL) {
@@ -421,6 +430,7 @@ void avl_tree::show(avl *p, int l) {//de momento no deberian funcionar por como 
          show(p->l, l + 1);
    }
 }
+
 void avl_tree::inorder(avl *t) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
    if (t == NULL)
       return;
@@ -428,6 +438,7 @@ void avl_tree::inorder(avl *t) {//de momento no deberian funcionar por como impr
       cout << t->humano << " ";
       inorder(t->r);
 }
+
 void avl_tree::preorder(avl *t) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
    if (t == NULL)
       return;
@@ -435,6 +446,7 @@ void avl_tree::preorder(avl *t) {//de momento no deberian funcionar por como imp
       preorder(t->l);
       preorder(t->r);
 }
+
 void avl_tree::postorder(avl *t) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
    if (t == NULL)
       return;
@@ -443,21 +455,24 @@ void avl_tree::postorder(avl *t) {//de momento no deberian funcionar por como im
       cout << t->humano << " ";
 }
 
-
-//-------------------------------------------------------------------------------------------------------------------------------------------
+//CIELO -------------------------------------------------------------------------------------------------------------------------------------
 
 struct Cielo{
     ArbolAngelical * arbolAngelical;
     Infierno * infierno;
     avl_tree * tablaSacra[1000];//no se si esto funcionara así sin el new
-    
+    BitacoraCondenacion * bitacora;
+
     Cielo(Infierno* _infierno){
         infierno=_infierno;
+        arbolAngelical->generarPrimerNivel();
     }
     void insertarEnTablaHash(Humano*);
     int calcularPosicionEnTabla(int ID);
+    void generarBitacoraSalvacion(Humano * humano, string pecado);
     //para sacar del infierno ljdsflksdjl ---->>>>>    infierno->sacarHumanoMasPecador();  <<<<-------jdalsdjsalkdjasd (retorna un *humano)
-    
+    void tenerPiedad();
+    void salvacionGeneral();
 };
 
 

@@ -482,12 +482,34 @@ Humano* Infierno::sacarHumanoMasPecador(){
 
 //ARBOL CELESTIAL --------------------------------------------------------------------------------------
 void ArbolAngelical::invocarAngeles(){
-    string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
+    string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel",
+    "Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
     generarNuevoNivel(raiz);
     for (int i = 0; i < 10; i++){
         generarVersiones(raiz,nombresAngelicales[i]);
         numeroVersion=0;
     }
+}
+
+int ArbolAngelical::contarHojas(NodoCelestial* nodo) {
+    if (nodo == NULL)
+        return 0;
+    if (nodo->angelIzquierdo==NULL && nodo->angelDerecho==NULL && nodo->angelCentral==NULL)
+        return 1;
+    return contarHojas(nodo->angelIzquierdo)+contarHojas(nodo->angelCentral)+contarHojas(nodo->angelDerecho);
+}
+
+NodoCelestial * ArbolAngelical::salvarHumano(NodoCelestial *nodo, Humano * humanoASalvar){
+    if (nodo == NULL) 
+        return;
+    if (nodo->angelIzquierdo == NULL && nodo->angelCentral == NULL && nodo->angelDerecho == NULL &&
+        nodo->humanoSalvado == NULL) {
+        nodo->humanoSalvado = humanoASalvar;
+        return nodo;
+    }
+    salvarHumano(nodo->angelIzquierdo, humanoASalvar);
+    salvarHumano(nodo->angelCentral, humanoASalvar);
+    salvarHumano(nodo->angelDerecho, humanoASalvar);
 }
 
 //CIELO----------------------------------------------------------------
@@ -502,12 +524,7 @@ void Cielo::insertarEnTablaHash(Humano *humano){
     //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
 }
 
-
-
-
-
-//MENUS -------------------------------------------------------------------------------------------------
-
+// No se que hace este método aqui pero me da mieo moverlo :)
 void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     for (int i=0; i < cantidadHumanos; i++){
         if(arrayDeLaVida[i]->ID==ID && arrayDeLaVida[i]->vivo){
@@ -516,6 +533,27 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     }
 }
 
+void Cielo::generarBitacoraSalvacion(Humano * humano, string pecado){ //esta ordenado por demonio, pero del mas a menos pecador no
+    bitacora->insertarFinal(infierno->ADLV->extraerIndiceHumano(humano), humano, pecado);
+}
+
+void Cielo::tenerPiedad(){
+    Humano * humanoSalvado=infierno->sacarHumanoMasPecador();
+    NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
+    humanoSalvado->angelQueLoSalvo=angel;
+    insertarEnTablaHash(humanoSalvado);
+}
+
+void Cielo::salvacionGeneral(){
+    arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);
+    int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
+    for (int i=0; i < cantidadAngeles; i++){
+        tenerPiedad();
+    }
+    
+}
+
+//MENUS -------------------------------------------------------------------------------------------------
 void menuPublicarPorHumano(ArbolDeLaVida * arbol){
     string ID;
     int redSocial;

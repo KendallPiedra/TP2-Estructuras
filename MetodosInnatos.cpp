@@ -97,6 +97,14 @@ void Humano::imprimirRedesSociales(){
         cout<<redesSociales[i]->nombreRedSocial<<": "<<redesSociales[i]->gusto<<endl;
     }
 }
+
+int Humano::extraerPecadosTotales(){
+    int cantidadTotal=0;
+    for (int i=0; i < 7; i++){
+        cantidadTotal+=pecados[i]->cantidad;
+    }
+    return cantidadTotal;
+}
 // NODO ARBOL ----------------------------------------------------------------------------------------
 void NodoArbol::imprimir(){
     cout<<humano->ID<<endl; //hacer función que imprima al humano**
@@ -375,9 +383,19 @@ void ListaBesties::imprimirConPecados(){
 // BITACORA DE CONDENACIÓN ---------------------------------------------------------------------------------------------
 void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string pecado){
     if (primerNodo==NULL)
-	    primerNodo=ultimoNodo=new NodoBitacora(indice, humano, pecado, obtenerFechaYHoraActual(), extraerDemonioConPecado(pecado));
+	    primerNodo=ultimoNodo=new NodoBitacora(indice, humano, pecado, obtenerFechaYHoraActual(), extraerDemonioConPecado(pecado), humano->sacarCantidadPecado(pecado));
     else{
-	    ultimoNodo->siguiente= new NodoBitacora(indice, humano, pecado, obtenerFechaYHoraActual(), extraerDemonioConPecado(pecado));
+	    ultimoNodo->siguiente= new NodoBitacora(indice, humano, pecado, obtenerFechaYHoraActual(), extraerDemonioConPecado(pecado), humano->sacarCantidadPecado(pecado));
+	    ultimoNodo->siguiente->anterior=ultimoNodo;
+	    ultimoNodo=ultimoNodo->siguiente; 
+    }
+}
+
+void BitacoraCondenacion::insertarFinalCielo(int indice, Humano * humano, string angel){
+    if (primerNodo==NULL)
+	    primerNodo=ultimoNodo=new NodoBitacora(indice, humano, "Total", obtenerFechaYHoraActual(), angel, humano);
+    else{
+	    ultimoNodo->siguiente= new NodoBitacora(indice, humano, "Total", obtenerFechaYHoraActual(), angel, humano);
 	    ultimoNodo->siguiente->anterior=ultimoNodo;
 	    ultimoNodo=ultimoNodo->siguiente; 
     }
@@ -416,10 +434,10 @@ void ArbolAngelical::generarVersiones(NodoCelestial *nodo, string nombre){
 
 void ArbolAngelical::generarNuevoNivel(NodoCelestial *nodo){
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
-    if (nodo == nullptr) 
+    if (nodo == NULL) 
         return;
 
-    if (nodo->angelIzquierdo == nullptr && nodo->angelCentral == nullptr && nodo->angelDerecho == nullptr) {
+    if (nodo->angelIzquierdo == NULL && nodo->angelCentral == NULL && nodo->angelDerecho == NULL) {
         nodo->angelIzquierdo = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
         nodo->angelCentral = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
         nodo->angelDerecho = new NodoCelestial(nombresAngelicales[generarNumerosAleatorios(10)-1], nodo->generacion + 1);
