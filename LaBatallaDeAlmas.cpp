@@ -8,12 +8,12 @@ int main(int argc, char const *argv[])
     // cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
     // getline(cin, cantidadInicial);
     // ----------------------------------------------asdssdd---------------------------------------------------------------------------
-    // ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
-    // arbolDeLaVida->crearGeneracionHumanos(1000);
-    // // arbolDeLaVida->imprimir();
-    // arbolDeLaVida->arrayDeLaVida[3]->publicarEnRedSocial(
-    //     arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial,
-    //     extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial));
+    ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
+    arbolDeLaVida->crearGeneracionHumanos(1000);
+    // arbolDeLaVida->imprimir();
+    arbolDeLaVida->arrayDeLaVida[3]->publicarEnRedSocial(
+        arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial,
+        extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial));
     // // cout<<"----------------------*************************************************************---------------------------------"<<endl;
     
     // // menuPublicarPorReligion(arbolDeLaVida);
@@ -52,54 +52,59 @@ int main(int argc, char const *argv[])
 //ssdkjdjksahdjkskjh
 
 //-----------------------------MENU AVL PRUEBAS
-// int c, i;
-//    avl_tree avl;
-//    while (1) {
-//       cout << "1.Insert Element into the tree" << endl;
-//       cout << "2.show Balanced AVL Tree" << endl;
-//       cout << "3.InOrder traversal" << endl;
-//       cout << "4.PreOrder traversal" << endl;
-//       cout << "5.PostOrder traversal" << endl;
-//       cout << "6.Exit" << endl;
-//       cout << "Enter your Choice: ";
-//       cin >> c;
-//       switch (c) {
-//          case 1:
-//             cout << "Enter value to be inserted: ";
+int c, i;
+   avl_tree avl;
+   while (1) {
+      cout << "1.Insert Element into the tree" << endl;
+      cout << "2.show Balanced AVL Tree" << endl;
+      cout << "3.InOrder traversal" << endl;
+      cout << "4.PreOrder traversal" << endl;
+      cout << "5.PostOrder traversal" << endl;
+      cout << "6.Mostrar cantidad nodos" << endl;
+      cout << "7.Exit" << endl;
+      cout << "Enter your Choice: ";
+      cin >> c;
+      switch (c) {
+         case 1:
+            cout << "Enter value to be inserted: ";
             
-//             r = avl.insert(r, arbolDeLaVida->arrayDeLaVida[12]);
-//          break;
-//          case 2:
-//             if (r == NULL) {
-//                cout << "Tree is Empty" << endl;
-//                continue;
-//             }
-//             cout << "Balanced AVL Tree:" << endl;
-//             avl.show(r, 1);
-//             cout<<endl;
-//          break;
-//          case 3:
-//             cout << "Inorder Traversal:" << endl;
-//             avl.inorder(r);
-//             cout << endl;
-//          break;
-//          case 4:
-//             cout << "Preorder Traversal:" << endl;
-//             avl.preorder(r);
-//             cout << endl;
-//          break;
-//          case 5:
-//             cout << "Postorder Traversal:" << endl;
-//             avl.postorder(r);
-//             cout << endl;
-//          break;
-//          case 6:
-//             exit(1);
-//          break;
-//          default:
-//             cout << "Wrong Choice" << endl;
-//       }
-//    }
+            r = avl.insert(r, arbolDeLaVida->arrayDeLaVida[12]);
+         break;
+         case 2:
+            if (r == NULL) {
+               cout << "Tree is Empty" << endl;
+               continue;
+            }
+            cout << "Balanced AVL Tree:" << endl;
+            avl.show(r, 1);
+            cout<<endl;
+         break;
+         case 3:
+            cout << "Inorder Traversal:" << endl;
+            avl.inorder(r);
+            cout << endl;
+         break;
+         case 4:
+            cout << "Preorder Traversal:" << endl;
+            avl.preorder(r);
+            cout << endl;
+         break;
+         case 5:
+            cout << "Postorder Traversal:" << endl;
+            avl.postorder(r);
+            cout << endl;
+         break;
+         case 6:
+            cout << "Cantidad De Nodos" << endl;
+            cout << avl.contarNodos(r)<<endl;
+         break;
+         case 7:
+            exit(1);
+         break;
+         default:
+            cout << "Wrong Choice" << endl;
+      }
+   }
    //-----------------------------FIN MENU AVL PRUEBAS
     // -------------------------------------------------------------------------------------------------------------------------
     // int opcion=1;
