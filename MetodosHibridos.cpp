@@ -877,9 +877,9 @@ void generarArchivoFamilia(Familia *familia){
     archivo.open("Familia_"+familia->apellido+"_"+familia->pais+".txt",ios::out);
     archivo<<"---------------------------- FAMILIA --------------------------------"<<endl;
     archivo<<"\nCantidad de miembros:\t"<<familia->cantMiembrosActual<<endl;
-    archivo<<"\nPorcentaje de miembros vivos:\t"<<familia->cantMiembrosActual<<endl;
-    archivo<<"\nPorcentaje de miembros en el infierno:\t"<<familia->cantMiembrosActual<<endl;
-    archivo<<"\nPorcentaje de miembros en el cielo:\t"<<familia->cantMiembrosActual<<endl;
+    archivo<<"\nPorcentaje de miembros vivos:\t"<<familia->sacarPorcentajeViVos()<<endl;
+    archivo<<"\nPorcentaje de miembros en el infierno:\t"<<familia->sacarPorcentajeInfierno()<<endl;
+    archivo<<"\nPorcentaje de miembros en el cielo:\t"<<familia->sacarPorcentajeCielo()<<endl;
     archivo<<"\n--------------------------- VIVOS -------------------------------"<<endl;
     for (int i=0; i < familia->cantMiembrosActual; i++){
         if (familia->familiares[i]->vivo){
