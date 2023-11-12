@@ -170,8 +170,8 @@ Familia * ArbolDeLaVida::sacarFamiliacompleta(string apellido,string pais){
     Familia * familia= new Familia(apellido,pais,"todos somos uno ae ae",this);
     
     for (int i=0; i<cantidadHumanos;i++){
-        if (arrayDeLaVida[i]->apellido==apellido && arrayDeLaVida[i]->pais=pais ) {
-            
+        if ((arrayDeLaVida[i]->apellido==apellido) && (arrayDeLaVida[i]->pais==pais) ) {
+            familia->annadirFamiliar(arrayDeLaVida[i]);
         }
     }
 }
