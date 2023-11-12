@@ -550,9 +550,14 @@ NodoCelestial * ArbolAngelical::salvarHumano(NodoCelestial *nodo, Humano * human
         nodo->humanoSalvado = humanoASalvar;
         return nodo;
     }
-    salvarHumano(nodo->angelIzquierdo, humanoASalvar);
-    salvarHumano(nodo->angelCentral, humanoASalvar);
-    salvarHumano(nodo->angelDerecho, humanoASalvar);
+    NodoCelestial *resultIzquierdo = salvarHumano(nodo->angelIzquierdo, humanoASalvar);
+    if (resultIzquierdo != NULL) 
+        return resultIzquierdo;
+    NodoCelestial *resultCentral = salvarHumano(nodo->angelCentral, humanoASalvar);
+    if (resultCentral != NULL) 
+        return resultCentral;
+    NodoCelestial *resultDerecho = salvarHumano(nodo->angelDerecho, humanoASalvar);
+    return resultDerecho;
 }
 
 //CIELO----------------------------------------------------------------
