@@ -81,7 +81,7 @@ string Humano::convertirAStringCelestial(){
     datos += "Profesión: " + profesion + "\n";
     datos += "Nacimiento: " + nacimieto + "\n";
     datos += "Angel que lo Salvó: " + angelQueLoSalvo->nombreAngel + "("+ to_string(angelQueLoSalvo->version)+")" "\n";
-    datos += "Generación del ángel: "+ angelQueLoSalvo->generacion;
+    datos += "Generación del ángel: "+ to_string(angelQueLoSalvo->generacion) + "\n";
     datos += "Cantidad amigos maxima: " + to_string(cantidadAmigos) + "\n";
     datos += "Pecados:\n";
     datos += convertirPecadosAString();//
