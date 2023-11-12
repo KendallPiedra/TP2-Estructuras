@@ -580,14 +580,23 @@ NodoCelestial * ArbolAngelical::salvarHumano(NodoCelestial *nodo, Humano * human
 }
 
 string ArbolAngelical::convertirAngelAString(NodoCelestial *angel){
-    string datos="";
+    string datos="\n---------------- Angel ---------------- \n";
     datos += "Nombre Ángel: San " + angel->nombreAngel + "\n";
     datos += "Versión: " + to_string(angel->version) + "\n";
     datos += "Generación: G" + to_string(angel->generacion) + "\n";
-    datos += "Humano: \n";
-    datos +=  angel->humanoSalvado->convertirAString();
+    if (angel->humanoSalvado!=NULL){
+        datos += "Humano: "+angel->humanoSalvado->nombre+" "+angel->humanoSalvado->apellido;
+        datos += "ID Humano"+to_string(angel->humanoSalvado->ID);
+    }
     return datos;
 }
+
+int ArbolAngelical::contadorNodos(NodoCelestial* nodo){
+    if (nodo == NULL)
+        return 0;
+    else
+        return 1+contadorNodos(nodo->angelIzquierdo)+contadorNodos(nodo->angelCentral)+contadorNodos(nodo->angelDerecho);
+}  
 
 //CIELO----------------------------------------------------------------
 int Cielo::calcularPosicionEnTabla(int ID){
@@ -653,9 +662,10 @@ void Cielo::generarConsultaCelestial(){
     ofstream archivo;
     archivo.open("ConsultaCelestial.txt",ios::out);
     archivo<<"---------------------------- CIELO --------------------------------"<<endl;
-
-    //angeles aqui 
-    archivo<<"\nTotal actual de humanos residentes en el Cielo:\t"<<contarCantidadSalvados()<<"\n"<<endl;
+    archivo<<"\nTotal actual de humanos residentes en el Cielo:\t"<<contarCantidadSalvados()<<endl;
+    archivo<<"\nTotal actual de ángeles residentes en el Cielo:\t"<<to_string(arbolAngelical->contadorNodos(arbolAngelical->raiz))<<"\n"<<endl;
+    archivo<<"--------------------------- ÁNGELES -------------------------------"<<endl;
+    archivo<<arbolAngelical->organizarPreOrden(arbolAngelical->raiz," ")<<endl;
     for (int i=0; i<1000; i++){
         archivo<<"-------------------------------- TABLA SACRA (Bucket "<<i<<") -------------------------------"<<endl;
 
@@ -665,9 +675,7 @@ void Cielo::generarConsultaCelestial(){
         archivo<<tablaSacra[i]->sInorden(r);    
     }
     archivo<<"------------------------------------------------------------------------------------------"<<endl;
-
     archivo.close();
-        //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
 
 //MENUS -------------------------------------------------------------------------------------------------
@@ -796,7 +804,7 @@ void menuConsultarInfierno(Infierno * infierno){
 }
 
 void menuConsultarCielo(Cielo *cielo){
-
+    cielo->generarConsultaCelestial();
 }
 
 void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){

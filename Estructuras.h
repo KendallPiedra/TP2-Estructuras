@@ -310,10 +310,12 @@ struct ArbolAngelical{
     void generarVersiones(NodoCelestial *nodo,string nombre);
     void invocarAngeles();
     int contarHojas(NodoCelestial* nodo);
-    void imprimirInOrden(NodoCelestial *nodo);
+    void imprimirPreOrden(NodoCelestial *nodo);
     //para salvar llamar a sacar humano mas pecador
     NodoCelestial * salvarHumano(NodoCelestial *nodo, Humano * humanoASalvar);
     string convertirAngelAString(NodoCelestial *angel);
+    int contadorNodos(NodoCelestial * nodo);
+    string organizarPreOrden(NodoCelestial *nodo, string texto);
 };
 
 //-----------------------------------------------------------------------------------------------------------ESTRUCTURA DE DATOS LOQUISIMA

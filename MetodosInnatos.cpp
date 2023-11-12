@@ -465,11 +465,23 @@ void ArbolAngelical::generarNuevoNivel(NodoCelestial *nodo){
     generarNuevoNivel(nodo->angelDerecho);
 }
 
-void ArbolAngelical::imprimirInOrden(NodoCelestial *nodo){
+void ArbolAngelical::imprimirPreOrden(NodoCelestial *nodo){
     if (nodo != NULL){
         nodo->imprimirCelestialmente();
-        imprimirInOrden(nodo->angelIzquierdo);
-        imprimirInOrden(nodo->angelCentral);
-        imprimirInOrden(nodo->angelDerecho);
+        imprimirPreOrden(nodo->angelIzquierdo);
+        imprimirPreOrden(nodo->angelCentral);
+        imprimirPreOrden(nodo->angelDerecho);
+    }
+}
+
+string ArbolAngelical::organizarPreOrden(NodoCelestial *nodo, string texto){
+    if (nodo != NULL){
+        texto+=convertirAngelAString(nodo);
+        texto+=organizarPreOrden(nodo->angelIzquierdo, texto);
+        texto+=organizarPreOrden(nodo->angelCentral, texto);
+        texto+=organizarPreOrden(nodo->angelDerecho, texto);
+        return texto;
+    }else{
+        return "";
     }
 }
