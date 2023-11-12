@@ -313,6 +313,7 @@ struct ArbolAngelical{
     void imprimirInOrden(NodoCelestial *nodo);
     //para salvar llamar a sacar humano mas pecador
     NodoCelestial * salvarHumano(NodoCelestial *nodo, Humano * humanoASalvar);
+    string convertirAngelAString(NodoCelestial *angel);
 };
 
 //-----------------------------------------------------------------------------------------------------------ESTRUCTURA DE DATOS LOQUISIMA
