@@ -82,10 +82,6 @@ void Humano::publicarEnRedSocial(string redSocial, string pecado){
     }
 }
 
-void Humano::publicarEnVariasRedesSociales(int num){
-
-}
-
 void Humano::imprimirPecados(){
     for (int i = 0; i < 7; i++){
         cout<<pecados[i]->nombrePecado<<": "<<pecados[i]->cantidad<<endl;
