@@ -647,14 +647,8 @@ void Cielo::generarConsultaCelestial(){
     archivo<<"\nTotal actual de humanos residentes en el Cielo:\t"<<contarCantidadSalvados()<<"\n"<<endl;
     for (int i=0; i<1000; i++){
         archivo<<"-------------------------------- TABLA SACRA (Bucket "<<i<<") -------------------------------"<<endl;
-        
-        // cout<<"se pusieron los datos del demonio"<<endl;
-        // cout<<"se calculan los humanos"<<endl;
-        int cantidadHumanos = demonios[i]->calcularCantidadHumanos();
-        // cout<<"sacar lista de los mas pecadores"<<endl;
-        Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
-        // cout<<"se saco la lista de los mas pecadores"<<endl;
-        archivo<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
+
+        archivo<<"Humanos salvados:\n------------------------------------------------------------------------"<<endl;
         // cout<<"alooooooooo"<<endl;
         for (int j=0; j< cantidadHumanos;j++){
             // cout<<"se intenta pasar un humano a string"<<endl;
