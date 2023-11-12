@@ -719,20 +719,36 @@ void menuConsultarHumano(ArbolDeLaVida * arbolDeLaVida){
     }
 }
 
-void menuConsultas(ArbolDeLaVida * arbolDeLaVida){
+void menuGanadorBatalla(Infierno * infierno, Cielo *cielo){
+
+}
+
+void menuConsultarInfierno(Infierno * infierno){
+
+}
+
+void menuConsultarCielo(Cielo *cielo){
+
+}
+
+void menuConsultarCielo(Cielo *cielo){
+    
+}
+
+void menuConsultas(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
     int opcion=menuConsultasAux();
     switch (opcion){
     case 1:
-        //Ganador
+        menuGanadorBatalla(infierno, cielo);
         break;
     case 2:
         menuConsultarHumano(arbolDeLaVida);
         break;
     case 3:
-        //Consultar Infierno
+        menuConsultarInfierno(infierno);
         break;
     case 4:
-        //Consultar Cielo
+        menuConsultarCielo(cielo);
         break;
     case 5:
         //Consultar Familia
