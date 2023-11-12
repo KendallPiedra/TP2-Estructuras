@@ -167,7 +167,13 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
 }
 
 Familia * ArbolDeLaVida::sacarFamiliacompleta(string apellido,string pais){
-    Familia * familia= new Familia(apellido,pais,NULL,this);
+    Familia * familia= new Familia(apellido,pais,"todos somos uno ae ae",this);
+    
+    for (int i=0; i<cantidadHumanos;i++){
+        if ((arrayDeLaVida[i]->apellido==apellido) && (arrayDeLaVida[i]->pais==pais) ) {
+            familia->annadirFamiliar(arrayDeLaVida[i]);
+        }
+    }
 }
 
 //FAMILIAS ------------------------------------------------------------------------------------------------------------------
@@ -207,7 +213,7 @@ void Familia::ordenarHeap(int k){//La primera vez k es 1
     if(hijoDer<=cantMiembrosActual){
         totalPecadoHijo=familiares[hijoDer-1]->sacarCantidadPecado(pecado);
         if(totalPecadoHijo==-1){totalPecadoHijo=familiares[hijoDer-1]->totalPecados;}//pecados generales
-        
+
         if(familiares[hijoDer-1]->sacarCantidadPecado(pecado)>
         familiares[k-1]->sacarCantidadPecado(pecado)){
             Humano* temp=familiares[k-1];
@@ -220,7 +226,9 @@ void Familia::ordenarHeap(int k){//La primera vez k es 1
 }
 void Familia::annadirFamiliar(Humano * familiar){
         familiares[cantMiembrosActual]=familiar;
-        cantMiembrosActual++;
+        if (cantMiembrosActual<(cantMiembrosMax-1)){
+            cantMiembrosActual++;
+        }
         ordenarHeap(1);
     }
 void Familia::borrarRaiz(){
