@@ -473,27 +473,33 @@ Humano* Infierno::sacarHumanoMasPecador(){
     return sacarHumano(buscarHumanoMasPecador());
 }
 
-bool Familia::buscarHumanoPorID(int ID){
+//retorna el indice del humano en la familia
+//si el humano no esta en la familia retorna -1
+int Familia::buscarFamiliarPorID(int ID){
     for (int i=0; i<cantMiembrosActual;i++){
         if(familiares[i]->ID==ID){
-            return true;
+            return i;
         }
     }
-    return false;
+    return -1;
 }
 
-bool Demonio::buscarHumanoPorID(int ID){
+//retorna el indice de la familia en el que se entruentra el humano
+//si el humano no esta en el demonio retorna -1
+int Demonio::buscarFamiliaDelAlmaCaptiva(int ID){
     for (int i=0; i<cantFamilias;i++){
-        if(familias[i]->buscarHumanoPorID(ID)){
-            return true;
+        if(familias[i]->buscarFamiliarPorID(ID)!=-1){
+            return i;
         }
     }
-    return false;
+    return -1;
 }
 
-int Infierno::buscarHumanoPorID(int ID){
+//retorna el indice del demonio en el que se entruentra el humano
+//si el humano no esta en el infierno retorna -1
+int Infierno::buscarDemonioConAlmaCaptiva(int ID){
     for (int i;i<7;i++){
-        if (demonios[i]->buscarHumanoPorID(ID)){
+        if (demonios[i]->buscarFamiliaDelAlmaCaptiva(ID)!=-1){
             return i;
         }
     }

@@ -220,7 +220,7 @@ struct Familia{
     void borrarRaiz();
     Humano* sacarRaiz();
 
-    bool buscarHumanoPorID(int ID)
+    int buscarFamiliarPorID(int ID);
 };
 
 struct Demonio{
@@ -243,7 +243,7 @@ struct Demonio{
     Humano* sacarHumano(int idxFamilia);
     Humano* mostrarHumanoRaiz(int idxFamilia);
 
-    bool buscarHumanoPorID(int ID);
+    int buscarFamiliaDelAlmaCaptiva(int ID);
 };
 
 struct Infierno{
@@ -273,7 +273,7 @@ struct Infierno{
     int buscarHumanoMasPecador();
     Humano* sacarHumanoMasPecador();
 
-    int buscarHumanoPorID(int ID);//cambiar
+    int buscarDemonioConAlmaCaptiva(int ID);//cambiar
 
 };
 
