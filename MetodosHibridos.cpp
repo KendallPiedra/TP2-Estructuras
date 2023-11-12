@@ -612,6 +612,14 @@ string Cielo::salvacionGeneral(){
     return crearArchivoBitacora();
 }
 
+int Cielo::contarCantidadSalvados(){
+    int cantidadDeNodos=0;
+    for (int i=0; i<1000;i++){
+        cantidadDeNodos+=tablaSacra[i]->contarNodos();
+    }
+    return cantidadDeNodos;
+}
+
 //MENUS -------------------------------------------------------------------------------------------------
 void menuPublicarPorHumano(ArbolDeLaVida * arbol){
     string ID;

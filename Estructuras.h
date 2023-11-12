@@ -491,8 +491,7 @@ struct Cielo{
     //para sacar del infierno ljdsflksdjl ---->>>>>    infierno->sacarHumanoMasPecador();  <<<<-------jdalsdjsalkdjasd (retorna un *humano)
     void tenerPiedad();
     string salvacionGeneral();
-
-
+    int contarCantidadSalvados();
 
 };
 
