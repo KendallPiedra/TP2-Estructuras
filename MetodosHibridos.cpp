@@ -230,6 +230,7 @@ void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
 
 void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
     humano->vivo=false;
+    humano->salvado=false;
     Familia *fam;
     bool insertado=false;
     for (int i=0; i<cantFamilias;i++){

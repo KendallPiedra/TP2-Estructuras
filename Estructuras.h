@@ -79,6 +79,7 @@ struct Humano{
     //6:Soverbia  
     ListaBesties * amigos;
     bool vivo;
+    bool salvado;
     NodoCelestial * angelQueLoSalvo;
 
     Humano(int _ID, string _nombre, string _apellido, string _pais, string _creencia,
@@ -95,6 +96,7 @@ struct Humano{
         vivo= true;
         totalPecados=0;
         angelQueLoSalvo=NULL;
+        salvado=NULL;
     }
 
     void agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual);
