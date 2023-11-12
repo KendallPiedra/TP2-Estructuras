@@ -107,46 +107,7 @@ int c, i;
    }
    //-----------------------------FIN MENU AVL PRUEBAS
     // -------------------------------------------------------------------------------------------------------------------------
-    // int opcion=1;
-    // do{
-    //     // "1: Crear Generación de Humanos"
-	//     // "2: Publicar en Redes Sociales"
-	//     // "3: La Condenación"
-	//     // "4: El Infierno"
-	//     // "5: La Salvación"
-	//     // "6: El Cielo"
-	//     // "7: Consultas"
-	//     // "0: SALIR"
-    //     opcion=menuPrincipal();
-    //     switch (opcion){
-    //     case 1:
-            
-    //         break;
-    //     case 2:
-            
-    //         break;
-    //     case 3:
-            
-    //         break;
-    //     case 4:
-            
-    //         break;
-    //     case 5:
-            
-    //         break;
-    //     case 6:
-            
-    //         break;
-    //     case 7:
-            
-    //         break;
-    //     case 0:
-    //         break;
-    //     default:
-            
-    //         break;
-    //     }
-    // } while (opcion!=0);
+    // 
     // string log="apellidos.txt";
     // string email="krisncl1701@gmail.com";
     // string ruta=""; 
@@ -164,40 +125,45 @@ int c, i;
     cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
     getline(cin, cantidadInicial);
     ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
+    Infierno * infierno = new Infierno(arbolDeLaVida);
+    Cielo * cielo= new Cielo(infierno);
     arbolDeLaVida->crearGeneracionHumanos(stoi(cantidadInicial));
     arbolDeLaVida->imprimir();
     int opcion=1;
+    string cantidad, nombreArchivo, invocar;
     do{
         // "1: Crear Generación de Humanos"
 	    // "2: Publicar en Redes Sociales"
 	    // "3: La Condenación"
-	    // "4: El Infierno"
-	    // "5: La Salvación"
-	    // "6: El Cielo"
-	    // "7: Consultas"
+	    // "4: La Salvación"
+	    // "5: Consultas"
+	    // "6: Mostrar Arbol de la Vida"
 	    // "0: SALIR"
         opcion=menuPrincipal();
         switch (opcion){
         case 1:
-            
+            cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
+            getline(cin, cantidad);
+            arbolDeLaVida->crearGeneracionHumanos(stoi(cantidad));
             break;
         case 2:
-            
+            menuPublicarRedesSociales(arbolDeLaVida);
             break;
         case 3:
-            
+            nombreArchivo=infierno-> realizarCondenacionGeneral();
+            invocar=".\\enviarCorreos.exe kpiedra262@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO DEL INFIERNO"; //Esto hay que probarlo
+            system(invocar.c_str());
             break;
         case 4:
-            
+            nombreArchivo=cielo->salvacionGeneral();
+            invocar=".\\enviarCorreos.exe krisncl1701@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO DEL CIELO"; //Esto hay que probarlo
+            system(invocar.c_str());
             break;
         case 5:
-            
+            menuConsultas(arbolDeLaVida,infierno, cielo);
             break;
         case 6:
-            
-            break;
-        case 7:
-            
+            arbolDeLaVida->imprimir();
             break;
         case 0:
             break;

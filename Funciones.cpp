@@ -149,10 +149,9 @@ int menuPrincipal(){
 	    cout<<"1: Crear Generación de Humanos"<<endl;
 	    cout<<"2: Publicar en Redes Sociales"<<endl;
 	    cout<<"3: La Condenación"<<endl;
-	    cout<<"4: El Infierno"<<endl;
-	    cout<<"5: La Salvación"<<endl;
-	    cout<<"6: El Cielo"<<endl;
-	    cout<<"7: Consultas"<<endl;
+	    cout<<"4: La Salvación"<<endl;
+	    cout<<"5: Consultas"<<endl;
+	    cout<<"6: Mostrar Arbol de la Vida"<<endl;
 	    cout<<"0: SALIR"<<endl;
 	    getline(cin,opcion);
     } while (!esInt(opcion));

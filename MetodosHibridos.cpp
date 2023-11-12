@@ -612,14 +612,6 @@ string Cielo::salvacionGeneral(){
     return crearArchivoBitacora();
 }
 
-int Cielo::contarCantidadSalvados(){
-    int cantidadDeNodos=0;
-    for (int i=0; i<1000;i++){
-        cantidadDeNodos+=tablaSacra[i]->contarNodos();
-    }
-    return cantidadDeNodos;
-}
-
 //MENUS -------------------------------------------------------------------------------------------------
 void menuPublicarPorHumano(ArbolDeLaVida * arbol){
     string ID;
@@ -731,7 +723,7 @@ void menuConsultarHumano(ArbolDeLaVida * arbolDeLaVida){
 }
 
 void menuGanadorBatalla(Infierno * infierno, Cielo *cielo){
-    if (infierno->sacarCantidadDeHumanos()>cielo.contarCantidadSalvados()){
+    if (infierno->sacarCantidadDeHumanos()>cielo->contarCantidadSalvados()){
         cout<<"GANADOR: Infierno"<<endl;
         cout<<"السبانخ المدهونة هي الأفضل، وأي شخص يقول غير ذلك يستحق اللعنة الأبدية"<<endl;
         cout<<"spinach creamed optima est, et quisquis aliter dicit, meretur damnationem aeternam"<<endl;
