@@ -97,7 +97,7 @@ struct Humano{
         // string sPecados[] = {"Orgullo", "Envidia", "Ira", "Pereza", "Codicia", "Gula", "Lujuria"};
         // for (int i=0; i<7){
         //     pecados[i]= new Pecado(sPecados[i]);
-            //Falta añadir REDES SOCIALES
+        //Falta añadir REDES SOCIALES
         // }
     }
 
@@ -456,9 +456,8 @@ struct Cielo{
     }
     void insertarEnTablaHash(Humano*);
     int calcularPosicionEnTabla(int ID);
-
     //para sacar del infierno ljdsflksdjl ---->>>>>    infierno->sacarHumanoMasPecador();  <<<<-------jdalsdjsalkdjasd (retorna un *humano)
-
+    
 };
 
 

@@ -31,7 +31,7 @@ int main(int argc, char const *argv[])
     // cout<<"enter para realizar consulta..."<<endl;
 
     Cielo * cielo= new Cielo(infierno);
-    cout<<"enterParaIncertarUnHumano..."<<endl;
+    cout<<"Enter Para Incertar Un Humano..."<<endl;
     std::cin.get(); // Espera que el usuario presione Enter
 
     cielo->insertarEnTablaHash(arbolDeLaVida->arrayDeLaVida[4]);
