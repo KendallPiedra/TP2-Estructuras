@@ -638,6 +638,7 @@ void Cielo::tenerPiedad(){
     Humano * humanoSalvado=infierno->sacarHumanoMasPecador();
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
     humanoSalvado->angelQueLoSalvo=angel;
+    humanoSalvado->salvado=true;
     insertarEnTablaHash(humanoSalvado);
     generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
 }
