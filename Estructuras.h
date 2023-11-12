@@ -10,6 +10,7 @@ using namespace std;
 
 struct Humano;
 struct NodoCelestial;
+struct Familia;
 string extraerDemonioConPecado(string pecado);
 
 //PECADO --------------------------------------------------------------------------------------------------------

@@ -256,14 +256,12 @@ void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
         cantidadHumanos+=cantidadAGenerar;
         generarAmigos();
         ordenarArrayDeLaVida();
+        raiz=NULL;
         construirArbol(0,cantidadHumanos,extraerCantidadNodos()-1, 0);
     }
-
 }
 
-int ArbolDeLaVida::construirArbol(int inicio, int fin,int cantidadDeseada, int contador){//*
-    // ordenarArrayDeLaVida();
-    // cout<<"Ordené el array"<<endl;
+int ArbolDeLaVida::construirArbol(int inicio, int fin,int cantidadDeseada, int contador){
     if (inicio <= fin && contador<=cantidadDeseada) {
         int centro = (inicio + fin) / 2;
         Humano *humanoCentral = arrayDeLaVida[centro];
