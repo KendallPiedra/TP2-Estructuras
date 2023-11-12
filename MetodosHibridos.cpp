@@ -430,18 +430,18 @@ void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){ //est
 }
 
 void Infierno::enviarDemonio(int posicionD){
-    cout<<"enviardemonio"<<endl;
-    cout<<demonios[posicionD]->nombre<<endl;
+    // cout<<"enviardemonio"<<endl;
+    // cout<<demonios[posicionD]->nombre<<endl;
     string pecado= demonios[posicionD]->pecado;
-    cout<<pecado<<endl;
+    // cout<<pecado<<endl;
     Humano** condenados =ADLV->sacarPorcentajeMasPecador(pecado);
-    cout<<"Se saca el porcentaje mas pecador"<<endl;
+    // cout<<"Se saca el porcentaje mas pecador"<<endl;
     int cantidadCondenados = PorcentajeACantidad(5, ADLV->cantidadHumanos);
-    cout<<"cantidad condenados: "<< cantidadCondenados<<endl;
+    // cout<<"cantidad condenados: "<< cantidadCondenados<<endl;
     for (int i=0; i<cantidadCondenados;i++){
         if (condenados[i] == nullptr) {
             // No quedan condenados
-            cout<<"No quedan condenados"<<endl;
+            // cout<<"No quedan condenados"<<endl;
             break;
         }
         demonios[posicionD]->matarHumano(condenados[i],ADLV);
@@ -471,7 +471,7 @@ string Infierno::crearArchivoBitacora(){
 } 
 
 string Infierno::realizarCondenacionGeneral(){
-    for (int i; i<7;i++){
+    for (int i=0; i<7;i++){
         enviarDemonio(i);
         // cout<<"no"<<endl;
     }
