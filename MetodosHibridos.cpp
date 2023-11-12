@@ -699,11 +699,12 @@ void menuPublicarRedesSociales(ArbolDeLaVida *arbol){
 void menuConsultarHumano(ArbolDeLaVida * arbolDeLaVida){
     int opcionHumano=menuConsultarHumanoAux();
     string ID, nombre, apellido;
+    Humano * humano;
     switch (opcionHumano){
     case 1:
         cout<<"Ingrese el ID del Humano"<<endl;
         getline(cin,ID);
-        Humano * humano=arbolDeLaVida->extraerHumano(stoi(ID));
+        humano=arbolDeLaVida->extraerHumano(stoi(ID));
         humano->imprimir();
         break;
     case 2:
@@ -711,7 +712,7 @@ void menuConsultarHumano(ArbolDeLaVida * arbolDeLaVida){
         getline(cin,nombre);
         cout<<"Ingrese el apellido del Humano"<<endl;
         getline(cin,apellido);
-        Humano * humano=arbolDeLaVida->extraerHumanoNombre(nombre,apellido);
+        humano=arbolDeLaVida->extraerHumanoNombre(nombre,apellido);
         humano->imprimir();
         break;
     default:
