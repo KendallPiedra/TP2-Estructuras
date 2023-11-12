@@ -201,3 +201,28 @@ string seleccionarApellido(){
     getline(cin,apellido); //validaciones
     return apellido;
 }
+
+int menuConsultasAux(){
+    string opcion;
+    do{
+        cout<<"------------------------------- CONSULTAS -------------------------------"<<endl;
+	    cout<<"1: Consultar Ganador"<<endl;
+	    cout<<"2: Consultar Humano"<<endl;
+	    cout<<"3: Consultar Infierno"<<endl; //mostrar cuanta gente tiene cada demonio
+	    cout<<"4: Consultar Cielo"<<endl; //mostrar cuanta gente hay, y el árbol angelical con la info para cada ángel
+	    cout<<"5: Buscar Familia"<<endl;
+	    getline(cin,opcion);
+    } while (!esInt(opcion));//validaciones varias
+    return stoi(opcion);
+}
+
+int menuConsultarHumanoAux(){
+    string opcion;
+    do{
+        cout<<"------------------------------- CONSULTAS POR HUMANO -------------------------------"<<endl;
+	    cout<<"1: Buscar Humano por ID"<<endl;
+	    cout<<"2: Buscar Humano por Nombre y Apellido"<<endl;
+	    getline(cin,opcion);
+    } while (!esInt(opcion));//validaciones varias
+    return stoi(opcion);
+}

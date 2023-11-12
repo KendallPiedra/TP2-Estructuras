@@ -145,6 +145,8 @@ struct ArbolDeLaVida{
     //void insertar (int);
     //Nodo* insertar(int, Nodo*);
     int extraerIndiceHumano(Humano * humano);
+    Humano * extraerHumano(int ID);
+    Humano * extraerHumanoNombre(string nombre, string apellido);
     void inOrden(NodoArbol*);
     NodoArbol* buscar (int, NodoArbol*);
     NodoArbol* mayor (NodoArbol* arbol);
@@ -169,6 +171,7 @@ struct NodoBitacora{
     int indice;
     string fechayHora, nombreYApellido, pais, demonio;
     Pecado * pecado;
+    NodoCelestial * angel;
     NodoBitacora *siguiente, *anterior;
 
     NodoBitacora(int _indice, Humano *humano, string _pecado, string _fechayHora, string _demonio, int cantidadPecado){
@@ -179,6 +182,7 @@ struct NodoBitacora{
         demonio=_demonio;
         pecado= new Pecado(_pecado,cantidadPecado); //por si acaso
         siguiente=anterior=NULL;
+        angel=NULL;
     } 
 
     ~NodoBitacora() {
@@ -194,7 +198,7 @@ struct BitacoraCondenacion{
     }
 
     void insertarFinal (int indice, Humano * humano, string pecado);
-    void insertarFinalCielo(int indice, Humano * humano, string angel);
+    void insertarFinalCielo(int indice, Humano * humano, string angel, NodoCelestial *angelEnviado);
 };
 
 //INFIERNO -----------------------------------------------------------------------------------------------------------------
@@ -469,10 +473,11 @@ struct Cielo{
     }
     void insertarEnTablaHash(Humano*);
     int calcularPosicionEnTabla(int ID);
-    void generarBitacoraSalvacion(Humano * humano, string pecado);
+    void generarBitacoraSalvacion(Humano * humano, string angel,  NodoCelestial *angelEnviado);
+    string crearArchivoBitacora();
     //para sacar del infierno ljdsflksdjl ---->>>>>    infierno->sacarHumanoMasPecador();  <<<<-------jdalsdjsalkdjasd (retorna un *humano)
     void tenerPiedad();
-    void salvacionGeneral();
+    string salvacionGeneral();
 };
 
 

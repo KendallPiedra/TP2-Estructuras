@@ -120,6 +120,24 @@ int ArbolDeLaVida::extraerIndiceHumano(Humano * humano){
     return -1;
 }
 
+Humano * ArbolDeLaVida::extraerHumano(int ID){
+    for(int i=0; i<cantidadHumanos;i++){
+        if (arrayDeLaVida[i]->ID==ID){
+            return arrayDeLaVida[i];
+        }
+    }
+    return NULL;
+}
+
+Humano * ArbolDeLaVida::extraerHumanoNombre(string _nombre, string _apellido){
+    for(int i=0; i<cantidadHumanos;i++){
+        if (arrayDeLaVida[i]->nombre==_nombre && arrayDeLaVida[i]->apellido==_apellido){
+            return arrayDeLaVida[i];
+        }
+    }
+    return NULL;
+}
+
 void ArbolDeLaVida::ordenarArrayDeLaVida(){
     for (int i = 0; i < cantidadHumanos-1; i++) {
         int minIdx = i;
@@ -391,13 +409,15 @@ void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string peca
     }
 }
 
-void BitacoraCondenacion::insertarFinalCielo(int indice, Humano * humano, string angel){
-    if (primerNodo==NULL)
-	    primerNodo=ultimoNodo=new NodoBitacora(indice, humano, "Total", obtenerFechaYHoraActual(), angel, humano);
-    else{
-	    ultimoNodo->siguiente= new NodoBitacora(indice, humano, "Total", obtenerFechaYHoraActual(), angel, humano);
+void BitacoraCondenacion::insertarFinalCielo(int indice, Humano * humano, string angel, NodoCelestial *angelEnviado){
+    if (primerNodo==NULL){
+	    primerNodo=ultimoNodo=new NodoBitacora(indice, humano, "Total", obtenerFechaYHoraActual(), angel, humano->extraerPecadosTotales());
+        ultimoNodo->angel=angelEnviado;
+    }else{
+	    ultimoNodo->siguiente= new NodoBitacora(indice, humano, "Total", obtenerFechaYHoraActual(), angel, humano->extraerPecadosTotales());
 	    ultimoNodo->siguiente->anterior=ultimoNodo;
 	    ultimoNodo=ultimoNodo->siguiente; 
+        ultimoNodo->angel=angelEnviado;
     }
 }
 

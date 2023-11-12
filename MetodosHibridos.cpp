@@ -71,9 +71,6 @@ string Humano::convertirAString(){
     return datos;
 }
 
-
-
-
 //Metodos amigos
 //pasar a innatos!!
 string ListaBesties::convertirAmigosAString(){
@@ -101,20 +98,16 @@ int ArbolDeLaVida::sacarIndicePecado(string pecado){
 
 int* ArbolDeLaVida::sacarIndicesOrdenadosSegunPecado(string pecado) {
     int* indices = new int[cantidadHumanos];
-
     for (int i = 0; i < cantidadHumanos; i++) {
         indices[i] = i;
     }
-
     for (int i = 0; i < cantidadHumanos - 1; i++) {
         int maxIndice = i;
-
         for (int j = i + 1; j < cantidadHumanos; j++) {
             if (arrayDeLaVida[indices[j]]->sacarCantidadPecado(pecado) > arrayDeLaVida[indices[maxIndice]]->sacarCantidadPecado(pecado)) {
                 maxIndice = j;
             }
         }
-
         int temp = indices[i];
         indices[i] = indices[maxIndice];
         indices[maxIndice] = temp;
@@ -533,24 +526,45 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     }
 }
 
-void Cielo::generarBitacoraSalvacion(Humano * humano, string pecado){ //esta ordenado por demonio, pero del mas a menos pecador no
-    bitacora->insertarFinal(infierno->ADLV->extraerIndiceHumano(humano), humano, pecado);
+void Cielo::generarBitacoraSalvacion(Humano * humano, string angel, NodoCelestial *angelEnviado){ //esta ordenado por demonio, pero del mas a menos pecador no
+    bitacora->insertarFinalCielo(infierno->ADLV->extraerIndiceHumano(humano), humano, angel, angelEnviado);
 }
+
+string Cielo::crearArchivoBitacora(){
+    ofstream archivo;
+    string nombre="Salvados_"+obtenerFechaYHoraActual()+".txt";
+	archivo.open(nombre,ios::out); 
+	if (archivo.fail()){
+		cout<<"No escribí el archivo"<<endl;//que sad
+		exit(1);
+	}
+    NodoBitacora * tmp= bitacora->primerNodo;
+    while (tmp!=NULL){
+        archivo<<"\n"<<tmp->fechayHora<<"\tHumano: "<<tmp->indice<<"\t"<<tmp->nombreYApellido<<"\t"<<tmp->pais<<endl;
+	    archivo<<"Salvada el "<<tmp->fechayHora<<" por "<<tmp->pecado->cantidad<<" pecados."<<endl;
+        archivo<<"Salva por el angel San"<<tmp->demonio<<"\tGeneración "<<tmp->angel->generacion<<endl;
+        tmp=tmp->siguiente;
+    }
+	archivo.close();
+    bitacora->primerNodo=bitacora->ultimoNodo=NULL; 
+    return nombre;
+} 
 
 void Cielo::tenerPiedad(){
     Humano * humanoSalvado=infierno->sacarHumanoMasPecador();
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
     humanoSalvado->angelQueLoSalvo=angel;
     insertarEnTablaHash(humanoSalvado);
+    generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
 }
 
-void Cielo::salvacionGeneral(){
+string Cielo::salvacionGeneral(){
     arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
         tenerPiedad();
     }
-    
+    return crearArchivoBitacora();
 }
 
 //MENUS -------------------------------------------------------------------------------------------------
@@ -639,5 +653,49 @@ void menuPublicarRedesSociales(ArbolDeLaVida *arbol){
     }
 }
 
+void menuConsultarHumano(ArbolDeLaVida * arbolDeLaVida){
+    int opcionHumano=menuConsultarHumanoAux();
+    string ID, nombre, apellido;
+    switch (opcionHumano){
+    case 1:
+        cout<<"Ingrese el ID del Humano"<<endl;
+        getline(cin,ID);
+        Humano * humano=arbolDeLaVida->extraerHumano(stoi(ID));
+        humano->imprimir();
+        break;
+    case 2:
+        cout<<"Ingrese el nombre del Humano"<<endl;
+        getline(cin,nombre);
+        cout<<"Ingrese el apellido del Humano"<<endl;
+        getline(cin,apellido);
+        Humano * humano=arbolDeLaVida->extraerHumanoNombre(nombre,apellido);
+        humano->imprimir();
+        break;
+    default:
+        break;
+    }
+}
 
+void menuConsultas(ArbolDeLaVida * arbolDeLaVida){
+    int opcion=menuConsultasAux();
+    switch (opcion){
+    case 1:
+        //Ganador
+        break;
+    case 2:
+        menuConsultarHumano(arbolDeLaVida);
+        break;
+    case 3:
+        //Consultar Infierno
+        break;
+    case 4:
+        //Consultar Cielo
+        break;
+    case 5:
+        //Consultar Familia
+        break;
+    default:
+        break;
+    }
+}
 
