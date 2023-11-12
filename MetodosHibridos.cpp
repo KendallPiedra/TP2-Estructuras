@@ -396,30 +396,28 @@ string Infierno::realizarCondenacionGeneral(){
 }
 
 void Infierno::consultaDeLosMiembrosDelInfierno(){
-    cout<<"se abre el archivo"<<endl;
     ofstream archivo;
     archivo.open("ConsultaInfernal.txt",ios::out);
-    cout<<"se abrió el archivo"<<endl;
+    archivo<<"---------------------------- INFIERNO --------------------------------"<<endl;
+    archivo<<"\nTotal actual de humanos residentes en el Infierno:\t"<<sacarCantidadDeHumanos()<<"\n"<<endl;
+    archivo<<"Cantidad actual de familias residentes en el Infierno:\t"<<sacarCantidadDeFamilias()<<endl;
     for (int i=0; i<7; i++){
-        archivo<<demonios[i]->nombre<<"\nPecado: "<<demonios[i]->pecado<<endl;
-        archivo<<"Cantidad de humanos condenados: "<<demonios[i]->calcularCantidadHumanos()<<endl;
-        archivo<<"Promedio de pecados: "<<demonios[i]->calcularPromedioPecados()<<endl;
-        archivo<<"Maximo de pecados:"<<demonios[i]->calcularMaximoPecados()<<endl;
-        archivo<<"Minimo de pecados:"<<demonios[i]->calcularMinimoPecados()<<endl;
+        archivo<<"-------------------------------- DEMONIO -------------------------------"<<endl;
+        archivo<<"Nombre Demonio:\t"<<demonios[i]->nombre<<"\nPecado: \t"<<demonios[i]->pecado<<endl;
+        archivo<<"Cantidad de humanos condenados:\t"<<demonios[i]->calcularCantidadHumanos()<<endl;
+        archivo<<"Promedio de pecados:\t"<<demonios[i]->calcularPromedioPecados()<<endl;
+        archivo<<"Maximo de pecados:\t"<<demonios[i]->calcularMaximoPecados()<<endl;
+        archivo<<"Minimo de pecados:\t"<<demonios[i]->calcularMinimoPecados()<<endl;
         // cout<<"se pusieron los datos del demonio"<<endl;
-
         // cout<<"se calculan los humanos"<<endl;
-        
         int cantidadHumanos = demonios[i]->calcularCantidadHumanos();
-        cout<<"sacar lista de los mas pecadores"<<endl;
-
+        // cout<<"sacar lista de los mas pecadores"<<endl;
         Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
-        cout<<"se saco la lista de los mas pecadores"<<endl;
+        // cout<<"se saco la lista de los mas pecadores"<<endl;
         archivo<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
-        cout<<"alooooooooo"<<endl;
+        // cout<<"alooooooooo"<<endl;
         for (int j=0; j< cantidadHumanos;j++){
             // cout<<"se intenta pasar un humano a string"<<endl;
-
             archivo<<listaOrdenadaHumanos[j]->convertirAString()<<endl;
             archivo<<"------------------------------------------------------------------------------------------"<<endl;
         }
@@ -546,7 +544,7 @@ int ArbolAngelical::contarHojas(NodoCelestial* nodo) {
 
 NodoCelestial * ArbolAngelical::salvarHumano(NodoCelestial *nodo, Humano * humanoASalvar){
     if (nodo == NULL) 
-        return;
+        return NULL;
     if (nodo->angelIzquierdo == NULL && nodo->angelCentral == NULL && nodo->angelDerecho == NULL &&
         nodo->humanoSalvado == NULL) {
         nodo->humanoSalvado = humanoASalvar;
@@ -722,15 +720,17 @@ void menuConsultarHumano(ArbolDeLaVida * arbolDeLaVida){
 }
 
 void menuGanadorBatalla(Infierno * infierno, Cielo *cielo){
-
+    if (infierno->sacarCantidadDeHumanos()>2){
+        cout<<"GANADOR: Infierno"<<endl;
+        cout<<"السبانخ المدهونة هي الأفضل، وأي شخص يقول غير ذلك يستحق اللعنة الأبدية"<<endl;
+    }else{
+        cout<<"GANADOR: Cielo"<<endl;
+        cout<<""<<endl;
+    }
 }
 
 void menuConsultarInfierno(Infierno * infierno){
-
-}
-
-void menuConsultarCielo(Cielo *cielo){
-
+    infierno->consultaDeLosMiembrosDelInfierno();
 }
 
 void menuConsultarCielo(Cielo *cielo){

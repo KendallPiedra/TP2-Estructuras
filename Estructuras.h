@@ -268,14 +268,11 @@ struct Infierno{
     void enviarCorreo(); //AHHHHHHHHHHHH
     int sacarCantidadDeFamilias();
     int sacarCantidadDeHumanos();
-    
     Humano * sacarHumano(int IDHumano);
     Humano ** sacarListaDeRaicesDemoniacas();
     int buscarHumanoMasPecador();
     Humano* sacarHumanoMasPecador();
-
     int buscarDemonioConAlmaCaptiva(int ID);//cambiar
-    void crearArchivoConsultaInfierno();
 
 };
 

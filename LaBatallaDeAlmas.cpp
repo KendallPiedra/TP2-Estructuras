@@ -8,47 +8,47 @@ int main(int argc, char const *argv[])
     // cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
     // getline(cin, cantidadInicial);
     // ----------------------------------------------asdssdd---------------------------------------------------------------------------
-    ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
-    arbolDeLaVida->crearGeneracionHumanos(1000);
-    // arbolDeLaVida->imprimir();
-    arbolDeLaVida->arrayDeLaVida[3]->publicarEnRedSocial(
-        arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial,
-        extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial));
-    // cout<<"----------------------*************************************************************---------------------------------"<<endl;
-    
-    // menuPublicarPorReligion(arbolDeLaVida);
-    // menuPublicarPorReligion(arbolDeLaVida);
-    // menuPublicarPorReligion(arbolDeLaVida);
-    cout<<"lista generada..."<<endl;
-    std::cin.get(); // Espera que el usuario presione Enter
-
-    Infierno * infierno = new Infierno(arbolDeLaVida);//
-
-    cout<<"cosa2"<<endl;
-    // cosa=infierno-> realizarCondenacionGeneral();
-    // string invocar="C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\enviarCorreos.exe kpiedra262@gmail.com C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\"+cosa+" "+cosa+" AHHHHHHHHH";
-    // system(invocar.c_str());
-    // cout<<"enter para realizar consulta..."<<endl;
-
-    Cielo * cielo= new Cielo(infierno);
-    cout<<"Enter Para Incertar Un Humano..."<<endl;
-    std::cin.get(); // Espera que el usuario presione Enter
-
-    cielo->insertarEnTablaHash(arbolDeLaVida->arrayDeLaVida[4]);
-    
-
-    // infierno->consultaDeLosMiembrosDelInfierno();
-    // cout<<"se genero la primera consulta"<<endl;
-    cin.get();
-
-    // infierno->demonios[0]->familias[0]->borrarRaiz();
-    // infierno->consultaDeLosMiembrosDelInfierno();
-    // arbolDeLaVida->imprimir();
-
+    // ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
+    // arbolDeLaVida->crearGeneracionHumanos(1000);
+    // // arbolDeLaVida->imprimir();
+    // arbolDeLaVida->arrayDeLaVida[3]->publicarEnRedSocial(
+    //     arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial,
+    //     extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial));
     // // cout<<"----------------------*************************************************************---------------------------------"<<endl;
-    // arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();
-    std::cout << "Presiona Enter para salir...";
-    std::cin.get(); // Espera que el usuario presione Enter
+    
+    // // menuPublicarPorReligion(arbolDeLaVida);
+    // // menuPublicarPorReligion(arbolDeLaVida);
+    // // menuPublicarPorReligion(arbolDeLaVida);
+    // cout<<"lista generada..."<<endl;
+    // std::cin.get(); // Espera que el usuario presione Enter
+
+    // Infierno * infierno = new Infierno(arbolDeLaVida);//
+
+    // cout<<"cosa2"<<endl;
+    // // cosa=infierno-> realizarCondenacionGeneral();
+    // // string invocar="C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\enviarCorreos.exe kpiedra262@gmail.com C:\\Users\\krisc\\OneDrive\\Escritorio\\Homeworks\\2k23-II-SEMESTRE\\Estructuras-de-Datos\\TP2-Estructuras\\"+cosa+" "+cosa+" AHHHHHHHHH";
+    // // system(invocar.c_str());
+    // // cout<<"enter para realizar consulta..."<<endl;
+
+    // Cielo * cielo= new Cielo(infierno);
+    // cout<<"Enter Para Incertar Un Humano..."<<endl;
+    // std::cin.get(); // Espera que el usuario presione Enter
+
+    // cielo->insertarEnTablaHash(arbolDeLaVida->arrayDeLaVida[4]);
+    
+
+    // // infierno->consultaDeLosMiembrosDelInfierno();
+    // // cout<<"se genero la primera consulta"<<endl;
+    // cin.get();
+
+    // // infierno->demonios[0]->familias[0]->borrarRaiz();
+    // // infierno->consultaDeLosMiembrosDelInfierno();
+    // // arbolDeLaVida->imprimir();
+
+    // // // cout<<"----------------------*************************************************************---------------------------------"<<endl;
+    // // arbolDeLaVida->arrayDeLaVida[663]->amigos->imprimirConPecados();
+    // std::cout << "Presiona Enter para salir...";
+    // std::cin.get(); // Espera que el usuario presione Enter
 //ssdkjdjksahdjkskjh
 
 //-----------------------------MENU AVL PRUEBAS
@@ -151,6 +151,7 @@ int main(int argc, char const *argv[])
     // arbolAngelical->invocarAngeles();
     // arbolAngelical->invocarAngeles();
     // arbolAngelical->imprimirInOrden(arbolAngelical->raiz);
+    cout<<"السبانخ المدهونة هي الأفضل، وأي شخص يقول غير ذلك يستحق اللعنة الأبدية"<<endl;
     
 
 
