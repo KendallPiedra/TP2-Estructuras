@@ -834,7 +834,13 @@ void menuConsultarCielo(Cielo *cielo){
 }
 
 void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
-
+    string pais, apellido;
+    cout<<"------------------------------- BUSCAR FAMILIA -------------------------------"<<endl;
+	cout<<"Ingrese apellido de la familia"<<endl;
+	getline(cin,apellido);
+	cout<<"Ingrese el país de la familia "<<endl;
+	getline(cin,pais);
+    
 }
 
 void menuConsultas(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
