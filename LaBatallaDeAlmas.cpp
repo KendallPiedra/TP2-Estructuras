@@ -158,14 +158,14 @@ int main(int argc, char const *argv[])
             menuPublicarRedesSociales(arbolDeLaVida);
             break;
         case 3:
-            infierno->realizarCondenacionGeneral();
-            // invocar=".\\enviarCorreos.exe kpiedra262@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-INFIERNO"; //Esto hay que probarlo
-            // system(invocar.c_str());
+            nombreArchivo=infierno->realizarCondenacionGeneral();
+            invocar=".\\enviarCorreos.exe kpiedra262@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-INFIERNO"; //Esto hay que probarlo
+            system(invocar.c_str());
             break;
         case 4:
-            cielo->salvacionGeneral();
-            // invocar=".\\enviarCorreos.exe krisncl1701@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-CIELO"; //Esto hay que probarlo
-            // system(invocar.c_str());
+            nombreArchivo=cielo->salvacionGeneral();
+            invocar=".\\enviarCorreos.exe krisncl1701@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-CIELO"; //Esto hay que probarlo
+            system(invocar.c_str());
             break;
         case 5:
             menuConsultas(arbolDeLaVida,infierno, cielo);
