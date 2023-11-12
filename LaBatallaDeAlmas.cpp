@@ -8,15 +8,13 @@ int main(int argc, char const *argv[])
     // cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
     // getline(cin, cantidadInicial);
     // ----------------------------------------------asdssdd---------------------------------------------------------------------------
-    ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
-    arbolDeLaVida->crearGeneracionHumanos(50);
-    arbolDeLaVida->imprimir();
-    arbolDeLaVida->crearGeneracionHumanos(50);
-    arbolDeLaVida->imprimir();
-    arbolDeLaVida->crearGeneracionHumanos(50);
-    arbolDeLaVida->imprimir();
-    arbolDeLaVida->crearGeneracionHumanos(50);
-    arbolDeLaVida->imprimir();
+    // ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
+    // arbolDeLaVida->crearGeneracionHumanos(100);
+    // arbolDeLaVida->imprimir();
+    // arbolDeLaVida->crearGeneracionHumanos(100);
+    // arbolDeLaVida->imprimir();
+    // arbolDeLaVida->crearGeneracionHumanos(100);
+    // arbolDeLaVida->imprimir();
     // arbolDeLaVida->arrayDeLaVida[3]->publicarEnRedSocial(
     //     arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial,
     //     extraerPecadoConRedSocial(arbolDeLaVida->arrayDeLaVida[3]->redesSociales[6]->nombreRedSocial));
@@ -130,58 +128,58 @@ int main(int argc, char const *argv[])
     // cout<<"السبانخ المدهونة هي الأفضل، وأي شخص يقول غير ذلك يستحق اللعنة الأبدية"<<endl;
     // cin.get();
     // --------------------------------- OFICIAL ------------------------------------------
-    // string cantidad;
-    // cout<<"-------------- BIENVENIDO ----------------"<<endl;
-    // cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
-    // getline(cin, cantidad);
-    // ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
-    // Infierno * infierno = new Infierno(arbolDeLaVida);
-    // Cielo * cielo= new Cielo(infierno);
-    // arbolDeLaVida->crearGeneracionHumanos(stoi(cantidad));
-    // arbolDeLaVida->imprimir();
-    // int opcion=1;
-    // string nombreArchivo, invocar;
-    // do{
-    //     // "1: Crear Generación de Humanos"
-	//     // "2: Publicar en Redes Sociales"
-	//     // "3: La Condenación"
-	//     // "4: La Salvación"
-	//     // "5: Consultas"
-	//     // "6: Mostrar Arbol de la Vida"
-	//     // "0: SALIR"
-    //     opcion=menuPrincipal();
-    //     switch (opcion){
-    //     case 1:
-    //         cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
-    //         getline(cin, cantidad);
-    //         arbolDeLaVida->crearGeneracionHumanos(stoi(cantidad));
-    //         break;
-    //     case 2:
-    //         menuPublicarRedesSociales(arbolDeLaVida);
-    //         break;
-    //     case 3:
-    //         nombreArchivo=infierno->realizarCondenacionGeneral();
-    //         invocar=".\\enviarCorreos.exe kpiedra262@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-INFIERNO"; //Esto hay que probarlo
-    //         system(invocar.c_str());
-    //         break;
-    //     case 4:
-    //         nombreArchivo=cielo->salvacionGeneral();
-    //         invocar=".\\enviarCorreos.exe krisncl1701@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-CIELO"; //Esto hay que probarlo
-    //         system(invocar.c_str());
-    //         break;
-    //     case 5:
-    //         menuConsultas(arbolDeLaVida,infierno, cielo);
-    //         break;
-    //     case 6:
-    //         arbolDeLaVida->imprimir();
-    //         break;
-    //     case 0:
-    //         break;
-    //     default:
-    //         cout<<"La opción escogida no existe"<<endl;
-    //         break;
-    //     }
-    // } while (opcion!=0);
+    string cantidad;
+    cout<<"-------------- BIENVENIDO ----------------"<<endl;
+    cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
+    getline(cin, cantidad);
+    ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
+    Infierno * infierno = new Infierno(arbolDeLaVida);
+    Cielo * cielo= new Cielo(infierno);
+    arbolDeLaVida->crearGeneracionHumanos(stoi(cantidad));
+    arbolDeLaVida->imprimir();
+    int opcion=1;
+    string nombreArchivo, invocar;
+    do{
+        // "1: Crear Generación de Humanos"
+	    // "2: Publicar en Redes Sociales"
+	    // "3: La Condenación"
+	    // "4: La Salvación"
+	    // "5: Consultas"
+	    // "6: Mostrar Arbol de la Vida"
+	    // "0: SALIR"
+        opcion=menuPrincipal();
+        switch (opcion){
+        case 1:
+            cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
+            getline(cin, cantidad);
+            arbolDeLaVida->crearGeneracionHumanos(stoi(cantidad));
+            break;
+        case 2:
+            menuPublicarRedesSociales(arbolDeLaVida);
+            break;
+        case 3:
+            nombreArchivo=infierno->realizarCondenacionGeneral();
+            invocar=".\\enviarCorreos.exe kpiedra262@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-INFIERNO"; //Esto hay que probarlo
+            system(invocar.c_str());
+            break;
+        case 4:
+            nombreArchivo=cielo->salvacionGeneral();
+            invocar=".\\enviarCorreos.exe krisncl1701@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-CIELO"; //Esto hay que probarlo
+            system(invocar.c_str());
+            break;
+        case 5:
+            menuConsultas(arbolDeLaVida,infierno, cielo);
+            break;
+        case 6:
+            arbolDeLaVida->imprimir();
+            break;
+        case 0:
+            break;
+        default:
+            cout<<"La opción escogida no existe"<<endl;
+            break;
+        }
+    } while (opcion!=0);
 
     return 0;
 }

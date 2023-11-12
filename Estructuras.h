@@ -10,6 +10,7 @@ using namespace std;
 
 struct Humano;
 struct NodoCelestial;
+struct Familia;
 string extraerDemonioConPecado(string pecado);
 
 //PECADO --------------------------------------------------------------------------------------------------------
@@ -167,7 +168,7 @@ struct ArbolDeLaVida{
     Humano** sacarPorcentajeMasPecador(string pecado);
     int * sacarIndicesOrdenadosSegunPecado(string pecado);
 
-    Familia * sacarFamiliacompleta(string apellido, string pais);
+    Familia * sacarFamiliaCompleta(string apellido, string pais);
 
 };
 

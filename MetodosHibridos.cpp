@@ -166,7 +166,7 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     }
 }
 
-Familia * ArbolDeLaVida::sacarFamiliacompleta(string apellido,string pais){
+Familia * ArbolDeLaVida::sacarFamiliaCompleta(string apellido,string pais){
     Familia * familia= new Familia(apellido,pais,"todos somos uno ae ae",this);
     
     for (int i=0; i<cantidadHumanos;i++){
@@ -854,6 +854,39 @@ void menuConsultarCielo(Cielo *cielo){
     cielo->generarConsultaCelestial();
 }
 
+void generarArchivoFamilia(Familia *familia){
+    ofstream archivo;
+    archivo.open("Familia_"+familia->apellido+"_"+familia->pais+".txt",ios::out);
+    archivo<<"---------------------------- FAMILIA --------------------------------"<<endl;
+    archivo<<"\nCantidad de miembros:\t"<<familia->cantMiembrosActual<<endl;
+    archivo<<"\nPorcentaje de miembros vivos:\t"<<familia->cantMiembrosActual<<endl;
+    archivo<<"\nPorcentaje de miembros en el infierno:\t"<<familia->cantMiembrosActual<<endl;
+    archivo<<"\nPorcentaje de miembros en el cielo:\t"<<familia->cantMiembrosActual<<endl;
+    archivo<<"\n--------------------------- VIVOS -------------------------------"<<endl;
+    for (int i=0; i < familia->cantMiembrosActual; i++){
+        if (familia->familiares[i]->vivo){
+            archivo<<familia->familiares[i]->convertirAString()<<endl;
+            archivo<<"----------------------------------------------------------------"<<endl;
+        }
+    }
+    archivo<<"\n--------------------------- INFIERNO -------------------------------"<<endl;
+    for (int i=0; i < familia->cantMiembrosActual; i++){
+        if (!familia->familiares[i]->vivo && !familia->familiares[i]->salvado){
+            archivo<<familia->familiares[i]->convertirAString()<<endl;
+            archivo<<"----------------------------------------------------------------"<<endl;
+        }
+    }
+    archivo<<"\n--------------------------- CIELO -------------------------------"<<endl;
+    for (int i=0; i < familia->cantMiembrosActual; i++){
+        if (!familia->familiares[i]->vivo && familia->familiares[i]->salvado){
+            archivo<<familia->familiares[i]->convertirAString()<<endl;
+            archivo<<"----------------------------------------------------------------"<<endl;
+        }
+    }
+    archivo<<"------------------------------------------------------------------------------------------"<<endl;
+    archivo.close();
+}
+
 void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
     string pais, apellido;
     cout<<"------------------------------- BUSCAR FAMILIA -------------------------------"<<endl;
@@ -861,7 +894,8 @@ void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo
 	getline(cin,apellido);
 	cout<<"Ingrese el país de la familia "<<endl;
 	getline(cin,pais);
-    
+    Familia * familia=arbolDeLaVida->sacarFamiliaCompleta(apellido,pais);
+    generarArchivoFamilia(familia);
 }
 
 void menuConsultas(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
