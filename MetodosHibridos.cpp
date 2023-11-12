@@ -737,6 +737,10 @@ void menuConsultarCielo(Cielo *cielo){
 
 }
 
+void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
+
+}
+
 void menuConsultas(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
     int opcion=menuConsultasAux();
     switch (opcion){
@@ -753,7 +757,7 @@ void menuConsultas(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *ci
         menuConsultarCielo(cielo);
         break;
     case 5:
-        //Consultar Familia
+        menuBuscarFamilia(arbolDeLaVida, infierno, cielo);
         break;
     default:
         break;
