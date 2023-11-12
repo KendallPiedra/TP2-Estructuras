@@ -341,6 +341,7 @@ class avl_tree {
       void inorder(avl *);
       void preorder(avl *);
       void postorder(avl*);
+      int contarNodos(avl*); //añadido!!
       avl_tree() {
          r = NULL;
       }
@@ -468,6 +469,13 @@ void avl_tree::postorder(avl *t) {//de momento no deberian funcionar por como im
       cout << t->humano << " ";
 }
 
+int avl_tree::contarNodos(avl* r){
+    if (r == NULL)
+        return 0;
+    else
+        return 1+contarNodos(r->l)+contarNodos(r->r);
+} 
+
 //CIELO -------------------------------------------------------------------------------------------------------------------------------------
 
 struct Cielo{
@@ -487,6 +495,9 @@ struct Cielo{
     //para sacar del infierno ljdsflksdjl ---->>>>>    infierno->sacarHumanoMasPecador();  <<<<-------jdalsdjsalkdjasd (retorna un *humano)
     void tenerPiedad();
     string salvacionGeneral();
+
+
+
 };
 
 
