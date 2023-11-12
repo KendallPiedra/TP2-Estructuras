@@ -71,6 +71,25 @@ string Humano::convertirAString(){
     return datos;
 }
 
+string Humano::convertirAStringCelestial(){
+    string datos="";
+    datos += "ID: " + to_string(ID) + "\n";
+    datos += "Nombre: " + nombre + "\n";
+    datos += "Apellido: " + apellido + "\n";
+    datos += "Pais: " + pais + "\n";
+    datos += "Creencia: " + creencia + "\n";
+    datos += "Profesión: " + profesion + "\n";
+    datos += "Nacimiento: " + nacimieto + "\n";
+    datos += "Angel que lo Salvó: " + angelQueLoSalvo->nombreAngel + "("+ to_string(angelQueLoSalvo->version)+")" "\n";
+    datos += "Generación del ángel: "+ angelQueLoSalvo->generacion;
+    datos += "Cantidad amigos maxima: " + to_string(cantidadAmigos) + "\n";
+    datos += "Pecados:\n";
+    datos += convertirPecadosAString();//
+    datos += convertirRedesSocialesAString();//
+    datos += amigos->convertirAmigosAString();//
+    return datos;
+}
+
 //Metodos amigos
 //pasar a innatos!!
 string ListaBesties::convertirAmigosAString(){

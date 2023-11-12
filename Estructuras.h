@@ -115,6 +115,7 @@ struct Humano{
     string convertirPecadosAString();
     string convertirRedesSocialesAString();
     string convertirAString();    
+    string convertirAStringCelestial();
 };
 
 
