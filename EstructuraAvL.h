@@ -5,7 +5,7 @@ struct avl {
    struct avl *r;
 };
 
-struct avl_tree {
+struct ArbolAVL {
     avl * r;
     int height(avl *);
     int difference(avl *);
@@ -21,12 +21,12 @@ struct avl_tree {
     void preorder(avl *);
     void postorder(avl*);
     int contarNodos(avl*); //añadido!!
-    avl_tree() {
+    ArbolAVL() {
         r = NULL;
     }
 };
 
-int avl_tree::height(avl *t=r) {
+int ArbolAVL::height(avl *t=r) {
    int h = 0;
    if (t != NULL) {
       int l_height = height(t->l);
@@ -37,14 +37,14 @@ int avl_tree::height(avl *t=r) {
    return h;
 }
 
-int avl_tree::difference(avl *t=r) {
+int ArbolAVL::difference(avl *t=r) {
    int l_height = height(t->l);
    int r_height = height(t->r);
    int b_factor = l_height - r_height;
    return b_factor;
 }
 
-avl *avl_tree::rr_rotat(avl *parent=r) {
+avl *ArbolAVL::rr_rotat(avl *parent=r) {
    avl *t;
    t = parent->r;
    parent->r = t->l;
@@ -53,7 +53,7 @@ avl *avl_tree::rr_rotat(avl *parent=r) {
    return t;
 }
 
-avl *avl_tree::ll_rotat(avl *parent=r) {
+avl *ArbolAVL::ll_rotat(avl *parent=r) {
    avl *t;
    t = parent->l;
    parent->l = t->r;
@@ -62,7 +62,7 @@ avl *avl_tree::ll_rotat(avl *parent=r) {
    return t;
 }
 
-avl *avl_tree::lr_rotat(avl *parent=r) {
+avl *ArbolAVL::lr_rotat(avl *parent=r) {
    avl *t;
    t = parent->l;
    parent->l = rr_rotat(t);
@@ -70,7 +70,7 @@ avl *avl_tree::lr_rotat(avl *parent=r) {
    return ll_rotat(parent);
 }
 
-avl *avl_tree::rl_rotat(avl *parent=r) {
+avl *ArbolAVL::rl_rotat(avl *parent=r) {
    avl *t;
    t = parent->r;
    parent->r = ll_rotat(t);
@@ -78,7 +78,7 @@ avl *avl_tree::rl_rotat(avl *parent=r) {
    return rr_rotat(parent);
 }
 
-avl *avl_tree::balance(avl *t=r) {
+avl *ArbolAVL::balance(avl *t=r) {
    int bal_factor = difference(t);
    if (bal_factor > 1) {
       if (difference(t->l) > 0)
@@ -94,7 +94,7 @@ avl *avl_tree::balance(avl *t=r) {
    return t;
 }
 
-avl *avl_tree::insert( Humano * v, avl *t=r,) {
+avl *ArbolAVL::insert( Humano * v, avl *t=r) {
    if (t == NULL) {
       t = new avl;
       t->humano = v;
@@ -110,7 +110,7 @@ avl *avl_tree::insert( Humano * v, avl *t=r,) {
    } return t;
 }
 
-void avl_tree::show(avl *p=r, int l) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
+void ArbolAVL::show(avl *p=r, int l) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
    int i;
    if (p != NULL) {
       show(p->r, l+ 1);
@@ -124,7 +124,7 @@ void avl_tree::show(avl *p=r, int l) {//de momento no deberian funcionar por com
    }
 }
 
-void avl_tree::inorder(avl *t=r) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
+void ArbolAVL::inorder(avl *t=r) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
    if (t == NULL)
       return;
       inorder(t->l);
@@ -132,7 +132,7 @@ void avl_tree::inorder(avl *t=r) {//de momento no deberian funcionar por como im
       inorder(t->r);
 }
 
-string avl_tree::sInorden(avl*t=r){
+string ArbolAVL::sInorden(avl*t=r){
     string result = "";
     if (t != NULL) {
         result += sInorden(t->l);
@@ -143,7 +143,7 @@ string avl_tree::sInorden(avl*t=r){
     return result;
 }
 
-void avl_tree::preorder(avl *t=r) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
+void ArbolAVL::preorder(avl *t=r) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
    if (t == NULL)
       return;
       cout << t->humano << " ";
@@ -151,7 +151,7 @@ void avl_tree::preorder(avl *t=r) {//de momento no deberian funcionar por como i
       preorder(t->r);
 }
 
-void avl_tree::postorder(avl *t=r) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
+void ArbolAVL::postorder(avl *t=r) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
    if (t == NULL)
       return;
       postorder(t ->l);
@@ -159,7 +159,7 @@ void avl_tree::postorder(avl *t=r) {//de momento no deberian funcionar por como 
       cout << t->humano << " ";
 }
 
-int avl_tree::contarNodos(avl* t=r){
+int ArbolAVL::contarNodos(avl* t=r){
     if (t == NULL)
         return 0;
     else
