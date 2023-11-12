@@ -394,7 +394,7 @@ void ListaBesties::imprimirConPecados(){
 
 // BITACORA DE CONDENACIÓN ---------------------------------------------------------------------------------------------
 void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string pecado){
-    cout<<humano->sacarCantidadPecado(pecado)<<endl;
+    // cout<<humano->sacarCantidadPecado(pecado)<<endl;
     if (primerNodo==NULL)
 	    primerNodo=ultimoNodo=new NodoBitacora(indice, humano, pecado, obtenerFechaYHoraActual(), extraerDemonioConPecado(pecado), humano->sacarCantidadPecado(pecado));
     else{

@@ -20,8 +20,8 @@ void Humano::agregarAmigos(Humano * arrayDeLaVida[], int cantHumanosActual){
 
 int Humano::sacarIndicePecado(string pecado){
     for (int i=0; i<7;i++){
-        cout<<pecados[i]->nombrePecado<<endl;
-        cout<<pecado<<endl;
+        // cout<<pecados[i]->nombrePecado<<endl;
+        // cout<<pecado<<endl;
         if (pecados[i]->nombrePecado==pecado){
             return i;
         }
@@ -33,9 +33,10 @@ int Humano::sacarCantidadPecado(string pecado){
     // cout<<"Se llama a sacar cantidad de pecado"<<endl;
     // cout<<pecado<<endl;
     int iPecado=sacarIndicePecado(pecado);
+
     // cout<<"iPecado:"<<iPecado<<endl;
     // cout<<"cantidad:"<<pecados[iPecado]->cantidad<<endl;
-    if (iPecado=-1){return -1;}
+    if (iPecado==-1){return -1;}
     return pecados[iPecado]->cantidad;
 
 }
