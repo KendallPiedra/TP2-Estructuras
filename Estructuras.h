@@ -226,6 +226,10 @@ struct Familia{
     Humano* sacarRaiz();
 
     int buscarFamiliarPorID(int ID);
+    int contarVivos();
+    double sacarPorcentajeViVos();
+    double sacarPorcentajeCielo();
+    double sacarPorcentajeInfierno();
 };
 
 struct Demonio{

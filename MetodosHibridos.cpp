@@ -243,6 +243,27 @@ Humano * Familia::sacarRaiz(){
     Humano* humano=familiares[0];
     return humano;
 }
+
+
+int Familia::contarVivos(){
+    int cantidadVivos;
+    for (int i=0; i<cantMiembrosActual;i++){
+        if (familiares[i]->vivo){
+            cantidadVivos++;
+        }
+    }
+    return cantidadVivos;
+}
+
+double Familia::sacarPorcentajeInfierno(){
+
+}
+double Familia::sacarPorcentajeCielo(){
+
+}
+double Familia::sacarPorcentajeViVos(){
+    return(contarVivos()*100)/cantMiembrosActual;
+}
 //DEMONIOS ------------------------------------------------------------------------------------------------------------
 
 void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
