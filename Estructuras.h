@@ -266,16 +266,12 @@ struct Infierno{
     void generarBitacoraCondenacion(Humano * humano, string pecado); 
     string crearArchivoBitacora(); //Al final hay que vaciar la bitácora para volver a llenarla en otra condenación
     void enviarCorreo(); //AHHHHHHHHHHHH
-
-
     int sacarCantidadDeFamilias();
     int sacarCantidadDeHumanos();
-    
     Humano * sacarHumano(int IDHumano);
     Humano ** sacarListaDeRaicesDemoniacas();
     int buscarHumanoMasPecador();
     Humano* sacarHumanoMasPecador();
-
     int buscarDemonioConAlmaCaptiva(int ID);//cambiar
 
 };

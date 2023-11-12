@@ -156,6 +156,7 @@ int c, i;
     // arbolAngelical->invocarAngeles();
     // arbolAngelical->invocarAngeles();
     // arbolAngelical->imprimirInOrden(arbolAngelical->raiz);
+    cout<<"السبانخ المدهونة هي الأفضل، وأي شخص يقول غير ذلك يستحق اللعنة الأبدية"<<endl;
     
 
 
