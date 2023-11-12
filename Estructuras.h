@@ -262,7 +262,7 @@ struct Infierno{
     }
     void enviarDemonio(int posicionD);
     string realizarCondenacionGeneral();
-    void consultaDeLosMiembrosDelInfierno();
+    void generarConsultaInfernal();
     void generarBitacoraCondenacion(Humano * humano, string pecado); 
     string crearArchivoBitacora(); //Al final hay que vaciar la bitácora para volver a llenarla en otra condenación
     void enviarCorreo(); //AHHHHHHHHHHHH
@@ -492,6 +492,9 @@ struct Cielo{
     void tenerPiedad();
     string salvacionGeneral();
     int contarCantidadSalvados();
+
+    void generarConsultaCelestial();
+
 
 };
 

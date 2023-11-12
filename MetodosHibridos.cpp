@@ -395,7 +395,7 @@ string Infierno::realizarCondenacionGeneral(){
     return crearArchivoBitacora();
 }
 
-void Infierno::consultaDeLosMiembrosDelInfierno(){
+void Infierno::generarConsultaInfernal(){
     ofstream archivo;
     archivo.open("ConsultaInfernal.txt",ios::out);
     archivo<<"---------------------------- INFIERNO --------------------------------"<<endl;
@@ -615,7 +615,7 @@ string Cielo::salvacionGeneral(){
 int Cielo::contarCantidadSalvados(){
     int cantidadDeNodos=0;
     for (int i=0; i<1000;i++){
-        cantidadDeNodos+=tablaSacra[i]->contarNodos();
+        cantidadDeNodos+=tablaSacra[i]->contarNodos(r);
     }
     return cantidadDeNodos;
 }
@@ -742,7 +742,7 @@ void menuGanadorBatalla(Infierno * infierno, Cielo *cielo){
 }
 
 void menuConsultarInfierno(Infierno * infierno){
-    infierno->consultaDeLosMiembrosDelInfierno();
+    infierno->generarConsultaInfernal();
 }
 
 void menuConsultarCielo(Cielo *cielo){
