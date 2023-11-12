@@ -517,7 +517,8 @@ int Infierno::sacarCantidadDeFamilias(){
 }
 
 Humano** Infierno::sacarListaDeRaicesDemoniacas(){
-    Humano** humanosRaiz= new Humano*[sacarCantidadDeFamilias()];
+    Humano** humanosRaiz= new Humano*[sacarCantidadDeFamilias()+1];
+    humanosRaiz[0]=NULL;
     int k=0;
     for (int i=0;i<7;i++){
         for(int j=0; j<demonios[i]->cantFamilias;j++){
@@ -534,11 +535,13 @@ int Infierno::buscarHumanoMasPecador(){
     Humano** humanosRaiz= sacarListaDeRaicesDemoniacas();
     
     Humano* humanoMasPecador = humanosRaiz[0];
+    if (humanoMasPecador==NULL){return -1;}
     for (int i = 1; i < cantRaices; ++i) {
         if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
             humanoMasPecador = humanosRaiz[i];
         }
     }
+
 
     return humanoMasPecador->ID;
 }
@@ -547,6 +550,7 @@ int Infierno::buscarHumanoMasPecador(){
 //su parametro es el ID del humano
 //solo funciona con las raices de los heaps
 Humano* Infierno::sacarHumano(int IDHumano){
+    if(IDHumano==-1){return NULL;}
     for(int i=0; i<7;i++){
         for(int j=0;j<demonios[i]->cantFamilias;j++){
             Humano*humano=demonios[i]->mostrarHumanoRaiz(j);
@@ -699,6 +703,10 @@ string Cielo::crearArchivoBitacora(){
 
 void Cielo::tenerPiedad(){
     Humano * humanoSalvado=infierno->sacarHumanoMasPecador();
+    if(humanoSalvado==NULL){
+        cout<<"No queda ningun alma por salvar"<<endl;
+        return;
+    }
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
     humanoSalvado->angelQueLoSalvo=angel;
     humanoSalvado->salvado=true;
@@ -707,10 +715,18 @@ void Cielo::tenerPiedad(){
 }
 
 string Cielo::salvacionGeneral(){
-    arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);
+    cout<<"entra en salvacion general"<<endl;
+    cin.get();
+    arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);//se cae en generr nuevo nivel
+    cout<<"genera un nuevo nivel"<<endl;
+    cin.get();
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
+        cout<<"quiere tener piedad"<<endl;
+        cin.get();
         tenerPiedad();
+        cout<<"tuvo piedad"<<endl;
+        cin.get();
     }
     return crearArchivoBitacora();
 }
