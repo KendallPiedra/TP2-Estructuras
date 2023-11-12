@@ -158,6 +158,14 @@ int main(int argc, char const *argv[])
     // arbolAngelical->imprimirInOrden(arbolAngelical->raiz);
     // cout<<"السبانخ المدهونة هي الأفضل، وأي شخص يقول غير ذلك يستحق اللعنة الأبدية"<<endl;
     // cin.get();
+    // --------------------------------- OFICIAL ------------------------------------------
+    string cantidadInicial;
+    cout<<"-------------- BIENVENIDO ----------------"<<endl;
+    cout<<"Ingrese la cantidad de humanos a generar: "<<endl;
+    getline(cin, cantidadInicial);
+    ArbolDeLaVida * arbolDeLaVida= new ArbolDeLaVida();
+    arbolDeLaVida->crearGeneracionHumanos(stoi(cantidadInicial));
+    arbolDeLaVida->imprimir();
 
 
     return 0;

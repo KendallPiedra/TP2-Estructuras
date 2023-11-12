@@ -561,7 +561,6 @@ NodoCelestial * ArbolAngelical::salvarHumano(NodoCelestial *nodo, Humano * human
 }
 
 //CIELO----------------------------------------------------------------
-
 int Cielo::calcularPosicionEnTabla(int ID){
     return ID%1000;
 }
@@ -571,8 +570,6 @@ void Cielo::insertarEnTablaHash(Humano *humano){
     r=tablaSacra[posicion]->insert(r,humano);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
     //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
 }
-
-
 
 void Cielo::generarBitacoraSalvacion(Humano * humano, string angel, NodoCelestial *angelEnviado){ //esta ordenado por demonio, pero del mas a menos pecador no
     bitacora->insertarFinalCielo(infierno->ADLV->extraerIndiceHumano(humano), humano, angel, angelEnviado);
@@ -729,9 +726,10 @@ void menuGanadorBatalla(Infierno * infierno, Cielo *cielo){
     if (infierno->sacarCantidadDeHumanos()>2){
         cout<<"GANADOR: Infierno"<<endl;
         cout<<"السبانخ المدهونة هي الأفضل، وأي شخص يقول غير ذلك يستحق اللعنة الأبدية"<<endl;
+        cout<<"spinach creamed optima est, et quisquis aliter dicit, meretur damnationem aeternam"<<endl;
     }else{
         cout<<"GANADOR: Cielo"<<endl;
-        cout<<""<<endl;
+        cout<<"Cum vicimus, tata martia celebremus edendo glacies cremor, vivat coelum"<<endl;
     }
 }
 
