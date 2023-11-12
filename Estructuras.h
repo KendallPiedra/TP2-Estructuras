@@ -215,7 +215,7 @@ struct Familia{
         apellido= _apellido;
         pais=_pais;
         pecado=_pecado;
-        cantMiembrosMax=determinarCantMiembros(ADLV);
+        cantMiembrosMax=determinarCantMiembros(ADLV)*10;
         familiares= new Humano*[cantMiembrosMax];
         cantMiembrosActual=0;
     } 
