@@ -274,7 +274,7 @@ struct Infierno{
     int buscarHumanoMasPecador();
     Humano* sacarHumanoMasPecador();
     int buscarDemonioConAlmaCaptiva(int ID);//cambiar
-    
+
 };
 
 // EL CIELO ---------------------------------------------------------------------------------------------------
@@ -336,6 +336,7 @@ class avl_tree {
       avl * insert(avl*, Humano *);
       void show(avl*, int);
       void inorder(avl *);
+      string sInorden(avl*);
       void preorder(avl *);
       void postorder(avl*);
       int contarNodos(avl*); //añadido!!
@@ -448,6 +449,17 @@ void avl_tree::inorder(avl *t) {//de momento no deberian funcionar por como impr
       inorder(t->l);
       cout << t->humano << " ";
       inorder(t->r);
+}
+
+string avl_tree::sInorden(avl*t){
+    string result = "";
+    if (t != NULL) {
+        result += sInorden(t->l);
+        result += t->humano->convertirAStringCelestial() + 
+        "------------------------------------------------------\n";
+        result += sInorden(t->r);
+    }
+    return result;
 }
 
 void avl_tree::preorder(avl *t) {//de momento no deberian funcionar por como imprimen, se necesita cambiar

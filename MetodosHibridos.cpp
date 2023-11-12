@@ -650,12 +650,11 @@ void Cielo::generarConsultaCelestial(){
 
         archivo<<"Humanos salvados:\n------------------------------------------------------------------------"<<endl;
         // cout<<"alooooooooo"<<endl;
-        for (int j=0; j< cantidadHumanos;j++){
             // cout<<"se intenta pasar un humano a string"<<endl;
-            archivo<<listaOrdenadaHumanos[j]->convertirAString()<<endl;
-            archivo<<"------------------------------------------------------------------------------------------"<<endl;
-        }
+        tablaSacra[i]->inorder(r);    
     }
+    archivo<<"------------------------------------------------------------------------------------------"<<endl;
+
     archivo.close();
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
