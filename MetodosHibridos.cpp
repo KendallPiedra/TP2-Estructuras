@@ -506,6 +506,16 @@ int Infierno::buscarDemonioConAlmaCaptiva(int ID){
     return -1;
 }
 
+
+
+int Infierno::sacarCantidadDeHumanos(){
+    int humanosTotales;
+    for (int i; i<7;i++){
+        humanosTotales+=demonios[i]->calcularCantidadHumanos();
+    }
+    return humanosTotales;
+}
+
 //ARBOL CELESTIAL --------------------------------------------------------------------------------------
 void ArbolAngelical::invocarAngeles(){
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel",
