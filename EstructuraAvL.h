@@ -28,7 +28,7 @@ struct ArbolAVL {
     }
 };
 
-int ArbolAVL::height(avl *t=r) {
+int ArbolAVL::height(avl *t) {
    int h = 0;
    if (t != NULL) {
       int l_height = height(t->l);
