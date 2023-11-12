@@ -644,6 +644,8 @@ void Cielo::generarConsultaCelestial(){
     ofstream archivo;
     archivo.open("ConsultaCelestial.txt",ios::out);
     archivo<<"---------------------------- CIELO --------------------------------"<<endl;
+
+    //angeles aqui 
     archivo<<"\nTotal actual de humanos residentes en el Cielo:\t"<<contarCantidadSalvados()<<"\n"<<endl;
     for (int i=0; i<1000; i++){
         archivo<<"-------------------------------- TABLA SACRA (Bucket "<<i<<") -------------------------------"<<endl;
