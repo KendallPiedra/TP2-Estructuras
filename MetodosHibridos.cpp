@@ -75,7 +75,7 @@ string Humano::convertirAString(){
 }
 
 string Humano::convertirAStringCelestial(){
-    string datos="";
+    string datos=" ";
     datos += "ID: " + to_string(ID) + "\n";
     datos += "Nombre: " + nombre + "\n";
     datos += "Apellido: " + apellido + "\n";
@@ -90,6 +90,7 @@ string Humano::convertirAStringCelestial(){
     datos += convertirPecadosAString();
     datos += convertirRedesSocialesAString();
     datos += amigos->convertirAmigosAString();
+    datos += "------------------------------------------";
     return datos;
 }
 
@@ -814,7 +815,7 @@ void Cielo::generarConsultaCelestial(){
         archivo<<"Humanos salvados:\n------------------------------------------------------------------------"<<endl;
         // cout<<"alooooooooo"<<endl;
             // cout<<"se intenta pasar un humano a string"<<endl;
-        // archivo<<tablaSacra[i]->sInOrden(tablaSacra[i]->r);    
+        archivo<<tablaSacra[i]->sInOrden(tablaSacra[i]->r);    
     }
     archivo<<"------------------------------------------------------------------------------------------"<<endl;
     archivo.close();

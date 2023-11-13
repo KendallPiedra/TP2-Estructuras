@@ -480,6 +480,16 @@ int ArbolAVLK::contarNodos(NodoAvl* nodo){
         return 1+contarNodos(nodo->hijoDerecho)+contarNodos(nodo->hijoIzq);
 } 
 
+string ArbolAVLK::sInOrden(NodoAvl * t){
+    string result = " ";
+    if (t != NULL) {
+        result += sInOrden(t->hijoIzq);
+        result += t->humano->convertirAStringCelestial();
+        result += sInOrden(t->hijoDerecho);
+    }
+    return result;
+}
+
 // BITACORA DE CONDENACIÓN ---------------------------------------------------------------------------------------------
 void BitacoraCondenacion::insertarFinal(int indice, Humano * humano, string pecado){
     // cout<<humano->sacarCantidadPecado(pecado)<<endl;
