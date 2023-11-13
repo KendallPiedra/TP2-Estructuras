@@ -284,7 +284,7 @@ struct Infierno{
     int sacarCantidadDeHumanos();
     Humano * sacarHumano(int IDHumano);
     Humano ** sacarListaDeRaicesDemoniacas();
-    Humano buscarHumanoMasPecador();
+    Humano* buscarHumanoMasPecador();
     Humano* sacarHumanoMasPecador();
     int buscarDemonioConAlmaCaptiva(int ID);//cambiar
 
