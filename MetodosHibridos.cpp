@@ -455,6 +455,12 @@ Humano * Demonio::sacarHumano(int idxFamilia){
     Humano*humano=mostrarHumanoRaiz(idxFamilia);
     cout<<"ya lo mostro"<<endl;
     familias[idxFamilia]->borrarRaiz();
+    //fdsjlkfsjdkljlksfdjlkf
+    if (familias[idxFamilia]->familiares[0]==NULL){
+        familias[idxFamilia]=familias[cantFamilias-1];
+        cantFamilias--;
+    }
+    //slkdjasdjklsalkdsl
     cout<<"ya lo borro"<<endl;
     return humano;
 }
@@ -570,6 +576,7 @@ int Infierno::buscarHumanoMasPecador(){
     
     Humano* humanoMasPecador = humanosRaiz[0];
     if (humanoMasPecador==NULL){return -1;}
+    cout<<cantRaices<<endl;
     for (int i = 1; i < cantRaices; i++) {
         cout<<"llegue donde nadie penso"<<endl;
         if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
@@ -773,9 +780,10 @@ string Cielo::salvacionGeneral(){
     }
     cout<<"llega a crear archivo"<<endl;
     cin.get();
-    return crearArchivoBitacora();
-    cout<<"creo archivo"<<endl;
     cin.get();
+    cin.get();
+    cin.get();
+    return crearArchivoBitacora();
 }
 
 int Cielo::contarCantidadSalvados(){
