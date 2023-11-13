@@ -405,66 +405,8 @@ Humano * Infierno::buscarHumanoMasPecador(){
     return demonios[indice]->eliminarHumanoMasPecador();
 }
 
-//saca el humano (lo borra de su heap) y lo retorna
-//su parametro es el ID del humano
-//solo funciona con las raices de los heaps
-Humano* Infierno::sacarHumano(int IDHumano){
-    if(IDHumano==-1){return NULL;}
-    for(int i=0; i<7;i++){
-        for(int j=0;j<demonios[i]->cantFamilias;j++){
-            Humano*humano=demonios[i]->mostrarHumanoRaiz(j);
-            cout<<"ID: "<<humano->ID<<endl;
-            if(humano->ID==IDHumano){
-                cout<<"intenta sacar Humano de demonio"<<endl;
-                return demonios[i]->sacarHumano(j);//
-            }
-        }
-    }
-    return NULL;
-}
-
-
-Humano* Infierno::sacarHumanoMasPecador(){
-    buscarHumanoMasPecador();
-    cout<<"si lo busque"<<endl;
-    return sacarHumano(buscarHumanoMasPecador());
-}
-
-//retorna el indice del humano en la familia
-//si el humano no esta en la familia retorna -1
-int Familia::buscarFamiliarPorID(int ID){
-    for (int i=0; i<cantMiembrosActual;i++){
-        if(familiares[i]->ID==ID){
-            return i;
-        }
-    }
-    return -1;
-}
-
-//retorna el indice de la familia en el que se entruentra el humano
-//si el humano no esta en el demonio retorna -1
-int Demonio::buscarFamiliaDelAlmaCaptiva(int ID){
-    for (int i=0; i<cantFamilias;i++){
-        if(familias[i]->buscarFamiliarPorID(ID)!=-1){
-            return i;
-        }
-    }
-    return -1;
-}
-
 //retorna el indice del demonio en el que se entruentra el humano
 //si el humano no esta en el infierno retorna -1
-int Infierno::buscarDemonioConAlmaCaptiva(int ID){
-    for (int i;i<7;i++){
-        if (demonios[i]->buscarFamiliaDelAlmaCaptiva(ID)!=-1){
-            return i;
-        }
-    }
-    return -1;
-}
-
-
-
 int Infierno::sacarCantidadDeHumanos(){
     int humanosTotales=0;
     for (int i=0; i<7;i++){
@@ -568,22 +510,7 @@ string Cielo::crearArchivoBitacora(){
 } 
 
 void Cielo::tenerPiedad(){
-    Humano*humanoSalvado;
-    try{
-        humanoSalvado=infierno->sacarHumanoMasPecador();
-        humanoSalvado=NULL;
-        int i=humanoSalvado->ID;
-    }catch(exception e){
-        cout<<"salida magica SE CALLOOOOOOOOOOOOOOOOOO"<<endl;
-        cin.get();
-        cin.get();
-        cin.get();
-        } catch (const std::exception& e) {
-        // Captura y maneja la excepción
-        std::cerr << "Excepción atrapada: " << e.what() << std::endl;
-
-        // Puedes o
-    }
+    Humano *humanoSalvado=infierno->buscarHumanoMasPecador();
     cout<<"saca el humano"<<endl;
     if(humanoSalvado==NULL){
         cout<<"No queda ningun alma por salvar"<<endl;
@@ -602,7 +529,7 @@ void Cielo::tenerPiedad(){
 
 string Cielo::salvacionGeneral(){
     cout<<"entra en salvacion general"<<endl;
-    arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);//se cae en generr nuevo nivel
+    arbolAngelical->invocarAngeles(arbolAngelical->raiz);//se cae en generr nuevo nivel
     cout<<"genera un nuevo nivel"<<endl;
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
     for (int i = 0; i < arbolAngelical->contarHojas(arbolAngelical->raiz); i++){
