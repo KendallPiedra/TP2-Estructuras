@@ -286,7 +286,7 @@ int Familia::contarVivos(){
     return cantidadVivos;
 }
 int Familia::contarCondenados(){
-    int cantidad;
+    int cantidad=0;
     for (int i=0; i<cantMiembrosActual;i++){
         if (familiares[i]->vivo==false&&familiares[i]->salvado==false){
             cantidad++;
@@ -295,7 +295,7 @@ int Familia::contarCondenados(){
     return cantidad;
 }
 int Familia::contarSalvados(){
-    int cantidad;
+    int cantidad=0;
     for (int i=0; i<cantMiembrosActual;i++){
         if (familiares[i]->salvado){
             cantidad++;
@@ -994,8 +994,7 @@ void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo
     Familia * familia=arbolDeLaVida->sacarFamiliaCompleta(apellido,pais);
     cout<<"salddkldas"<<endl;
     cin.get();
-    // generarArchivoFamilia(familia);
-    cout<<"Porcentaje Vivos: "<<familia->sacarPorcentajeViVos()<<endl;
+    generarArchivoFamilia(familia);
 }
 
 void menuConsultas(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){

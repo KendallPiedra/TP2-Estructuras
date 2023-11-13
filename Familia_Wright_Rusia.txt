@@ -1,0 +1,112 @@
+---------------------------- FAMILIA --------------------------------
+
+Cantidad de miembros:	3
+
+Porcentaje de miembros vivos:	100
+
+Porcentaje de miembros en el infierno:	1.0922e+06
+
+Porcentaje de miembros en el cielo:	1.0922e+06
+
+--------------------------- VIVOS -------------------------------
+ID: 21121
+Nombre: Kade
+Apellido: Wright
+Pais: Rusia
+Creencia: Islam
+Profesión: Futbolista
+Nacimiento: 13-11-2023_00-06-24
+Cantidad amigos maxima: 10
+Pecados:
+Pecados Totales: 23Lujuria: 0
+Gula: 2
+Avaricia: 0
+Pereza: 0
+Ira: 0
+Envidia: 6
+Soberbia: 15
+Twitter: 14
+iFood: 20
+LinkedIn: 40
+Tinder: 71
+Instagram: 75
+Facebook: 82
+Netflix: 89
+--------------------Lista Amigos--------------------
+-->Cassius Jones
+-->Avi Wright
+-->Axl Wright
+-->Omar Adams
+-->Calum Messi
+-----------------------------------------------------
+
+----------------------------------------------------------------
+ID: 22851
+Nombre: Avi
+Apellido: Wright
+Pais: Rusia
+Creencia: Islam
+Profesión: Arquitecto
+Nacimiento: 13-11-2023_00-06-24
+Cantidad amigos maxima: 66
+Pecados:
+Pecados Totales: 24Lujuria: 0
+Gula: 1
+Avaricia: 0
+Pereza: 5
+Ira: 0
+Envidia: 4
+Soberbia: 14
+iFood: 19
+Twitter: 29
+Tinder: 31
+Facebook: 59
+Netflix: 68
+LinkedIn: 90
+Instagram: 99
+--------------------Lista Amigos--------------------
+-->Cassius Jones
+-->Axl Wright
+-->Kade Wright
+-->Omar Adams
+-->Calum Messi
+-----------------------------------------------------
+
+----------------------------------------------------------------
+ID: 32614
+Nombre: Axl
+Apellido: Wright
+Pais: Rusia
+Creencia: Islam
+Profesión: Enfermero/enfermera
+Nacimiento: 13-11-2023_00-06-24
+Cantidad amigos maxima: 75
+Pecados:
+Pecados Totales: 13Lujuria: 0
+Gula: 4
+Avaricia: 0
+Pereza: 6
+Ira: 0
+Envidia: 0
+Soberbia: 3
+Instagram: 13
+LinkedIn: 25
+Twitter: 27
+iFood: 35
+Tinder: 53
+Netflix: 54
+Facebook: 96
+--------------------Lista Amigos--------------------
+-->Cassius Jones
+-->Avi Wright
+-->Kade Wright
+-->Omar Adams
+-->Calum Messi
+-----------------------------------------------------
+
+----------------------------------------------------------------
+
+--------------------------- INFIERNO -------------------------------
+
+--------------------------- CIELO -------------------------------
+------------------------------------------------------------------------------------------
