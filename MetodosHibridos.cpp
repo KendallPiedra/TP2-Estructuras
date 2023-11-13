@@ -748,33 +748,32 @@ string Cielo::crearArchivoBitacora(){
 } 
 
 void Cielo::tenerPiedad(){
-    try{
-        Humano*humanoSalvado;
-        humanoSalvado=infierno->sacarHumanoMasPecador();
 
-        cout<<"saca el humano"<<endl;
-        if(humanoSalvado==NULL){
-            cout<<"No queda ningun alma por salvar"<<endl;
-            return;
-        }
-        NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
-        cout<<"se salva el humanoooo"<<endl;
-        humanoSalvado->angelQueLoSalvo=angel;
-        humanoSalvado->salvado=true;
-        cout<<"la quiere meter"<<endl;
-        insertarEnTablaHash(humanoSalvado);///aca se cae
-        cout<<"la metió"<<endl;
-        generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
-        cout<<"sljkdfheldkfhlfws"<<endl;
-    }catch(exception &e){
-        cout<<"Suaveeeeeee lo atrapo el carcahjdsa"<<endl;
-        cin.get();
+    Humano*humanoSalvado;
+    humanoSalvado=infierno->sacarHumanoMasPecador();
+    cout<<"saca el humano"<<endl;
+    if(humanoSalvado==NULL){
+        cout<<"No queda ningun alma por salvar"<<endl;
         return;
     }
+    cout<<"ID humano: "<<humanoSalvado->ID<<endl;
+    cin.get();
+    NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
+    cout<<"se salva el humanoooo"<<endl;
+    cin.get();
+    humanoSalvado->angelQueLoSalvo=angel;
+    humanoSalvado->salvado=true;
+    cout<<"la quiere meter"<<endl;
+    insertarEnTablaHash(humanoSalvado);///aca se cae
+    cout<<"la metió"<<endl;
+    generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
+    cout<<"sljkdfheldkfhlfws"<<endl;
+
 }
 
 string Cielo::salvacionGeneral(){
     cout<<"entra en salvacion general"<<endl;
+    cin.get();
     arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);//se cae en generr nuevo nivel
     cout<<"genera un nuevo nivel"<<endl;
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
@@ -786,6 +785,7 @@ string Cielo::salvacionGeneral(){
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
         cout<<"quiere tener piedad"<<endl;
+        cin.get();
         tenerPiedad();
         cout<<"tuvo piedad"<<endl;
     }
