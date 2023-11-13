@@ -774,7 +774,7 @@ void Cielo::tenerPiedad(){
 string Cielo::salvacionGeneral(){
     cout<<"entra en salvacion general"<<endl;
     cin.get();
-    arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);//se cae en generr nuevo nivel
+    arbolAngelical->invocarAngeles();//se cae en generr nuevo nivel
     cout<<"genera un nuevo nivel"<<endl;
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
     for (int i = 0; i < arbolAngelical->contarHojas(arbolAngelical->raiz); i++){
