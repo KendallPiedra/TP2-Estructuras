@@ -105,6 +105,66 @@ string ListaBesties::convertirAmigosAString(){
     sAmigos += "-----------------------------------------------------\n";
     return sAmigos;
 }
+
+void ListaBesties::ordenarPorPecados() {
+    if (primerNodo == NULL || primerNodo->siguiente == NULL) {
+        return;
+    }
+    bool intercambio = true;
+    while (intercambio) {
+        intercambio = false;
+        NodoAmigo *actual = primerNodo;
+        while (actual->siguiente != NULL) {
+            if (actual->amigo->totalPecados < actual->siguiente->amigo->totalPecados) {
+                Humano *temp = actual->amigo;
+                actual->amigo = actual->siguiente->amigo;
+                actual->siguiente->amigo = temp;
+                intercambio = true;
+            }
+            actual = actual->siguiente;
+        }
+    }
+}
+
+NodoAmigo * ListaBesties::borrarPorID(int ID){
+    NodoAmigo *actual = primerNodo;
+    NodoAmigo *anterior = NULL;
+    while (actual != NULL && actual->amigo->ID != ID) {
+        anterior = actual;
+        actual = actual->siguiente;
+    }
+    if (actual == NULL) {
+        return NULL;
+    }
+    if (anterior == NULL) {
+        primerNodo = actual->siguiente;
+        if (primerNodo != NULL) {
+            primerNodo->anterior = NULL;
+        }
+    } else {
+        anterior->siguiente = actual->siguiente;
+        if (actual->siguiente != NULL) {
+            actual->siguiente->anterior = anterior;
+        }
+    }
+    return actual;
+}
+
+NodoAmigo* ListaBesties::borrarAlInicio() {
+    if (primerNodo == NULL) {
+        // La lista está vacía
+        return NULL;
+    }
+
+    NodoAmigo *nodoBorrado = primerNodo;
+
+    primerNodo = primerNodo->siguiente;
+    if (primerNodo != NULL) {
+        primerNodo->anterior = NULL;
+    }
+
+    return nodoBorrado;
+}
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigos(){
     for (int i=0; i < cantidadHumanos; i++){
@@ -113,7 +173,6 @@ void ArbolDeLaVida::generarAmigos(){
     }
 }
 //
-
 int ArbolDeLaVida::sacarIndicePecado(string pecado){
     return arrayDeLaVida[0]->sacarIndicePecado(pecado);
 }
@@ -169,298 +228,76 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     }
 }
 
-Familia * ArbolDeLaVida::sacarFamiliaCompleta(string apellido,string pais){
-    Familia * familia= new Familia(apellido,pais,"todos somos uno ae ae",this);
+ListaBesties * ArbolDeLaVida::sacarFamiliaCompleta(string apellido,string pais){
+    ListaBesties *familia=new ListaBesties();
     
     for (int i=0; i<cantidadHumanos;i++){
         if ((arrayDeLaVida[i]->apellido==apellido) && (arrayDeLaVida[i]->pais==pais) ) {
-            familia->annadirFamiliar(arrayDeLaVida[i]);
+            familia->insertarFinal(arrayDeLaVida[i]);
         }
     }
     return familia;
 }
 
-//FAMILIAS ------------------------------------------------------------------------------------------------------------------
-int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
-    int miembros;
-    for(int i=0; i<arbolDeLaVida->cantidadHumanos;i++){
-        if (arbolDeLaVida->arrayDeLaVida[i]->apellido==apellido &&
-        arbolDeLaVida->arrayDeLaVida[i]->pais==pais){
-            miembros++;
-        }
-        
-    }
-    return miembros;
-}
-
-void Familia::ordenarHeap(int k){//La primera vez k es 1
-    if (cantMiembrosActual==0){return;}
-    int hijoIz=2*k;
-    int hijoDer=2*k+1;
-    int totalPecadoHijo=0;
-    int totalPecadoPadre=familiares[k-1]->sacarCantidadPecado(pecado);
-
-    if(totalPecadoPadre==-1){totalPecadoPadre=familiares[hijoIz-1]->totalPecados;}//pecados generales
-
-    if (hijoIz<=cantMiembrosActual){
-        totalPecadoHijo=familiares[hijoIz-1]->sacarCantidadPecado(pecado);
-        if(totalPecadoHijo==-1){totalPecadoHijo=familiares[hijoIz-1]->totalPecados;}//pecados generales
-
-        if(familiares[hijoIz-1]->sacarCantidadPecado(pecado)>
-        familiares[k]->sacarCantidadPecado(pecado)){
-            Humano* temp=familiares[k-1];
-            familiares[k-1]= familiares[hijoIz-1];
-            familiares[hijoIz-1]=temp;
-        }
-        ordenarHeap(2*k);
-        
-    }
-    if(hijoDer<=cantMiembrosActual){
-        totalPecadoHijo=familiares[hijoDer-1]->sacarCantidadPecado(pecado);
-        if(totalPecadoHijo==-1){totalPecadoHijo=familiares[hijoDer-1]->totalPecados;}//pecados generales
-
-        if(familiares[hijoDer-1]->sacarCantidadPecado(pecado)>
-        familiares[k-1]->sacarCantidadPecado(pecado)){
-            Humano* temp=familiares[k-1];
-            familiares[k-1]= familiares[hijoDer-1];
-            familiares[hijoDer-1]=temp;
-        }
-        ordenarHeap(2*k+1);
-    }
-}
-
-
-// void Familia::ordenarHeap(int k){
-//     int largest = k;
-//     int left = 2 * k + 1;
-//     int right = 2 * k + 2;
-
-//     if (left < cantMiembrosActual && familiares[left] > familiares[largest])
-//         largest = left;
-
-//     if (right < cantMiembrosActual && familiares[right] > familiares[largest])
-//         largest = right;
-
-//     if (largest != k) {
-//         std::swap(familiares[k], familiares[largest]);
-//         ordenarHeap(largest);
-//     }
-// }
-// void Familia::llamarOrdenarHeap() {
-//     for (int i = cantMiembrosActual / 2 - 1; i >= 0; i--) {
-//         ordenarHeap(i);
-//     }
-// }
-
-void Familia::annadirFamiliar(Humano * familiar){
-        familiares[cantMiembrosActual]=familiar;
-        if (cantMiembrosActual<(cantMiembrosMax-1)){
-            cantMiembrosActual++;
-        }
-        ordenarHeap(1);
-    }
-void Familia::borrarRaiz(){
-    if (cantMiembrosActual==0){return;}
-    if (familiares[0]!=NULL){  
-        familiares[0]=familiares[cantMiembrosActual-1];
-        familiares[cantMiembrosActual-1]=NULL;
-        cantMiembrosActual--;
-        ordenarHeap(1);
-    }
-}
-
-Humano * Familia::sacarRaiz(){
-    return familiares[0];
-}
-
-
-int Familia::contarVivos(){
-    int cantidadVivos;
-    for (int i=0; i<cantMiembrosActual;i++){
-        if (familiares[i]->vivo){
-            cantidadVivos++;
-        }
-    }
-    return cantidadVivos;
-}
-int Familia::contarCondenados(){
-    int cantidad;
-    for (int i=0; i<cantMiembrosActual;i++){
-        if (familiares[i]->vivo==false&&familiares[i]->salvado==false){
-            cantidad++;
-        }
-    }
-    return cantidad;
-}
-int Familia::contarSalvados(){
-    int cantidad;
-    for (int i=0; i<cantMiembrosActual;i++){
-        if (familiares[i]->salvado){
-            cantidad++;
-        }
-    }
-    return cantidad;
-}
-
-double Familia::sacarPorcentajeInfierno(){
-    return(contarCondenados()*100)/cantMiembrosActual;
-}
-double Familia::sacarPorcentajeCielo(){
-    return(contarSalvados()*100)/cantMiembrosActual;
-}
-double Familia::sacarPorcentajeViVos(){
-    return(contarVivos()*100)/cantMiembrosActual;
-}
 //DEMONIOS ------------------------------------------------------------------------------------------------------------
-
-void Demonio::insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV){
-    familias[cantFamilias]=new Familia(humano->apellido,humano->pais,pecado, ADLV);
-
-    familias[cantFamilias]->annadirFamiliar(humano);
-    cantFamilias++;
+bool Demonio::existeFamilia(string apellido, string pais){
+    NodoAmigo * tmp = familias->primerNodo;
+    while(tmp!=NULL){
+	    if (tmp->amigo->apellido==apellido && tmp->amigo->pais==pais){
+            return true;
+        }
+	    tmp=tmp->siguiente;
+    }
+	return false;
 }
 
 void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
     humano->vivo=false;
     humano->salvado=false;
-    Familia *fam;
-    bool insertado=false;
-    for (int i=0; i<cantFamilias;i++){
-        fam= familias[i];
-        if (humano->pais==fam->pais  &&humano->apellido==fam->apellido
-        ){
-            fam->annadirFamiliar(humano);
-            insertado=true;
-        }
+    familias->insertarFinal(humano);
+    if (!existeFamilia(humano->apellido,humano->pais)){
+        cantidadFamilias++;
     }
-    if(insertado==false){
-    insertarEnFamiliaNueva(humano, ADLV);
-    }
+    familias->ordenarPorPecados();
 }
 
 int Demonio::calcularCantidadHumanos(){
-    int cantidad=0;
-    cout<<"cantidad fam: "<<cantFamilias<<endl;
-    for (int i=0; i<cantFamilias;i++){
-        cout<<cantidad<<endl;
-
-        cantidad+=familias[i]->cantMiembrosActual;
-        cout<<"cantidad miembros: "<<familias[i]->cantMiembrosActual<<endl;
-    }
-    cout<<cantidad<<endl;
-    return cantidad;
+    return familias->largo();
 }
 
 int Demonio::calcularMaximoPecados() {
-    int maxPecado = -1; // Inicializa el valor máximo como negativo, asumiendo que los pecados son números no negativos
-    for (int i = 0; i < cantFamilias; i++) {
-        Familia* familia = familias[i];
-        for (int j = 0; j < familia->cantMiembrosActual; j++) {
-            Humano* familiar = familia->familiares[j];
-            if (familiar->sacarCantidadPecado(pecado) > maxPecado) {
-                maxPecado = familiar->sacarCantidadPecado(pecado);
-            }
-        }
-    }
-    return maxPecado;
+    return familias->primerNodo->amigo->totalPecados;
 }
 
 int Demonio::calcularMinimoPecados() {
-    int minPecado = INT_MAX; // Inicializa el valor mínimo como el máximo valor posible
-    for (int i = 0; i < cantFamilias; i++) {
-        Familia* familia = familias[i];
-        for (int j = 0; j < familia->cantMiembrosActual; j++) {
-            Humano* familiar = familia->familiares[j];
-            if (familiar->sacarCantidadPecado(pecado) < minPecado) {
-                minPecado = familiar->sacarCantidadPecado(pecado);
-            }
-        }
-    }
-    return minPecado;
+    return familias->ultimoNodo->amigo->totalPecados;
 }
 
 int Demonio::calcularPromedioPecados() {
     int sumaPecados = 0;
-    int cantidadPecados = 0;
-
-    for (int i = 0; i < cantFamilias; i++) {
-        Familia* familia = familias[i];
-        for (int j = 0; j < familia->cantMiembrosActual; j++) {
-            Humano* familiar = familia->familiares[j];
-                sumaPecados += familiar->sacarCantidadPecado(pecado); // Suponiendo que el pecado que deseas calcular es el primer pecado
-                cantidadPecados++;
-        }
+    int cantidadHumanos = familias->largo();
+    NodoAmigo *tmp=familias->primerNodo;
+    while (tmp!=NULL){
+        sumaPecados=tmp->amigo->totalPecados;
+        tmp=tmp->siguiente;
     }
-    // Evitar la división por cero
-    if (cantidadPecados == 0) {
-        return 0; // No hay pecados para calcular el promedio
-    }
-    int promedio = sumaPecados / cantidadPecados;
-    return promedio;
+    return sumaPecados / cantidadHumanos;
 }
 
-
-Humano ** Demonio::sacarListaDeHumanos(){
-    Humano** listaHumanos=new Humano*[calcularCantidadHumanos()];
-    int k=0;
-    for (int i=0;i<cantFamilias;i++){
-        for(int j=0;j<familias[i]->cantMiembrosActual;j++){
-            listaHumanos[k]=familias[i]->familiares[j];
-            k++;
-        }
-    }
-    cout<<"cantidad de familias"<< cantFamilias<<endl;
-
-    return listaHumanos;
+Humano * Demonio::eliminarHumano(int ID){
+    return familias->borrarPorID(ID)->amigo;
 }
 
-Humano ** Demonio::sacarListaDeLosMasPecadores(){
-    // cout << "Entra a la funcion sacarListaDeLosMasPecadores" << endl;
-    Humano** listaHumanos = sacarListaDeHumanos();
-    // cout << "Se logra sacar la lista de humanos" << endl;
-    int cantidad = calcularCantidadHumanos();
-    // cout << "Cantidad de humanos: " << cantidad << endl;
-    for (int i = 0; i < cantidad-1; i++) {
-        int maxIdx = i;
-        for (int j = i+1; j < cantidad; j++) {
-            // cout<<"I:"<<i<<endl;
-            // cout<<"J:"<<j<<endl;
-            // cout<<pecado<<endl;
-            // cout<<listaHumanos[j]->sacarCantidadPecado(pecado)<<endl; 
-            // cout<<listaHumanos[maxIdx]->sacarCantidadPecado(pecado)<<endl;
-
-            if (listaHumanos[j]->sacarCantidadPecado(pecado) > listaHumanos[maxIdx]->sacarCantidadPecado(pecado)){
-                maxIdx = j;
-            }
-            // cout<<maxIdx<<endl;
-        }
-        Humano * temp = listaHumanos[maxIdx];
-        listaHumanos[maxIdx] = listaHumanos[i];
-        listaHumanos[i] = temp;
-    }
-
-    // cout << "Lista de los más pecadores ordenada correctamente" << endl;
-
-    return listaHumanos;
+Humano *Demonio::mostrarHumanoMasPecador(){
+    return familias->primerNodo->amigo;
 }
 
-Humano * Demonio::mostrarHumanoRaiz(int idxFamilia){
-    return familias[idxFamilia]->sacarRaiz();
+Humano *Demonio::eliminarHumanoMasPecador(){
+    return familias->borrarAlInicio()->amigo;
 }
 
-Humano * Demonio::sacarHumano(int idxFamilia){
-    cout<<"intenta mostrar el humano"<<endl;
-    Humano*humano=mostrarHumanoRaiz(idxFamilia);
-    cout<<"ya lo mostro"<<endl;
-    familias[idxFamilia]->borrarRaiz();
-    //fdsjlkfsjdkljlksfdjlkf
-    if (familias[idxFamilia]->familiares[0]==NULL){
-        familias[idxFamilia]=familias[cantFamilias-1];
-        cantFamilias--;
-    }
-    //slkdjasdjklsalkdsl
-    cout<<"ya lo borro"<<endl;
-    return humano;
+int Demonio::sacarCantidadFamilias(){
+    return cantidadFamilias;
 }
 //INFIERNO ---------------------------------------------------------------------------------------------------------------------
 void Infierno::generarBitacoraCondenacion(Humano * humano, string pecado){ //esta ordenado por demonio, pero del mas a menos pecador no
@@ -516,6 +353,14 @@ string Infierno::realizarCondenacionGeneral(){
     return crearArchivoBitacora();
 }
 
+int Infierno::sacarCantidadDeFamilias(){
+    int cantFamilias=0;
+    for (int i=0;i<7;i++){
+        cantFamilias+=demonios[i]->sacarCantidadFamilias();
+    }
+    return cantFamilias;
+}
+
 void Infierno::generarConsultaInfernal(){
     ofstream archivo;
     archivo.open("ConsultaInfernal.txt",ios::out);
@@ -533,56 +378,31 @@ void Infierno::generarConsultaInfernal(){
         // cout<<"se calculan los humanos"<<endl;
         int cantidadHumanos = demonios[i]->calcularCantidadHumanos();
         // cout<<"sacar lista de los mas pecadores"<<endl;
-        Humano**listaOrdenadaHumanos=demonios[i]->sacarListaDeLosMasPecadores();
         // cout<<"se saco la lista de los mas pecadores"<<endl;
         archivo<<"Humanos Condenados:\n------------------------------------------------------------------------"<<endl;
         // cout<<"alooooooooo"<<endl;
-        for (int j=0; j< cantidadHumanos;j++){
-            // cout<<"se intenta pasar un humano a string"<<endl;
-            archivo<<listaOrdenadaHumanos[j]->convertirAString()<<endl;
-            archivo<<"------------------------------------------------------------------------------------------"<<endl;
-        }
+        NodoAmigo *tmp=demonios[i]->familias->primerNodo;
+        while (tmp!=NULL){
+            archivo<<tmp->amigo->convertirAString()<<endl;
+        }           
+        archivo<<"------------------------------------------------------------------------------------------"<<endl;
+
     }
     archivo.close();
         //MOSTRAR LISTA DE MAS PECADORES A MENOS DE SU HEAP
 }
-int Infierno::sacarCantidadDeFamilias(){
-    int cantFamilias=0;
-    for (int i=0;i<7;i++){
-        cantFamilias += demonios[i]->cantFamilias;
-    }
-    return cantFamilias;
-}
-
-Humano** Infierno::sacarListaDeRaicesDemoniacas(){
-    Humano** humanosRaiz= new Humano*[sacarCantidadDeFamilias()+1];
-    humanosRaiz[0]=NULL;
-    int k=0;
-    for (int i=0;i<7;i++){
-        for(int j=0; j<demonios[i]->cantFamilias;j++){
-            humanosRaiz[k]=demonios[i]->mostrarHumanoRaiz(j);
-            k++;
-        }
-    }
-    return humanosRaiz;
-}
 
 //retorna el ID Del humano
-int Infierno::buscarHumanoMasPecador(){
-    int cantRaices= sacarCantidadDeFamilias();
-
-    Humano** humanosRaiz= sacarListaDeRaicesDemoniacas();
-    
-    Humano* humanoMasPecador = humanosRaiz[0];
-    if (humanoMasPecador==NULL){return -1;}
-    cout<<cantRaices<<endl;
-    for (int i = 1; i < cantRaices; i++) {
-        // cout<<"llegue donde nadie penso"<<endl;
-        if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
-            humanoMasPecador = humanosRaiz[i];
+Humano * Infierno::buscarHumanoMasPecador(){
+    int indice=0;
+    int mayorCantidadPecados=0;
+    for (int i = 0; i < 7; i++){
+        if (demonios[i]->mostrarHumanoMasPecador()->totalPecados>mayorCantidadPecados){
+            mayorCantidadPecados=demonios[i]->mostrarHumanoMasPecador()->totalPecados;
+            indice=i;
         }
     }
-    return humanoMasPecador->ID;
+    return demonios[indice]->eliminarHumanoMasPecador();
 }
 
 //saca el humano (lo borra de su heap) y lo retorna

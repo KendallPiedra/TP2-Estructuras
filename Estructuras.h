@@ -63,6 +63,9 @@ struct ListaBesties {
     void imprimir();
     void imprimirConPecados();
     string convertirAmigosAString();
+    void ordenarPorPecados();
+    NodoAmigo * borrarPorID(int ID);
+    NodoAmigo* borrarAlInicio();
 };
 
 //HUMANOS --------------------------------------------------------------------------------------------------------------
@@ -168,7 +171,7 @@ struct ArbolDeLaVida{
     Humano** sacarPorcentajeMasPecador(string pecado);
     int * sacarIndicesOrdenadosSegunPecado(string pecado);
 
-    Familia * sacarFamiliaCompleta(string apellido, string pais);
+    ListaBesties * sacarFamiliaCompleta(string apellido, string pais);
 
 };
 
@@ -208,56 +211,57 @@ struct BitacoraCondenacion{
 };
 
 //INFIERNO -----------------------------------------------------------------------------------------------------------------
-struct Familia{
-    string apellido, pais, pecado; 
-    int cantMiembrosMax, cantMiembrosActual;
-    Humano** familiares;
-    Familia(string _apellido, string _pais,string _pecado,ArbolDeLaVida * ADLV){
-        apellido= _apellido;
-        pais=_pais;
-        pecado=_pecado;
-        cantMiembrosMax=determinarCantMiembros(ADLV)*10;
-        familiares= new Humano*[cantMiembrosMax];
-        cantMiembrosActual=0;
-    } 
-    int determinarCantMiembros(ArbolDeLaVida * arbolDeLaVida);
-    void annadirFamiliar(Humano * familiar);
-    void ordenarHeap(int k);
-    void borrarRaiz();
-    Humano* sacarRaiz();
+// struct Familias{
+//     string apellido, pais, pecado; 
+//     int cantMiembrosMax, cantMiembrosActual;
+    
+//     Familia(string _apellido, string _pais,string _pecado,ArbolDeLaVida * ADLV){
+//         apellido= _apellido;
+//         pais=_pais;
+//         pecado=_pecado;
+//         cantMiembrosMax=1000;
+//         cantMiembrosActual=0;
+//     } 
+//     int determinarCantMiembros(ArbolDeLaVida * arbolDeLaVida);
+//     void annadirFamiliar(Humano * familiar);
+//     void ordenarHeap(int k);
+//     void borrarRaiz();
+//     Humano* sacarRaiz();
 
-    int buscarFamiliarPorID(int ID);
-    int contarVivos();
-    int contarCondenados();
-    int contarSalvados();
-    double sacarPorcentajeViVos();
-    double sacarPorcentajeCielo();
-    double sacarPorcentajeInfierno();
+//     int buscarFamiliarPorID(int ID);
+//     int contarVivos();
+//     int contarCondenados();
+//     int contarSalvados();
+//     double sacarPorcentajeViVos();
+//     double sacarPorcentajeCielo();
+//     double sacarPorcentajeInfierno();
 
-    void llamarOrdenarHeap();
-};
+//     void llamarOrdenarHeap();
+// };
 
 struct Demonio{
-    Familia* familias[600];
-    int cantFamilias;
+    ListaBesties * familias;
     string nombre, pecado;
+    int cantidadFamilias;
     Demonio(string _nombre,string _pecado){
-        cantFamilias=0;
         nombre=_nombre;
         pecado=_pecado;
+        familias=new ListaBesties();
+        cantidadFamilias=0;
     }
-    void insertarEnFamiliaNueva(Humano*humano, ArbolDeLaVida * ADLV);
+    bool existeFamilia(string apellido, string pais);
     void matarHumano(Humano *humano, ArbolDeLaVida * ADLV);
     int calcularCantidadHumanos();
     int calcularMaximoPecados();
     int calcularMinimoPecados();
     int calcularPromedioPecados();
-    Humano** sacarListaDeHumanos();
-    Humano** sacarListaDeLosMasPecadores();
-    Humano* sacarHumano(int idxFamilia);
+    Humano* eliminarHumano(int ID);
     Humano* mostrarHumanoRaiz(int idxFamilia);
-
+    int sacarCantidadFamilias();
     int buscarFamiliaDelAlmaCaptiva(int ID);
+    Humano* mostrarHumanoMasPecador();
+    Humano * eliminarHumanoMasPecador();
+    
 };
 
 struct Infierno{
@@ -284,7 +288,7 @@ struct Infierno{
     int sacarCantidadDeHumanos();
     Humano * sacarHumano(int IDHumano);
     Humano ** sacarListaDeRaicesDemoniacas();
-    int buscarHumanoMasPecador();
+    Humano * buscarHumanoMasPecador();
     Humano* sacarHumanoMasPecador();
     int buscarDemonioConAlmaCaptiva(int ID);//cambiar
 

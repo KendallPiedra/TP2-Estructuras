@@ -416,6 +416,33 @@ void BitacoraCondenacion::insertarFinalCielo(int indice, Humano * humano, string
     }
 }
 
+// FAMILIAS ------------------------------------------------------------------------------------------------------------
+void ArbolDeLaVida::insertar(Humano * humano){
+    raiz = insertar(humano, raiz);
+}
+
+bool ArbolDeLaVida::validarID(int ID){
+    for(int i=0; i<cantidadHumanos;i++){
+        if (arrayDeLaVida[i]->ID==ID){
+            return false;
+        }
+    }
+    return true;
+}
+//  INSERTA RECURSIVAMENTE
+NodoArbol* ArbolDeLaVida::insertar(Humano * humano, NodoArbol* nodo){
+    if (nodo == NULL){
+        return new NodoArbol(humano);
+    }else if(nodo->humano->ID < humano->ID){ 
+        // si el valor es mayor, llama recursivamente a insertar en el hijo derecho
+        nodo->hijoderecho = insertar(humano, nodo->hijoderecho);
+    }else if (nodo->humano->ID >= humano->ID){ 
+        // en caso contrario, va al lado izquierdo
+        nodo->hijoizquierdo = insertar(humano, nodo->hijoizquierdo);
+    }
+    return nodo;
+}
+
 // NODO CELESTIAL ------------------------------------------------------------------------------------------------------
 void NodoCelestial::imprimirCelestialmente(){
     cout<<"------------------------- NODO CELESTIAL ---------------------------"<<endl;
