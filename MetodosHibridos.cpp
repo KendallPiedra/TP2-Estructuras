@@ -227,8 +227,6 @@ void Familia::ordenarHeap(int k){//La primera vez k es 1
         }
         ordenarHeap(2*k+1);
     }
-    cout<<"termine"<<endl;
-    
 }
 
 
