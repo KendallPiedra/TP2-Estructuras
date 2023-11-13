@@ -576,7 +576,6 @@ int Infierno::buscarHumanoMasPecador(){
     if (humanoMasPecador==NULL){return -1;}
     cout<<cantRaices<<endl;
     for (int i = 1; i < cantRaices; i++) {
-        cout<<"llegue donde nadie penso"<<endl;
         if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
             humanoMasPecador = humanosRaiz[i];
         }
@@ -606,6 +605,7 @@ Humano* Infierno::sacarHumano(int IDHumano){
 Humano* Infierno::sacarHumanoMasPecador(){
     buscarHumanoMasPecador();
     cout<<"si lo busque"<<endl;
+    cin.get();
     return sacarHumano(buscarHumanoMasPecador());
 }
 
@@ -747,36 +747,29 @@ string Cielo::crearArchivoBitacora(){
 } 
 
 void Cielo::tenerPiedad(){
-    Humano*humanoSalvado;
     try{
+        Humano*humanoSalvado;
         humanoSalvado=infierno->sacarHumanoMasPecador();
-        humanoSalvado=NULL;
-        int i=humanoSalvado->ID;
-    }catch(exception e){
-        cout<<"salida magica SE CALLOOOOOOOOOOOOOOOOOO"<<endl;
-        cin.get();
-        cin.get();
-        cin.get();
-        } catch (const std::exception& e) {
-        // Captura y maneja la excepción
-        std::cerr << "Excepción atrapada: " << e.what() << std::endl;
 
-        // Puedes o
-    }
-    cout<<"saca el humano"<<endl;
-    if(humanoSalvado==NULL){
-        cout<<"No queda ningun alma por salvar"<<endl;
+        cout<<"saca el humano"<<endl;
+        if(humanoSalvado==NULL){
+            cout<<"No queda ningun alma por salvar"<<endl;
+            return;
+        }
+        NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
+        cout<<"se salva el humanoooo"<<endl;
+        humanoSalvado->angelQueLoSalvo=angel;
+        humanoSalvado->salvado=true;
+        cout<<"la quiere meter"<<endl;
+        insertarEnTablaHash(humanoSalvado);///aca se cae
+        cout<<"la metió"<<endl;
+        generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
+        cout<<"sljkdfheldkfhlfws"<<endl;
+    }catch(exception &e){
+        cout<<"Suaveeeeeee lo atrapo el carcahjdsa"<<endl;
+        cin.get();
         return;
     }
-    NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
-    cout<<"se salva el humanoooo"<<endl;
-    humanoSalvado->angelQueLoSalvo=angel;
-    humanoSalvado->salvado=true;
-    cout<<"la quiere meter"<<endl;
-    insertarEnTablaHash(humanoSalvado);///aca se cae
-    cout<<"la metió"<<endl;
-    generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
-    cout<<"sljkdfheldkfhlfws"<<endl;
 }
 
 string Cielo::salvacionGeneral(){
