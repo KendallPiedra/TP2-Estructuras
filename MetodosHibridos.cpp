@@ -571,15 +571,13 @@ int Infierno::buscarHumanoMasPecador(){
     Humano* humanoMasPecador = humanosRaiz[0];
     if (humanoMasPecador==NULL){return -1;}
     for (int i = 1; i < cantRaices; i++) {
-        cout<<"llegue donde nadie penso"<<endl;
+        // cout<<"llegue donde nadie penso"<<endl;
         if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
             humanoMasPecador = humanosRaiz[i];
         }
     }
-
-
-
-
+    cout<<"Holis"<<endl;
+    cin.get();
     return humanoMasPecador->ID;
 }
 
@@ -754,6 +752,7 @@ void Cielo::tenerPiedad(){
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
     humanoSalvado->angelQueLoSalvo=angel;
     cout<<angel<<endl;
+    cin.get();
     humanoSalvado->salvado=true;
     cout<<"la quiere meter"<<endl;
     insertarEnTablaHash(humanoSalvado);///aca se cae

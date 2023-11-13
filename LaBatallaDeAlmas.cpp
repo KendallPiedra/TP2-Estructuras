@@ -159,8 +159,8 @@ int main(int argc, char const *argv[])
             break;
         case 3:
             nombreArchivo=infierno->realizarCondenacionGeneral();
-            invocar=".\\enviarCorreos.exe kpiedra262@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-INFIERNO"; //Esto hay que probarlo
-            system(invocar.c_str());
+            // invocar=".\\enviarCorreos.exe kpiedra262@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-INFIERNO"; //Esto hay que probarlo
+            // system(invocar.c_str());
             break;
         case 4:
             nombreArchivo=cielo->salvacionGeneral();
