@@ -391,40 +391,48 @@ int ArbolAVL::difference(avl *t) {
 }
 
 avl *ArbolAVL::rr_rotat(avl *parent) {
-
+   cout<<"Right-Right Rotation";
+   cin.get();  
    avl *t;
    t = parent->r;
    parent->r = t->l;
    t->l = parent;
-   cout<<"Right-Right Rotation";
+   cout<<"Right-Right Rotation22222222222";
+   cin.get();
    return t;
 }
 
 avl *ArbolAVL::ll_rotat(avl *parent) {
-
+   cout<<"Left-Left Rotation";
+   cin.get();
    avl *t;
    t = parent->l;
    parent->l = t->r;
    t->r = parent;
-   cout<<"Left-Left Rotation";
+   cout<<"Left-Left Rotation2222222222222";
+   cin.get();
    return t;
 }
 
 avl *ArbolAVL::lr_rotat(avl *parent) {
-
+   cout<<"Left-Right Rotation";
+   cin.get();
    avl *t;
    t = parent->l;
    parent->l = rr_rotat(t);
-   cout<<"Left-Right Rotation";
+   cout<<"Left-Right Rotation222222222222222";
+   cin.get();
    return ll_rotat(parent);
 }
 
 avl *ArbolAVL::rl_rotat(avl *parent) {
-
+   cout<<"Right-Left Rotation";
+   cin.get();
    avl *t;
    t = parent->r;
    parent->r = ll_rotat(t);
-   cout<<"Right-Left Rotation";
+   cout<<"Right-Left Rotation222222222222222";
+   cin.get();
    return rr_rotat(parent);
 }
 

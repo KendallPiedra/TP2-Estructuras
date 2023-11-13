@@ -605,8 +605,6 @@ Humano* Infierno::sacarHumano(int IDHumano){
 
 Humano* Infierno::sacarHumanoMasPecador(){
     buscarHumanoMasPecador();
-    cout<<"si lo busque"<<endl;
-    cin.get();
     return sacarHumano(buscarHumanoMasPecador());
 }
 
@@ -718,6 +716,7 @@ void Cielo::insertarEnTablaHash(Humano *humano){
     cout<<"intenta insertar"<<endl;
     int posicion= calcularPosicionEnTabla(humano->ID);
     cout<<"calculo la posicion en la tabla: "<<posicion<<endl;
+    cin.get();
     tablaSacra[posicion]->r=tablaSacra[posicion]->insert(tablaSacra[posicion]->r,humano);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
     //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
     cout<<"logró insertar"<<endl;
@@ -757,10 +756,9 @@ void Cielo::tenerPiedad(){
         return;
     }
     cout<<"ID humano: "<<humanoSalvado->ID<<endl;
-    cin.get();
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
     cout<<"se salva el humanoooo"<<endl;
-    cin.get();
+
     humanoSalvado->angelQueLoSalvo=angel;
     humanoSalvado->salvado=true;
     cout<<"la quiere meter"<<endl;
@@ -768,6 +766,7 @@ void Cielo::tenerPiedad(){
     cout<<"la metió"<<endl;
     generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
     cout<<"sljkdfheldkfhlfws"<<endl;
+    
 
 }
 
@@ -775,23 +774,22 @@ string Cielo::salvacionGeneral(){
     cout<<"entra en salvacion general"<<endl;
     cin.get();
     arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);//se cae en generr nuevo nivel
-    cout<<"genera un nuevo nivel"<<endl;
+    cout<<"genero un nuevo nivel"<<endl;
+    cin.get();
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
-    for (int i = 0; i < arbolAngelical->contarHojas(arbolAngelical->raiz); i++){
-        arbolAngelical->generarVersiones(arbolAngelical->raiz,nombresAngelicales[i]);
-        arbolAngelical->numeroVersion=0;
-    }
-    cout<<"genera un nuevo nivel"<<endl;
+    // int cantidadHojas=arbolAngelical->contarHojas(arbolAngelical->raiz);
+    // for (int i = 0; i < cantidadHojas; i++){
+    //     arbolAngelical->generarVersiones(arbolAngelical->raiz,nombresAngelicales[i]);
+    //     arbolAngelical->numeroVersion=0;
+    // }
+    cout<<"genero versiones, entre muchas comillas"<<endl;
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
         cout<<"quiere tener piedad"<<endl;
-        cin.get();
         tenerPiedad();
         cout<<"tuvo piedad"<<endl;
     }
     cout<<"llega a crear archivo"<<endl;
-    cin.get();
-    cin.get();
 
     return crearArchivoBitacora();
 }
