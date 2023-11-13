@@ -225,3 +225,21 @@ int menuConsultarHumanoAux(){
     } while (!esInt(opcion));//validaciones varias
     return stoi(opcion);
 }
+
+int menuCondenar(){
+    string opcion;
+    do{
+        // string nombres[]={"Asmodeo","Belfegor","Mammón","Abadón","Satán","Belcebú","Lucifer"};
+        cout<<"------------------------------- CONSULTAS POR HUMANO -------------------------------"<<endl;
+	    cout<<"1: Enviar a Condenar a Asmodeo"<<endl;
+	    cout<<"2: Enviar a Condenar a Belfegor"<<endl;
+	    cout<<"3: Enviar a Condenar a Mammón"<<endl;
+	    cout<<"4: Enviar a Condenar a Abadón"<<endl;
+	    cout<<"5: Enviar a Condenar a Satán"<<endl;
+	    cout<<"6: Enviar a Condenar a Belcebú"<<endl;
+	    cout<<"7: Enviar a Condenar a Lucifer"<<endl;
+	    cout<<"8: Enviar a Condenar a Todos los Demonios"<<endl;
+	    getline(cin,opcion);
+    } while (!esInt(opcion));//validaciones varias
+    return stoi(opcion);
+}

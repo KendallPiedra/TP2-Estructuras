@@ -158,7 +158,13 @@ int main(int argc, char const *argv[])
             menuPublicarRedesSociales(arbolDeLaVida);
             break;
         case 3:
-            nombreArchivo=infierno->realizarCondenacionGeneral();
+            opcion=menuCondenar();
+            if (opcion==8){
+                nombreArchivo=infierno->realizarCondenacionGeneral();
+            }else{
+                infierno->enviarDemonio(opcion-1);
+                nombreArchivo=infierno->crearArchivoBitacora();
+            }
             invocar=".\\enviarCorreos.exe kpiedra262@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-INFIERNO"; //Esto hay que probarlo
             system(invocar.c_str());
             break;
