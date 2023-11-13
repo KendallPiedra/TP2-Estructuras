@@ -66,6 +66,9 @@ struct ListaBesties {
     void ordenarPorPecados();
     NodoAmigo * borrarPorID(int ID);
     NodoAmigo* borrarAlInicio();
+    double sacarPorcentajeVivos();
+    double sacarPorcentajeInfierno();
+    double sacarPorcentajeCielo();
 };
 
 //HUMANOS --------------------------------------------------------------------------------------------------------------

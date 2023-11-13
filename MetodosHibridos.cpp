@@ -165,11 +165,49 @@ NodoAmigo* ListaBesties::borrarAlInicio() {
 
     return nodoBorrado;
 }
+
+double ListaBesties::sacarPorcentajeVivos(){
+    NodoAmigo *tmp=primerNodo;
+    int cantidadVivos=0;
+    while (tmp!=NULL){
+        if (tmp->amigo->vivo){
+            cantidadVivos++;
+        }
+        tmp=tmp->siguiente;
+    }
+    return (cantidadVivos*100)/largo();
+}
+
+double ListaBesties::sacarPorcentajeInfierno(){
+    NodoAmigo *tmp=primerNodo;
+    int cantidadInfierno=0;
+    while (tmp!=NULL){
+        if (!tmp->amigo->vivo && !tmp->amigo->salvado){
+            cantidadInfierno++;
+        }
+        tmp=tmp->siguiente;
+    }
+    return (cantidadInfierno*100)/largo();
+}
+
+double ListaBesties::sacarPorcentajeCielo(){
+    NodoAmigo *tmp=primerNodo;
+    if (tmp==NULL){
+        return 0;
+    }
+    int cantidadCielo=0;
+    while (tmp!=NULL){
+        if (!tmp->amigo->vivo && !tmp->amigo->salvado){
+            cantidadCielo++;
+        }
+        tmp=tmp->siguiente;
+    }
+    return (cantidadCielo*100)/largo();
+}
 //METODOS DE LA VIDA ----------------------------------------------------------------------------------
 void ArbolDeLaVida::generarAmigos(){
     for (int i=0; i < cantidadHumanos; i++){
         arrayDeLaVida[i]->agregarAmigos(arrayDeLaVida, cantidadHumanos);
-        
     }
 }
 //
@@ -529,13 +567,7 @@ void Cielo::tenerPiedad(){
 
 string Cielo::salvacionGeneral(){
     cout<<"entra en salvacion general"<<endl;
-    arbolAngelical->invocarAngeles(arbolAngelical->raiz);//se cae en generr nuevo nivel
-    cout<<"genera un nuevo nivel"<<endl;
-    string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
-    for (int i = 0; i < arbolAngelical->contarHojas(arbolAngelical->raiz); i++){
-        arbolAngelical->generarVersiones(arbolAngelical->raiz,nombresAngelicales[i]);
-        arbolAngelical->numeroVersion=0;
-    }
+    arbolAngelical->invocarAngeles();//se cae en generr nuevo nivel
     cout<<"genera un nuevo nivel"<<endl;
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
@@ -546,7 +578,6 @@ string Cielo::salvacionGeneral(){
     cout<<"llega a crear archivo"<<endl;
     cin.get();
     cin.get();
-
     return crearArchivoBitacora();
 }
 
@@ -707,12 +738,12 @@ void menuConsultarCielo(Cielo *cielo){
     cielo->generarConsultaCelestial();
 }
 
-void generarArchivoFamilia(Familia *familia){
+void generarArchivoFamilia(ListaBesties *familia){
     ofstream archivo;
-    archivo.open("Familia_"+familia->apellido+"_"+familia->pais+".txt",ios::out);
+    archivo.open("Familia_"+familia->primerNodo->amigo->apellido+"_"+familia->primerNodo->amigo->pais+".txt",ios::out);
     archivo<<"---------------------------- FAMILIA --------------------------------"<<endl;
-    archivo<<"\nCantidad de miembros:\t"<<familia->cantMiembrosActual<<endl;
-    archivo<<"\nPorcentaje de miembros vivos:\t"<<familia->sacarPorcentajeViVos()<<endl;
+    archivo<<"\nCantidad de miembros:\t"<<familia->largo()<<endl;
+    archivo<<"\nPorcentaje de miembros vivos:\t"<<familia->sacarPorcentajeVivos()<<endl;
     archivo<<"\nPorcentaje de miembros en el infierno:\t"<<familia->sacarPorcentajeInfierno()<<endl;
     archivo<<"\nPorcentaje de miembros en el cielo:\t"<<familia->sacarPorcentajeCielo()<<endl;
     archivo<<"\n--------------------------- VIVOS -------------------------------"<<endl;
@@ -747,7 +778,7 @@ void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo
 	getline(cin,apellido);
 	cout<<"Ingrese el país de la familia "<<endl;
 	getline(cin,pais);
-    Familia * familia=arbolDeLaVida->sacarFamiliaCompleta(apellido,pais);
+    ListaBesties * familia=arbolDeLaVida->sacarFamiliaCompleta(apellido,pais);
     generarArchivoFamilia(familia);
 }
 
