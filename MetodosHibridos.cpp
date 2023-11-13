@@ -991,6 +991,8 @@ void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo
 	cout<<"Ingrese el país de la familia "<<endl;
 	getline(cin,pais);
     Familia * familia=arbolDeLaVida->sacarFamiliaCompleta(apellido,pais);
+    cout<<"salddkldas"<<endl;
+    cin.get();
     generarArchivoFamilia(familia);
 }
 
