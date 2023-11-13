@@ -564,7 +564,7 @@ Humano** Infierno::sacarListaDeRaicesDemoniacas(){
 }
 
 //retorna el ID Del humano
-int Infierno::buscarHumanoMasPecador(){
+Humano * Infierno::buscarHumanoMasPecador(){
     int cantRaices= sacarCantidadDeFamilias();
     Humano** humanosRaiz= sacarListaDeRaicesDemoniacas();
     
@@ -580,7 +580,7 @@ int Infierno::buscarHumanoMasPecador(){
 
 
 
-    return humanoMasPecador->ID;
+    return humanoMasPecador;
 }
 
 //saca el humano (lo borra de su heap) y lo retorna
