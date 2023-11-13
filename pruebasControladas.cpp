@@ -17,16 +17,16 @@ int main(int argc, char const *argv[]){
         tablaSacra[i]=new ArbolAVL();
     }
 
-    tablaSacra[humano1->ID%1000]->r=tablaSacra[humano1->ID%1000]->insert(tablaSacra[humano1->ID%1000]->r,humano1);
-    cout<<"Lo Hice 1"<<endl;
-    tablaSacra[humano2->ID%1000]->r=tablaSacra[humano2->ID%1000]->insert(tablaSacra[humano2->ID%1000]->r,humano2);
-    cout<<"Lo Hice 2"<<endl;
-    tablaSacra[humano3->ID%1000]->r=tablaSacra[humano3->ID%1000]->insert(tablaSacra[humano3->ID%1000]->r,humano3);
-    cout<<"Lo Hice 3"<<endl;
-    tablaSacra[humano4->ID%1000]->r=tablaSacra[humano4->ID%1000]->insert(tablaSacra[humano4->ID%1000]->r,humano4);
-    cout<<"Lo Hice 4"<<endl;
-    tablaSacra[humano5->ID%1000]->r=tablaSacra[humano5->ID%1000]->insert(tablaSacra[humano5->ID%1000]->r,humano5);
-    cout<<"Lo Hice 5"<<endl;
+    // tablaSacra[humano1->ID%1000]->r=tablaSacra[humano1->ID%1000]->insert(tablaSacra[humano1->ID%1000]->r,humano1);
+    // cout<<"Lo Hice 1"<<endl;
+    // tablaSacra[humano2->ID%1000]->r=tablaSacra[humano2->ID%1000]->insert(tablaSacra[humano2->ID%1000]->r,humano2);
+    // cout<<"Lo Hice 2"<<endl;
+    // tablaSacra[humano3->ID%1000]->r=tablaSacra[humano3->ID%1000]->insert(tablaSacra[humano3->ID%1000]->r,humano3);
+    // cout<<"Lo Hice 3"<<endl;
+    // tablaSacra[humano4->ID%1000]->r=tablaSacra[humano4->ID%1000]->insert(tablaSacra[humano4->ID%1000]->r,humano4);
+    // cout<<"Lo Hice 4"<<endl;
+    // tablaSacra[humano5->ID%1000]->r=tablaSacra[humano5->ID%1000]->insert(tablaSacra[humano5->ID%1000]->r,humano5);
+    // cout<<"Lo Hice 5"<<endl;
 
     return 0;
 }
