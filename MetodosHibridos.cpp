@@ -567,7 +567,6 @@ Humano** Infierno::sacarListaDeRaicesDemoniacas(){
 int Infierno::buscarHumanoMasPecador(){
     int cantRaices= sacarCantidadDeFamilias();
     Humano** humanosRaiz= sacarListaDeRaicesDemoniacas();
-    
     Humano* humanoMasPecador = humanosRaiz[0];
     if (humanoMasPecador==NULL){return -1;}
     for (int i = 1; i < cantRaices; i++) {
@@ -576,8 +575,6 @@ int Infierno::buscarHumanoMasPecador(){
             humanoMasPecador = humanosRaiz[i];
         }
     }
-    cout<<"Holis"<<endl;
-    cin.get();
     return humanoMasPecador->ID;
 }
 
@@ -744,7 +741,7 @@ string Cielo::crearArchivoBitacora(){
 } 
 
 void Cielo::tenerPiedad(){
-    Humano * humanoSalvado=infierno->sacarHumanoMasPecador();
+    Humano * humanoSalvado=infierno->buscarHumanoMasPecador();
     if(humanoSalvado==NULL){
         cout<<"No queda ningun alma por salvar"<<endl;
         return;
