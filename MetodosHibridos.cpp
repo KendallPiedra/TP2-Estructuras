@@ -182,6 +182,29 @@ Familia * ArbolDeLaVida::sacarFamiliaCompleta(string apellido, string pais){
     return familia;
 }
 
+string ArbolDeLaVida::sInOrdenArbolVida(NodoArbol * nodo){
+    string result = " ";
+    if (nodo != NULL) {
+        result += sInOrdenArbolVida(nodo->hijoizquierdo);
+        result += nodo->humano->convertirAString();
+        result += sInOrdenArbolVida(nodo->hijoderecho);
+    }
+    return result;
+}
+
+void ArbolDeLaVida::imprimirArchivo(){
+    ofstream archivo;
+    archivo.open("ArchivoDeLaVida.txt",ios::out);
+    archivo<<"---------------- ÁRBOL ----------------"<<endl;
+    archivo<<sInOrdenArbolVida(raiz)<<endl;
+    archivo<<"\n--------------- HUMANOS ------------------"<<endl;
+    for (int i = 0; i < cantidadHumanos; i++){
+        archivo<<arrayDeLaVida[i]->convertirAString()<<endl;
+        archivo<<"---------------------------------------"<<endl;
+    }
+    archivo.close();
+}
+
 //FAMILIAS ------------------------------------------------------------------------------------------------------------------
 int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
     int miembros=0;

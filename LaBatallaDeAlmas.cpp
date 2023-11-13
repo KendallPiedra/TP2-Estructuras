@@ -136,7 +136,7 @@ int main(int argc, char const *argv[])
     Infierno * infierno = new Infierno(arbolDeLaVida);
     Cielo * cielo= new Cielo(infierno);
     arbolDeLaVida->crearGeneracionHumanos(stoi(cantidad));
-    arbolDeLaVida->imprimir();
+    arbolDeLaVida->imprimirArchivo();
     int opcion=1;
     string nombreArchivo, invocar;
     do{
@@ -179,7 +179,7 @@ int main(int argc, char const *argv[])
             menuConsultas(arbolDeLaVida,infierno, cielo);
             break;
         case 6:
-            arbolDeLaVida->imprimir();
+            arbolDeLaVida->imprimirArchivo();
             break;
         case 0:
             break;

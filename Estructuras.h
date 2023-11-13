@@ -167,8 +167,9 @@ struct ArbolDeLaVida{
     int sacarIndicePecado(string pecado);
     Humano** sacarPorcentajeMasPecador(string pecado);
     int * sacarIndicesOrdenadosSegunPecado(string pecado);
-
+    string sInOrdenArbolVida(NodoArbol * nodo);
     Familia * sacarFamiliaCompleta(string apellido, string pais);
+    void imprimirArchivo();
 
 };
 
