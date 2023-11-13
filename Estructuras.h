@@ -233,6 +233,8 @@ struct Familia{
     double sacarPorcentajeViVos();
     double sacarPorcentajeCielo();
     double sacarPorcentajeInfierno();
+
+    void llamarOrdenarHeap();
 };
 
 struct Demonio{
@@ -336,6 +338,10 @@ struct avl {
    Humano * humano;
    struct avl *l;
    struct avl *r;
+   avl(Humano*_humano){
+    l=r=NULL;
+    humano=_humano;
+   }
 };
 
 struct ArbolAVL {
@@ -442,10 +448,7 @@ avl *ArbolAVL::balance(avl *t) {
 avl *ArbolAVL::insert( avl*t, Humano * v) {
 
    if (t == NULL) {
-      t = new avl;
-      t->humano = v;
-      t->l = NULL;
-      t->r = NULL;
+      t = new avl(v);
       return t;
    } else if (v->ID < t->humano->ID) {
       t->l = insert( t->l,v);
@@ -533,6 +536,9 @@ struct Cielo{
         arbolAngelical= new ArbolAngelical();
         arbolAngelical->generarPrimerNivel();
         bitacora=new BitacoraCondenacion();
+        for (int i=0; i<1000;i++){
+            tablaSacra[i]=new ArbolAVL();
+        }
     }
     void insertarEnTablaHash(Humano*);
     int calcularPosicionEnTabla(int ID);

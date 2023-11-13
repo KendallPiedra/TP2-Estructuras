@@ -194,16 +194,17 @@ int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
 }
 
 void Familia::ordenarHeap(int k){//La primera vez k es 1
+    if (cantMiembrosActual==0){return;}
     int hijoIz=2*k;
     int hijoDer=2*k+1;
-    int totalPecadoHijo;
+    int totalPecadoHijo=0;
     int totalPecadoPadre=familiares[k-1]->sacarCantidadPecado(pecado);
-    if(totalPecadoHijo==-1){totalPecadoPadre=familiares[hijoIz-1]->totalPecados;}//pecados generales
+
+    if(totalPecadoPadre==-1){totalPecadoPadre=familiares[hijoIz-1]->totalPecados;}//pecados generales
 
     if (hijoIz<=cantMiembrosActual){
         totalPecadoHijo=familiares[hijoIz-1]->sacarCantidadPecado(pecado);
         if(totalPecadoHijo==-1){totalPecadoHijo=familiares[hijoIz-1]->totalPecados;}//pecados generales
-
 
         if(familiares[hijoIz-1]->sacarCantidadPecado(pecado)>
         familiares[k]->sacarCantidadPecado(pecado)){
@@ -226,8 +227,33 @@ void Familia::ordenarHeap(int k){//La primera vez k es 1
         }
         ordenarHeap(2*k+1);
     }
+    cout<<"termine"<<endl;
     
 }
+
+
+// void Familia::ordenarHeap(int k){
+//     int largest = k;
+//     int left = 2 * k + 1;
+//     int right = 2 * k + 2;
+
+//     if (left < cantMiembrosActual && familiares[left] > familiares[largest])
+//         largest = left;
+
+//     if (right < cantMiembrosActual && familiares[right] > familiares[largest])
+//         largest = right;
+
+//     if (largest != k) {
+//         std::swap(familiares[k], familiares[largest]);
+//         ordenarHeap(largest);
+//     }
+// }
+// void Familia::llamarOrdenarHeap() {
+//     for (int i = cantMiembrosActual / 2 - 1; i >= 0; i--) {
+//         ordenarHeap(i);
+//     }
+// }
+
 void Familia::annadirFamiliar(Humano * familiar){
         familiares[cantMiembrosActual]=familiar;
         if (cantMiembrosActual<(cantMiembrosMax-1)){
@@ -236,15 +262,17 @@ void Familia::annadirFamiliar(Humano * familiar){
         ordenarHeap(1);
     }
 void Familia::borrarRaiz(){
-    familiares[0]=familiares[cantMiembrosActual-1];
-    familiares[cantMiembrosActual-1]=NULL;
-    cantMiembrosActual--;
-    ordenarHeap(1);
+    if (cantMiembrosActual==0){return;}
+    if (familiares[0]!=NULL){  
+        familiares[0]=familiares[cantMiembrosActual-1];
+        familiares[cantMiembrosActual-1]=NULL;
+        cantMiembrosActual--;
+        ordenarHeap(1);
+    }
 }
 
 Humano * Familia::sacarRaiz(){
-    Humano* humano=familiares[0];
-    return humano;
+    return familiares[0];
 }
 
 
@@ -423,8 +451,11 @@ Humano * Demonio::mostrarHumanoRaiz(int idxFamilia){
 }
 
 Humano * Demonio::sacarHumano(int idxFamilia){
+    cout<<"intenta mostrar el humano"<<endl;
     Humano*humano=mostrarHumanoRaiz(idxFamilia);
+    cout<<"ya lo mostro"<<endl;
     familias[idxFamilia]->borrarRaiz();
+    cout<<"ya lo borro"<<endl;
     return humano;
 }
 //INFIERNO ---------------------------------------------------------------------------------------------------------------------
@@ -539,11 +570,14 @@ int Infierno::buscarHumanoMasPecador(){
     
     Humano* humanoMasPecador = humanosRaiz[0];
     if (humanoMasPecador==NULL){return -1;}
-    for (int i = 1; i < cantRaices; ++i) {
+    for (int i = 1; i < cantRaices; i++) {
+        cout<<"llegue donde nadie penso"<<endl;
         if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
             humanoMasPecador = humanosRaiz[i];
         }
     }
+
+
 
 
     return humanoMasPecador->ID;
@@ -558,7 +592,9 @@ Humano* Infierno::sacarHumano(int IDHumano){
         for(int j=0;j<demonios[i]->cantFamilias;j++){
             Humano*humano=demonios[i]->mostrarHumanoRaiz(j);
             if(humano->ID==IDHumano){
-                return demonios[i]->sacarHumano(j);
+                cout<<"intenta sacar Humano de demonio"<<endl;
+                return demonios[i]->sacarHumano(j);//
+
             }
         }
     }
@@ -567,6 +603,8 @@ Humano* Infierno::sacarHumano(int IDHumano){
 
 
 Humano* Infierno::sacarHumanoMasPecador(){
+    buscarHumanoMasPecador();
+    cout<<"si lo busque"<<endl;
     return sacarHumano(buscarHumanoMasPecador());
 }
 
@@ -675,9 +713,12 @@ int Cielo::calcularPosicionEnTabla(int ID){
 }
 
 void Cielo::insertarEnTablaHash(Humano *humano){
+    cout<<"intenta insertar"<<endl;
     int posicion= calcularPosicionEnTabla(humano->ID);
-    tablaSacra[posicion]->insert(tablaSacra[posicion]->r,humano);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
+    cout<<"calculo la posicion en la tabla: "<<posicion<<endl;
+    tablaSacra[posicion]->r=tablaSacra[posicion]->insert(tablaSacra[posicion]->r,humano);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
     //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
+    cout<<"logró insertar"<<endl;
 }
 
 void Cielo::generarBitacoraSalvacion(Humano * humano, string angel, NodoCelestial *angelEnviado){ //esta ordenado por demonio, pero del mas a menos pecador no
@@ -713,23 +754,22 @@ void Cielo::tenerPiedad(){
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
     humanoSalvado->angelQueLoSalvo=angel;
     humanoSalvado->salvado=true;
-    insertarEnTablaHash(humanoSalvado);
+    cout<<"la quiere meter"<<endl;
+    insertarEnTablaHash(humanoSalvado);///aca se cae
+    cout<<"la metió"<<endl;
     generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
+    cout<<"sljkdfheldkfhlfws"<<endl;
 }
 
 string Cielo::salvacionGeneral(){
     cout<<"entra en salvacion general"<<endl;
-    cin.get();
     arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);//se cae en generr nuevo nivel
     cout<<"genera un nuevo nivel"<<endl;
-    cin.get();
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
         cout<<"quiere tener piedad"<<endl;
-        cin.get();
         tenerPiedad();
         cout<<"tuvo piedad"<<endl;
-        cin.get();
     }
     return crearArchivoBitacora();
 }
