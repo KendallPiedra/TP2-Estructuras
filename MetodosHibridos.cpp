@@ -567,11 +567,10 @@ Humano** Infierno::sacarListaDeRaicesDemoniacas(){
 Humano * Infierno::buscarHumanoMasPecador(){
     int cantRaices= sacarCantidadDeFamilias();
     Humano** humanosRaiz= sacarListaDeRaicesDemoniacas();
-    
     Humano* humanoMasPecador = humanosRaiz[0];
     if (humanoMasPecador==NULL){return -1;}
     for (int i = 1; i < cantRaices; i++) {
-        cout<<"llegue donde nadie penso"<<endl;
+        // cout<<"llegue donde nadie penso"<<endl;
         if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
             humanoMasPecador = humanosRaiz[i];
         }
@@ -746,13 +745,15 @@ string Cielo::crearArchivoBitacora(){
 } 
 
 void Cielo::tenerPiedad(){
-    Humano * humanoSalvado=infierno->sacarHumanoMasPecador();
+    Humano * humanoSalvado=infierno->buscarHumanoMasPecador();
     if(humanoSalvado==NULL){
         cout<<"No queda ningun alma por salvar"<<endl;
         return;
     }
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
     humanoSalvado->angelQueLoSalvo=angel;
+    cout<<angel<<endl;
+    cin.get();
     humanoSalvado->salvado=true;
     cout<<"la quiere meter"<<endl;
     insertarEnTablaHash(humanoSalvado);///aca se cae
@@ -770,6 +771,7 @@ string Cielo::salvacionGeneral(){
         cout<<"quiere tener piedad"<<endl;
         tenerPiedad();
         cout<<"tuvo piedad"<<endl;
+        cin.get();
     }
     cout<<"llega a crear archivo"<<endl;
     cin.get();
