@@ -771,6 +771,8 @@ string Cielo::salvacionGeneral(){
         tenerPiedad();
         cout<<"tuvo piedad"<<endl;
     }
+    cout<<"llega a crear archivo"<<endl;
+    cin.get();
     return crearArchivoBitacora();
 }
 
