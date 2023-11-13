@@ -651,7 +651,7 @@ int Infierno::buscarDemonioConAlmaCaptiva(int ID){
 
 
 int Infierno::sacarCantidadDeHumanos(){
-    int humanosTotales;
+    int humanosTotales=0;
     for (int i; i<7;i++){
         humanosTotales+=demonios[i]->calcularCantidadHumanos();
     }
