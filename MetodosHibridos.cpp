@@ -570,13 +570,14 @@ Humano** Infierno::sacarListaDeRaicesDemoniacas(){
 //retorna el ID Del humano
 int Infierno::buscarHumanoMasPecador(){
     int cantRaices= sacarCantidadDeFamilias();
+
     Humano** humanosRaiz= sacarListaDeRaicesDemoniacas();
     
     Humano* humanoMasPecador = humanosRaiz[0];
     if (humanoMasPecador==NULL){return -1;}
     cout<<cantRaices<<endl;
     for (int i = 1; i < cantRaices; i++) {
-        cout<<"llegue donde nadie penso"<<endl;
+        // cout<<"llegue donde nadie penso"<<endl;
         if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
             humanoMasPecador = humanosRaiz[i];
         }
@@ -592,10 +593,10 @@ Humano* Infierno::sacarHumano(int IDHumano){
     for(int i=0; i<7;i++){
         for(int j=0;j<demonios[i]->cantFamilias;j++){
             Humano*humano=demonios[i]->mostrarHumanoRaiz(j);
+            cout<<"ID: "<<humano->ID<<endl;
             if(humano->ID==IDHumano){
                 cout<<"intenta sacar Humano de demonio"<<endl;
                 return demonios[i]->sacarHumano(j);//
-
             }
         }
     }
@@ -747,15 +748,7 @@ string Cielo::crearArchivoBitacora(){
 } 
 
 void Cielo::tenerPiedad(){
-    Humano*humanoSalvado;
-    try{
-        humanoSalvado=infierno->sacarHumanoMasPecador();
-    }catch(exception e){
-        cout<<"salida magica SE CALLOOOOOOOOOOOOOOOOOO"<<endl;
-        cin.get();
-        cin.get();
-        cin.get();
-    }
+    Humano*humanoSalvado=infierno->sacarHumanoMasPecador();
     cout<<"saca el humano"<<endl;
     cin.get();
     if(humanoSalvado==NULL){
@@ -777,11 +770,12 @@ void Cielo::tenerPiedad(){
 string Cielo::salvacionGeneral(){
     cout<<"entra en salvacion general"<<endl;
     arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);//se cae en generr nuevo nivel
+    cout<<"genera un nuevo nivel"<<endl;
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
     for (int i = 0; i < arbolAngelical->contarHojas(arbolAngelical->raiz); i++){
         arbolAngelical->generarVersiones(arbolAngelical->raiz,nombresAngelicales[i]);
+        arbolAngelical->numeroVersion=0;
     }
-    
     cout<<"genera un nuevo nivel"<<endl;
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
