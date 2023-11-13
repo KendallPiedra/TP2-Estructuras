@@ -172,8 +172,6 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
 
 Familia * ArbolDeLaVida::sacarFamiliaCompleta(string apellido, string pais){
     Familia * familia= new Familia(apellido,pais,"Lujuria",this);
-    cout<<"Antes del for"<<endl;
-    cin.get();
     for (int i=0; i<cantidadHumanos;i++){
         if ((arrayDeLaVida[i]->apellido==apellido) && (arrayDeLaVida[i]->pais==pais) ) {
             familia->annadirFamiliar(arrayDeLaVida[i]);
@@ -365,14 +363,9 @@ void Demonio::matarHumano(Humano *humano, ArbolDeLaVida * ADLV){
 
 int Demonio::calcularCantidadHumanos(){
     int cantidad=0;
-    cout<<"cantidad fam: "<<cantFamilias<<endl;
     for (int i=0; i<cantFamilias;i++){
-        cout<<cantidad<<endl;
-
         cantidad+=familias[i]->cantMiembrosActual;
-        cout<<"cantidad miembros: "<<familias[i]->cantMiembrosActual<<endl;
     }
-    cout<<cantidad<<endl;
     return cantidad;
 }
 
@@ -434,8 +427,6 @@ Humano ** Demonio::sacarListaDeHumanos(){
             k++;
         }
     }
-    cout<<"cantidad de familias"<< cantFamilias<<endl;
-
     return listaHumanos;
 }
 
@@ -474,17 +465,12 @@ Humano * Demonio::mostrarHumanoRaiz(int idxFamilia){
 }
 
 Humano * Demonio::sacarHumano(int idxFamilia){
-    cout<<"intenta mostrar el humano"<<endl;
     Humano*humano=mostrarHumanoRaiz(idxFamilia);
-    cout<<"ya lo mostro"<<endl;
     familias[idxFamilia]->borrarRaiz();
-    //fdsjlkfsjdkljlksfdjlkf
     if (familias[idxFamilia]->familiares[0]==NULL){
         familias[idxFamilia]=familias[cantFamilias-1];
         cantFamilias--;
     }
-    //slkdjasdjklsalkdsl
-    cout<<"ya lo borro"<<endl;
     return humano;
 }
 //INFIERNO ---------------------------------------------------------------------------------------------------------------------
@@ -517,7 +503,6 @@ string Infierno::crearArchivoBitacora(){
     string nombre=obtenerFechaYHoraActual()+".txt";
 	archivo.open(nombre,ios::out); 
 	if (archivo.fail()){
-		cout<<"No escribí el archivo"<<endl;//que sad
 		exit(1);
 	}
     NodoBitacora * tmp= bitacora->primerNodo;
@@ -536,7 +521,6 @@ string Infierno::crearArchivoBitacora(){
 string Infierno::realizarCondenacionGeneral(){
     for (int i=0; i<7;i++){
         enviarDemonio(i);
-        // cout<<"no"<<endl;
     }
     return crearArchivoBitacora();
 }
@@ -600,7 +584,6 @@ int Infierno::buscarHumanoMasPecador(){
     
     Humano* humanoMasPecador = humanosRaiz[0];
     if (humanoMasPecador==NULL){return -1;}
-    cout<<cantRaices<<endl;
     for (int i = 1; i < cantRaices; i++) {
         if (humanosRaiz[i]->totalPecados > humanoMasPecador->totalPecados) {
             humanoMasPecador = humanosRaiz[i];
@@ -617,9 +600,7 @@ Humano* Infierno::sacarHumano(int IDHumano){
     for(int i=0; i<7;i++){
         for(int j=0;j<demonios[i]->cantFamilias;j++){
             Humano*humano=demonios[i]->mostrarHumanoRaiz(j);
-            cout<<"ID: "<<humano->ID<<endl;
             if(humano->ID==IDHumano){
-                cout<<"intenta sacar Humano de demonio"<<endl;
                 return demonios[i]->sacarHumano(j);//
             }
         }
@@ -738,12 +719,9 @@ int Cielo::calcularPosicionEnTabla(int ID){
 }
 
 void Cielo::insertarEnTablaHash(Humano *humano){
-    cout<<"intenta insertar"<<endl;
     int posicion= calcularPosicionEnTabla(humano->ID);
-    cout<<"calculo la posicion en la tabla: "<<posicion<<endl;
     tablaSacra[posicion]->r=tablaSacra[posicion]->insert(humano,tablaSacra[posicion]->r);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
     //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
-    cout<<"logró insertar"<<endl;
 }
 
 void Cielo::generarBitacoraSalvacion(Humano * humano, string angel, NodoCelestial *angelEnviado){ //esta ordenado por demonio, pero del mas a menos pecador no
@@ -771,49 +749,26 @@ string Cielo::crearArchivoBitacora(){
 } 
 
 void Cielo::tenerPiedad(){
-
     Humano*humanoSalvado;
     humanoSalvado=infierno->sacarHumanoMasPecador();
-    cout<<"saca el humano"<<endl;
     if(humanoSalvado==NULL){
-        cout<<"No queda ningun alma por salvar"<<endl;
         return;
     }
-    cout<<"ID humano: "<<humanoSalvado->ID<<endl;
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
-    cout<<"se salva el humanoooo"<<endl;
-
     humanoSalvado->angelQueLoSalvo=angel;
     humanoSalvado->salvado=true;
-    cout<<"la quiere meter"<<endl;
     insertarEnTablaHash(humanoSalvado);///aca se cae
-    cout<<"la metió"<<endl;
     generarBitacoraSalvacion(humanoSalvado, angel->nombreAngel+"("+to_string(angel->version)+")", angel);
-    cout<<"sljkdfheldkfhlfws"<<endl;
-    
-
 }
 
 string Cielo::salvacionGeneral(){
-    cout<<"entra en salvacion general"<<endl;
-    cin.get();
+
     arbolAngelical->invocarAngeles();//se cae en generr nuevo nivel
-    cout<<"genera un nuevo nivel"<<endl;
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
-    // int cantidadHojas=arbolAngelical->contarHojas(arbolAngelical->raiz);
-    // for (int i = 0; i < cantidadHojas; i++){
-    //     arbolAngelical->generarVersiones(arbolAngelical->raiz,nombresAngelicales[i]);
-    //     arbolAngelical->numeroVersion=0;
-    // }
-    cout<<"genero versiones, entre muchas comillas"<<endl;
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
-        cout<<"quiere tener piedad"<<endl;
         tenerPiedad();
-        cout<<"tuvo piedad"<<endl;
     }
-    cout<<"llega a crear archivo"<<endl;
-
     return crearArchivoBitacora();
 }
 
@@ -848,8 +803,7 @@ void Cielo::generarConsultaCelestial(){
 //MENUS -------------------------------------------------------------------------------------------------
 void menuPublicarPorHumano(ArbolDeLaVida * arbol){
     string ID;
-    int redSocial;
-	cout<<"Ingrese el ID del Humano: "<<endl;
+    int redSocial=0;
     getline(cin,ID);
     redSocial=seleccionarRedSocial();
     string pecadosCapitales[]={"Lujuria","Gula","Avaricia","Pereza","Ira","Envidia","Soberbia"};
@@ -1015,8 +969,6 @@ void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo
 	cout<<"Ingrese el país de la familia "<<endl;
 	getline(cin,pais);
     Familia * familia=arbolDeLaVida->sacarFamiliaCompleta(apellido,pais);
-    cout<<"salddkldas"<<endl;
-    cin.get();
     generarArchivoFamilia(familia);
 }
 

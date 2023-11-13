@@ -170,8 +170,6 @@ int main(int argc, char const *argv[])
             break;
         case 4:
             nombreArchivo=cielo->salvacionGeneral();
-            cout<<"eee"<<endl;
-            cin.get();
             invocar=".\\enviarCorreos.exe krisncl1701@gmail.com .\\"+nombreArchivo+" "+nombreArchivo+" ENCARGADO-DEL-CIELO"; //Esto hay que probarlo
             system(invocar.c_str());
             break;

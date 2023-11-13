@@ -414,7 +414,6 @@ NodoAvl* ArbolAVLK::ll_rotat(NodoAvl* parent) {
     NodoAvl* t = parent->hijoIzq;
     parent->hijoIzq = t->hijoDerecho;
     t->hijoDerecho = parent;
-    cout << "Left-Left Rotation\n";
     return t;
 }
 
@@ -432,7 +431,6 @@ NodoAvl* ArbolAVLK::rr_rotat(NodoAvl* parent) {
     NodoAvl* t = parent->hijoDerecho;
     parent->hijoDerecho = t->hijoIzq;
     t->hijoIzq = parent;
-    cout << "Right-Right Rotation\n";
     return t;
 }
 
