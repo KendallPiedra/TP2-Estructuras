@@ -170,9 +170,10 @@ void ArbolDeLaVida::enviarAPecar(int ID, string redSocial, string pecado){
     }
 }
 
-Familia * ArbolDeLaVida::sacarFamiliaCompleta(string apellido,string pais){
-    Familia * familia= new Familia(apellido,pais,"todos somos uno ae ae",this);
-    
+Familia * ArbolDeLaVida::sacarFamiliaCompleta(string apellido, string pais){
+    Familia * familia= new Familia(apellido,pais,"Lujuria",this);
+    cout<<"Antes del for"<<endl;
+    cin.get();
     for (int i=0; i<cantidadHumanos;i++){
         if ((arrayDeLaVida[i]->apellido==apellido) && (arrayDeLaVida[i]->pais==pais) ) {
             familia->annadirFamiliar(arrayDeLaVida[i]);
@@ -183,7 +184,7 @@ Familia * ArbolDeLaVida::sacarFamiliaCompleta(string apellido,string pais){
 
 //FAMILIAS ------------------------------------------------------------------------------------------------------------------
 int Familia::determinarCantMiembros(ArbolDeLaVida *arbolDeLaVida){
-    int miembros;
+    int miembros=0;
     for(int i=0; i<arbolDeLaVida->cantidadHumanos;i++){
         if (arbolDeLaVida->arrayDeLaVida[i]->apellido==apellido &&
         arbolDeLaVida->arrayDeLaVida[i]->pais==pais){
@@ -276,7 +277,7 @@ Humano * Familia::sacarRaiz(){
 
 
 int Familia::contarVivos(){
-    int cantidadVivos;
+    int cantidadVivos=0;
     for (int i=0; i<cantMiembrosActual;i++){
         if (familiares[i]->vivo){
             cantidadVivos++;
@@ -993,7 +994,8 @@ void menuBuscarFamilia(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo
     Familia * familia=arbolDeLaVida->sacarFamiliaCompleta(apellido,pais);
     cout<<"salddkldas"<<endl;
     cin.get();
-    generarArchivoFamilia(familia);
+    // generarArchivoFamilia(familia);
+    cout<<"Porcentaje Vivos: "<<familia->sacarPorcentajeViVos()<<endl;
 }
 
 void menuConsultas(ArbolDeLaVida * arbolDeLaVida, Infierno * infierno, Cielo *cielo){
