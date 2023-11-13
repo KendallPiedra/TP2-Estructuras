@@ -357,6 +357,7 @@ struct ArbolAVLK {
     NodoAvl* insert(Humano* humano, NodoAvl* nodo);
     void preorder(NodoAvl *nodo);
     int contarNodos(NodoAvl* nodo);
+    string sInOrden();
     ArbolAVLK() {
         r = NULL;
     }

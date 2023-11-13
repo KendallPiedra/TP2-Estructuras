@@ -814,7 +814,7 @@ void Cielo::generarConsultaCelestial(){
         archivo<<"Humanos salvados:\n------------------------------------------------------------------------"<<endl;
         // cout<<"alooooooooo"<<endl;
             // cout<<"se intenta pasar un humano a string"<<endl;
-        // archivo<<tablaSacra[i]->(tablaSacra[i]->r);    
+        // archivo<<tablaSacra[i]->sInOrden(tablaSacra[i]->r);    
     }
     archivo<<"------------------------------------------------------------------------------------------"<<endl;
     archivo.close();

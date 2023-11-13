@@ -561,14 +561,12 @@ void ArbolAngelical::imprimirPreOrden(NodoCelestial *nodo){
     }
 }
 
-string ArbolAngelical::organizarPreOrden(NodoCelestial *nodo, string texto){
-    if (nodo != NULL){
-        texto+=convertirAngelAString(nodo);
-        texto+=organizarPreOrden(nodo->angelIzquierdo, texto);
-        texto+=organizarPreOrden(nodo->angelCentral, texto);
-        texto+=organizarPreOrden(nodo->angelDerecho, texto);
-        return texto;
-    }else{
-        return "";
+string ArbolAngelical::organizarPreOrden(NodoCelestial *nodo, string texto) {
+    if (nodo != NULL) {
+        texto += convertirAngelAString(nodo);
+        texto = organizarPreOrden(nodo->angelIzquierdo, texto);
+        texto = organizarPreOrden(nodo->angelCentral, texto);
+        texto = organizarPreOrden(nodo->angelDerecho, texto);
     }
+    return texto;
 }
