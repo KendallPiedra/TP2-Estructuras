@@ -718,7 +718,7 @@ void Cielo::insertarEnTablaHash(Humano *humano){
     cout<<"intenta insertar"<<endl;
     int posicion= calcularPosicionEnTabla(humano->ID);
     cout<<"calculo la posicion en la tabla: "<<posicion<<endl;
-    tablaSacra[posicion]->r=tablaSacra[posicion]->insert(tablaSacra[posicion]->r,humano);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
+    tablaSacra[posicion]->r=tablaSacra[posicion]->insert(humano,tablaSacra[posicion]->r);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
     //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
     cout<<"logró insertar"<<endl;
 }
@@ -818,7 +818,7 @@ void Cielo::generarConsultaCelestial(){
         archivo<<"Humanos salvados:\n------------------------------------------------------------------------"<<endl;
         // cout<<"alooooooooo"<<endl;
             // cout<<"se intenta pasar un humano a string"<<endl;
-        archivo<<tablaSacra[i]->sInorden(tablaSacra[i]->r);    
+        // archivo<<tablaSacra[i]->(tablaSacra[i]->r);    
     }
     archivo<<"------------------------------------------------------------------------------------------"<<endl;
     archivo.close();

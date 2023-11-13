@@ -332,194 +332,121 @@ struct ArbolAngelical{
 };
 
 //-----------------------------------------------------------------------------------------------------------ESTRUCTURA DE DATOS LOQUISIMA
-//revisar como se llaman las cosas en EstructuraAVL Main
+// revisar como se llaman las cosas en EstructuraAVL Main
 #define pow2(n) (1 << (n))
-struct avl {
-   Humano * humano;
-   struct avl *l;
-   struct avl *r;
-   avl(Humano*_humano){
-    l=r=NULL;
-    humano=_humano;
-   }
+struct NodoAvl {
+    Humano * humano;
+    NodoAvl *hijoIzq;
+    NodoAvl *hijoDerecho;
+
+    NodoAvl(Humano *_humano){
+        humano=_humano;
+        hijoIzq=hijoDerecho=NULL;
+    }
 };
 
-struct ArbolAVL {
-    avl * r;
-
-    int llamarHeight();
-    int height(avl *);
-    int difference(avl *);
-    avl *rr_rotat(avl *);
-    avl *ll_rotat(avl *);
-    avl *lr_rotat(avl*);
-    avl *rl_rotat(avl *);
-    avl * balance(avl *);
-    avl * insert(avl*, Humano *);
-    void show(avl*, int);
-    void inorder(avl *);
-    string sInorden(avl*);
-    void preorder(avl *);
-    void postorder(avl*);
-    int contarNodos(avl*); //añadido!!
-    ArbolAVL() {
+struct ArbolAVLK {
+    NodoAvl * r;
+    int heights(NodoAvl *);
+    int differences(NodoAvl *);
+    NodoAvl *rr_rotat(NodoAvl *);
+    NodoAvl *ll_rotat(NodoAvl *nodo);
+    NodoAvl *lr_rotat(NodoAvl *nodo);
+    NodoAvl *rl_rotat(NodoAvl *nodo);
+    NodoAvl * balance(NodoAvl *);
+    NodoAvl* insert(Humano* humano, NodoAvl* nodo);
+    void preorder(NodoAvl *nodo);
+    int contarNodos(NodoAvl* nodo);
+    ArbolAVLK() {
         r = NULL;
     }
 };
 
-
-
-int ArbolAVL::height(avl *t) {
-    if (t==NULL){
-        t=r;
+int ArbolAVLK::heights(NodoAvl * nodo) {
+   if (nodo == NULL) {
+        return 0;
+    } else {
+        int alturaIzquierdo = heights(nodo->hijoIzq);
+        int alturaDerecho = heights(nodo->hijoDerecho);
+        return 1 + maximo(alturaIzquierdo, alturaDerecho);
     }
-   int h = 0;
-   if (t != NULL) {
-      int l_height = height(t->l);
-      int r_height = height(t->r);
-      int max_height = max(l_height, r_height);
-      h = max_height + 1;
-   }
-   return h;
 }
 
-int ArbolAVL::difference(avl *t) {
-   int l_height = height(t->l);
-   int r_height = height(t->r);
-   int b_factor = l_height - r_height;
-   return b_factor;
+int ArbolAVLK::differences(NodoAvl *nodo) {
+    int alturaIzquierdo = heights(nodo->hijoIzq);
+    int alturaDerecho = heights(nodo->hijoDerecho);
+    int b_factor = alturaIzquierdo - alturaDerecho;
+    return b_factor;
 }
 
-avl *ArbolAVL::rr_rotat(avl *parent) {
-
-   avl *t;
-   t = parent->r;
-   parent->r = t->l;
-   t->l = parent;
-   cout<<"Right-Right Rotation";
-   return t;
+NodoAvl* ArbolAVLK::ll_rotat(NodoAvl* parent) {
+    NodoAvl* t = parent->hijoIzq;
+    parent->hijoIzq = t->hijoDerecho;
+    t->hijoDerecho = parent;
+    cout << "Left-Left Rotation\n";
+    return t;
 }
 
-avl *ArbolAVL::ll_rotat(avl *parent) {
-
-   avl *t;
-   t = parent->l;
-   parent->l = t->r;
-   t->r = parent;
-   cout<<"Left-Left Rotation";
-   return t;
+NodoAvl* ArbolAVLK::lr_rotat(NodoAvl* parent) {
+    parent->hijoIzq = rr_rotat(parent->hijoIzq);
+    return ll_rotat(parent);
 }
 
-avl *ArbolAVL::lr_rotat(avl *parent) {
-
-   avl *t;
-   t = parent->l;
-   parent->l = rr_rotat(t);
-   cout<<"Left-Right Rotation";
-   return ll_rotat(parent);
+NodoAvl* ArbolAVLK::rl_rotat(NodoAvl* parent) {
+    parent->hijoDerecho = ll_rotat(parent->hijoDerecho);
+    return rr_rotat(parent);
 }
 
-avl *ArbolAVL::rl_rotat(avl *parent) {
-
-   avl *t;
-   t = parent->r;
-   parent->r = ll_rotat(t);
-   cout<<"Right-Left Rotation";
-   return rr_rotat(parent);
+NodoAvl* ArbolAVLK::rr_rotat(NodoAvl* parent) {
+    NodoAvl* t = parent->hijoDerecho;
+    parent->hijoDerecho = t->hijoIzq;
+    t->hijoIzq = parent;
+    cout << "Right-Right Rotation\n";
+    return t;
 }
 
-avl *ArbolAVL::balance(avl *t) {
-
-   int bal_factor = difference(t);
-   if (bal_factor > 1) {
-      if (difference(t->l) > 0)
-         t = ll_rotat(t);
-      else
-         t = lr_rotat(t);
-   } else if (bal_factor < -1) {
-      if (difference(t->r) > 0)
-         t = rl_rotat(t);
-      else
-         t = rr_rotat(t);
-   }
-   return t;
-}
-
-avl *ArbolAVL::insert( avl*t, Humano * v) {
-
-   if (t == NULL) {
-      t = new avl(v);
-      return t;
-   } else if (v->ID < t->humano->ID) {
-      t->l = insert( t->l,v);
-      r = balance(r);
-   } else if (v->ID >= t->humano->ID) {
-      t->r = insert( t->r,v);
-      r = balance(r);
-   } return t;
-}
-
-void ArbolAVL::show(avl *p, int l) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
-
-   int i;
-   if (p != NULL) {
-      show(p->r, l+ 1);
-      cout<<" ";
-      if (p == r)
-         cout << "Root -> ";
-      for (i = 0; i < l&& p != r; i++)
-         cout << " ";
-         cout << p->humano;
-         show(p->l, l + 1);
-   }
-}
-
-void ArbolAVL::inorder(avl *t) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
-   
-   if (t == NULL)
-      return;
-      inorder(t->l);
-      cout << t->humano << " ";
-      inorder(t->r);
-}
-
-string ArbolAVL::sInorden(avl*t){
-
-    string result = "";
-    if (t != NULL) {
-        result += sInorden(t->l);
-        result += t->humano->convertirAStringCelestial() + 
-        "------------------------------------------------------\n";
-        result += sInorden(t->r);
+NodoAvl* ArbolAVLK::balance(NodoAvl* nodo) {
+    int bal_factor = differences(nodo);
+    if (bal_factor > 1) {
+        if (differences(nodo->hijoIzq) > 0)
+            nodo = ll_rotat(nodo);
+        else
+            nodo = lr_rotat(nodo);
+    } else if (bal_factor < -1) {
+        if (differences(nodo->hijoDerecho) > 0)
+            nodo = rl_rotat(nodo);
+        else
+            nodo = rr_rotat(nodo);
     }
-    return result;
+    return nodo;
 }
 
-void ArbolAVL::preorder(avl *t) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
-   
-   if (t == NULL)
-      return;
-      cout << t->humano << " ";
-      preorder(t->l);
-      preorder(t->r);
+NodoAvl* ArbolAVLK::insert(Humano* humano, NodoAvl* nodo) {
+    if (nodo == NULL) {
+        return new NodoAvl(humano);
+    } else if (humano->ID < nodo->humano->ID) {
+        nodo->hijoIzq = insert(humano, nodo->hijoIzq);
+        nodo = balance(nodo);
+    } else if (humano->ID >= nodo->humano->ID) {
+        nodo->hijoDerecho = insert(humano, nodo->hijoDerecho);
+        nodo = balance(nodo);
+    }
+    return nodo;
 }
 
-void ArbolAVL::postorder(avl *t) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
-
-   
-   if (t == NULL)
-      return;
-      postorder(t ->l);
-      postorder(t ->r);
-      cout << t->humano << " ";
+void ArbolAVLK::preorder(NodoAvl *nodo) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
+    if (nodo == NULL)
+        return;
+    cout << nodo->humano->ID<< endl;
+    preorder(nodo->hijoIzq);
+    preorder(nodo->hijoDerecho);
 }
 
-int ArbolAVL::contarNodos(avl* t){
-
-    if (t == NULL)
+int ArbolAVLK::contarNodos(NodoAvl* nodo){
+    if (nodo == NULL)
         return 0;
     else
-        return 1+contarNodos(t->l)+contarNodos(t->r);
+        return 1+contarNodos(nodo->hijoDerecho)+contarNodos(nodo->hijoIzq);
 } 
 
 
@@ -528,7 +455,7 @@ int ArbolAVL::contarNodos(avl* t){
 struct Cielo{
     ArbolAngelical * arbolAngelical;
     Infierno * infierno;
-    ArbolAVL * tablaSacra[1000];//no se si esto funcionara así sin el new
+    ArbolAVLK * tablaSacra[1000];//no se si esto funcionara así sin el new
     BitacoraCondenacion * bitacora;
 
     Cielo(Infierno* _infierno){
@@ -537,7 +464,7 @@ struct Cielo{
         arbolAngelical->generarPrimerNivel();
         bitacora=new BitacoraCondenacion();
         for (int i=0; i<1000;i++){
-            tablaSacra[i]=new ArbolAVL();
+            tablaSacra[i]=new ArbolAVLK();
         }
     }
     void insertarEnTablaHash(Humano*);

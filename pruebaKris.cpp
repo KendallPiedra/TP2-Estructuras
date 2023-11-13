@@ -11,7 +11,7 @@ struct NodoAvl {
     }
 };
 
-struct ArbolAVL {
+struct ArbolAVLK {
     NodoAvl * r;
     int heights(NodoAvl *);
     int differences(NodoAvl *);
@@ -22,12 +22,12 @@ struct ArbolAVL {
     NodoAvl * balance(NodoAvl *);
     NodoAvl* insert(Humano* humano, NodoAvl* nodo);
     void preorder(NodoAvl *nodo);
-    ArbolAVL() {
+    ArbolAVLK() {
         r = NULL;
     }
 };
 
-int ArbolAVL::heights(NodoAvl * nodo) {
+int ArbolAVLK::heights(NodoAvl * nodo) {
    if (nodo == NULL) {
         return 0;
     } else {
@@ -37,14 +37,14 @@ int ArbolAVL::heights(NodoAvl * nodo) {
     }
 }
 
-int ArbolAVL::differences(NodoAvl *nodo) {
+int ArbolAVLK::differences(NodoAvl *nodo) {
     int alturaIzquierdo = heights(nodo->hijoIzq);
     int alturaDerecho = heights(nodo->hijoDerecho);
     int b_factor = alturaIzquierdo - alturaDerecho;
     return b_factor;
 }
 
-NodoAvl* ArbolAVL::ll_rotat(NodoAvl* parent) {
+NodoAvl* ArbolAVLK::ll_rotat(NodoAvl* parent) {
     NodoAvl* t = parent->hijoIzq;
     parent->hijoIzq = t->hijoDerecho;
     t->hijoDerecho = parent;
@@ -52,17 +52,17 @@ NodoAvl* ArbolAVL::ll_rotat(NodoAvl* parent) {
     return t;
 }
 
-NodoAvl* ArbolAVL::lr_rotat(NodoAvl* parent) {
+NodoAvl* ArbolAVLK::lr_rotat(NodoAvl* parent) {
     parent->hijoIzq = rr_rotat(parent->hijoIzq);
     return ll_rotat(parent);
 }
 
-NodoAvl* ArbolAVL::rl_rotat(NodoAvl* parent) {
+NodoAvl* ArbolAVLK::rl_rotat(NodoAvl* parent) {
     parent->hijoDerecho = ll_rotat(parent->hijoDerecho);
     return rr_rotat(parent);
 }
 
-NodoAvl* ArbolAVL::rr_rotat(NodoAvl* parent) {
+NodoAvl* ArbolAVLK::rr_rotat(NodoAvl* parent) {
     NodoAvl* t = parent->hijoDerecho;
     parent->hijoDerecho = t->hijoIzq;
     t->hijoIzq = parent;
@@ -70,7 +70,7 @@ NodoAvl* ArbolAVL::rr_rotat(NodoAvl* parent) {
     return t;
 }
 
-NodoAvl* ArbolAVL::balance(NodoAvl* nodo) {
+NodoAvl* ArbolAVLK::balance(NodoAvl* nodo) {
     int bal_factor = differences(nodo);
     if (bal_factor > 1) {
         if (differences(nodo->hijoIzq) > 0)
@@ -86,7 +86,7 @@ NodoAvl* ArbolAVL::balance(NodoAvl* nodo) {
     return nodo;
 }
 
-NodoAvl* ArbolAVL::insert(Humano* humano, NodoAvl* nodo) {
+NodoAvl* ArbolAVLK::insert(Humano* humano, NodoAvl* nodo) {
     if (nodo == NULL) {
         return new NodoAvl(humano);
     } else if (humano->ID < nodo->humano->ID) {
@@ -99,7 +99,7 @@ NodoAvl* ArbolAVL::insert(Humano* humano, NodoAvl* nodo) {
     return nodo;
 }
 
-void ArbolAVL::preorder(NodoAvl *nodo) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
+void ArbolAVLK::preorder(NodoAvl *nodo) {//de momento no deberian funcionar por como imprimen, se necesita cambiar
     if (nodo == NULL)
         return;
     cout << nodo->humano->ID<< endl;
@@ -108,10 +108,13 @@ void ArbolAVL::preorder(NodoAvl *nodo) {//de momento no deberian funcionar por c
 }
 
 int main(int argc, char const *argv[]){
-    ArbolAVL *arbolito=new ArbolAVL();
-    arbolito->r=arbolito->insert(new Humano(10,"Pepe","Holis","Papa", "creencia","prof", "Nac",13),arbolito->r);
-    arbolito->r=arbolito->insert(new Humano(20,"Pepe","Holis","Papa", "creencia","prof", "Nac",13),arbolito->r);
-    arbolito->r=arbolito->insert(new Humano(30,"Pepe","Holis","Papa", "creencia","prof", "Nac",13),arbolito->r);
+    ArbolAVLK *arbolito=new ArbolAVLK();
+    arbolito->r=arbolito->insert(new Humano(1230,"Pepe","Holis","Papa", "creencia","prof", "Nac",13),arbolito->r);
+    cout<<"Lo Hice 1"<<endl;
+    arbolito->r=arbolito->insert(new Humano(2230,"Pepe","Holis","Papa", "creencia","prof", "Nac",13),arbolito->r);
+    cout<<"Lo Hice 1"<<endl;
+    arbolito->r=arbolito->insert(new Humano(3440,"Pepe","Holis","Papa", "creencia","prof", "Nac",13),arbolito->r);
+    cout<<"Lo Hice 1"<<endl;
     arbolito->preorder(arbolito->r);
     return 0;
 }

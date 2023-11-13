@@ -228,7 +228,7 @@ int ArbolDeLaVida::extraerCantidadNodos(){
     while (!esPotenciaDeDos(cantidadNodos)){
         cantidadNodos++;
     }
-    cout<<cantidadNodos<<endl;
+    // cout<<cantidadNodos<<endl;
     if (cantidadNodos!=1){
         cantidadNodos--;
     }
