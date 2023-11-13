@@ -716,7 +716,6 @@ void Cielo::insertarEnTablaHash(Humano *humano){
     cout<<"intenta insertar"<<endl;
     int posicion= calcularPosicionEnTabla(humano->ID);
     cout<<"calculo la posicion en la tabla: "<<posicion<<endl;
-    cin.get();
     tablaSacra[posicion]->r=tablaSacra[posicion]->insert(tablaSacra[posicion]->r,humano);//esto funciona muy raro, el puntero se declara en la estructura, se cambia su valor 
     //y luego se inserta a si mismo, yo lo llame basandome en la muestra que se habia hecho en  EstructuraAVL
     cout<<"logró insertar"<<endl;
@@ -773,9 +772,8 @@ void Cielo::tenerPiedad(){
 string Cielo::salvacionGeneral(){
     cout<<"entra en salvacion general"<<endl;
     cin.get();
-    arbolAngelical->generarNuevoNivel(arbolAngelical->raiz);//se cae en generr nuevo nivel
-    cout<<"genero un nuevo nivel"<<endl;
-    cin.get();
+    arbolAngelical->invocarAngeles();//se cae en generr nuevo nivel
+    cout<<"genera un nuevo nivel"<<endl;
     string nombresAngelicales[]={"Miguel","Nuriel","Aniel","Rafael","Gabriel","Shamsiel","Raguel", "Uriel", "Azrael", "Sariel"};
     // int cantidadHojas=arbolAngelical->contarHojas(arbolAngelical->raiz);
     // for (int i = 0; i < cantidadHojas; i++){
