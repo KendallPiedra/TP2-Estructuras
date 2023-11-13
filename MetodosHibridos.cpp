@@ -583,10 +583,6 @@ int Infierno::buscarHumanoMasPecador(){
             humanoMasPecador = humanosRaiz[i];
         }
     }
-
-
-
-
     return humanoMasPecador->ID;
 }
 
@@ -652,7 +648,7 @@ int Infierno::buscarDemonioConAlmaCaptiva(int ID){
 
 int Infierno::sacarCantidadDeHumanos(){
     int humanosTotales=0;
-    for (int i; i<7;i++){
+    for (int i=0; i<7;i++){
         humanosTotales+=demonios[i]->calcularCantidadHumanos();
     }
     return humanosTotales;
