@@ -749,12 +749,24 @@ string Cielo::crearArchivoBitacora(){
 } 
 
 void Cielo::tenerPiedad(){
-    Humano * humanoSalvado=infierno->sacarHumanoMasPecador();
+    Humano*humanoSalvado;
+    try{
+        humanoSalvado=infierno->sacarHumanoMasPecador();
+    }catch(exception e){
+        cout<<"salida magica SE CALLOOOOOOOOOOOOOOOOOO"<<endl;
+        cin.get();
+        cin.get();
+        cin.get();
+    }
+    cout<<"saca el humano"<<endl;
+    cin.get();
     if(humanoSalvado==NULL){
         cout<<"No queda ningun alma por salvar"<<endl;
         return;
     }
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
+    cout<<"se salva el humanoooo"<<endl;
+    cin.get();
     humanoSalvado->angelQueLoSalvo=angel;
     humanoSalvado->salvado=true;
     cout<<"la quiere meter"<<endl;
@@ -771,6 +783,7 @@ string Cielo::salvacionGeneral(){
     int cantidadAngeles=arbolAngelical->contarHojas(arbolAngelical->raiz);
     for (int i=0; i < cantidadAngeles; i++){
         cout<<"quiere tener piedad"<<endl;
+        cin.get();
         tenerPiedad();
         cout<<"tuvo piedad"<<endl;
     }
