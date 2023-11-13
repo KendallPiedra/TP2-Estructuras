@@ -753,6 +753,7 @@ void Cielo::tenerPiedad(){
     }
     NodoCelestial * angel=arbolAngelical->salvarHumano(arbolAngelical->raiz, humanoSalvado); //No está probada esta función
     humanoSalvado->angelQueLoSalvo=angel;
+    cout<<angel<<endl;
     humanoSalvado->salvado=true;
     cout<<"la quiere meter"<<endl;
     insertarEnTablaHash(humanoSalvado);///aca se cae
@@ -770,6 +771,7 @@ string Cielo::salvacionGeneral(){
         cout<<"quiere tener piedad"<<endl;
         tenerPiedad();
         cout<<"tuvo piedad"<<endl;
+        cin.get();
     }
     cout<<"llega a crear archivo"<<endl;
     cin.get();
