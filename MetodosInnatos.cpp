@@ -236,7 +236,7 @@ int ArbolDeLaVida::extraerCantidadNodos(){
 }
 
 void ArbolDeLaVida::crearGeneracionHumanos(int cantidadAGenerar){
-    if (cantidadHumanos+cantidadAGenerar<=1000){
+    if (cantidadHumanos+cantidadAGenerar<=100000){
         int ID;
         string nombre, apellido, profesion, creencia, pais, nacimiento;
         for (int i = cantidadHumanos; i < cantidadAGenerar+cantidadHumanos; i++){
